@@ -13,6 +13,7 @@ where valence, arousal are the values which were are going to attempt to predict
 This prediction tool has two different modes, classification mode, and regression mode. Classification mode attempts to classify the songs into four unique categories (happy, upset, depressed, calm) and training data is automatically tagged based on the values of it's valence and arousal.
 
 | arousal_sign | valence_sign | category |
+|--------------|--------------|----------|
 |       +      |       +      |   happy  |
 |       -      |       +      |   upset  |
 |       -      |       -      | depressed|
