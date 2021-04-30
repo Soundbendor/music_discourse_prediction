@@ -20,6 +20,9 @@ This prediction tool has two different modes, classification mode, and regressio
 |       +      |       -      |    calm  |
 
 Please cite our paper for any use of this work: [TBD]
+
 Developed by: Aidan Beery
+
 Advised by: Dr. Patrick Donnelly
+
 OSU-Cascades 2019-2021
