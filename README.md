@@ -1,5 +1,4 @@
-# Music Discourse Prediction
-## SoundBendOR Lab
+# Music Discourse Prediction - SoundBendOR Lab
 A tool for analyzing and predicting the semantic value of songs based on social media commentary. 
 
 Note - Expects an input of social media commentary features, not raw text. See [music_discourse_features](https://github.com/Soundbendor/music_discourse_features) for how to generate the features needed to input here. Expects CSV files with the following format: 
