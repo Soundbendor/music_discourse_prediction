@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 from matplotlib import font_manager as fm
 from sklearn.preprocessing import MinMaxScaler
 
-class _CircumplexModel():
-    def _circumplex_model(data: pd.DataFrame, title, fname, val_key='Valence', aro_key='Arousal') -> None:
+class _CircumplexModel:
+    def _circumplex_model(self, data: pd.DataFrame, title, fname, val_key='Valence', aro_key='Arousal') -> None:
         scaler = MinMaxScaler(feature_range=(-1, 1))
         data = data[[val_key, aro_key]]
         data = pd.DataFrame(scaler.fit_transform(data), columns=data.columns)
@@ -64,7 +64,7 @@ class _CircumplexModel():
 def main():
     args = parseargs()
     df = pd.read_csv(args.path)
-    _CircumplexModel.circumplex_model(df, args.title, args.fname)
+    _CircumplexModel()._circumplex_model(df, args.title, args.fname)
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Create a circumplex for valence/arousal information")

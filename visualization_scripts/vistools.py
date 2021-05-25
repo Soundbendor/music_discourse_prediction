@@ -8,9 +8,9 @@ Includes vis models which can't/shouldn't be ran standalone.
 '''
 
 import pandas as pd
-from _CircumplexModel import _circumplex_model
+from circumplex import _circumplex_model
 
 class VisualizationTools:
     
-    def circumplex_model(data: pd.DataFrame, title, fname, val_key='Valence', aro_key='Arousal') -> None:
-        _circumplex_model(data, title, fname, val_key, aro_key)
+    # def circumplex_model(data: pd.DataFrame, title, fname, val_key='Valence', aro_key='Arousal') -> None:
+    #     _circumplex_model(data, title, fname, val_key, aro_key)
