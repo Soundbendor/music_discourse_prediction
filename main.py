@@ -1,10 +1,12 @@
 import argparse 
 import configparser
+from experimentfactory import ExperimentFactory
+from dataset import Dataset
 
 def main():
     args = parseargs()
-    config = parseconfig(args.config)
-    print(config._sections)
+    config = ExperimentFactory(args.config)
+    X, y = Dataset(config, args.data).split_x_y()
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Analyzing features generated off semantic wordlist analyis of social media commentary")
@@ -15,10 +17,6 @@ def parseargs() -> argparse.Namespace:
     
     return args
 
-def parseconfig(fname: str):
-    config = configparser.ConfigParser()
-    config.read(fname)
-    return config
 
 if __name__ == '__main__':
     main()
