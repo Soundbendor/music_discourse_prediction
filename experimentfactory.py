@@ -1,3 +1,4 @@
+import re
 from configparser import ConfigParser
 
 from sklearn.ensemble import RandomForestRegressor
@@ -50,6 +51,7 @@ class ExperimentFactory:
             'test_size': float(pre_config['test_size']), 
             'valence_key': self.config['CONTROL']['valence_key'], 
             'arousal_key': self.config['CONTROL']['arousal_key'], 
+            'meta_cols': re.sub(r"\s+", "", pre_config['meta_cols']).split(',')
         }
 
     def get_model_args(self) -> dict:
