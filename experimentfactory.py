@@ -1,3 +1,5 @@
+import csv
+
 from configparser import ConfigParser
 
 from sklearn.ensemble import RandomForestRegressor
@@ -17,7 +19,7 @@ from sklearn.preprocessing import StandardScaler
 
 from imblearn.over_sampling import KMeansSMOTE
 from imblearn.under_sampling import RandomUnderSampler
-from imblearn.pipeline import make_pipeline as make_imb_pipe
+from imblearn.pipeline import Pipeline as ImbPipeline
 
 
 class ExperimentFactory:
@@ -26,6 +28,7 @@ class ExperimentFactory:
         cfp = ConfigParser()
         cfp.read(config)
         self.config = cfp
+        self.build_experiment()
 
     def build_experiment(self):
         self.control_args = self.get_control_args
@@ -34,16 +37,14 @@ class ExperimentFactory:
         self.sampler = self.get_sampling_strategy()
         self.ppargs = self.get_preprocessing_args()
 
-        self.estimator = Pipeline(
+        self.estimator = ImbPipeline([
             ('StandardScaler', StandardScaler()),
             ('FeatureSelection', self.fs),
             ('Sampler', self.sampler),
-            ('Model', self.model)
+            ('Model', self.model)]
         )
-        self.grid_search = None
 
-        if(self.control_args['grid_search'] == True):
-            self.grid_search = self.get_grid_search()
+        self.grid_search = self.get_grid_search(self.estimator)
             
 
     def _get_arg(self, key) -> dict:
@@ -59,16 +60,35 @@ class ExperimentFactory:
             'experiment_type': control_args['experiment_type']
         }
 
-    def get_grid_search(self):
-        pass
+    def get_grid_search(self, estimator):
+        gs_args = self._get_arg('GS_PARAMS')
+        param_grid = self.get_param_grid()
+        if gs_args['grid_search'] == 'false':
+            return None
+
+        return GridSearchCV(
+            estimator= estimator,
+            param_grid = param_grid,
+            cv = int(gs_args['cv']),
+            refit=True,
+            scoring=gs_args['scoring']
+        )
+
+    def get_param_grid(self) -> list:
+        pgrid_args = self._get_arg('PARAM_GRID')
+        return [{k: self.ini_range(v)} for k, v in pgrid_args.items()]
+        
+
+    def ini_range(self, v):
+        param_list = list(csv.reader(v))
+        print(param_list)
+        return range(param_list[0], param_list[1], param_list[2])
 
     def get_sampling_strategy(self):
-        sampling_args = self.get_arg('SAMPLER')
+        sampling_args = self._get_arg('SAMPLER')
         samplers = {
             'under_sample': RandomUnderSampler(sampling_strategy='majority'),
-            'smote': make_imb_pipe(
-                KMeansSMOTE(sampling_strategy='not majority', cluster_balance_threshold=0.1, k_neighbors=5),
-            )
+            'smote': KMeansSMOTE(sampling_strategy='not majority', cluster_balance_threshold=0.1, k_neighbors=5)
         }
         return samplers[sampling_args['sampling']]
 
@@ -76,10 +96,10 @@ class ExperimentFactory:
         model_config = self._get_arg('MODEL')
         
         supported_models = {
-            'LinearRegressor': LinearRegression(),
-            'RandomForestRegressor': RandomForestRegressor(n_jobs=-1),
-            'KNeighborsRegressor': KNeighborsRegressor(), 
-            'MLPRegressor': MLPRegressor(verbose=True)
+            'linearregressor': LinearRegression(),
+            'randomforestregressor': RandomForestRegressor(n_jobs=-1),
+            'kneighborsregressor': KNeighborsRegressor(), 
+            'mlpregressor': MLPRegressor(verbose=True)
         }
 
         return supported_models[model_config['model']]
@@ -89,7 +109,7 @@ class ExperimentFactory:
         percent = fselect_config['percent_features']
 
         supported_selection_methods = {
-            'PCA': PCA(fselect_config['n_components']),
+            'pca': PCA(fselect_config['n_components']),
             'f_regression': SelectPercentile(score_func=f_regression, percentile=percent), 
             'mutual_info_regression': SelectPercentile(score_func=mutual_info_regression, percentile=percent),
             'none': None
