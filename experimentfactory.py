@@ -15,7 +15,6 @@ from sklearn.feature_selection import mutual_info_regression
 from sklearn.decomposition import PCA
 
 from sklearn.model_selection import GridSearchCV
-from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 from imblearn.over_sampling import KMeansSMOTE
@@ -29,25 +28,7 @@ class ExperimentFactory:
         cfp = ConfigParser()
         cfp.read(config)
         self.config = cfp
-        self.build_experiment()
-
-    def build_experiment(self):
-        self.control_args = self.get_control_args
-        self.model = self.get_model()
-        self.fs = self.get_feature_selection_strategy()
-        self.sampler = self.get_sampling_strategy()
-        self.ppargs = self.get_preprocessing_args()
-
-        self.estimator = ImbPipeline([
-            ('StandardScaler', StandardScaler()),
-            ('FeatureSelection', self.fs),
-            ('Sampler', self.sampler),
-            ('Model', self.model)]
-        )
-
-        self.grid_search = self.get_grid_search(self.estimator)
             
-
     def _get_arg(self, key) -> dict:
         table = self.config[key]
         return {k: v.strip().lower() for k, v in table.items()}
@@ -61,19 +42,17 @@ class ExperimentFactory:
             'experiment_type': control_args['experiment_type']
         }
 
-    def get_grid_search(self, estimator):
+    def get_grid_search(self) -> dict:
         gs_args = self._get_arg('GS_PARAMS')
         param_grid = self.get_param_grid()
-        if gs_args['grid_search'] == 'false':
-            return None
 
-        return GridSearchCV(
-            estimator= estimator,
-            param_grid = param_grid,
-            cv = int(gs_args['cv']),
-            refit=True,
-            scoring=gs_args['scoring']
-        )
+        return {
+            'grid_search': gs_args['grid_search'],
+            'scoring': gs_args['scoring'],
+            'param_grid': param_grid,
+            'cv': int(gs_args['cv'])
+        }
+
 
     def get_param_grid(self) -> list:
         pgrid_args = self._get_arg('PARAM_GRID')

@@ -6,7 +6,7 @@ from dataset import Dataset
 def main():
     args = parseargs()
     config = ExperimentFactory(args.config)
-    dataset = Dataset(config.ppargs, args.data)
+    dataset = Dataset(config.get_preprocessing_args(), args.data)
     print(dataset.X.size)
 
 def parseargs() -> argparse.Namespace:
