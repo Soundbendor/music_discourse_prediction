@@ -81,8 +81,7 @@ class ExperimentFactory:
         
 
     def ini_range(self, v):
-        param_list = list(csv.reader(v))
-        print(param_list)
+        param_list = [int(x) for x in v.split(',')]
         return range(param_list[0], param_list[1], param_list[2])
 
     def get_sampling_strategy(self):
@@ -124,6 +123,6 @@ class ExperimentFactory:
             'test_size': float(pre_config['test_size']), 
             'valence_key': self.config['CONTROL']['valence_key'], 
             'arousal_key': self.config['CONTROL']['arousal_key'], 
-            'meta_cols': re.sub(r"\s+", "", pre_config['meta_cols']).split(',')
+            'meta_cols': re.sub(r"\s+", "", self.config['PREPROCESSING']['meta_cols']).split(',')
         }
 

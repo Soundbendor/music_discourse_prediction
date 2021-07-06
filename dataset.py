@@ -6,9 +6,12 @@ from sklearn.model_selection import train_test_split
 
 
 class Dataset:
-    def __init__(self, config: ExperimentFactory, fname: str) -> None:
-        self.config = config.get_preprocessing_args()
+    def __init__(self, config: dict, fname: str) -> None:
+        self.config = config
         self.fname = fname
+        self.df = self._process_df()
+        self.X, self.y = self.split_x_y(self.df)
+        
 
     def _get_dataframe(self) -> pd.DataFrame:
         return pd.read_csv(self.fname, index_col=False)
@@ -27,7 +30,7 @@ class Dataset:
     def _drop_meta(self, df) -> pd.DataFrame:
         return df.drop(self.config['meta_cols'], axis=1)
 
-    def process_df(self) -> pd.DataFrame:
+    def _process_df(self) -> pd.DataFrame:
         return self._drop_nonnumeric(
             self._drop_meta(
                 self._drop_at_threshold(
@@ -36,10 +39,9 @@ class Dataset:
             )
         )
 
-    def split_x_y(self):
-        data = self.process_df()
+    def split_x_y(self, df):
         val_key = self.config['valence_key']
         aro_key = self.config['arousal_key']
-        X, y = data.drop(['existing_valence', 'existing_arousal'], axis=1), data[[val_key, aro_key]]
+        X, y = df.drop(['existing_valence', 'existing_arousal'], axis=1), df[[val_key, aro_key]]
         return X, y
 
