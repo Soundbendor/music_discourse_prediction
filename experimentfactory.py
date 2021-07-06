@@ -47,7 +47,7 @@ class ExperimentFactory:
         param_grid = self.get_param_grid()
 
         return {
-            'grid_search': gs_args['grid_search'],
+            'grid_search': gs_args['grid_search'] == 'true',
             'scoring': gs_args['scoring'],
             'param_grid': param_grid,
             'cv': int(gs_args['cv'])
@@ -100,8 +100,11 @@ class ExperimentFactory:
         return {
             'threshold': float(pre_config['threshold']), 
             'test_size': float(pre_config['test_size']), 
+            'stratify': self._stratify(),
             'valence_key': self.config['CONTROL']['valence_key'], 
             'arousal_key': self.config['CONTROL']['arousal_key'], 
             'meta_cols': re.sub(r"\s+", "", self.config['PREPROCESSING']['meta_cols']).split(',')
         }
 
+    def _stratify(self) -> bool:
+        return self.config['CONTROL']['experiment_type'] == 'classification'

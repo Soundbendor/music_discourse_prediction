@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 
-from experimentfactory import ExperimentFactory
 from sklearn.model_selection import train_test_split
 
 
@@ -11,6 +10,7 @@ class Dataset:
         self.fname = fname
         self.df = self._process_df()
         self.X, self.y = self.split_x_y(self.df)
+        self.X_train, self.X_test, self.y_train, self.y_test = self.train_test_split(self.X, self.y)
         
 
     def _get_dataframe(self) -> pd.DataFrame:
@@ -23,7 +23,7 @@ class Dataset:
         return df
 
     # We separate this step from other preprocessing tasks because in the future,
-    #  we may want to encode categorical data before dropping non-numeric metadata. 
+    # we may want to encode categorical data before dropping non-numeric metadata. 
     def _drop_nonnumeric(self, df) -> pd.DataFrame:
         return df.select_dtypes('number').copy()
 
@@ -44,4 +44,9 @@ class Dataset:
         aro_key = self.config['arousal_key']
         X, y = df.drop(['existing_valence', 'existing_arousal'], axis=1), df[[val_key, aro_key]]
         return X, y
+
+    def train_test_split(self, X, y):
+        return train_test_split(X, y,
+            test_size=self.config['test_size'],
+            stratify= y if self.config['stratify'] else None)
 

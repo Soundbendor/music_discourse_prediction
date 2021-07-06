@@ -17,22 +17,34 @@ class Experiment:
         sampler = self.config.get_sampling_strategy()
         model = self.config.get_model()
         fs = self.config.get_feature_selection_strategy()
-        pipe = self._build_pipeline(fs, model, sampler)
+
+        pipe = self._build_pipeline(fs, sampler, model)
+        best_est = self._run_grid_search(pipe)
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
         return ImbPipeline([
-            ('StandardScaler', StandardScaler()),
-            ('FeatureSelection', feature_selection),
-            ('Sampler', sampling_method),
-            ('Model', model)
+            ('standardscaler', StandardScaler()),
+            ('featureselection', feature_selection),
+            ('sampler', sampling_method),
+            ('model', model)
         ])
 
-    def _build_grid_search(self, estimator):
+    def _run_grid_search(self, estimator):
         gs_args = self.config.get_grid_search()
+        if(not gs_args['grid_search']):
+            return estimator
+
+        gs = self._build_grid_search(estimator, gs_args)
+        gs = gs.fit(self.ds.X_train, self.ds.y_train)
+        return gs.best_estimator_
+
+
+    def _build_grid_search(self, estimator, gs_args: dict):
+        print(estimator.get_params().keys())
 
         return GridSearchCV(
             estimator= estimator, 
-            param_grid= self.config,
+            param_grid= gs_args['param_grid'],
             refit= True,
             cv= gs_args['cv'],
             scoring= gs_args['scoring']
