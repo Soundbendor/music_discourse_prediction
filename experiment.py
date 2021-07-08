@@ -17,6 +17,8 @@ class Experiment:
         sampler = self.config.get_sampling_strategy()
         model = self.config.get_model()
         fs = self.config.get_feature_selection_strategy()
+        
+        print(self.ds.X_train.select_dtypes(exclude=['number']))
 
         pipe = self._build_pipeline(fs, sampler, model)
         best_est = self._run_grid_search(pipe)
@@ -40,14 +42,16 @@ class Experiment:
 
 
     def _build_grid_search(self, estimator, gs_args: dict):
-        print(estimator.get_params().keys())
+
+        print(gs_args['param_grid'])
 
         return GridSearchCV(
             estimator= estimator, 
             param_grid= gs_args['param_grid'],
             refit= True,
             cv= gs_args['cv'],
-            scoring= gs_args['scoring']
+            scoring= gs_args['scoring'],
+            n_jobs= -1
         )
 
 # bulid an estimator

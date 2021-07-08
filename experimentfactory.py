@@ -60,8 +60,8 @@ class ExperimentFactory:
         
 
     def ini_range(self, v):
-        param_list = [int(x) for x in v.split(',')]
-        return range(param_list[0], param_list[1], param_list[2])
+        return [x for x in v.split(',')]
+
 
     def get_sampling_strategy(self):
         sampling_args = self._get_arg('SAMPLER')
@@ -88,7 +88,7 @@ class ExperimentFactory:
         percent = fselect_config['percent_features']
 
         supported_selection_methods = {
-            'pca': PCA(fselect_config['n_components']),
+            'pca': PCA(float(fselect_config['n_components'])),
             'f_regression': SelectPercentile(score_func=f_regression, percentile=percent), 
             'mutual_info_regression': SelectPercentile(score_func=mutual_info_regression, percentile=percent),
             'none': None
