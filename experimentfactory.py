@@ -2,6 +2,7 @@ import re
 import csv
 
 from configparser import ConfigParser
+from pydoc import locate
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
@@ -60,14 +61,17 @@ class ExperimentFactory:
         
 
     def ini_range(self, v):
-        return [x for x in v.split(',')]
+        args = [x for x in v.split(',')]
+        tp = locate(args.pop(0))
+        return [tp(x) for x in args]
 
 
     def get_sampling_strategy(self):
         sampling_args = self._get_arg('SAMPLER')
         samplers = {
             'under_sample': RandomUnderSampler(sampling_strategy='majority'),
-            'smote': KMeansSMOTE(sampling_strategy='not majority', cluster_balance_threshold=0.1, k_neighbors=5)
+            'smote': KMeansSMOTE(sampling_strategy='not majority', cluster_balance_threshold=0.1, k_neighbors=5),
+            'none': None
         }
         return samplers[sampling_args['sampling']]
 
@@ -105,6 +109,9 @@ class ExperimentFactory:
             'arousal_key': self.config['CONTROL']['arousal_key'], 
             'meta_cols': re.sub(r"\s+", "", self.config['PREPROCESSING']['meta_cols']).split(',')
         }
+
+    def get_y_keys(self) -> list:
+        return [self.config['CONTROL']['valence_key'], self.config['CONTROL']['arousal_key']]
 
     def _stratify(self) -> bool:
         return self.config['CONTROL']['experiment_type'] == 'classification'

@@ -18,10 +18,13 @@ class Experiment:
         model = self.config.get_model()
         fs = self.config.get_feature_selection_strategy()
         
-        print(self.ds.X_train.select_dtypes(exclude=['number']))
+        print(self.ds.y_train)
 
         pipe = self._build_pipeline(fs, sampler, model)
-        best_est = self._run_grid_search(pipe)
+        
+        for key in self.config.get_y_keys():
+            best_est = self._run_grid_search(pipe, key)
+        
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
         return ImbPipeline([
@@ -31,19 +34,17 @@ class Experiment:
             ('model', model)
         ])
 
-    def _run_grid_search(self, estimator):
+    def _run_grid_search(self, estimator, key: str):
         gs_args = self.config.get_grid_search()
         if(not gs_args['grid_search']):
             return estimator
 
         gs = self._build_grid_search(estimator, gs_args)
-        gs = gs.fit(self.ds.X_train, self.ds.y_train)
+        gs = gs.fit(self.ds.X_train, self.ds.y_train[key])
         return gs.best_estimator_
 
 
     def _build_grid_search(self, estimator, gs_args: dict):
-
-        print(gs_args['param_grid'])
 
         return GridSearchCV(
             estimator= estimator, 
