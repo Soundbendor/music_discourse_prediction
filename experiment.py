@@ -7,8 +7,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 
+from abc import ABC, abstractmethod
 
-class Experiment:
+
+class Experiment(ABC):
     def __init__(self, dataset: Dataset, config: ExperimentFactory) -> None:
         self.ds = dataset
         self.config = config
@@ -29,6 +31,7 @@ class Experiment:
         
         for key in self.config.get_y_keys():
             best_est = self._run_grid_search(pipe, key)
+            self._cross_validate(best_est)
         
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
@@ -60,11 +63,15 @@ class Experiment:
             n_jobs= -1
         )
 
+    @abstractmethod
     def train_test_split(self, ds: Dataset, test_size: int):
-        return train_test_split(ds.X, ds.y, test_size=test_size)
+        pass
 
+    @abstractmethod
     def _cross_validate(self, estimator):
         pass
+
+    
 
 class ExperimentTypeNotFoundError(Exception):
     pass
