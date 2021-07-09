@@ -104,7 +104,6 @@ class ExperimentFactory:
         return {
             'threshold': float(pre_config['threshold']), 
             'test_size': float(pre_config['test_size']), 
-            'stratify': self._stratify(),
             'valence_key': self.config['CONTROL']['valence_key'], 
             'arousal_key': self.config['CONTROL']['arousal_key'], 
             'meta_cols': re.sub(r"\s+", "", self.config['PREPROCESSING']['meta_cols']).split(',')
@@ -113,5 +112,5 @@ class ExperimentFactory:
     def get_y_keys(self) -> list:
         return [self.config['CONTROL']['valence_key'], self.config['CONTROL']['arousal_key']]
 
-    def _stratify(self) -> bool:
-        return self.config['CONTROL']['experiment_type'] == 'classification'
+    def get_experiment_type(self) -> str:
+        return self.config['CONTROL']['experiment_type']

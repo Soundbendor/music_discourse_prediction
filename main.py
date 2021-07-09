@@ -1,6 +1,8 @@
 import argparse 
 import configparser
-from experiment import Experiment
+from regressionexperiment import RegressionExperiment
+from classificationexperiment import ClassificationExperiment
+from experiment import ExperimentTypeNotFoundError
 from experimentfactory import ExperimentFactory
 from dataset import Dataset
 
@@ -8,7 +10,7 @@ def main():
     args = parseargs()
     config = ExperimentFactory(args.config)
     dataset = Dataset(config.get_preprocessing_args(), args.data)
-    experiment = Experiment(dataset, config)
+    experiment = get_experiment(dataset, config)
     experiment.run_experiment()
 
 def parseargs() -> argparse.Namespace:
@@ -19,6 +21,17 @@ def parseargs() -> argparse.Namespace:
     args = parser.parse_args()
     
     return args
+
+def get_experiment(ds: Dataset, config: ExperimentFactory):
+    exp_type = config.get_experiment_type()
+    if exp_type == 'regression':
+        return RegressionExperiment(ds, config)
+    elif exp_type == 'classification':
+        return ClassificationExperiment(ds, config)
+    else:
+        raise ExperimentTypeNotFoundError("Experiment type specified in the .ini \
+            configuration is not a valid experiment type. Please use 'regression' or \
+            'classification' experiment types.")
 
 
 if __name__ == '__main__':

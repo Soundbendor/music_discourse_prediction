@@ -1,16 +1,12 @@
 import pandas as pd
 import numpy as np
 
-from sklearn.model_selection import train_test_split
-
-
 class Dataset:
     def __init__(self, config: dict, fname: str) -> None:
         self.config = config
         self.fname = fname
         self.df = self._process_df()
         self.X, self.y = self.split_x_y(self.df)
-        self.X_train, self.X_test, self.y_train, self.y_test = self.train_test_split(self.X, self.y)
         
 
     def _get_dataframe(self) -> pd.DataFrame:
@@ -44,9 +40,4 @@ class Dataset:
         aro_key = self.config['arousal_key']
         X, y = df.drop(['existing_valence', 'existing_arousal'], axis=1), df[[val_key, aro_key]]
         return X, y
-
-    def train_test_split(self, X, y):
-        return train_test_split(X, y,
-            test_size=self.config['test_size'],
-            stratify= y if self.config['stratify'] else None)
 
