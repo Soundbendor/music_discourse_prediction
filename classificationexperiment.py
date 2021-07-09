@@ -14,3 +14,5 @@ class ClassificationExperiment(Experiment):
         raise Exception("Need to fix y-labeling in dataset. Currently non-functional.")
         print("DEBUG - I'm stratifying the training split")
         return train_test_split(ds.X, ds.y, stratify=ds.y, test_size=test_size)
+
+    # TODO - Cross-validation. Similar to reg-exp's cv, but use StratifiedKFold
