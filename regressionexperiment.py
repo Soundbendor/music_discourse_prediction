@@ -3,7 +3,9 @@ from dataset import Dataset
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import KFold
+from tqdm import tqdm
 
+N_SPLITS = 5
 
 class RegressionExperiment(Experiment):
     
@@ -11,13 +13,14 @@ class RegressionExperiment(Experiment):
         return train_test_split(ds.X, ds.y, test_size=test_size)
 
     # TODO - get more stats and pretty-print them. Maybe output to a debug file? 
-    # TODO - progress bar for that sweet sweet seretonin
+
     def _cross_validate(self, estimator):
         scores = []
-        kfold = KFold(shuffle=True).split(self.X_train, self.y_train)
-        for k, (i_train, i_test) in enumerate(kfold):
-            X_train, y_train = self.X_train.iloc[i_train], self.y_train.iloc[i_train]
-            X_val, y_val = self.X_train.iloc[i_test], self.y_train.iloc[i_test]
+        kfold = KFold(n_splits=N_SPLITS, shuffle=True).split(self.X_train, self.y_train)
+        print("\n---Beginning cross validation---")
+        for k, (i_train, i_test) in tqdm(enumerate(kfold), total=N_SPLITS):
+            X_train, y_train = self.ds.X.iloc[i_train], self.ds.y.iloc[i_train]
+            X_val, y_val = self.ds.X.iloc[i_test], self.ds.y.iloc[i_test]
 
             estimator.fit(X_train, y_train)
             yhat = estimator.predict(X_val)

@@ -30,6 +30,7 @@ class Experiment(ABC):
         pipe = self._build_pipeline(fs, sampler, model)
         
         for key in self.config.get_y_keys():
+            print(f'\nMaking predictions for {key}\n')
             best_est = self._run_grid_search(pipe, key)
             self._cross_validate(best_est)
         
@@ -60,7 +61,8 @@ class Experiment(ABC):
             refit= True,
             cv= gs_args['cv'],
             scoring= gs_args['scoring'],
-            n_jobs= -1
+            n_jobs= -1,
+            verbose=2
         )
 
     @abstractmethod
