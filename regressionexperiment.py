@@ -1,4 +1,7 @@
+from imblearn.pipeline import Pipeline
+from experimentset import ExperimentSet
 from numpy.core.fromnumeric import mean
+from sklearn.base import BaseEstimator
 from experiment import Experiment
 from dataset import Dataset
 
@@ -18,26 +21,29 @@ class RegressionExperiment(Experiment):
 
     # TODO - get more stats and pretty-print them. Maybe output to a debug file? 
 
-    def _cross_validate(self, estimator):
+    def _cross_validate(self, estimator: Pipeline, expset: ExperimentSet):
         scores = []
         metrics = [pearsonr, spearmanr, mean_absolute_error]
-        kfold = KFold(n_splits=N_SPLITS, shuffle=True).split(self.X_train, self.y_train)
+        kfold = KFold(n_splits=N_SPLITS, shuffle=True).split(expset.X_train, expset.y_train)
         print("\n---Beginning cross validation---")
         for k, (i_train, i_test) in tqdm(enumerate(kfold), total=N_SPLITS):
-            X_train, y_train = self.ds.X.iloc[i_train], self.ds.y.iloc[i_train]
-            X_test, y_test = self.ds.X.iloc[i_test], self.ds.y.iloc[i_test]
+            X_train, y_train = expset.X[i_train], expset.y[i_train]
+            X_test, y_test = expset.X[i_test], expset.y[i_test]
 
             estimator.fit(X_train, y_train)
             yhat = estimator.predict(X_test)
             self.cv_stats(scores, metrics, y_test, yhat)
-        print(scores)
+        self.display_stats(scores)
 
     def cv_stats(self, scores, metrics, y_true, y_pred):
         iter_score = {}
         for metric in metrics:
-            print(type(y_true))
             iter_score[metric.__name__] = metric(y_true, y_pred)
         scores.append(iter_score)
 
-        
+    def display_stats(self, scores: list):
+        for idx, score in enumerate(scores):
+            print(f'\nIteration - {idx+1}')
+            for k, v in score.items():
+                print(f'Metric: {k} \t\t\t Score: {v}')
 

@@ -1,3 +1,5 @@
+from sklearn.pipeline import Pipeline
+from experimentset import ExperimentSet
 from experimentfactory import ExperimentFactory
 from dataset import Dataset
 
@@ -5,6 +7,7 @@ from imblearn.pipeline import Pipeline as ImbPipeline
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV
+from sklearn.base import BaseEstimator
 from sklearn.model_selection import train_test_split
 
 from abc import ABC, abstractmethod
@@ -18,6 +21,7 @@ class Experiment(ABC):
 
     def run_experiment(self):
 
+        test_size = self.config.get_preprocessing_args()['test_size']
         sampler = self.config.get_sampling_strategy()
         model = self.config.get_model()
         fs = self.config.get_feature_selection_strategy()
@@ -26,11 +30,10 @@ class Experiment(ABC):
         for key in self.config.get_y_keys():
             print(f'\nMaking predictions for {key}\n')
 
-            X_train, X_test, y_train, y_test = \
-                self.train_test_split(self.ds, self.config.get_preprocessing_args()['test_size'], key)
+            expset = ExperimentSet(self.ds, key, self.train_test_split, test_size)
 
-            best_est = self._run_grid_search(pipe, X_train, y_train)
-            self._cross_validate(best_est)
+            best_est = self._run_grid_search(pipe, expset)
+            self._cross_validate(best_est, expset)
         
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
@@ -41,13 +44,13 @@ class Experiment(ABC):
             ('model', model)
         ])
 
-    def _run_grid_search(self, estimator, X_train, y_train):
+    def _run_grid_search(self, estimator, expset: ExperimentSet):
         gs_args = self.config.get_grid_search()
         if(not gs_args['grid_search']):
             return estimator
 
         gs = self._build_grid_search(estimator, gs_args)
-        gs = gs.fit(X_train, y_train)
+        gs = gs.fit(expset.X_train, expset.y_train)
         return gs.best_estimator_
 
 
@@ -63,12 +66,14 @@ class Experiment(ABC):
             verbose=2
         )
 
+
     @abstractmethod
     def train_test_split(self, ds: Dataset, test_size: int, key: str):
         pass
 
+
     @abstractmethod
-    def _cross_validate(self, estimator):
+    def _cross_validate(self, estimator: Pipeline, expset: ExperimentSet):
         pass
 
     
