@@ -10,7 +10,7 @@ The y-label in dataset needs to be changed to be classes, not regression values!
 
 class ClassificationExperiment(Experiment):
     
-    def train_test_split(self, ds: Dataset, test_size: int):
+    def train_test_split(self, ds: Dataset, test_size: int, key: str):
         raise Exception("Need to fix y-labeling in dataset. Currently non-functional.")
         print("DEBUG - I'm stratifying the training split")
         return train_test_split(ds.X, ds.y, stratify=ds.y, test_size=test_size)

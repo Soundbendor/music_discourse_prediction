@@ -6,7 +6,7 @@ class Dataset:
         self.config = config
         self.fname = fname
         self.df = self._process_df()
-        self.X, self.y = self.split_x_y(self.df)
+        # self.X, self.y = self.split_x_y(self.df)
         
 
     def _get_dataframe(self) -> pd.DataFrame:
@@ -35,9 +35,13 @@ class Dataset:
             )
         )
 
-    def split_x_y(self, df):
+    def split_x_y(self):
         val_key = self.config['valence_key']
         aro_key = self.config['arousal_key']
-        X, y = df.drop(['existing_valence', 'existing_arousal'], axis=1), df[[val_key, aro_key]]
+        X, y = self.df.drop(['existing_valence', 'existing_arousal'], axis=1), self.df[[val_key, aro_key]]
         return X, y
+
+    def get_data(self, key: str ):
+        X, y = self.split_x_y()
+        return X.values, y[key].values
 

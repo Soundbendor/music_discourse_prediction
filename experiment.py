@@ -17,21 +17,19 @@ class Experiment(ABC):
 
 
     def run_experiment(self):
-        self.X_train, self.X_test, \
-            self.y_train, self.y_test = \
-            self.train_test_split(self.ds, self.config.get_preprocessing_args()['test_size'])
 
         sampler = self.config.get_sampling_strategy()
         model = self.config.get_model()
         fs = self.config.get_feature_selection_strategy()
-        
-        print(self.y_train)
-
         pipe = self._build_pipeline(fs, sampler, model)
         
         for key in self.config.get_y_keys():
             print(f'\nMaking predictions for {key}\n')
-            best_est = self._run_grid_search(pipe, key)
+
+            X_train, X_test, y_train, y_test = \
+                self.train_test_split(self.ds, self.config.get_preprocessing_args()['test_size'], key)
+
+            best_est = self._run_grid_search(pipe, X_train, y_train)
             self._cross_validate(best_est)
         
 
@@ -43,13 +41,13 @@ class Experiment(ABC):
             ('model', model)
         ])
 
-    def _run_grid_search(self, estimator, key: str):
+    def _run_grid_search(self, estimator, X_train, y_train):
         gs_args = self.config.get_grid_search()
         if(not gs_args['grid_search']):
             return estimator
 
         gs = self._build_grid_search(estimator, gs_args)
-        gs = gs.fit(self.X_train, self.y_train[key])
+        gs = gs.fit(X_train, y_train)
         return gs.best_estimator_
 
 
@@ -66,7 +64,7 @@ class Experiment(ABC):
         )
 
     @abstractmethod
-    def train_test_split(self, ds: Dataset, test_size: int):
+    def train_test_split(self, ds: Dataset, test_size: int, key: str):
         pass
 
     @abstractmethod
