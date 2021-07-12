@@ -45,3 +45,17 @@ class Dataset:
         X, y = self.split_x_y()
         return X.values, y[key].values
 
+
+class ClassificationDataset(Dataset):
+
+    def __init__(self, ds: Dataset) -> None:
+        self.config = ds.config
+        self.fname = ds.fname
+        self.df = ds.df
+
+    def get_data(self, key: str):
+        X, _ = self.split_x_y()
+        y = X['class']
+        X = X.drop('class', axis=1)
+        return X.values, y.values
+

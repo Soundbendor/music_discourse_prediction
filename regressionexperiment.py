@@ -1,7 +1,5 @@
 from imblearn.pipeline import Pipeline
 from experimentset import ExperimentSet
-from numpy.core.fromnumeric import mean
-from sklearn.base import BaseEstimator
 from experiment import Experiment
 from dataset import Dataset
 
