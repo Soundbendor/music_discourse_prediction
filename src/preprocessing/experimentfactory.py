@@ -1,10 +1,10 @@
 import re
-import csv
 
 from configparser import ConfigParser
 from pydoc import locate
 
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.neural_network import MLPRegressor
@@ -15,12 +15,8 @@ from sklearn.feature_selection import f_regression
 from sklearn.feature_selection import mutual_info_regression
 from sklearn.decomposition import PCA
 
-from sklearn.model_selection import GridSearchCV
-from sklearn.preprocessing import StandardScaler
-
 from imblearn.over_sampling import KMeansSMOTE
 from imblearn.under_sampling import RandomUnderSampler
-from imblearn.pipeline import Pipeline as ImbPipeline
 
 
 class ExperimentFactory:
@@ -82,7 +78,8 @@ class ExperimentFactory:
             'linearregressor': LinearRegression(),
             'randomforestregressor': RandomForestRegressor(n_jobs=-1),
             'kneighborsregressor': KNeighborsRegressor(), 
-            'mlpregressor': MLPRegressor(verbose=True)
+            'mlpregressor': MLPRegressor(verbose=True),
+            'randomforestclassifier': RandomForestClassifier(n_jobs=-1),
         }
 
         return supported_models[model_config['model']]

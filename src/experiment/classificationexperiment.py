@@ -1,3 +1,4 @@
+from numpy import average
 from .experiment import Experiment
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
@@ -20,12 +21,15 @@ class ClassificationExperiment(Experiment):
 
     def __init__(self, dataset: Dataset, config: ExperimentFactory) -> None:
         super().__init__(dataset, config)
-        self.metrics.append(f1_score)
+        self.metrics.append(self.weighted_f1)
         self.ds = self._label_data(self.ds)
+
+    def weighted_f1(self, y_true, y_pred):
+        return f1_score(y_true, y_pred, average= 'weighted')
     
     def split_dataset(self, ds: Dataset, test_size: int, key: str):
         X, y = ds.get_data(key)
-        return train_test_split(X, y, stratify=ds.y, test_size=test_size)
+        return train_test_split(X, y, stratify=y, test_size=test_size)
 
     def _get_k_fold(self, n_splits: int, expset: ExperimentSet):
         return StratifiedKFold(n_splits, shuffle=True).split(expset.X_train, expset.y_train)
