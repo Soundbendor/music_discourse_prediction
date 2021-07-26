@@ -1,13 +1,12 @@
-from preprocessing.experimentset import ExperimentSet
-from preprocessing.dataset import ClassificationDataset, Dataset
 from .experiment import Experiment
+from preprocessing.experimentset import ExperimentSet
+from preprocessing.experimentfactory import ExperimentFactory
+from preprocessing.dataset import ClassificationDataset, Dataset
 
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import StratifiedKFold
+from sklearn.metrics import f1_score
 
-'''
-WARNING - This class is not ready yet!
-The y-label in dataset needs to be changed to be classes, not regression values!
-'''
 
 class_names = {
     'happy': 0,
@@ -19,27 +18,17 @@ class_names = {
 
 class ClassificationExperiment(Experiment):
 
-    def run_experiment(self):
-
-        test_size = self.config.get_preprocessing_args()['test_size']
-        sampler = self.config.get_sampling_strategy()
-        model = self.config.get_model()
-        fs = self.config.get_feature_selection_strategy()
-        pipe = self._build_pipeline(fs, sampler, model)
-
-        for key in self.config.get_y_keys():
-            print(f'\nMaking classification predictions for {key}\n')
-            
-            c_ds = self._label_data(self.ds)
-
-            expset = ExperimentSet(c_ds, key, self.train_test_split, test_size)
-
-            best_est = self._run_grid_search(pipe, expset)
-            self._cross_validate(best_est, expset)
+    def __init__(self, dataset: Dataset, config: ExperimentFactory) -> None:
+        super().__init__(dataset, config)
+        self.metrics.append(f1_score)
+        self.ds = self._label_data(self.ds)
     
-    def train_test_split(self, ds: Dataset, test_size: int, key: str):
+    def split_dataset(self, ds: Dataset, test_size: int, key: str):
         X, y = ds.get_data(key)
         return train_test_split(X, y, stratify=ds.y, test_size=test_size)
+
+    def _get_k_fold(self, n_splits: int, expset: ExperimentSet):
+        return StratifiedKFold(n_splits, shuffle=True).split(expset.X_train, expset.y_train)
 
     def _label_data(self, ds: Dataset) -> ClassificationDataset: 
 
@@ -52,5 +41,3 @@ class ClassificationExperiment(Experiment):
 
         return c_ds
 
-
-    # TODO - Cross-validation. Similar to reg-exp's cv, but use StratifiedKFold
