@@ -17,10 +17,11 @@ from sklearn.model_selection import GridSearchCV
 N_SPLITS = 5
 
 class Experiment(ABC):
-    def __init__(self, dataset: Dataset, config: ExperimentFactory) -> None:
+    def __init__(self, dataset: Dataset, config: ExperimentFactory, output) -> None:
         self.ds = dataset
         self.config = config
         self.metrics = [pearsonr, spearmanr]
+        self.output = output
 
 
     def run_experiment(self):

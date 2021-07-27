@@ -13,8 +13,8 @@ from sklearn.metrics import f1_score
 
 class ClassificationExperiment(Experiment):
 
-    def __init__(self, dataset: Dataset, config: ExperimentFactory) -> None:
-        super().__init__(dataset, config)
+    def __init__(self, dataset: Dataset, config: ExperimentFactory, output) -> None:
+        super().__init__(dataset, config, output)
         self.metrics.append(self.weighted_f1)
 
     def weighted_f1(self, y_true, y_pred):

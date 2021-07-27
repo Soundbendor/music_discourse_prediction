@@ -11,8 +11,8 @@ from sklearn.metrics import mean_absolute_error
 class RegressionExperiment(Experiment):
     
 
-    def __init__(self, dataset: Dataset, config: ExperimentFactory) -> None:
-        super().__init__(dataset, config)
+    def __init__(self, dataset: Dataset, config: ExperimentFactory, output) -> None:
+        super().__init__(dataset, config, output)
         self.metrics.append(mean_absolute_error)
     
     def split_dataset(self, ds: Dataset, test_size: int, key: str):
