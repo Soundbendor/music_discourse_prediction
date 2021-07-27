@@ -2,19 +2,13 @@ from numpy import average
 from .experiment import Experiment
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
-from preprocessing.dataset import ClassificationDataset, Dataset
+from preprocessing.dataset import Dataset
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import f1_score
 
 
-class_names = {
-    'happy': 0,
-    'upset': 1,
-    'depressed': 2,
-    'calm': 3 
-}
 
 
 class ClassificationExperiment(Experiment):
@@ -22,7 +16,6 @@ class ClassificationExperiment(Experiment):
     def __init__(self, dataset: Dataset, config: ExperimentFactory) -> None:
         super().__init__(dataset, config)
         self.metrics.append(self.weighted_f1)
-        self.ds = self._label_data(self.ds)
 
     def weighted_f1(self, y_true, y_pred):
         return f1_score(y_true, y_pred, average= 'weighted')
@@ -34,14 +27,7 @@ class ClassificationExperiment(Experiment):
     def _get_k_fold(self, n_splits: int, expset: ExperimentSet):
         return StratifiedKFold(n_splits, shuffle=True).split(expset.X_train, expset.y_train)
 
-    def _label_data(self, ds: Dataset) -> ClassificationDataset: 
+    def _get_keys(self) -> list: 
+        return [self.ds.label_key]
 
-        c_ds = ClassificationDataset(ds)
-
-        c_ds.df.loc[(ds.df['existing_valence'] >= 0) & (c_ds.df['existing_arousal'] >= 0), 'class'] = class_names['happy']
-        c_ds.df.loc[(ds.df['existing_valence'] >= 0) & (c_ds.df['existing_arousal'] < 0), 'class'] = class_names['upset']
-        c_ds.df.loc[(ds.df['existing_valence'] < 0) & (c_ds.df['existing_arousal'] < 0), 'class'] = class_names['depressed']
-        c_ds.df.loc[(ds.df['existing_valence'] < 0) & (c_ds.df['existing_arousal'] >= 0), 'class'] = class_names['calm']
-
-        return c_ds
 

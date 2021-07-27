@@ -31,14 +31,14 @@ class Experiment(ABC):
         fs = self.config.get_feature_selection_strategy()
         pipe = self._build_pipeline(fs, sampler, model)
         
-        for key in self.config.get_y_keys():
+        for key in self._get_keys():
             print(f'\nMaking predictions for {key}\n')
 
             expset = ExperimentSet(self.ds, key, self.split_dataset, test_size)
 
             best_est = self._run_grid_search(pipe, expset)
             self._cross_validate(best_est, expset)
-        
+      
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
         return ImbPipeline([
@@ -102,6 +102,11 @@ class Experiment(ABC):
 
     @abstractmethod
     def _get_k_fold(self, n_splits: int, expset: ExperimentSet):
+        pass
+
+    # Defines which keys we will be running prediction for.
+    @abstractmethod
+    def _get_keys(self) -> list: 
         pass
 
     

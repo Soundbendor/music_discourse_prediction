@@ -106,8 +106,5 @@ class ExperimentFactory:
             'meta_cols': re.sub(r"\s+", "", self.config['PREPROCESSING']['meta_cols']).split(',')
         }
 
-    def get_y_keys(self) -> list:
-        return [self.config['CONTROL']['valence_key'], self.config['CONTROL']['arousal_key']]
-
     def get_experiment_type(self) -> str:
         return self.config['CONTROL']['experiment_type']

@@ -2,12 +2,24 @@ import pandas as pd
 import numpy as np
 
 class Dataset:
+
+    class_names = {
+        'happy': 0,
+        'upset': 1,
+        'depressed': 2,
+        'calm': 3 
+    }
+
+    label_key = 'class'
+
     def __init__(self, config: dict, fname: str) -> None:
         self.config = config
         self.fname = fname
+        self.val_key = config['valence_key']
+        self.aro_key = config['arousal_key']
         self.df = self._process_df()
-        # self.X, self.y = self.split_x_y(self.df)
-        
+
+       
 
     def _get_dataframe(self) -> pd.DataFrame:
         return pd.read_csv(self.fname, index_col=False)
@@ -26,36 +38,32 @@ class Dataset:
     def _drop_meta(self, df) -> pd.DataFrame:
         return df.drop(self.config['meta_cols'], axis=1)
 
+    def _label_data(self, df) -> pd.DataFrame: 
+
+        df.loc[(df[self.val_key] >= 0) & (df[self.aro_key] >= 0), self.label_key] = self.class_names['happy']
+        df.loc[(df[self.val_key] >= 0) & (df[self.aro_key] < 0), self.label_key] = self.class_names['upset']
+        df.loc[(df[self.val_key] < 0) & (df[self.aro_key] < 0), self.label_key] = self.class_names['depressed']
+        df.loc[(df[self.val_key] < 0) & (df[self.aro_key] >= 0), self.label_key] = self.class_names['calm']
+
+        return df
+
     def _process_df(self) -> pd.DataFrame:
-        return self._drop_nonnumeric(
-            self._drop_meta(
-                self._drop_at_threshold(
-                    self._get_dataframe()
+        return self._label_data(
+            self._drop_nonnumeric(
+                self._drop_meta(
+                    self._drop_at_threshold(
+                        self._get_dataframe()
+                    )
                 )
             )
         )
 
     def split_x_y(self):
-        val_key = self.config['valence_key']
-        aro_key = self.config['arousal_key']
-        X, y = self.df.drop(['existing_valence', 'existing_arousal'], axis=1), self.df[[val_key, aro_key]]
+        X, y = self.df.drop([self.val_key, self.aro_key, self.label_key], axis=1), self.df[[self.val_key, self.aro_key, self.label_key]]
         return X, y
 
     def get_data(self, key: str ):
         X, y = self.split_x_y()
         return X.values, y[key].values
 
-
-class ClassificationDataset(Dataset):
-
-    def __init__(self, ds: Dataset) -> None:
-        self.config = ds.config
-        self.fname = ds.fname
-        self.df = ds.df
-
-    def get_data(self, key: str):
-        X, _ = self.split_x_y()
-        y = X['class']
-        X = X.drop('class', axis=1)
-        return X.values, y.values
 

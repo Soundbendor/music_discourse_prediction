@@ -22,3 +22,6 @@ class RegressionExperiment(Experiment):
     def _get_k_fold(self, n_splits: int, expset: ExperimentSet):
         return KFold(n_splits, shuffle=True).split(expset.X_train, expset.y_train)
 
+    def _get_keys(self) -> list: 
+        return [self.ds.val_key, self.ds.aro_key]
+
