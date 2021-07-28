@@ -2,6 +2,7 @@ from sklearn.pipeline import Pipeline
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
 from preprocessing.dataset import Dataset
+from .report import Report
 
 from scipy.stats.stats import pearsonr, spearmanr
 
@@ -39,6 +40,9 @@ class Experiment(ABC):
 
             best_est = self._run_grid_search(pipe, expset)
             self._cross_validate(best_est, expset)
+
+        report = Report()
+        report.write_report(self.output)
       
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
