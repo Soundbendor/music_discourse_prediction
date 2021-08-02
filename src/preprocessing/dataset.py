@@ -17,7 +17,9 @@ class Dataset:
         self.fname = fname
         self.val_key = config['valence_key']
         self.aro_key = config['arousal_key']
+        self.raw_df = self._get_dataframe()
         self.df = self._process_df()
+        self.name = str(self.raw_df['dataset'][1])
 
        
 

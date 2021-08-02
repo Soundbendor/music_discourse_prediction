@@ -32,6 +32,9 @@ class Experiment(ABC):
         model = self.config.get_model()
         fs = self.config.get_feature_selection_strategy()
         pipe = self._build_pipeline(fs, sampler, model)
+        report = Report()
+
+        report.set_dataset_info(self.ds.name)
         
         for key in self._get_keys():
             print(f'\nMaking predictions for {key}\n')
@@ -41,8 +44,9 @@ class Experiment(ABC):
             best_est = self._run_grid_search(pipe, expset)
             self._cross_validate(best_est, expset)
 
-        report = Report()
-        report.write_report(self.output)
+        report.set_summary_stats()
+
+        report.output(self.output)     
       
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
