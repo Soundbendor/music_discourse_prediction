@@ -1,8 +1,9 @@
+from .cvsummary import CVSummary
+from .report import Report
 from sklearn.pipeline import Pipeline
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
 from preprocessing.dataset import Dataset
-from .report import Report
 
 from scipy.stats.stats import pearsonr, spearmanr
 
@@ -21,8 +22,9 @@ class Experiment(ABC):
     def __init__(self, dataset: Dataset, config: ExperimentFactory, output) -> None:
         self.ds = dataset
         self.config = config
-        self.metrics = [pearsonr, spearmanr]
-        self.output = output
+        self.metrics = [self.correl_pearson, self.correl_spearman]
+        self.output_file = output
+        self.report = Report()
 
 
     def run_experiment(self):
@@ -33,8 +35,8 @@ class Experiment(ABC):
         fs = self.config.get_feature_selection_strategy()
         pipe = self._build_pipeline(fs, sampler, model)
         
-        report = Report()
-        report.set_dataset_info(self.ds.summary)
+        
+        self.report.set_dataset_info(self.ds.summary)
         
         for key in self._get_keys():
             print(f'\nMaking predictions for {key}\n')
@@ -44,9 +46,7 @@ class Experiment(ABC):
             best_est = self._run_grid_search(pipe, expset)
             self._cross_validate(best_est, expset)
 
-        report.set_summary_stats()
-
-        report.output(self.output)     
+        self.report.output(self.output_file)     
       
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
@@ -80,7 +80,7 @@ class Experiment(ABC):
         )
 
     def _cross_validate(self, estimator: Pipeline, expset: ExperimentSet):
-        scores = []
+        cv_summary = CVSummary(self.metrics)
         kfold = self._get_k_fold(N_SPLITS, expset)
         print("\n---Beginning cross validation---")
         for k, (i_train, i_test) in tqdm(enumerate(kfold), total=N_SPLITS):
@@ -88,22 +88,18 @@ class Experiment(ABC):
             X_test, y_test = expset.X[i_test], expset.y[i_test]
 
             estimator.fit(X_train, y_train)
-            yhat = estimator.predict(X_test)
-            self.cv_stats(scores, y_test, yhat)
-        self.display_stats(scores)
+            y_hat = estimator.predict(X_test)
+            cv_summary.score_cv(y_test, y_hat)
+        
+        self.report.set_summary_stats(cv_summary)
 
-    def cv_stats(self, scores, y_true, y_pred):
-        iter_score = {}
-        for metric in self.metrics:
-            iter_score[metric.__name__] = metric(y_true, y_pred)
-        scores.append(iter_score)
-
-    def display_stats(self, scores: list):
-        for idx, score in enumerate(scores):
-            print(f'\nIteration - {idx+1}')
-            for k, v in score.items():
-                print(f'Metric: {k} \t\t\t Score: {v}')
-
+    def correl_pearson(self, y_test, y_hat):
+        correl, _ = pearsonr(y_test, y_hat)
+        return correl
+    
+    def correl_spearman(self, y_test, y_hat):
+        correl, _ = spearmanr(y_test, y_hat)
+        return correl
 
     @abstractmethod
     def split_dataset(self, ds: Dataset, test_size: int, key: str):

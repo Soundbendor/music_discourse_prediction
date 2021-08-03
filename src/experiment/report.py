@@ -1,5 +1,8 @@
+from .cvsummary import CVSummary
 from preprocessing.datasetsummary import DatasetSummary
+
 from fpdf import FPDF
+import numpy as np
 
 
 class Report(FPDF):
@@ -16,6 +19,7 @@ class Report(FPDF):
     def header(self):
         self.image('assets/header.png', x=0, y=0, w=self.epw)
 
+    # NOTE - tabs don't work for cell output :(
     def set_dataset_info(self, ds: DatasetSummary):
         self.set_y(18)
         self.set_font('kievitoffc', size = 16)
@@ -29,10 +33,13 @@ class Report(FPDF):
         self.cell(w=(self.epw / 2), border=1, txt=f"Number of Words:    {ds.get_n_words()}", ln=2)
 
 
-    def set_summary_stats(self):
+    def set_summary_stats(self, cvs: CVSummary):
         self.set_xy((self.epw / 2), 18)
         self.set_font('kievitoffc', size = 16)
 
-        self.cell(w=(self.epw / 2), border=1, txt="Summary", align='C')
+        self.cell(w=(self.epw / 2), border=1, txt="Summary", align='C', ln=2)
 
-        
+        self.set_font('kievitoffc', size = 12)
+        print(cvs.cv_scores)
+        for metric in cvs.metrics:
+            self.cell(w=(self.epw / 2), border=1, txt=f"{metric.__name__}:  {np.mean(cvs.cv_scores[metric.__name__])}", ln=2)
