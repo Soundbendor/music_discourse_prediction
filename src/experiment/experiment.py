@@ -32,9 +32,9 @@ class Experiment(ABC):
         model = self.config.get_model()
         fs = self.config.get_feature_selection_strategy()
         pipe = self._build_pipeline(fs, sampler, model)
+        
         report = Report()
-
-        report.set_dataset_info(self.ds.name)
+        report.set_dataset_info(self.ds.summary)
         
         for key in self._get_keys():
             print(f'\nMaking predictions for {key}\n')
