@@ -44,7 +44,7 @@ class Experiment(ABC):
             expset = ExperimentSet(self.ds, key, self.split_dataset, test_size)
 
             best_est = self._run_grid_search(pipe, expset)
-            self._cross_validate(best_est, expset)
+            self._cross_validate(key, best_est, expset)
 
         self.report.output(self.output_file)     
       
@@ -79,7 +79,7 @@ class Experiment(ABC):
             verbose=2
         )
 
-    def _cross_validate(self, estimator: Pipeline, expset: ExperimentSet):
+    def _cross_validate(self, key: str, estimator: Pipeline, expset: ExperimentSet):
         cv_summary = CVSummary(self.metrics)
         kfold = self._get_k_fold(N_SPLITS, expset)
         print("\n---Beginning cross validation---")
@@ -91,7 +91,7 @@ class Experiment(ABC):
             y_hat = estimator.predict(X_test)
             cv_summary.score_cv(y_test, y_hat)
         
-        self.report.set_summary_stats(cv_summary)
+        self.report.set_summary_stats(key, cv_summary)
 
     def correl_pearson(self, y_test, y_hat):
         correl, _ = pearsonr(y_test, y_hat)
