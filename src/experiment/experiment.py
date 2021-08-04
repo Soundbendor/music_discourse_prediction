@@ -1,5 +1,8 @@
+import pandas as pd
+
 from .cvsummary import CVSummary
 from .report import Report
+from visualization.circumplex import circumplex_model
 from sklearn.pipeline import Pipeline
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
@@ -37,6 +40,9 @@ class Experiment(ABC):
         
         
         self.report.set_dataset_info(self.ds.summary)
+
+        results_predicted = pd.DataFrame(columns=self._get_keys())
+        results_actual = pd.DataFrame(columns=self._get_keys())
         
         for key in self._get_keys():
             print(f'\nMaking predictions for {key}\n')
@@ -44,9 +50,15 @@ class Experiment(ABC):
             expset = ExperimentSet(self.ds, key, self.split_dataset, test_size)
 
             best_est = self._run_grid_search(pipe, expset)
-            self._cross_validate(key, best_est, expset)
+            y_pred = self._cross_validate(key, best_est, expset)
+            results_predicted[key] = y_pred
+            results_actual[key] = expset.y_test
 
-        self.report.output(self.output_file)     
+        circumplex_output = "tmp/circumplexout"
+        circumplex_model(results_predicted, "Circumplex model of test subset - predicted", f"{circumplex_output}_pred", self.ds.val_key, self.ds.aro_key)
+        circumplex_model(results_actual, "Circumplex model of test subset - actual", f"{circumplex_output}_actual", self.ds.val_key, self.ds.aro_key)
+        self.report.set_circumplex(circumplex_output)
+        self.report.output(self.output_file) 
       
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
@@ -90,8 +102,11 @@ class Experiment(ABC):
             estimator.fit(X_train, y_train)
             y_hat = estimator.predict(X_test)
             cv_summary.score_cv(y_test, y_hat)
-        
+
+
+        y_test_pred = estimator.predict(expset.X_test)        
         self.report.set_summary_stats(key, cv_summary)
+        return y_test_pred
 
     def correl_pearson(self, y_test, y_hat):
         correl, _ = pearsonr(y_test, y_hat)

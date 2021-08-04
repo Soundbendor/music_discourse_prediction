@@ -43,3 +43,12 @@ class Report(FPDF):
         self.set_font('kievitoffc', size = 12)
         for metric in cvs.metrics:
             self.cell(w=(self.epw / 2), border=1, txt=f"{metric.__name__}:  {np.mean(cvs.cv_scores[metric.__name__])}", ln=2)
+
+    def set_circumplex(self, output_path: str) -> None:
+        self.set_x(0)
+        self.set_font('kievitoffc', size = 16)
+        self.cell(w=(self.epw), border=1, txt="Circumplex Model", align='C', ln=2)
+
+        y = self.get_y() + 1
+        self.image(f'{output_path}_pred.png', x = 0, y = y, w = (self.epw / 2))
+        self.image(f'{output_path}_actual.png', x=(self.epw / 2), y = y, w = (self.epw / 2))
