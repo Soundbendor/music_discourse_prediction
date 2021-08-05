@@ -2,7 +2,7 @@ import pandas as pd
 
 from .cvsummary import CVSummary
 from .report import Report
-from visualization.circumplex import circumplex_model
+from visualization import visualizations
 from sklearn.pipeline import Pipeline
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
@@ -54,12 +54,13 @@ class Experiment(ABC):
             results_predicted[key] = y_pred
             results_actual[key] = expset.y_test
 
-        circumplex_output = "tmp/circumplexout"
-        circumplex_model(results_predicted, "Circumplex model of test subset - predicted", f"{circumplex_output}_pred", self.ds.val_key, self.ds.aro_key)
-        circumplex_model(results_actual, "Circumplex model of test subset - actual", f"{circumplex_output}_actual", self.ds.val_key, self.ds.aro_key)
-        self.report.set_circumplex(circumplex_output)
-        self.report.output(self.output_file) 
-      
+        self._generate_circumplex_models("tmp/circumplex", results_predicted, results_actual, "Circumplex model of test subset")
+        self.report.output(self.output_file)
+
+    def _generate_circumplex_models(self, fname: str, df_pred: pd.DataFrame, df_results: pd.DataFrame, title: str) -> None:
+        visualizations.circumplex_model(df_pred, f"{title} - Predicted", f"{fname}_pred", self.ds.val_key, self.ds.aro_key)
+        visualizations.circumplex_model(df_results, f"{title} - Actual", f"{fname}_actual", self.ds.val_key, self.ds.aro_key)
+        self.report.set_circumplex(fname)
 
     def _build_pipeline(self, feature_selection, sampling_method, model):
         return ImbPipeline([

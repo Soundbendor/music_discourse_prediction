@@ -1,9 +1,3 @@
-'''
-Tool for generating a circumplex model
-Graphs valence and arousal on a 0..1 range
-See here for more information: https://en.wikipedia.org/wiki/Emotion_classification
-~ Aidan B.
-'''
 import argparse
 import os
 import pandas as pd
@@ -62,18 +56,3 @@ def circumplex_model(data: pd.DataFrame, title, fname, val_key='Valence', aro_ke
 
     plt.savefig(fname)
     plt.clf()
-
-def main():
-    args = parseargs()
-    df = pd.read_csv(args.path)
-    circumplex_model(df, args.title, args.fname)
-
-def parseargs() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Create a circumplex for valence/arousal information")
-    parser.add_argument("-p", dest="path", type=str, help='A path to the csv containint valence/arousal values to be plotted')
-    parser.add_argument("-o", dest="fname", type=str, help='The file name of the output png')
-    parser.add_argument("-t", dest="title", type=str, help='The title of the graph')
-    return parser.parse_args()
-
-if __name__ == "__main__":
-    main()
