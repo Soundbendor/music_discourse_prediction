@@ -1,4 +1,6 @@
 import re
+import imblearn as imb
+import sklearn as skl
 
 from configparser import ConfigParser
 from pydoc import locate
@@ -8,7 +10,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LinearRegression
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.neural_network import MLPRegressor
-from sklearn.base import BaseEstimator
 
 from sklearn.feature_selection import SelectPercentile
 from sklearn.feature_selection import f_regression
@@ -62,7 +63,7 @@ class ExperimentFactory:
         return [tp(x) for x in args]
 
 
-    def get_sampling_strategy(self):
+    def get_sampling_strategy(self) -> imb.base.BaseSampler:
         sampling_args = self._get_arg('SAMPLER')
         samplers = {
             'under_sample': RandomUnderSampler(sampling_strategy='majority'),
@@ -71,7 +72,7 @@ class ExperimentFactory:
         }
         return samplers[sampling_args['sampling']]
 
-    def get_model(self) -> BaseEstimator:
+    def get_model(self) -> skl.base.BaseEstimator:
         model_config = self._get_arg('MODEL')
         
         supported_models = {

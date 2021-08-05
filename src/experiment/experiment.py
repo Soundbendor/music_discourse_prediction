@@ -1,15 +1,18 @@
+
 import pandas as pd
 
 from .cvsummary import CVSummary
 from .report import Report
 from visualization import visualizations
-from sklearn.pipeline import Pipeline
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
 from preprocessing.dataset import Dataset
 
+from sklearn.pipeline import Pipeline
+
 from scipy.stats.stats import pearsonr, spearmanr
 
+from imblearn.base import BaseSampler
 from imblearn.pipeline import Pipeline as ImbPipeline
 
 from abc import ABC, abstractmethod
@@ -30,7 +33,7 @@ class Experiment(ABC):
         self.report = Report()
 
 
-    def run_experiment(self):
+    def run_experiment(self) -> None:
 
         test_size = self.config.get_preprocessing_args()['test_size']
         sampler = self.config.get_sampling_strategy()
@@ -62,7 +65,7 @@ class Experiment(ABC):
         visualizations.circumplex_model(df_results, f"{title} - Actual", f"{fname}_actual", self.ds.val_key, self.ds.aro_key)
         self.report.set_circumplex(fname)
 
-    def _build_pipeline(self, feature_selection, sampling_method, model):
+    def _build_pipeline(self, feature_selection, sampling_method: BaseSampler, model) -> ImbPipeline:
         return ImbPipeline([
             ('standardscaler', StandardScaler()),
             ('featureselection', feature_selection),
@@ -92,7 +95,7 @@ class Experiment(ABC):
             verbose=2
         )
 
-    def _cross_validate(self, key: str, estimator: Pipeline, expset: ExperimentSet):
+    def _cross_validate(self, key: str, estimator, expset: ExperimentSet):
         cv_summary = CVSummary(self.metrics)
         kfold = self._get_k_fold(N_SPLITS, expset)
         print("\n---Beginning cross validation---")
