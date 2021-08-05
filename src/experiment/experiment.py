@@ -3,7 +3,6 @@ import pandas as pd
 
 from .cvsummary import CVSummary
 from .report import Report
-from visualization import visualizations
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
 from preprocessing.dataset import Dataset
@@ -57,13 +56,9 @@ class Experiment(ABC):
             results_predicted[key] = y_pred
             results_actual[key] = expset.y_test
 
-        self._generate_circumplex_models("tmp/circumplex", results_predicted, results_actual, "Circumplex model of test subset")
+        self._generate_vis(results_predicted, results_actual)
         self.report.output(self.output_file)
 
-    def _generate_circumplex_models(self, fname: str, df_pred: pd.DataFrame, df_results: pd.DataFrame, title: str) -> None:
-        visualizations.circumplex_model(df_pred, f"{title} - Predicted", f"{fname}_pred", self.ds.val_key, self.ds.aro_key)
-        visualizations.circumplex_model(df_results, f"{title} - Actual", f"{fname}_actual", self.ds.val_key, self.ds.aro_key)
-        self.report.set_circumplex(fname)
 
     def _build_pipeline(self, feature_selection, sampling_method: BaseSampler, model) -> ImbPipeline:
         return ImbPipeline([
@@ -131,6 +126,10 @@ class Experiment(ABC):
     # Defines which keys we will be running prediction for.
     @abstractmethod
     def _get_keys(self) -> list: 
+        pass
+
+    @abstractmethod
+    def _generate_vis(df_pred: pd.DataFrame, df_results: pd.DataFrame) -> None:
         pass
 
     

@@ -1,10 +1,11 @@
-import argparse
 import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 from matplotlib import font_manager as fm
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import confusion_matrix
 
 def circumplex_model(data: pd.DataFrame, title, fname, val_key='Valence', aro_key='Arousal') -> None:
     os.makedirs(os.path.dirname(fname), exist_ok=True)
@@ -56,3 +57,11 @@ def circumplex_model(data: pd.DataFrame, title, fname, val_key='Valence', aro_ke
 
     plt.savefig(fname)
     plt.clf()
+
+
+def conf_mat(y_pred: pd.DataFrame, y_true: pd.DataFrame, labels: list, fname: str) -> None:
+    cf_mat = confusion_matrix(y_pred, y_true)
+    plot = sns.heatmap(cf_mat, annot=True, cmap='Blues', xticklabels=labels, yticklabels=labels)
+    plt.savefig(fname)
+    plt.clf()
+    

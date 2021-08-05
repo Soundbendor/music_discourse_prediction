@@ -1,4 +1,6 @@
-from numpy import average
+from visualization import visualizations
+import pandas as pd
+
 from .experiment import Experiment
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
@@ -29,5 +31,12 @@ class ClassificationExperiment(Experiment):
 
     def _get_keys(self) -> list: 
         return [self.ds.label_key]
+
+    def _generate_vis(self, df_pred: pd.DataFrame, df_results: pd.DataFrame) -> None:
+        fname = "tmp/confmat"
+        labels = list(self.ds.class_names.keys())
+        visualizations.conf_mat(df_pred, df_results, labels, fname)
+        self.report.set_conf_mat(fname)
+
 
 

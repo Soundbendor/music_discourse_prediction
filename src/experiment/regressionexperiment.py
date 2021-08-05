@@ -1,4 +1,7 @@
+import pandas as pd
+
 from .experiment import Experiment
+from visualization import visualizations
 from preprocessing.experimentset import ExperimentSet
 from preprocessing.experimentfactory import ExperimentFactory
 from preprocessing.dataset import Dataset
@@ -24,4 +27,13 @@ class RegressionExperiment(Experiment):
 
     def _get_keys(self) -> list: 
         return [self.ds.val_key, self.ds.aro_key]
+
+    def _generate_vis(self, df_pred: pd.DataFrame, df_results: pd.DataFrame) -> None:
+        title = "Circumplex model of test subset"
+        fname = "tmp/circumplex"
+        visualizations.circumplex_model(df_pred, f"{title} - Predicted", f"{fname}_pred", self.ds.val_key, self.ds.aro_key)
+        visualizations.circumplex_model(df_results, f"{title} - Actual", f"{fname}_actual", self.ds.val_key, self.ds.aro_key)
+        self.report.set_circumplex(fname)
+
+
 
