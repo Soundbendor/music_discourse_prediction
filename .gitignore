@@ -149,3 +149,6 @@ out/
 
 #ignore vscode config
 .vscode/
+
+#ignore environment config
+/etc/env/
