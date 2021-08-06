@@ -148,4 +148,4 @@ tmp/
 out/
 
 #ignore vscode config
-/.vscode
+.vscode/
