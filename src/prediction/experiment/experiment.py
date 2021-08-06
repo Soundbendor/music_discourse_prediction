@@ -28,7 +28,7 @@ class Experiment(ABC):
         self.ds = dataset
         self.config = config
         self.metrics = [self.correl_pearson, self.correl_spearman]
-        self.output_file = output
+        self.output_fname = output
         self.report = Report()
 
 
@@ -57,8 +57,7 @@ class Experiment(ABC):
             results_actual[key] = expset.y_test
 
         self._generate_vis(results_predicted, results_actual)
-        self.report.output(self.output_file)
-
+        self.report.output_report(self.output_fname)
 
     def _build_pipeline(self, feature_selection, sampling_method: BaseSampler, model) -> ImbPipeline:
         return ImbPipeline([

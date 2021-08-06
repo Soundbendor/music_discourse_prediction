@@ -1,8 +1,11 @@
+import numpy as np
+import os
+
 from .cvsummary import CVSummary
 from preprocessing.datasetsummary import DatasetSummary
 
 from fpdf import FPDF
-import numpy as np
+from datetime import datetime
 
 
 class Report(FPDF):
@@ -65,3 +68,9 @@ class Report(FPDF):
         self.cell(w=(self.epw / 2), border=1, txt="Confusion Matrix", align='C', ln=2)
 
         self.image(f"{fname}.png", x = 0, w = (self.epw / 2))
+
+    def output_report(self, out_name: str) -> None:
+        dtime_string = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
+        fname = f"out/{out_name}_{dtime_string}.pdf"
+        os.makedirs(os.path.dirname(fname), exist_ok=True)
+        self.output(fname)
