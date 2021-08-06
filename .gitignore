@@ -146,3 +146,6 @@ cython_debug/
 #ignore anything in /tmp 
 tmp/
 out/
+
+#ignore vscode config
+/.vscode
