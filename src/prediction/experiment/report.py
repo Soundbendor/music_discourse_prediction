@@ -2,7 +2,7 @@ import numpy as np
 import os
 
 from .cvsummary import CVSummary
-from preprocessing.datasetsummary import DatasetSummary
+from prediction.preprocessing.datasetsummary import DatasetSummary
 
 from fpdf import FPDF
 from datetime import datetime

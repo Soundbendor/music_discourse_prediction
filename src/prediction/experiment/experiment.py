@@ -3,9 +3,9 @@ import pandas as pd
 
 from .cvsummary import CVSummary
 from .report import Report
-from preprocessing.experimentset import ExperimentSet
-from preprocessing.experimentfactory import ExperimentFactory
-from preprocessing.dataset import Dataset
+from prediction.preprocessing.experimentset import ExperimentSet
+from prediction.preprocessing.experimentfactory import ExperimentFactory
+from prediction.preprocessing.dataset import Dataset
 
 from sklearn.pipeline import Pipeline
 

@@ -1,10 +1,10 @@
-from visualization import visualizations
+from prediction.visualization import visualizations
 import pandas as pd
 
 from .experiment import Experiment
-from preprocessing.experimentset import ExperimentSet
-from preprocessing.experimentfactory import ExperimentFactory
-from preprocessing.dataset import Dataset
+from prediction.preprocessing.experimentset import ExperimentSet
+from prediction.preprocessing.experimentfactory import ExperimentFactory
+from prediction.preprocessing.dataset import Dataset
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import StratifiedKFold

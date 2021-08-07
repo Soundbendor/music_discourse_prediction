@@ -1,8 +1,8 @@
-from experiment.regressionexperiment import RegressionExperiment
-from experiment.classificationexperiment import ClassificationExperiment
-from experiment.experiment import ExperimentTypeNotFoundError
-from preprocessing.experimentfactory import ExperimentFactory
-from preprocessing.dataset import Dataset
+from prediction.experiment.regressionexperiment import RegressionExperiment
+from prediction.experiment.classificationexperiment import ClassificationExperiment
+from prediction.experiment.experiment import ExperimentTypeNotFoundError
+from prediction.preprocessing.experimentfactory import ExperimentFactory
+from prediction.preprocessing.dataset import Dataset
 
 import argparse 
 
@@ -36,7 +36,3 @@ def get_experiment(ds: Dataset, config: ExperimentFactory, output):
         raise ExperimentTypeNotFoundError("Experiment type specified in the .ini \
             configuration is not a valid experiment type. Please use 'regression' or \
             'classification' experiment types.")
-
-
-if __name__ == '__main__':
-    main()
