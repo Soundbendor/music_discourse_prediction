@@ -1,4 +1,5 @@
 import re
+from typing import Type
 import imblearn as imb
 import sklearn as skl
 
@@ -59,7 +60,7 @@ class ExperimentFactory:
 
     def ini_range(self, v):
         args = [x for x in v.split(',')]
-        tp = locate(args.pop(0))
+        tp: Type = locate(args.pop(0))
         return [tp(x) for x in args]
 
 
