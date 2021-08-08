@@ -7,14 +7,13 @@ from prediction.preprocessing.experimentset import ExperimentSet
 from prediction.preprocessing.experimentfactory import ExperimentFactory
 from prediction.preprocessing.dataset import Dataset
 
-from sklearn.pipeline import Pipeline
-
 from scipy.stats.stats import pearsonr, spearmanr
 
 from imblearn.base import BaseSampler
 from imblearn.pipeline import Pipeline as ImbPipeline
 
 from abc import ABC, abstractmethod
+from typing import Generator
 
 from tqdm import tqdm
 
@@ -119,7 +118,7 @@ class Experiment(ABC):
         pass
 
     @abstractmethod
-    def _get_k_fold(self, n_splits: int, expset: ExperimentSet):
+    def _get_k_fold(self, n_splits: int, expset: ExperimentSet) -> Generator:
         pass
 
     # Defines which keys we will be running prediction for.
@@ -128,7 +127,7 @@ class Experiment(ABC):
         pass
 
     @abstractmethod
-    def _generate_vis(df_pred: pd.DataFrame, df_results: pd.DataFrame) -> None:
+    def _generate_vis(self, df_pred: pd.DataFrame, df_results: pd.DataFrame) -> None:
         pass
 
     

@@ -1,3 +1,4 @@
+from typing import Generator
 from prediction.visualization import visualizations
 import pandas as pd
 
