@@ -11,6 +11,3 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument('-c', dest='config', help='Config file for PRAW.')
     return parser.parse_args()
 
-
-if __name__ == '__main__':
-    main()
