@@ -69,6 +69,6 @@ class Dataset:
 
     def get_data(self, key: str ) -> Tuple[np.ndarray, np.ndarray]:
         X, y = self.split_x_y()
-        return X.values, y[key].values
+        return X.to_numpy(), y[key].to_numpy()
 
 
