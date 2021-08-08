@@ -1,8 +1,15 @@
 import argparse
+import configparser
 import praw
 
+site_name = 'bot1'
 def main():
     args = parseargs()
+    api_key = configparser.ConfigParser()
+    api_key.read(args.config)
+    reddit = praw.Reddit('bot1',
+        client_id = api_key['CLIENT_INFO']['client_id'],
+        client_secret = api_key['CLIENT_INFO']['client_secret'])
 
 
 def parseargs() -> argparse.Namespace:
