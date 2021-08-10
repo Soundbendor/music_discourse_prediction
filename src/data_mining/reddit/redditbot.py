@@ -5,7 +5,29 @@ import json
 from praw import models as praw_models
 from configparser import ConfigParser
 from typing import Iterator, List
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+
+
+@dataclass
+class Comment:
+    index: int
+    id: str
+    score: int
+    body: str 
+    replies: int
+
+@dataclass
+class Submission:
+    index: int
+    title: str
+    body: str
+    url: str
+    id: str
+    score: int
+    n_comments: int
+    subreddit: str
+    comments: List[Comment] = field(default_factory=list)
+
 
 
 class RedditBot():
@@ -58,25 +80,3 @@ class RedditBot():
         # WARN - type ignore because of apparant bug in praw stubs for pylance?
         return list(post.comments) #type: ignore
 
-
-
-@dataclass
-class Submission:
-    index: int
-    title: str
-    body: str
-    url: str
-    id: str
-    score: int
-    n_comments: int
-    subreddit: str
-    comments: List[Comment] = []
-
-
-@dataclass
-class Comment:
-    index: int
-    id: str
-    score: int
-    body: str 
-    replies: int
