@@ -1,36 +1,13 @@
 from os import stat_result
 import praw
-import json
 # dumb workaround for intellisense bug in vscode
 from praw import models as praw_models
 from configparser import ConfigParser
 from typing import Iterator, List
-from dataclasses import dataclass, field
+from data_mining.jsonbuilder import Submission, Comment
+from data_mining.commentminer import CommentMiner
 
-
-@dataclass
-class Comment:
-    index: int
-    id: str
-    score: int
-    body: str 
-    replies: int
-
-@dataclass
-class Submission:
-    index: int
-    title: str
-    body: str
-    url: str
-    id: str
-    score: int
-    n_comments: int
-    subreddit: str
-    comments: List[Comment] = field(default_factory=list)
-
-
-
-class RedditBot():
+class RedditBot(CommentMiner):
     def __init__(self, keys: ConfigParser, search_depth: int = 10) -> None:
         self.site_name = 'bot1'
         self.reddit = praw.Reddit(self.site_name,
