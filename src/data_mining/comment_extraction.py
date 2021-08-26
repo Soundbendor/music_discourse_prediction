@@ -4,12 +4,12 @@ import dataclasses
 import os
 import json
 import pandas as pd
-from tqdm import tqdm
-from datetime import datetime
-from dataclasses import dataclass, field
-from typing import List
-from .redditbot import RedditBot, Submission
 
+from .jsonbuilder import SearchResult
+from .commentminer import CommentMiner
+from .reddit.redditbot import RedditBot
+from datetime import datetime
+from tqdm import tqdm
 
 # We assume all input datasets have a standardized input API
 # song_id, valence, arousal, song_name, artist_name
@@ -20,12 +20,12 @@ def main():
     args = parseargs()
     api_key = configparser.ConfigParser()
     api_key.read(args.config)
-    reddit = RedditBot(api_key)
+    bot = args.bot_type(api_key)
     dataset = pd.read_csv(args.input)
     path = f"{args.output}/downloads/"
-    dispatch_queries(reddit, dataset, path, args.dataset)
+    dispatch_queries(bot, dataset, path, args.dataset)
 
-def dispatch_queries(reddit: RedditBot, df, path: str, ds_name: str):
+def dispatch_queries(miner: CommentMiner, df, path: str, ds_name: str):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     print("Beginning mining comments from Reddit...")
 
@@ -40,7 +40,18 @@ def dispatch_queries(reddit: RedditBot, df, path: str, ds_name: str):
                 dataset = ds_name,
                 valence = row['valence'],
                 arousal= row['arousal'],
-                submissions = reddit.query(row['song_name'], row['artist_name']))), out, indent=4)
+                submissions = miner.query(row['song_name'], row['artist_name']))), out, indent=4)
+
+def minertype(istr: str):
+    istr = istr.strip().lower()
+    choices = {
+        'reddit': RedditBot,
+        'youtube': None
+    }
+    try:
+        return choices[istr]
+    except KeyError:
+        raise argparse.ArgumentTypeError('Invalid type option')
         
 
 def parseargs() -> argparse.Namespace:
@@ -54,17 +65,11 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument('-o', dest='output', required=True, help='Destination folder for output files. Must be a directory.')
     parser.add_argument('--search_depth', dest='search_depth', default=10, type=int,
         help='How many posts the reddit bot should scrape comments from')
+    parser.add_argument('-t', '--type', dest='bot_type', type=minertype, default=RedditBot,
+        help='Specify which platform to perform queries on. Options include youtube, reddit.')
     return parser.parse_args()
 
 
-@dataclass
-class SearchResult:
-    song_name: str
-    artist_name: str
-    query_index: int
-    dataset: str
-    valence: float
-    arousal: float
-    submissions: List[Submission] = field(default_factory=list)
+
 
 
