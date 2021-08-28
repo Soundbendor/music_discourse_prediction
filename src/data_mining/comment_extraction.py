@@ -8,6 +8,7 @@ import pandas as pd
 from .jsonbuilder import SearchResult
 from .commentminer import CommentMiner
 from .reddit.redditbot import RedditBot
+from .youtube.youtubebot import YoutubeBot
 from datetime import datetime
 from tqdm import tqdm
 
@@ -18,9 +19,7 @@ from tqdm import tqdm
 
 def main():
     args = parseargs()
-    api_key = configparser.ConfigParser()
-    api_key.read(args.config)
-    bot = args.bot_type(api_key)
+    bot = args.bot_type(args.config)
     dataset = pd.read_csv(args.input)
     path = f"{args.output}/downloads/"
     dispatch_queries(bot, dataset, path, args.dataset)
@@ -46,7 +45,7 @@ def minertype(istr: str):
     istr = istr.strip().lower()
     choices = {
         'reddit': RedditBot,
-        'youtube': None
+        'youtube': YoutubeBot
     }
     try:
         return choices[istr]
@@ -65,7 +64,7 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument('-o', dest='output', required=True, help='Destination folder for output files. Must be a directory.')
     parser.add_argument('--search_depth', dest='search_depth', default=10, type=int,
         help='How many posts the reddit bot should scrape comments from')
-    parser.add_argument('-t', '--type', dest='bot_type', type=minertype, default=RedditBot,
+    parser.add_argument('-t', '--type', dest='bot_type', required=True, type=minertype, default=RedditBot,
         help='Specify which platform to perform queries on. Options include youtube, reddit.')
     return parser.parse_args()
 

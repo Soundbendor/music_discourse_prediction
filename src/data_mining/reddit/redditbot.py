@@ -1,14 +1,14 @@
-from os import stat_result
 import praw
+import configparser
 # dumb workaround for intellisense bug in vscode
 from praw import models as praw_models
-from configparser import ConfigParser
 from typing import Iterator, List
 from data_mining.jsonbuilder import Submission, Comment
 from data_mining.commentminer import CommentMiner
 
 class RedditBot(CommentMiner):
-    def __init__(self, keys: ConfigParser, search_depth: int = 10) -> None:
+    def __init__(self, f_key: str, search_depth: int = 10) -> None:
+        keys = self._process_api_key(f_key)
         self.site_name = 'bot1'
         self.reddit = praw.Reddit(self.site_name,
             client_id = keys['CLIENT_INFO']['client_id'],
@@ -16,6 +16,11 @@ class RedditBot(CommentMiner):
         self.search_depth = search_depth
 
     
+    def _process_api_key(self, f_key: str) -> configparser.ConfigParser:
+        api_key = configparser.ConfigParser()
+        api_key.read(f_key)
+        return api_key
+
     def query(self, song_name: str, artist_name: str) -> List[Submission]:
         posts = []
         for post_index, submission in enumerate(self.get_submissions(song_name, artist_name)):
