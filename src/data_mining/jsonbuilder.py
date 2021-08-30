@@ -8,6 +8,8 @@ class Comment:
     score: int
     body: str 
     replies: int
+    lang: str
+    lang_p: float
 
 
 @dataclass
@@ -15,6 +17,8 @@ class Submission:
     index: int
     title: str
     body: str
+    lang: str
+    lang_p: float
     url: str
     id: str
     score: int

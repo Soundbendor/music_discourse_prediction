@@ -5,6 +5,9 @@ from praw import models as praw_models
 from typing import Iterator, List
 from data_mining.jsonbuilder import Submission, Comment
 from data_mining.commentminer import CommentMiner
+from langdetect import detect_langs
+from langdetect.lang_detect_exception import LangDetectException
+from langdetect.language import Language
 
 class RedditBot(CommentMiner):
     def __init__(self, f_key: str, search_depth: int = 10) -> None:
@@ -21,13 +24,22 @@ class RedditBot(CommentMiner):
         api_key.read(f_key)
         return api_key
 
+    def l_detect(self, txt: str):
+        try:
+            return detect_langs(txt)[0]
+        except LangDetectException:
+            return Language("?", 1.00)
+
     def query(self, song_name: str, artist_name: str) -> List[Submission]:
         posts = []
         for post_index, submission in enumerate(self.get_submissions(song_name, artist_name)):
+            s_lang = self.l_detect(submission.selftext)
             post = Submission(
                 index = post_index,
                 title = submission.title,
                 body = submission.selftext,
+                lang = s_lang.lang,
+                lang_p = s_lang.prob,
                 url = submission.url,
                 id = submission.id,
                 score = submission.score,
@@ -35,12 +47,15 @@ class RedditBot(CommentMiner):
                 subreddit = submission.subreddit.display_name
             )
             for comment_index, comment in enumerate(self.get_comments(submission)):
+                c_lang = self.l_detect(comment.body)
                 post.comments.append(Comment(
                     index = comment_index,
                     id = comment.id,
                     score = comment.score,
                     body = comment.body,
-                    replies = len(comment.replies)
+                    replies = len(comment.replies),
+                    lang = c_lang.lang,
+                    lang_p = c_lang.prob
                 ))
             posts.append(post)
         return posts
