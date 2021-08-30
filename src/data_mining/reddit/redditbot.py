@@ -5,9 +5,7 @@ from praw import models as praw_models
 from typing import Iterator, List
 from data_mining.jsonbuilder import Submission, Comment
 from data_mining.commentminer import CommentMiner
-from langdetect import detect_langs
-from langdetect.lang_detect_exception import LangDetectException
-from langdetect.language import Language
+
 
 class RedditBot(CommentMiner):
     def __init__(self, f_key: str, search_depth: int = 10) -> None:
@@ -23,12 +21,6 @@ class RedditBot(CommentMiner):
         api_key = configparser.ConfigParser()
         api_key.read(f_key)
         return api_key
-
-    def l_detect(self, txt: str):
-        try:
-            return detect_langs(txt)[0]
-        except LangDetectException:
-            return Language("?", 1.00)
 
     def query(self, song_name: str, artist_name: str) -> List[Submission]:
         posts = []
