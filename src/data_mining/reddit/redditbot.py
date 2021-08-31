@@ -25,7 +25,7 @@ class RedditBot(CommentMiner):
     def query(self, song_name: str, artist_name: str) -> List[Submission]:
         posts = []
         for post_index, submission in enumerate(self.get_submissions(song_name, artist_name)):
-            s_lang = self.l_detect(submission.selftext)
+            s_lang = self.l_detect(f"{submission.title} {submission.selftext}")
             post = Submission(
                 index = post_index,
                 title = submission.title,

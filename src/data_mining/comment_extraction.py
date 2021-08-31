@@ -1,5 +1,4 @@
 import argparse
-import configparser
 import dataclasses
 import os
 import json
@@ -39,7 +38,8 @@ def dispatch_queries(miner: CommentMiner, df, path: str, ds_name: str):
                 dataset = ds_name,
                 valence = row['valence'],
                 arousal= row['arousal'],
-                submissions = miner.query(row['song_name'], row['artist_name']))), out, indent=4)
+                submissions = miner.query(row['song_name'], row['artist_name']))),
+                out, indent=4, ensure_ascii=False)
 
 def minertype(istr: str):
     istr = istr.strip().lower()
