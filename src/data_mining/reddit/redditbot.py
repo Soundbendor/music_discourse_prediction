@@ -22,12 +22,14 @@ class RedditBot(CommentMiner):
         api_key.read(f_key)
         return api_key
 
+
     def query(self, song_name: str, artist_name: str) -> List[Submission]:
-        posts = []
-        for post_index, submission in enumerate(self.get_submissions(song_name, artist_name)):
-            s_lang = self.l_detect(f"{submission.title} {submission.selftext}")
-            post = Submission(
-                index = post_index,
+        return list(map(self.process_submissions, self.get_submissions(song_name, artist_name)))
+
+
+    def process_submissions(self, submission: praw_models.Submission) -> Submission:
+        s_lang = self.l_detect(f"{submission.title} {submission.selftext}")
+        return Submission(
                 title = submission.title,
                 body = submission.selftext,
                 lang = s_lang.lang,
@@ -36,21 +38,21 @@ class RedditBot(CommentMiner):
                 id = submission.id,
                 score = submission.score,
                 n_comments = submission.num_comments,
-                subreddit = submission.subreddit.display_name
+                subreddit = submission.subreddit.display_name,
+                comments = list(map(self.process_comments, self.get_comments(submission)))
             )
-            for comment_index, comment in enumerate(self.get_comments(submission)):
-                c_lang = self.l_detect(comment.body)
-                post.comments.append(Comment(
-                    index = comment_index,
-                    id = comment.id,
-                    score = comment.score,
-                    body = comment.body,
-                    replies = len(comment.replies),
-                    lang = c_lang.lang,
-                    lang_p = c_lang.prob
-                ))
-            posts.append(post)
-        return posts
+
+
+    def process_comments(self, comment: praw_models.Comment) -> Comment:
+        c_lang = self.l_detect(comment.body)
+        return Comment(
+                id = comment.id,
+                score = comment.score,
+                body = comment.body,
+                replies = len(comment.replies),
+                lang = c_lang.lang,
+                lang_p = c_lang.prob
+            )
 
 
     def get_submissions(self, song_name: str, artist_name: str) -> Iterator[praw_models.Submission]:

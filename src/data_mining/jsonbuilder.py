@@ -3,7 +3,6 @@ from typing import List
 
 @dataclass
 class Comment:
-    index: int
     id: str
     score: int
     body: str 
@@ -14,7 +13,6 @@ class Comment:
 
 @dataclass
 class Submission:
-    index: int
     title: str
     body: str
     lang: str
