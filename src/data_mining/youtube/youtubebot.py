@@ -26,6 +26,10 @@ class YoutubeBot(CommentMiner):
                 print("Entering 24hr sleep loop")
                 sleep(86400)
                 continue
+            except Exception as e:
+                print(self._build_query(song_name, artist_name))
+                print(e)
+                exit()
 
 
     def get_submissions(self, song_name: str, artist_name: str) -> List[Dict]:
@@ -47,7 +51,11 @@ class YoutubeBot(CommentMiner):
 
     def process_submissions(self, s_result: dict) -> Submission:
         s_lang = self.l_detect(f"{s_result['snippet']['title']} {s_result['snippet']['description']}")
-        v_resource = self.yt_client.get_video_by_id(s_result['id']['videoId'])[0]
+        try:
+            v_resource = self.yt_client.get_video_by_id(s_result['id']['videoId'])[0]
+        # KeyError means no video resource found
+        except KeyError:
+            print("No results found")
         return Submission(
             title = s_result['snippet']['title'],
             body = s_result['snippet']['description'],
