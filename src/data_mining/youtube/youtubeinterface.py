@@ -1,17 +1,24 @@
 import json
 
 from itertools import chain
-from typing import Dict, List
+from typing import Dict, List, Tuple, Union
 
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
+
+from dataclasses import dataclass, field
 
 
 scopes = ["https://www.googleapis.com/auth/youtube.force-ssl"]
 api_service_name = 'youtube'
 api_version = 'v3'
 
+
+@dataclass
+class YoutubeSearchResult:
+    snippet: dict
+    video: dict
 
 class YoutubeInterface:
 
@@ -26,7 +33,18 @@ class YoutubeInterface:
 
     # Returns instances of Search resources
     # https://developers.google.com/youtube/v3/docs/search/list
-    def search_by_keywords(self, query: str, limit: int) -> List[Dict]:
+    def search_by_keywords(self, query: str, limit: int) -> List[YoutubeSearchResult]:
+        return list(filter(None, map(self.get_videos, self._search_keyword(query, limit))))
+
+    def get_videos(self, s_result: dict) -> Union[YoutubeSearchResult, None]:
+        try:
+            v_id = s_result['id']['videoId']
+        except KeyError:
+            return None
+        v_resource = self.get_video_by_id(v_id)
+        return YoutubeSearchResult(snippet=s_result, video=v_resource)
+
+    def _search_keyword(self, query: str, limit: int) -> List[Dict]:
         return self.api.search().list(
             part='snippet',
             maxResults=limit,
