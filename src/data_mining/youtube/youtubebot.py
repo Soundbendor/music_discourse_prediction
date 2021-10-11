@@ -44,6 +44,7 @@ class YoutubeBot(CommentMiner):
 
     def _get_video_score(self, v_resource: Dict) -> int:
         try: 
+            print(type(v_resource))
             return int(v_resource['statistics']['likeCount']) - int(v_resource['statistics']['dislikeCount'])
         except KeyError:
             return 0
