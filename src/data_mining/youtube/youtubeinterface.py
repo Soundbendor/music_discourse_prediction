@@ -81,4 +81,4 @@ class YoutubeInterface:
         return self.api.videos().list(
             part='snippet,contentDetails,statistics',
             id=video_id
-        ).execute()['items']
+        ).execute()['items'][0]
