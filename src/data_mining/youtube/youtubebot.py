@@ -26,10 +26,10 @@ class YoutubeBot(CommentMiner):
                 print("Entering 24hr sleep loop")
                 sleep(86400)
                 continue
-            except Exception as e:
-                print(self._build_query(song_name, artist_name))
-                print(e)
-                exit()
+            # except Exception as e:
+            #     print(self._build_query(song_name, artist_name))
+            #     print(e)
+            #     exit()
 
 
     def get_submissions(self, song_name: str, artist_name: str) -> List[YoutubeSearchResult]:
