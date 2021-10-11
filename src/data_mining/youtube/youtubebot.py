@@ -26,10 +26,6 @@ class YoutubeBot(CommentMiner):
                 print("Entering 24hr sleep loop")
                 sleep(86400)
                 continue
-            # except Exception as e:
-            #     print(self._build_query(song_name, artist_name))
-            #     print(e)
-            #     exit()
 
 
     def get_submissions(self, song_name: str, artist_name: str) -> List[YoutubeSearchResult]:
@@ -41,20 +37,18 @@ class YoutubeBot(CommentMiner):
     def _build_query(self, song_name: str, artist_name: str) -> str:
         return f"\"{artist_name}\" \"{song_name}\""
 
+    def _get_comment_count(self, v_resource: Dict) -> int:
+        try: 
+            int(v_resource['statistics']['commentCount'])
+        except KeyError:
+            return 0
+
 
     def _get_video_score(self, v_resource: Dict) -> int:
         try: 
-            print(type(v_resource))
             return int(v_resource['statistics']['likeCount']) - int(v_resource['statistics']['dislikeCount'])
         except KeyError:
             return 0
-        except TypeError as e:
-            print(e)
-            print(v_resource)
-            print(type(v_resource))
-            print(type(v_resource['statistics']))
-            exit()
-
 
     def process_submissions(self, s_result: YoutubeSearchResult) -> Submission:
         s_lang = self.l_detect(f"{s_result.snippet['snippet']['title']} {s_result.snippet['snippet']['description']}")
@@ -66,7 +60,7 @@ class YoutubeBot(CommentMiner):
             url = base_url + s_result.snippet['id']['videoId'],
             id = s_result.snippet['id']['videoId'],
             score = self._get_video_score(s_result.video),
-            n_comments = s_result.video['statistics']['commentCount'],
+            n_comments = self._get_comment_count(s_result.video),
             subreddit = s_result.video['snippet']['channelTitle'],
             comments = list(map(self.process_comments, self.yt_client.get_comments(s_result.snippet['id']['videoId'])))
         )
