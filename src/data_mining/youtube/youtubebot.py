@@ -50,6 +50,8 @@ class YoutubeBot(CommentMiner):
         except TypeError as e:
             print(e)
             print(v_resource)
+            print(type(v_resource))
+            print(type(v_resource['statistics']))
             exit()
 
 
