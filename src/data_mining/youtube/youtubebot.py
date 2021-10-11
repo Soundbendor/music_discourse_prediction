@@ -44,10 +44,13 @@ class YoutubeBot(CommentMiner):
 
     def _get_video_score(self, v_resource: Dict) -> int:
         try: 
-            print(int(v_resource['statistics']))
             return int(v_resource['statistics']['likeCount']) - int(v_resource['statistics']['dislikeCount'])
         except KeyError:
             return 0
+        except TypeError as e:
+            print(e)
+            print(v_resource)
+            exit()
 
 
     def process_submissions(self, s_result: YoutubeSearchResult) -> Submission:

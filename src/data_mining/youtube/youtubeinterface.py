@@ -42,7 +42,6 @@ class YoutubeInterface:
         except KeyError:
             return None
         v_resource = self.get_video_by_id(v_id)
-        print(v_resource)
         return YoutubeSearchResult(snippet=s_result, video=v_resource)
 
     def _search_keyword(self, query: str, limit: int) -> List[Dict]:
