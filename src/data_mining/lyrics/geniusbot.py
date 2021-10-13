@@ -1,4 +1,5 @@
 import argparse
+import configparser
 import pandas as pd
 
 from data_mining.commentminer import CommentMiner
@@ -11,27 +12,35 @@ from tqdm import tqdm
 
 class GeniusBot(CommentMiner):
     def __init__(self, key: str) -> None:
+        keys = self._process_api_key(key)
         self.api = Genius(key)
+
+    def _process_api_key(self, f_key: str) -> configparser.ConfigParser:
+        api_key = configparser.ConfigParser()
+        api_key.read(f_key)
+        return api_key
 
     def query(self, song_name: str, artist_name: str) -> List[Submission]:
         song = self.api.search_song(song_name, artist = artist_name)
-        song.save_lyrics()
+        if song:
+            lyrics = song.lyrics
+            if lyrics:
+                lang = self.l_detect(lyrics)
+                return [Submission(
+                    title = self._build_query(song_name, artist_name),
+                    body = lyrics,
+                    lang = lang.lang,
+                    lang_p = lang.prob,
+                    url = song.url,
+                    score = 0,
+                    n_comments = 0,
+                    subreddit = "",
+                    comments= [],
+                    id = song.url
+                )]
+        return []
+
+    def _build_query(self, song_name: str, artist_name: str) -> str:
+        return f"\"{artist_name}\" \"{song_name}\""
+
     
-
-
-def main():
-    args = parseargs()
-    df: pd.DataFrame = pd.read_csv(args.input)
-    path = f"{args.output}/downloads/"
-    for idx, row in tqdm(df.iterrows(), total=len(df)):
-        pass
-
-
-def parseargs() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="A Reddit bot for gathering social media comments \
-        connected to songs. A part of the Music Emotion Prediction project @ OSU-Cascades")
-    parser.add_argument('-i', dest='input', required=True, help='Input file. Should be a csv list of songs, \
-        containing artist_name and song_title, as well as valence and arousal values.')
-    parser.add_argument('-c', dest='config', required=True, help='API key for Genius.')
-    parser.add_argument('-o', dest='output', required=True, help='Destination folder for output files. Must be a directory.')
-
