@@ -2,6 +2,7 @@ import argparse
 import dataclasses
 import os
 import json
+from data_mining.lyrics.geniusbot import GeniusBot
 import pandas as pd
 
 from .jsonbuilder import SearchResult
@@ -45,7 +46,8 @@ def minertype(istr: str):
     istr = istr.strip().lower()
     choices = {
         'reddit': RedditBot,
-        'youtube': YoutubeBot
+        'youtube': YoutubeBot,
+        'lyrics': GeniusBot
     }
     try:
         return choices[istr]
