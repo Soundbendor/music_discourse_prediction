@@ -2,13 +2,14 @@ import argparse
 import dataclasses
 import os
 import json
-from data_mining.lyrics.geniusbot import GeniusBot
 import pandas as pd
 
 from .jsonbuilder import SearchResult
 from .commentminer import CommentMiner
 from .reddit.redditbot import RedditBot
 from .youtube.youtubebot import YoutubeBot
+from .lyrics.geniusbot import GeniusBot
+from .twitter.twitterbot import TwitterBot
 from datetime import datetime
 from tqdm import tqdm
 
@@ -47,7 +48,8 @@ def minertype(istr: str):
     choices = {
         'reddit': RedditBot,
         'youtube': YoutubeBot,
-        'lyrics': GeniusBot
+        'lyrics': GeniusBot,
+        'twitter': TwitterBot
     }
     try:
         return choices[istr]
