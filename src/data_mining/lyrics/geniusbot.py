@@ -1,4 +1,5 @@
 import configparser
+import socket
 
 from data_mining.commentminer import CommentMiner
 from data_mining.jsonbuilder import Submission
@@ -40,7 +41,7 @@ class GeniusBot(CommentMiner):
                             id = song.url
                         )]
                 return []
-            except ReadTimeoutError:
+            except socket.timeout:
                 print("Server timeout error - enter sleep loop")
                 sleep(100)
                 continue
