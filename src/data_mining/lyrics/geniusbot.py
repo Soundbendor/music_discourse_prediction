@@ -1,5 +1,7 @@
 import configparser
 import socket
+import requests
+import urllib3
 
 from data_mining.commentminer import CommentMiner
 from data_mining.jsonbuilder import Submission
@@ -7,7 +9,6 @@ from data_mining.jsonbuilder import Submission
 from lyricsgenius import Genius
 from typing import List
 from time import sleep
-from requests.models import ReadTimeoutError
 
 
 class GeniusBot(CommentMiner):
@@ -41,7 +42,7 @@ class GeniusBot(CommentMiner):
                             id = song.url
                         )]
                 return []
-            except socket.timeout:
+            except (socket.timeout, requests.exceptions.Timeout, requests.exceptions.ReadTimeout, urllib3.exceptions.ReadTimeoutError):
                 print("Server timeout error - enter sleep loop")
                 sleep(100)
                 continue
