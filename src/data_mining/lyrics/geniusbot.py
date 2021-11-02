@@ -29,6 +29,8 @@ class GeniusBot(CommentMiner):
                     lyrics = song.lyrics
                     if lyrics:
                         lang = self.l_detect(lyrics)
+                        # Rate limiter
+                        sleep(5)
                         return [Submission(
                             title = self._build_query(song_name, artist_name),
                             body = lyrics,
@@ -42,6 +44,7 @@ class GeniusBot(CommentMiner):
                             id = song.url
                         )]
                 return []
+            # None of this works evidently but I'm leaving it for posterity
             except (socket.timeout, requests.exceptions.Timeout, requests.exceptions.ReadTimeout, urllib3.exceptions.ReadTimeoutError):
                 print("Server timeout error - enter sleep loop")
                 sleep(100)
