@@ -3,9 +3,9 @@ A tool for analyzing and predicting the semantic value of songs based on social 
 
 Note - Expects an input of social media commentary features, not raw text. See [music_discourse_features](https://github.com/Soundbendor/music_discourse_features) for how to generate the features needed to input here. Expects CSV files with the following format: 
 
-|...metadata... | existing_valence | existing_arousal | ...features... |
-|---------------|------------------|------------------|----------------|
-|  sample_data  |    sample_data   |    sample_data   |   sample_data  |
+|    song_id    | valence | arousal | song_name | artist_name|
+|---------------|---------|---------|-----------|------------|
+|  ...........  |   ....  |   ....  |    ....   |    ....    |
 
 where valence, arousal are the values which were are going to attempt to predict.
 
