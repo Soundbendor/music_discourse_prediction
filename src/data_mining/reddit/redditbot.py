@@ -16,12 +16,6 @@ class RedditBot(CommentMiner):
             client_secret = keys['CLIENT_INFO']['client_secret'])
         self.search_depth = search_depth
 
-    
-    def _process_api_key(self, f_key: str) -> configparser.ConfigParser:
-        api_key = configparser.ConfigParser()
-        api_key.read(f_key)
-        return api_key
-
 
     def query(self, song_name: str, artist_name: str) -> List[Submission]:
         return list(map(self.process_submissions, self.get_submissions(song_name, artist_name)))

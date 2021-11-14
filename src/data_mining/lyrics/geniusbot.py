@@ -1,4 +1,3 @@
-import configparser
 import socket
 import requests
 import urllib3
@@ -15,11 +14,6 @@ class GeniusBot(CommentMiner):
     def __init__(self, key: str) -> None:
         keys = self._process_api_key(key)
         self.api = Genius(key)
-
-    def _process_api_key(self, f_key: str) -> configparser.ConfigParser:
-        api_key = configparser.ConfigParser()
-        api_key.read(f_key)
-        return api_key
 
     def query(self, song_name: str, artist_name: str) -> List[Submission]:
         for _ in range(0,3):
