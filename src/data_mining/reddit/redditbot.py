@@ -17,10 +17,6 @@ class RedditBot(CommentMiner):
         self.search_depth = search_depth
 
 
-    def query(self, song_name: str, artist_name: str) -> List[Submission]:
-        return list(map(self.process_submissions, self.get_submissions(song_name, artist_name)))
-
-
     def process_submissions(self, submission: praw_models.Submission) -> Submission:
         s_lang = self.l_detect(f"{submission.title} {submission.selftext}")
         return Submission(
