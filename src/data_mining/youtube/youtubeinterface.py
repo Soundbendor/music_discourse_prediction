@@ -33,6 +33,10 @@ class YoutubeInterface:
                     print("Entering 24hr sleep loop")
                     time.sleep(86400)
                     continue
+                elif e.status_code == 500:
+                    print("500 - Internal Server Error \n")
+                    print("Sleeping for 1 hour\n")
+                    time.sleep(3600)
                 else:
                     print(e.status_code)
                     raise(e)
