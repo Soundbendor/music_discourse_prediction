@@ -1,7 +1,7 @@
 import configparser
 
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, Iterator
 from langdetect import detect_langs
 from langdetect.lang_detect_exception import LangDetectException
 from langdetect.language import Language
@@ -23,6 +23,16 @@ class CommentMiner:
         api_key.read(f_key)
         return api_key
 
-    @abstractmethod
     def query(self, song_name: str, artist_name: str) -> List[Submission]:
+        return list(map(self.process_submissions, self.get_submissions(song_name, artist_name)))
+    
+    def _build_query(self, song_name: str, artist_name: str) -> str:
+        return f"\"{artist_name}\" \"{song_name}\""
+
+    @abstractmethod
+    def get_submissions(self, song_name: str, artist_name: str) -> Iterator:
+        pass
+
+    @abstractmethod
+    def process_submissions(self, s_result) -> Submission:
         pass
