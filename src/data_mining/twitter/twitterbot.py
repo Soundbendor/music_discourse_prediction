@@ -29,7 +29,7 @@ class TwitterBot(CommentMiner):
         # returns a list of top-level tweets mentioning the artist/track title
         return tweepy.Paginator(self.api.search_all_tweets,
                                 self._build_query(song_name, artist_name),
-                                max_results=200,
+                                max_results=500,
                                 expansions='referenced_tweets.id,author_id,in_reply_to_user_id',
                                 tweet_fields='entities,geo,lang,public_metrics,conversation_id,created_at',
                                 user_fields='username').flatten()
@@ -64,6 +64,7 @@ class TwitterBot(CommentMiner):
     def get_comments(self, p_tweet: tweepy.Tweet, user: tweepy.User) -> Iterator[tweepy.Tweet]:
         return tweepy.Paginator(self.api.search_all_tweets, f"conversation_id:{p_tweet.conversation_id} to:{user.username}",
                                     since_id = p_tweet.id, 
+                                    max_results = 500,
                                     expansions = 'referenced_tweets.id,author_id,in_reply_to_user_id',
                                     tweet_fields='entities,geo,lang,public_metrics,conversation_id',
                                     user_fields='username').flatten()
