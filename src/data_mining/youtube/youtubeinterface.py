@@ -34,6 +34,7 @@ class YoutubeInterface:
                     time.sleep(86400)
                     continue
                 else:
+                    print(e.status_code)
                     raise(e)
     
     def _process_api_key(self, f_key: str):
@@ -44,19 +45,18 @@ class YoutubeInterface:
     # Returns instances of Search resources
     # https://developers.google.com/youtube/v3/docs/search/list
     def search_by_keywords(self, query: str, limit: int) -> List[YoutubeSearchResult]:
-        return list(filter(None, map(self.get_videos, self._search_keyword(query, limit))))
+        return list(filter(None, map(self.get_videos, self.call_api(self._search_keyword, query, limit))))
 
     def get_videos(self, s_result: dict) -> Union[YoutubeSearchResult, None]:
         try:
             v_id = s_result['id']['videoId']
         except KeyError:
             return None
-        v_resource = self.get_video_by_id(v_id)
+        v_resource = self.call_api(self.get_video_by_id, v_id)
         return YoutubeSearchResult(snippet=s_result, video=v_resource)
 
     def _search_keyword(self, query: str, limit: int) -> List[Dict]:
-        return self.call_api(self.api.search().list,
-            part='snippet', maxResults = limit, q = query).execute()['items']
+        return self.api.search().list(part='snippet', maxResults = limit, q = query).execute()['items']
 
 
     # Returns list of CommentThread resources
@@ -83,5 +83,4 @@ class YoutubeInterface:
     # returns list of Video resources
     # https://developers.google.com/youtube/v3/docs/videos/list#resource
     def get_video_by_id(self, video_id) -> Dict:
-        return self.call_api(self.api.videos().list,
-            part='snippet,contentDetails,statistics', id=video_id).execute()['items'][0]
+        return self.api.videos().list(part='snippet,contentDetails,statistics', id=video_id).execute()['items'][0]
