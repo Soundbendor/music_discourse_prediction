@@ -1,4 +1,5 @@
 from time import sleep
+import requests
 import tweepy
 
 from data_mining.commentminer import CommentMiner
@@ -22,8 +23,6 @@ class TwitterBot(CommentMiner):
                         access_token_secret = keys['ACCESS_TOKEN']['access_secret'],
                         wait_on_rate_limit=True)
 
-    def query(self, song_name: str, artist_name: str) -> List[Submission]:
-        return list(map(self.process_submissions, self.get_submissions(song_name, artist_name)))
 
     def get_submissions(self, song_name: str, artist_name: str) -> Iterator[tweepy.Tweet]:
         # returns a list of top-level tweets mentioning the artist/track title
@@ -35,10 +34,16 @@ class TwitterBot(CommentMiner):
                                 user_fields='username').flatten()
 
 
+    def _lookup_user(self, user_id) -> tweepy.Response:
+        response = self.api.get_user(id = user_id)
+        if isinstance(response, requests.models.Response):
+            raise(Exception("Network Exception with Twitter API"))
+        return response
+        
 
     def process_submissions(self, p_tweet: tweepy.Tweet) -> Submission:
         s_lang = self.l_detect(p_tweet.text)
-        user = self.api.get_user(id = p_tweet.author_id).data
+        user = self._lookup_user(p_tweet.author_id).data
         # avoid the rate limit. 1 tweet/sec limit on historical queries. 
         sleep(0.5)
         return Submission(
@@ -53,6 +58,7 @@ class TwitterBot(CommentMiner):
             subreddit = user.username,
             comments = list(map(self.process_comments, self.get_comments(p_tweet, user)))
         )
+
 
     def get_comments(self, p_tweet: tweepy.Tweet, user: tweepy.User) -> List[tweepy.Tweet]:
         comments = tweepy.Paginator(self.api.get_users_mentions, id = user.id, since_id = p_tweet.id,
@@ -73,6 +79,4 @@ class TwitterBot(CommentMiner):
             lang_p = c_lang.prob
         )
 
-    def _build_query(self, song_name: str, artist_name: str) -> str:
-        return f"\"{artist_name}\" \"{song_name}\""
     
