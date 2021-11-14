@@ -27,11 +27,11 @@ def main():
 
 def dispatch_queries(miner: CommentMiner, df, path: str, ds_name: str):
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    print("Beginning mining comments from Reddit...")
+    print(f"Beginning mining comments from {miner.__class__.__name__}...")
 
     for idx, row in tqdm(df.iterrows(), total=len(df)):
         dtime = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
-        fname = f"{path}reddit_{dtime}_{row['song_id']}.json"
+        fname = f"{path}{miner.__class__.__name__}_{dtime}_{row['song_id']}.json"
         with open(fname, 'w') as out:
             json.dump(dataclasses.asdict(SearchResult(
                 song_name = row['song_name'],
