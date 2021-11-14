@@ -1,3 +1,4 @@
+from dateutil.relativedelta import *
 from time import sleep
 import requests
 import tweepy
@@ -30,7 +31,7 @@ class TwitterBot(CommentMiner):
                                 self._build_query(song_name, artist_name),
                                 max_results=200,
                                 expansions='referenced_tweets.id,author_id,in_reply_to_user_id',
-                                tweet_fields='entities,geo,lang,public_metrics,conversation_id',
+                                tweet_fields='entities,geo,lang,public_metrics,conversation_id,created_at',
                                 user_fields='username').flatten()
 
 
@@ -61,10 +62,12 @@ class TwitterBot(CommentMiner):
 
 
     def get_comments(self, p_tweet: tweepy.Tweet, user: tweepy.User) -> List[tweepy.Tweet]:
-        comments = tweepy.Paginator(self.api.get_users_mentions, id = user.id, since_id = p_tweet.id,
+        comments = tweepy.Paginator(self.api.get_users_mentions, id = user.id, since_id = p_tweet.id, 
+                                    end_time = p_tweet.created_at + relativedelta(months=+1),
                                     expansions = 'referenced_tweets.id,author_id,in_reply_to_user_id',
                                     tweet_fields='entities,geo,lang,public_metrics,conversation_id',
                                     user_fields='username').flatten()
+        sleep(1)
         return [tweet for tweet in comments if tweet.conversation_id == p_tweet.conversation_id]
             
 
