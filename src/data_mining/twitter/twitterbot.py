@@ -1,5 +1,5 @@
+from time import sleep
 import tweepy
-import pprint
 
 from data_mining.commentminer import CommentMiner
 from data_mining.jsonbuilder import Submission, Comment
@@ -11,7 +11,6 @@ class TwitterBot(CommentMiner):
     
     def __init__(self, f_key: str, search_depth: int = 10) -> None:
         self.api = self.auth_handler(f_key)
-        self.pp = pprint.PrettyPrinter(indent=4)
 
 
     def auth_handler(self, f_key: str) -> tweepy.Client:
@@ -40,6 +39,8 @@ class TwitterBot(CommentMiner):
     def process_submissions(self, p_tweet: tweepy.Tweet) -> Submission:
         s_lang = self.l_detect(p_tweet.text)
         user = self.api.get_user(id = p_tweet.author_id).data
+        # avoid the rate limit. 1 tweet/sec limit on historical queries. 
+        sleep(0.5)
         return Submission(
             title = "",
             body = p_tweet.text,
