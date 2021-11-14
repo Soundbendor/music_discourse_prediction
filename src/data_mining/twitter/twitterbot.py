@@ -62,8 +62,8 @@ class TwitterBot(CommentMiner):
 
 
     def get_comments(self, p_tweet: tweepy.Tweet, user: tweepy.User) -> List[tweepy.Tweet]:
-        comments = tweepy.Paginator(self.api.get_users_mentions, id = user.id, since_id = p_tweet.id, 
-                                    end_time = p_tweet.created_at + relativedelta(months=+1),
+        comments = tweepy.Paginator(self.api.search_all_tweets, f"conversation_id:{p_tweet.conversation_id} to:{user.username}",
+                                    since_id = p_tweet.id, 
                                     expansions = 'referenced_tweets.id,author_id,in_reply_to_user_id',
                                     tweet_fields='entities,geo,lang,public_metrics,conversation_id',
                                     user_fields='username').flatten()
