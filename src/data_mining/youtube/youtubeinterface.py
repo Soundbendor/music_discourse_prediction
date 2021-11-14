@@ -36,6 +36,7 @@ class YoutubeInterface:
                 else:
                     print(e.status_code)
                     raise(e)
+        raise(Exception("Retries failed."))
     
     def _process_api_key(self, f_key: str):
         flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(f_key, scopes)
