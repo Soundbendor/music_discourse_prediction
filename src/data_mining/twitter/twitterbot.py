@@ -28,7 +28,7 @@ class TwitterBot(CommentMiner):
     def get_submissions(self, song_name: str, artist_name: str) -> Iterator[tweepy.Tweet]:
         # returns a list of top-level tweets mentioning the artist/track title
         # avoid the rate limit. 1 tweet/sec limit on historical queries. 
-        sleep(15)
+        # sleep(15)
         return tweepy.Paginator(self.api.search_all_tweets,
                                 self._build_query(song_name, artist_name),
                                 max_results=500,
