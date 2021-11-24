@@ -28,19 +28,15 @@ class TwitterBot(CommentMiner):
     def get_submissions(self, song_name: str, artist_name: str) -> Iterator[tweepy.Tweet]:
         # returns a list of top-level tweets mentioning the artist/track title
         # avoid the rate limit. 1 tweet/sec limit on historical queries. 
-        # sleep(15)
-        # data = tweepy.Paginator(self.api.search_all_tweets,
-        #                         self._build_query(song_name, artist_name),
-        #                         max_results=200,
-        #                         expansions='referenced_tweets.id,author_id,in_reply_to_user_id',
-        #                         tweet_fields='entities,geo,lang,public_metrics,conversation_id,created_at',
-        #                         user_fields='username', limit=1)
-        print("beep")
-        return self.api.search_all_tweets(query=self._build_query(song_name, artist_name),
-                                        max_results=100,
+        sleep(3)
+        subs = self.api.search_all_tweets(query=self._build_query(song_name, artist_name),
+                                        max_results=10,
                                         expansions='referenced_tweets.id,author_id,in_reply_to_user_id',
                                         tweet_fields='entities,geo,lang,public_metrics,conversation_id,created_at',
                                         user_fields='username').data
+        if subs:
+            return subs
+        return []
 
 
     def _lookup_user(self, user_id) -> tweepy.Response:
@@ -69,19 +65,16 @@ class TwitterBot(CommentMiner):
 
 
     def get_comments(self, p_tweet: tweepy.Tweet, user: tweepy.User) -> Iterator[tweepy.Tweet]:
-        # return tweepy.Paginator(self.api.search_all_tweets, f"conversation_id:{p_tweet.conversation_id} to:{user.username}",
-        #                             since_id = p_tweet.id, 
-        #                             max_results = 100,
-        #                             expansions = 'referenced_tweets.id,author_id,in_reply_to_user_id',
-        #                             tweet_fields='entities,geo,lang,public_metrics,conversation_id',
-        #                             user_fields='username', limit=1).flatten(limit=100)
-        print("boop")
-        return self.api.search_all_tweets(query=f"conversation_id:{p_tweet.conversation_id} to:{user.username}", 
+        sleep(3)
+        comments = self.api.search_all_tweets(query=f"conversation_id:{p_tweet.conversation_id} to:{user.username}", 
                                         since_id = p_tweet.id,
                                         max_results = 100,
                                         expansions = 'author_id,in_reply_to_user_id',
                                         tweet_fields='entities,geo,lang,public_metrics,conversation_id',
                                         user_fields='username').data
+        if comments:
+            return comments
+        return []
             
 
     def process_comments(self, tweet: tweepy.Tweet) -> Comment:
