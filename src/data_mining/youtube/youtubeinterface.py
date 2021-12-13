@@ -79,7 +79,7 @@ class YoutubeInterface:
         return list(chain.from_iterable(map(self._flatten_threads, self._get_comment_threads(video_id))))
 
     def _flatten_threads(self, thread: dict) -> List[Dict]:
-        if int(thread['snippet']['totalReplyCount']) < 1 or not thread['replies']:
+        if int(thread['snippet']['totalReplyCount']) < 1:
             return [thread['snippet']['topLevelComment']]
         thread['replies']['comments'].insert(0, thread['snippet']['topLevelComment'])
         return thread['replies']['comments']
