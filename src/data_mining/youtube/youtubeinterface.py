@@ -69,7 +69,7 @@ class YoutubeInterface:
     def _get_comment_threads(self, video_id) -> List[Dict]:
         try:
             return self.call_api(self.api.commentThreads().list,
-                part='snippet,replies', videoID = video_id).execute()['items']
+                part='snippet,replies', videoId = video_id).execute()['items']
         except googleapiclient.errors.HttpError:
             return []
     
