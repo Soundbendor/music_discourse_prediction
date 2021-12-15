@@ -81,8 +81,11 @@ class YoutubeInterface:
     def _flatten_threads(self, thread: dict) -> List[Dict]:
         if int(thread['snippet']['totalReplyCount']) < 1:
             return [thread['snippet']['topLevelComment']]
-        thread['replies']['comments'].insert(0, thread['snippet']['topLevelComment'])
-        return thread['replies']['comments']
+        try:
+            thread['replies']['comments'].insert(0, thread['snippet']['topLevelComment'])
+            return thread['replies']['comments']
+        except KeyError:
+            return [thread['snippet']['topLevelComment']]
             
 
     # returns list of Video resources
