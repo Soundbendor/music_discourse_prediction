@@ -27,7 +27,7 @@ class CommentMiner:
         return list(map(self.process_submissions, self.get_submissions(song_name, artist_name)))
     
     def _build_query(self, song_name: str, artist_name: str) -> str:
-        return f"\"{artist_name}\" \"{song_name}\""
+        return f"\"{artist_name.replace('\"', '')}\" \"{song_name.replace('\"', '')}\""
 
     @abstractmethod
     def get_submissions(self, song_name: str, artist_name: str) -> Iterator:
