@@ -19,12 +19,6 @@ wlists = {
 
 meta_features = ['Song_ID', 'Song_Name', 'n_words', 'valence', 'arousal', 'n_comments']
 
-def song_csv_generator(path: str):
-    for subdir, dirs, files in walk(path):
-        for file in files:
-            fdir = subdir + "/" + file
-            yield fdir
-
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Feature extraction toolkit for music semantic analysis from various social media platforms.")
@@ -38,6 +32,13 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument('--dataset', type=str, dest='dataset', required=True,
         help = "Name of the dataset which the comments represent")
     return parser.parse_args()
+
+def song_csv_generator(path: str):
+    for subdir, _, files in walk(path):
+        for file in files:
+            fdir = subdir + "/" + file
+            yield fdir
+
 
 def dejsonify(path: str):
     with open(path) as fp:
@@ -55,18 +56,15 @@ def main():
     # load wordlist
     wlist_path = f"../../etc/env/wordlists/{wlists[args.wordlist]}"
     # Must be done in each individual list reader, as different DFs must be loaded with different config options
-    # wlist = cudf.read_csv(wlist_path)
+
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
 
     features = cudf.DataFrame(columns=meta_features)
 
-    dataframes = [dejsonify(p) for p in song_csv_generator(args.input)]
-    df = cudf.concat(dataframes, axis=0, ignore_index=True)
+    df = cudf.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
 
-    print(df.shape)
-    memory_usage = df.memory_usage().values_host
-    print(np.sum(memory_usage))
+
 
 
 
