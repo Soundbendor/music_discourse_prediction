@@ -65,11 +65,10 @@ def main():
                 ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
                 ['submission', 'subreddit']])
 
-            dataframes.append(pd_data)
+            data = cudf.DataFrame(pd_data)
+            dataframes.append(data)
 
-            # data = cudf.DataFrame(pd_data)
-            # dataframes.append(data)
-    df = pd.concat(dataframes, axis=0, ignore_index=True)
+    df = cudf.concat(dataframes, axis=0, ignore_index=True)
     print(df.shape)
     print(df.memory_usage())
 
