@@ -51,10 +51,12 @@ def main():
 
     for idx, file in enumerate(song_csv_generator(args.input)):
         # SONGS ARE IN JSON
+        # faster to load all data at once, or process file by file? 
         with open(file) as fp:
             song = json.load(fp)
-            comments = cudf.DataFrame(song['submissions'])
-            print(comments)
+            submissions = cudf.DataFrame(song['submissions'])
+            comments_series = submissions['comments'].apply(cudf.Series)
+            print(comments_series)
 
 
 
