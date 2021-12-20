@@ -39,6 +39,16 @@ def parseargs() -> argparse.Namespace:
         help = "Name of the dataset which the comments represent")
     return parser.parse_args()
 
+def dejsonify(path: str):
+    with open(path) as fp:
+        return cudf.DataFrame(
+            pd.json_normalize(json.load(fp), ["submissions", "comments"],
+                    meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset',
+                    ['submission', 'title'], ['submission', 'body'], ['submission', 'lang'], ['submission', 'lang_p'],
+                    ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
+                    ['submission', 'subreddit']])
+        )
+
 def main():
     args = parseargs()
 
@@ -51,23 +61,9 @@ def main():
 
     features = cudf.DataFrame(columns=meta_features)
 
-    dataframes = []
-    for idx, file in enumerate(song_csv_generator(args.input)):
-        # SONGS ARE IN JSON
-        # faster to load all data at once, or process file by file? 
-        with open(file) as fp:
-            song = json.load(fp)
-
-            pd_data = pd.json_normalize(song, ["submissions", "comments"],
-                meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset',
-                ['submission', 'title'], ['submission', 'body'], ['submission', 'lang'], ['submission', 'lang_p'],
-                ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
-                ['submission', 'subreddit']])
-
-            data = cudf.DataFrame(pd_data)
-            dataframes.append(data)
-
+    dataframes = [dejsonify(p) for p in song_csv_generator(args.input)]
     df = cudf.concat(dataframes, axis=0, ignore_index=True)
+
     print(df.shape)
     memory_usage = df.memory_usage().values_host
     print(np.sum(memory_usage))

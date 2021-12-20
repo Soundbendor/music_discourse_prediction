@@ -35,4 +35,3 @@ class SearchResult:
     arousal: float
     submissions: List[Submission] = field(default_factory=list)
 
-
