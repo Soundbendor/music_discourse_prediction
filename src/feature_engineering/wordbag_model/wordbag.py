@@ -55,8 +55,9 @@ def main():
         with open(file) as fp:
             song = json.load(fp)
             submissions = cudf.DataFrame(song['submissions'])
-            comments_series = submissions['comments'].apply(cudf.Series)
+            comments_series = submissions['comments']
             print(comments_series)
+            print(type(comments_series))
 
 
 
