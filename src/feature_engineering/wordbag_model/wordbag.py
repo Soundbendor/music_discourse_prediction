@@ -2,6 +2,7 @@ import argparse
 import cudf
 import json
 import pandas as pd
+from flatten_json import flatten 
 
 from os import walk
 from datetime import datetime
@@ -60,7 +61,10 @@ def main():
             comments_series = submissions['comments']
             # sub2 = pd.json_normalize(song, "submissions", max_level=2,
             #     meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset'])
-            sub2 = pd.json_normalize(song, 'comments')
+
+            # sub2 = pd.json_normalize(song, 'comments')
+            flattened = [flatten(d) for d in song]
+            sub2 = pd.DataFrame(flattened)
             print(sub2)
             print(sub2.columns)
             
