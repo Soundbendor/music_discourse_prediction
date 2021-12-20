@@ -60,7 +60,10 @@ def main():
             # automatically a series of json objects
             comments_series = submissions['comments']
             sub2 = pd.json_normalize(song, ["submissions", "comments"],
-                meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset'])
+                meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset',
+                ['submission', 'title'], ['submission', 'body'], ['submission', 'lang'], ['submission', 'lang_p'],
+                ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
+                ['submission', 'subreddit']])
 
             # sub2 = pd.json_normalize(song, 'comments')
             # flattened = [flatten(d, '.') for d in song]
