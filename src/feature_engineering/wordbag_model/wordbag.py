@@ -71,7 +71,7 @@ def main():
     df = cudf.concat(dataframes, axis=0, ignore_index=True)
     print(df.shape)
     print(df.memory_usage())
-    print(sum(df.memory_usage()))
+    print(sum(df.memory_usage().to_arrow()))
 
 
 
