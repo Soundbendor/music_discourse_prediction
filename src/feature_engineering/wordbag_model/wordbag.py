@@ -1,6 +1,7 @@
 import argparse
 import cudf
 import json
+import pandas as pd
 
 from os import walk
 from datetime import datetime
@@ -57,7 +58,7 @@ def main():
             submissions = cudf.DataFrame(song['submissions'])
             # automatically a series of json objects
             comments_series = submissions['comments']
-            sub2 = cudf.read_json(fp)
+            sub2 = pd.json_normalize(song)
             print(sub2)
             
 
