@@ -66,6 +66,7 @@ def main():
                 ['submission', 'subreddit']])
 
             data = cudf.DataFrame(pd_data)
+            print(data)
             df.append(data, ignore_index=True)
     print(df.shape)
     print(df.memory_usage)
