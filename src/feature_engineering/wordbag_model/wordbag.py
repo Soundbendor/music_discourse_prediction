@@ -1,9 +1,8 @@
 import argparse
 import cudf
 import json
-from cudf.core.dataframe import DataFrame
+import numpy as np
 import pandas as pd
-from flatten_json import flatten 
 
 from os import walk
 from datetime import datetime
@@ -70,11 +69,9 @@ def main():
 
     df = cudf.concat(dataframes, axis=0, ignore_index=True)
     print(df.shape)
-    print(df.memory_usage())
-    print(type(df.memory_usage()))
-    print(df.memory_usage().values_host)
-    print(type(df.memory_usage().values_host))
-    print(sum(df.memory_usage().values_host.sum()))
+    memory_usage = df.memory_usage().values_host
+    print(np.sum(memory_usage))
+
 
 
 
