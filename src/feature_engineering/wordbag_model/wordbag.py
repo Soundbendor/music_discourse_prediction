@@ -1,6 +1,7 @@
 import argparse
 import cudf
 import json
+from cudf.core.dataframe import DataFrame
 import pandas as pd
 from flatten_json import flatten 
 
@@ -54,23 +55,21 @@ def main():
     for idx, file in enumerate(song_csv_generator(args.input)):
         # SONGS ARE IN JSON
         # faster to load all data at once, or process file by file? 
+        df = cudf.DataFrame()
         with open(file) as fp:
             song = json.load(fp)
-            submissions = cudf.DataFrame(song['submissions'])
-            # automatically a series of json objects
-            comments_series = submissions['comments']
-            sub2 = pd.json_normalize(song, ["submissions", "comments"],
+
+            pd_data = pd.json_normalize(song, ["submissions", "comments"],
                 meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset',
                 ['submission', 'title'], ['submission', 'body'], ['submission', 'lang'], ['submission', 'lang_p'],
                 ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
                 ['submission', 'subreddit']])
 
-            # sub2 = pd.json_normalize(song, 'comments')
-            # flattened = [flatten(d, '.') for d in song]
-            # sub2 = pd.DataFrame(flattened)
-            print(sub2)
-            print(sub2.columns)
-            
+            data = cudf.DataFrame(pd_data)
+            df.append(data, ignore_index=True)
+        print(df.shape)
+
+
 
 
 
