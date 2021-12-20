@@ -72,6 +72,8 @@ def main():
     print(df.shape)
     print(df.memory_usage())
     print(type(df.memory_usage()))
+    print(df.memory_usage().values_host)
+    print(type(df.memory_usage().values_host))
     print(sum(df.memory_usage().values_host.sum()))
 
 
