@@ -68,6 +68,7 @@ def main():
             data = cudf.DataFrame(pd_data)
             df.append(data, ignore_index=True)
         print(df.shape)
+        print(df.memory_usage)
 
 
 
