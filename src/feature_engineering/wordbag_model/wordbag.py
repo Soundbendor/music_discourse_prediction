@@ -71,7 +71,7 @@ def main():
             # dataframes.append(data)
     df = pd.concat(dataframes, axis=0, ignore_index=True)
     print(df.shape)
-    print(df.memory_usage)
+    print(df.memory_usage())
 
 
 
