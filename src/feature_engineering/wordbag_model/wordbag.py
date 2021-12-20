@@ -72,7 +72,7 @@ def main():
     print(df.shape)
     print(df.memory_usage())
     print(type(df.memory_usage()))
-    print(sum(df.memory_usage().sum()))
+    print(sum(df.memory_usage().to_numpy().sum()))
 
 
 
