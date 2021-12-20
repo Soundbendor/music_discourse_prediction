@@ -58,7 +58,7 @@ def main():
             submissions = cudf.DataFrame(song['submissions'])
             # automatically a series of json objects
             comments_series = submissions['comments']
-            sub2 = pd.json_normalize(song)
+            sub2 = pd.json_normalize(song, max_level=2)
             print(sub2)
             
 
