@@ -53,7 +53,7 @@ def main():
         # SONGS ARE IN JSON
         with open(file) as fp:
             song = json.load(fp)
-            comments = cudf.DataFrame.from_dict(song['submissions'])
+            comments = cudf.DataFrame(song['submissions'])
             print(comments)
 
 
