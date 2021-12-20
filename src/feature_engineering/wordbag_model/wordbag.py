@@ -61,6 +61,7 @@ def main():
             sub2 = pd.json_normalize(song, "submissions", max_level=2,
                 meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal'])
             print(sub2)
+            print(sub2.columns)
             
 
 
