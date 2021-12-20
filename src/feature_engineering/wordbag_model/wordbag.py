@@ -51,8 +51,8 @@ def main():
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
 
     features = cudf.DataFrame(columns=meta_features)
-    df = cudf.DataFrame()
 
+    dataframes = []
     for idx, file in enumerate(song_csv_generator(args.input)):
         # SONGS ARE IN JSON
         # faster to load all data at once, or process file by file? 
@@ -66,8 +66,8 @@ def main():
                 ['submission', 'subreddit']])
 
             data = cudf.DataFrame(pd_data)
-            print(data)
-            df.append(data, ignore_index=True)
+            dataframes.append(data)
+    df = cudf.concat(dataframes, axis=0, ignore_index=True)
     print(df.shape)
     print(df.memory_usage)
 
