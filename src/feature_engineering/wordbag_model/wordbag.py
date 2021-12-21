@@ -68,7 +68,7 @@ def tokenize_comment(comment: str):
                     )
             , 'v')
         )
-    )
+    ).value_counts
 
 
 def main():
@@ -91,10 +91,9 @@ def main():
 
     # tokenize, lemmatize, remove stopwords
     df['body'] = df['body'].map(tokenize_comment)
+    print(df['body'])
     df['submission.body'] = df['submission.body'].map(tokenize_comment)
 
-    wc = df.groupy(['Query Index'])['body'].value_counts
-    print(wc)
 
     
 
