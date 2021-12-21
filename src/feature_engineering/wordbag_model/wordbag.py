@@ -48,36 +48,34 @@ def song_csv_generator(path: str):
 
 def dejsonify(path: str):
     with open(path) as fp:
-        return cudf.DataFrame(
-            pd.json_normalize(json.load(fp), ["submissions", "comments"],
-                    meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset',
-                    ['submission', 'title'], ['submission', 'body'], ['submission', 'lang'], ['submission', 'lang_p'],
-                    ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
-                    ['submission', 'subreddit']])
-        )
+        return pd.json_normalize(json.load(fp), ["submissions", "comments"],
+                meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset',
+                ['submission', 'title'], ['submission', 'body'], ['submission', 'lang'], ['submission', 'lang_p'],
+                ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
+                ['submission', 'subreddit']])
 
-def init_nltk() -> List[str]:
-    nltk.download('stopwords')
-    nltk.download('punkt')
-    nltk.download('wordnet')
-    return stopwords.words('english')  
 
 def tokenize_comment(comment: str):
     rx = re.compile(r'(?:<.*?>)|(?:[^\w\s\'])|(?:\d+)')
     lemmatizer = WordNetLemmatizer()
-    stop_words = init_nltk()
+    stop_words = stopwords.words('english')  
 
-    return filter( lambda x: x in stop_words,
-        map(lemmatizer.lemmatize, 
-                nltk.word_tokenize(
-                    rx.sub('', comment)
-                )
-        , 'v')
+    return pd.Series(
+        filter( lambda x: x not in stop_words,
+            map(lemmatizer.lemmatize, 
+                    nltk.word_tokenize(
+                        rx.sub('', comment)
+                    )
+            , 'v')
+        )
     )
 
 
 def main():
     args = parseargs()
+    nltk.download('stopwords')
+    nltk.download('punkt')
+    nltk.download('wordnet')
 
     # load wordlist
     wlist_path = f"../../etc/env/wordlists/{wlists[args.wordlist]}"
@@ -88,12 +86,13 @@ def main():
 
     features = cudf.DataFrame(columns=meta_features)
 
-    df = cudf.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
+    df = pd.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
 
 
     # tokenize, lemmatize, remove stopwords
-    df['body'] = df['body'].apply(tokenize_comment)
-    df['comment.body'] = df['comment.body'].apply(tokenize_comment)
+    df['body'] = df['body'].map(tokenize_comment)
+    df['submission.body'] = df['submission.body'].map(tokenize_comment)
+    print(df['body'])
     
 
 
