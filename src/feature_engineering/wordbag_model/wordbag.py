@@ -3,9 +3,15 @@ import cudf
 import json
 import numpy as np
 import pandas as pd
+import nltk
+import re
 
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
 from os import walk
 from datetime import datetime
+from typing import List
+
 
 wlists = {
     "eANEW": "BRM-emot-submit.csv",
@@ -50,6 +56,26 @@ def dejsonify(path: str):
                     ['submission', 'subreddit']])
         )
 
+def init_nltk() -> List[str]:
+    nltk.download('stopwords')
+    nltk.download('punkt')
+    nltk.download('wordnet')
+    return stopwords.words('english')  
+
+def tokenize_comment(comment: str):
+    rx = re.compile(r'(?:<.*?>)|(?:[^\w\s\'])|(?:\d+)')
+    lemmatizer = WordNetLemmatizer()
+    stop_words = init_nltk()
+
+    return filter( lambda x: x in stop_words,
+        map(lemmatizer.lemmatize, 
+                nltk.word_tokenize(
+                    rx.sub('', comment)
+                )
+        , 'v')
+    )
+
+
 def main():
     args = parseargs()
 
@@ -63,6 +89,12 @@ def main():
     features = cudf.DataFrame(columns=meta_features)
 
     df = cudf.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
+
+
+    # tokenize, lemmatize, remove stopwords
+    df['body'] = df['body'].apply(tokenize_comment)
+    df['comment.body'] = df['comment.body'].apply(tokenize_comment)
+    
 
 
 
