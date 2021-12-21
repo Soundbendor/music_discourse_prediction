@@ -68,7 +68,7 @@ def tokenize_comment(comment: str):
                     )
             , 'v')
         )
-    ).value_counts
+    ).value_counts()
 
 
 def main():
