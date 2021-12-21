@@ -85,14 +85,17 @@ def main():
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
 
     features = cudf.DataFrame(columns=meta_features)
+    text_columns = ['body', 'submission.body']
 
     df = pd.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
-
 
     # tokenize, lemmatize, remove stopwords
     df['body'] = df['body'].map(tokenize_comment)
     df['submission.body'] = df['submission.body'].map(tokenize_comment)
-    print(df['body'])
+
+    wc = df.groupy(['Query Index'])['body'].value_counts
+    print(wc)
+
     
 
 
