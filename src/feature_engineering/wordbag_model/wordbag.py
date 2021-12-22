@@ -92,6 +92,8 @@ def main():
     # tokenize, lemmatize, remove stopwords
     df['body'] = df['body'].map(tokenize_comment)
     print(df['body'])
+    print(len(df['body'][3].shape))
+
     df['submission.body'] = df['submission.body'].map(tokenize_comment)
 
 
