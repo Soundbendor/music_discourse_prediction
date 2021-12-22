@@ -1,5 +1,5 @@
 import argparse
-import cudf
+# import cudf
 import json
 import numpy as np
 import pandas as pd
@@ -61,14 +61,18 @@ def tokenize_comment(comment: str):
     stop_words = stopwords.words('english')  
 
     return pd.Series(
-        filter( lambda x: x not in stop_words,
-            map(lemmatizer.lemmatize, 
+            filter(lambda x: x not in stop_words,
+                map(lemmatizer.lemmatize,
                     nltk.word_tokenize(
                         rx.sub('', comment)
                     )
-            , 'v')
-        )
-    ).value_counts()
+                )
+            )
+        ).value_counts().reset_index().rename(columns={'index': 'Word', 0: 'Count'})
+
+
+
+
 
 
 def main():
@@ -76,25 +80,29 @@ def main():
     nltk.download('stopwords')
     nltk.download('punkt')
     nltk.download('wordnet')
+    nltk.download('omw-1.4')
 
     # load wordlist
-    wlist_path = f"../../etc/env/wordlists/{wlists[args.wordlist]}"
+    wlist_path = f"etc/wordlists/{wlists[args.wordlist]}"
     # Must be done in each individual list reader, as different DFs must be loaded with different config options
 
+    wordlist = pd.read_csv(wlist_path, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t')
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
 
-    features = cudf.DataFrame(columns=meta_features)
+    # features = pd.DataFrame(columns=meta_features)
     text_columns = ['body', 'submission.body']
 
     df = pd.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
 
     # tokenize, lemmatize, remove stopwords
     df['body'] = df['body'].map(tokenize_comment)
-    print(df['body'])
-    print(len(df['body'][3].shape))
+    # df['submission.body'] = df['submission.body'].map(tokenize_comment)
 
-    df['submission.body'] = df['submission.body'].map(tokenize_comment)
+    # Get summary statistics after merging word series with dictionary
+    # need to 1) group by, 2) for each group, merge the wordlists together, 3) for each dataframe, ...
+    df.groupby(['query_index']).apply(lambda x: x['body'].merge(wordlist, on='Word'))
+   
 
 
     
