@@ -1,5 +1,5 @@
 import argparse
-import cudf
+# import cudf
 import json
 import numpy as np
 import pandas as pd
@@ -72,14 +72,14 @@ def _tokenize_comment(comment: str):
         ).value_counts().reset_index().rename(columns={'index': 'Word', 0: 'Count'})
 
 def vectorize_comment(x: pd.Series, wordlist: pd.DataFrame):
-    c_vec = (cudf.concat(list(x), axis=0, ignore_index=True)
-            .pipe(cudf.merge, wordlist, on='Word')
+    c_vec = (pd.concat(list(x), axis=0, ignore_index=True)
+            .pipe(pd.merge, wordlist, on='Word')
             .drop(['Word', 'Count'], axis=1)
             .aggregate(['mean', 'min', 'max', 'std'])
             .stack()
             )
 
-    c_vec.index = cudf.Index.from_pandas(pd.Index(map(lambda x: f"{x[0]}.{x[1]}", c_vec.index.to_pandas().to_flat_index())))
+    c_vec.index = pd.Index(map(lambda x: f"{x[0]}.{x[1]}", c_vec.index.to_flat_index()))
     return c_vec.to_frame().T
 
 def tokenize_comments(df: pd.DataFrame):
@@ -112,13 +112,12 @@ def main():
 
     emo_word_stats = df.groupby(['query_index'])['body'].apply(lambda x: vectorize_comment(x, wordlist))
 
-    df = cudf.DataFrame(df)
     df.drop('body', axis=1, inplace=True)
 
     df = df.groupby(['query_index']).aggregate({
         'score': 'mean',
-        'submission.n_comments': lambda x: x.apply(cudf.to_numeric).mean(),
-        'submission.score': lambda x: x.apply(cudf.to_numeric).mean(),
+        'submission.n_comments': lambda x: x.apply(pd.to_numeric).mean(),
+        'submission.score': lambda x: x.apply(pd.to_numeric).mean(),
         'arousal': lambda x: x.iloc[0],
         'valence': lambda x: x.iloc[0],
         'dataset': lambda x: x.iloc[0],
@@ -127,6 +126,6 @@ def main():
     })
 
 
-    df3 = df.join(cudf.DataFrame(emo_word_stats))
+    df3 = df.join(emo_word_stats)
     df3.to_csv(fname)
    
