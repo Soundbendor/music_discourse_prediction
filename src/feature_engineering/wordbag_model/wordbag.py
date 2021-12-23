@@ -108,7 +108,7 @@ def main():
     # TODO - Handle submission titles, submission bodies, WITHOUT dropping them. Tokenize and emovectorize.
     # There's no way to handle this operation with CUDF (i think?)
     # Run the tokenizer as a pandas operation, then convert to cudf dataframe
-    df = cudf.DataFrame(pd.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
+    df = (cudf.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
             .pipe(tokenize_comments)
             .drop(uncompressible_cols, axis=1))
 
