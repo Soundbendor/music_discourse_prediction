@@ -49,11 +49,11 @@ def song_csv_generator(path: str):
 
 def dejsonify(path: str):
     with open(path) as fp:
-        return cudf.DataFrame(pd.json_normalize(json.load(fp), ["submissions", "comments"],
+        return pd.json_normalize(json.load(fp), ["submissions", "comments"],
                 meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset',
                 ['submission', 'title'], ['submission', 'body'], ['submission', 'lang'], ['submission', 'lang_p'],
                 ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
-                ['submission', 'subreddit']]))
+                ['submission', 'subreddit']])
 
 
 def _tokenize_comment(comment: str):
@@ -61,7 +61,7 @@ def _tokenize_comment(comment: str):
     lemmatizer = WordNetLemmatizer()
     stop_words = stopwords.words('english')  
 
-    return cudf.Series(
+    return pd.Series(
             filter(lambda x: x not in stop_words,
                 map(lemmatizer.lemmatize,
                     nltk.word_tokenize(
@@ -97,7 +97,7 @@ def main():
     wlist_path = f"etc/wordlists/{wlists[args.wordlist]}"
     # Must be done in each individual list reader, as different DFs must be loaded with different config options
 
-    wordlist = cudf.read_csv(wlist_path, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t')
+    wordlist = pd.read_csv(wlist_path, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t')
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
 
@@ -106,14 +106,13 @@ def main():
                 'submission.title', 'submission.body']
 
     # TODO - Handle submission titles, submission bodies, WITHOUT dropping them. Tokenize and emovectorize.
-    # There's no way to handle this operation with CUDF (i think?)
-    # Run the tokenizer as a pandas operation, then convert to cudf dataframe
-    df = (cudf.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
+    df = (pd.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
             .pipe(tokenize_comments)
             .drop(uncompressible_cols, axis=1))
 
     emo_word_stats = df.groupby(['query_index'])['body'].apply(lambda x: vectorize_comment(x, wordlist))
 
+    df = cudf.DataFrame(df)
     df.drop('body', axis=1, inplace=True)
 
     df = df.groupby(['query_index']).aggregate({
@@ -128,6 +127,6 @@ def main():
     })
 
 
-    df3 = df.join(emo_word_stats)
+    df3 = df.join(cudf.DataFrame(emo_word_stats))
     df3.to_csv(fname)
    
