@@ -13,6 +13,7 @@ from datetime import datetime
 from typing import List
 
 
+
 wlists = {
     "eANEW": "BRM-emot-submit.csv",
     "ANEW_Ext_Condensed": "ANEW_EnglishShortened.csv",
@@ -55,7 +56,7 @@ def dejsonify(path: str):
                 ['submission', 'subreddit']])
 
 
-def tokenize_comment(comment: str):
+def _tokenize_comment(comment: str):
     rx = re.compile(r'(?:<.*?>)|(?:[^\w\s\'])|(?:\d+)')
     lemmatizer = WordNetLemmatizer()
     stop_words = stopwords.words('english')  
@@ -70,10 +71,20 @@ def tokenize_comment(comment: str):
             )
         ).value_counts().reset_index().rename(columns={'index': 'Word', 0: 'Count'})
 
+def vectorize_comment(x: pd.Series, wordlist: pd.DataFrame):
+    c_vec = (pd.concat(list(x), axis=0, ignore_index=True)
+            .pipe(pd.merge, wordlist, on='Word')
+            .drop(['Word', 'Count'], axis=1)
+            .aggregate(['mean', 'min', 'max', 'std'])
+            .stack()
+            )
 
+    c_vec.index = pd.Index(map(lambda x: f"{x[0]}.{x[1]}", c_vec.index.to_flat_index()))
+    return c_vec.to_frame().T
 
-
-
+def tokenize_comments(df: pd.DataFrame):
+    df['body'] = df['body'].map(_tokenize_comment)
+    return df
 
 def main():
     args = parseargs()
@@ -90,28 +101,31 @@ def main():
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
 
-    # features = pd.DataFrame(columns=meta_features)
-    text_columns = ['body', 'submission.body']
+    uncompressible_cols = ['submission.subreddit', 'submission.id', 'submission.url', 'submission.lang',
+                'submission.lang_p', 'id', 'lang', 'lang_p', 'replies',
+                'submission.title', 'submission.body']
 
-    df = pd.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
+    # TODO - Handle submission titles, submission bodies, WITHOUT dropping them. Tokenize and emovectorize.
+    df = (pd.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
+            .pipe(tokenize_comments)
+            .drop(uncompressible_cols, axis=1))
 
-    # tokenize, lemmatize, remove stopwords
-    df['body'] = df['body'].map(tokenize_comment)
-    # df['submission.body'] = df['submission.body'].map(tokenize_comment)
+    emo_word_stats = df.groupby(['query_index'])['body'].apply(lambda x: vectorize_comment(x, wordlist))
 
-    # Get summary statistics after merging word series with dictionary
-    # need to 1) group by, 2) for each group, merge the wordlists together, 3) for each dataframe, ...
-    df.groupby(['query_index']).apply(lambda x: x['body'].merge(wordlist, on='Word'))
+    df.drop('body', axis=1, inplace=True)
+
+    df = df.groupby(['query_index']).aggregate({
+        'score': 'mean',
+        'submission.n_comments': lambda x: x.apply(pd.to_numeric).mean(),
+        'submission.score': lambda x: x.apply(pd.to_numeric).mean(),
+        'arousal': lambda x: x.iloc[0],
+        'valence': lambda x: x.iloc[0],
+        'dataset': lambda x: x.iloc[0],
+        'artist_name': lambda x: x.iloc[0], 
+        'song_name': lambda x: x.iloc[0],
+    })
+
+
+    df3 = df.join(emo_word_stats)
+    df3.to_csv(fname)
    
-
-
-    
-
-
-
-
-
-
-
-
-
