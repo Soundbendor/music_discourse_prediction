@@ -49,11 +49,11 @@ def song_csv_generator(path: str):
 
 def dejsonify(path: str):
     with open(path) as fp:
-        return pd.json_normalize(json.load(fp), ["submissions", "comments"],
+        return cudf.DataFrame(pd.json_normalize(json.load(fp), ["submissions", "comments"],
                 meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset',
                 ['submission', 'title'], ['submission', 'body'], ['submission', 'lang'], ['submission', 'lang_p'],
                 ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
-                ['submission', 'subreddit']])
+                ['submission', 'subreddit']]))
 
 
 def _tokenize_comment(comment: str):
