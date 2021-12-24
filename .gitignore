@@ -152,3 +152,6 @@ out/
 
 #ignore environment config
 /etc/env/
+
+# ignore output files
+*.csv
