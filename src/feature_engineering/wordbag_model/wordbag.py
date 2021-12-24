@@ -24,7 +24,6 @@ wlists = {
     "MPQA": "MPQA_sentiment.csv"
 }
 
-meta_features = ['Song_ID', 'Song_Name', 'n_words', 'valence', 'arousal', 'n_comments']
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -86,6 +85,34 @@ def tokenize_comments(df: pd.DataFrame):
     df['body'] = df['body'].map(_tokenize_comment)
     return df
 
+# Take affect group and compress it into single-row dataframe
+# |  Word  |  Emotion  |  Association   |
+# |--------|-----------|----------------|
+# | Damage |   anger   |       1        |
+# |        |    joy    |       0        |
+#........................................
+# |  Word  |   Anger    |   Joy   |
+# |--------|------------|---------|
+# | Damage |     1      |    0    |
+# def rotate_association_table(sbdf: pd.DataFrame):
+#     sbdf.set_index(0)
+
+def load_emolex(path: str) -> pd.DataFrame:
+    return (pd.read_csv(path, names=['Word','Emotion','Association'], skiprows=1, sep='\t')
+        .groupby(['Word']).apply(lambda x: x.set_index('Emotion')['Association'])
+        .reset_index()
+        )
+
+loaders = {
+    "eANEW": None,
+    "ANEW_Ext_Condensed": None,
+    "EmoLex": load_emolex,
+    "EmoVAD": lambda x: pd.read_csv(x, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t'),
+    "EmoAff": None,
+    "HSsent": None,
+    "MPQA": None
+}
+
 def main():
     args = parseargs()
     nltk.download('stopwords')
@@ -95,9 +122,8 @@ def main():
 
     # load wordlist
     wlist_path = f"etc/wordlists/{wlists[args.wordlist]}"
-    # Must be done in each individual list reader, as different DFs must be loaded with different config options
+    wordlist = loaders[args.wordlist](wlist_path)
 
-    wordlist = pd.read_csv(wlist_path, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t')
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
 
