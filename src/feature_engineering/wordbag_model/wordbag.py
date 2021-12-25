@@ -94,8 +94,6 @@ def tokenize_comments(df: pd.DataFrame):
 # |  Word  |   Anger    |   Joy   |
 # |--------|------------|---------|
 # | Damage |     1      |    0    |
-# def rotate_association_table(sbdf: pd.DataFrame):
-#     sbdf.set_index(0)
 
 def load_emolex(path: str) -> pd.DataFrame:
     return (pd.read_csv(path, names=['Word','Emotion','Association'], skiprows=1, sep='\t')
@@ -103,14 +101,38 @@ def load_emolex(path: str) -> pd.DataFrame:
         .reset_index()
         )
 
+def check_affect(sub_df: pd.DataFrame, key: str):
+    affects = sub_df['Affect'].reset_index(drop=True).str.contains(key, regex=False)
+    affects = affects[affects]
+    if affects.index.empty:
+        return 0
+    return sub_df['Score'].iloc[affects.index[0]]
+
+def get_scores(sub_df: pd.DataFrame, df2: pd.DataFrame):
+    return pd.DataFrame({
+        'Word': sub_df['Word'].iloc[0],
+        'Anger': check_affect(sub_df, 'anger'),
+        'Joy': check_affect(sub_df, 'joy'),
+        'Sadness': check_affect(sub_df, 'sadness'),
+        'Fear': check_affect(sub_df, 'fear')}, index=[0])
+
+# Unlike Emolex, each subgroup contains a variable number of affects (0-6)
+def load_emoaff(path: str) -> pd.DataFrame:
+    df = pd.read_csv(path, names=['Word','Score','Affect'], skiprows=1, sep='\t')
+    df2 = pd.DataFrame(columns=['Word', 'Anger', 'Joy', 'Sadness', 'Fear'])
+    rows = df.groupby('Word').apply(lambda x: get_scores(x, df2))
+    return df2.append(rows, ignore_index=True)
+
+
 loaders = {
     "eANEW": lambda x: pd.read_csv(x, encoding='utf-8', engine='python', index_col=0),
     "EmoLex": load_emolex,
     "EmoVAD": lambda x: pd.read_csv(x, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t'),
-    "EmoAff": None,
+    "EmoAff": load_emoaff,
     "HSsent": None,
-    "MPQA": None
+    "MPQA": lambda x: pd.read_csv(x,  names=['Word','Sentiment'], skiprows=0)
 }
+
 
 def main():
     args = parseargs()
