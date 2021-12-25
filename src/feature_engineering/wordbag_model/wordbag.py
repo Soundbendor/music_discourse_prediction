@@ -104,8 +104,7 @@ def load_emolex(path: str) -> pd.DataFrame:
         )
 
 loaders = {
-    "eANEW": None,
-    "ANEW_Ext_Condensed": None,
+    "eANEW": lambda x: pd.read_csv(x, encoding='utf-8', engine='python'),
     "EmoLex": load_emolex,
     "EmoVAD": lambda x: pd.read_csv(x, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t'),
     "EmoAff": None,
@@ -123,6 +122,7 @@ def main():
     # load wordlist
     wlist_path = f"etc/wordlists/{wlists[args.wordlist]}"
     wordlist = loaders[args.wordlist](wlist_path)
+    print(wordlist)
 
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
