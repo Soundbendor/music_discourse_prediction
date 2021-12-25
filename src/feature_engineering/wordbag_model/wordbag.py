@@ -104,7 +104,7 @@ def load_emolex(path: str) -> pd.DataFrame:
         )
 
 loaders = {
-    "eANEW": lambda x: pd.read_csv(x, encoding='utf-8', engine='python'),
+    "eANEW": lambda x: pd.read_csv(x, encoding='utf-8', engine='python', index_col=0),
     "EmoLex": load_emolex,
     "EmoVAD": lambda x: pd.read_csv(x, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t'),
     "EmoAff": None,
