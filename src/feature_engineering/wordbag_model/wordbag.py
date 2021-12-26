@@ -74,7 +74,7 @@ def vectorize_comment(x: pd.Series, wordlist: pd.DataFrame):
     c_vec = (pd.concat(list(x), axis=0, ignore_index=True)
             .pipe(pd.merge, wordlist, on='Word')
             .drop(['Word', 'Count'], axis=1)
-            .aggregate(['mean', 'min', 'max', 'std'])
+            .aggregate(['min', 'max', 'mean', 'std'])
             .stack()
             )
 
@@ -123,6 +123,10 @@ def load_emoaff(path: str) -> pd.DataFrame:
     rows = df.groupby('Word').apply(lambda x: get_scores(x, df2))
     return df2.append(rows, ignore_index=True)
 
+def load_mpqa(path: str) -> pd.DataFrame:
+    return(pd.read_csv(path,  names=['Word','Sentiment'], skiprows=0)
+            .drop_duplicates(subset='Word')
+            .replace({'Sentiment': {'positive': 1, 'negative': -1, 'neutral': 0, 'both': 0}}))
 
 loaders = {
     "eANEW": lambda x: pd.read_csv(x, encoding='utf-8', engine='python', index_col=0),
@@ -130,7 +134,7 @@ loaders = {
     "EmoVAD": lambda x: pd.read_csv(x, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t'),
     "EmoAff": load_emoaff,
     "HSsent": None,
-    "MPQA": lambda x: pd.read_csv(x,  names=['Word','Sentiment'], skiprows=0)
+    "MPQA": load_mpqa
 }
 
 
