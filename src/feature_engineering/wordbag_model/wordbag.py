@@ -126,7 +126,7 @@ def load_emoaff(path: str) -> pd.DataFrame:
 def load_mpqa(path: str) -> pd.DataFrame:
     return(pd.read_csv(path,  names=['Word','Sentiment'], skiprows=0)
             .drop_duplicates(subset='Word')
-            .replace({'Sentiment': {'positive': 1, 'negative': -1, 'neutral': 0}}))
+            .replace({'Sentiment': {'positive': 1, 'negative': -1, 'neutral': 0, 'both': 0}}))
 
 loaders = {
     "eANEW": lambda x: pd.read_csv(x, encoding='utf-8', engine='python', index_col=0),
