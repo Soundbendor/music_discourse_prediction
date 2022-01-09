@@ -16,11 +16,11 @@ from typing import List
 
 wlists = {
     "eANEW": "BRM-emot-submit.csv",
-    "ANEW_Ext_Condensed": "ANEW_EnglishShortened.csv",
+    # "ANEW_Ext_Condensed": "ANEW_EnglishShortened.csv",
     "EmoLex": "NRC-Emotion-Lexicon-Wordlevel-v0.92.txt",
     "EmoVAD": "NRC-VAD-Lexicon.txt",
     "EmoAff": "NRC-AffectIntensity-Lexicon.txt",
-    "HSsent": "HS-unigrams.txt",
+    # "HSsent": "HS-unigrams.txt",
     "MPQA": "MPQA_sentiment.csv"
 }
 
@@ -146,18 +146,18 @@ def main():
     nltk.download('omw-1.4')
 
     if(args.wordlist == 'All'):
-        for wlist in loaders:
+        for wlist in wlists:
             gen_features(wlist, args)
     
-    gen_features(loaders[args.wordlist], args)
+    gen_features(args.wordlist, args)
 
 
    
 
-def gen_features(loader, args):
+def gen_features(wlist, args):
     # load wordlist
-    wlist_path = f"etc/wordlists/{wlists[args.wordlist]}"
-    wordlist = loader(wlist_path)
+    wlist_path = f"etc/wordlists/{wlist}"
+    wordlist = loaders[wlist](wlist_path)
     print(wordlist)
 
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
