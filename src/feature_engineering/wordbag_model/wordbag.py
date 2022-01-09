@@ -156,7 +156,7 @@ def main():
 
 def gen_features(wlist, args):
     # load wordlist
-    wlist_path = f"etc/wordlists/{wlist}"
+    wlist_path = f"etc/wordlists/{wlists[wlist]}"
     wordlist = loaders[wlist](wlist_path)
     print(wordlist)
 
