@@ -24,7 +24,6 @@ wlists = {
     "MPQA": "MPQA_sentiment.csv"
 }
 
-meta_features = ['Song_ID', 'Song_Name', 'n_words', 'valence', 'arousal', 'n_comments']
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -75,7 +74,7 @@ def vectorize_comment(x: pd.Series, wordlist: pd.DataFrame):
     c_vec = (pd.concat(list(x), axis=0, ignore_index=True)
             .pipe(pd.merge, wordlist, on='Word')
             .drop(['Word', 'Count'], axis=1)
-            .aggregate(['mean', 'min', 'max', 'std'])
+            .aggregate(['min', 'max', 'mean', 'std'])
             .stack()
             )
 
@@ -86,6 +85,59 @@ def tokenize_comments(df: pd.DataFrame):
     df['body'] = df['body'].map(_tokenize_comment)
     return df
 
+# Take affect group and compress it into single-row dataframe
+# |  Word  |  Emotion  |  Association   |
+# |--------|-----------|----------------|
+# | Damage |   anger   |       1        |
+# |        |    joy    |       0        |
+#........................................
+# |  Word  |   Anger    |   Joy   |
+# |--------|------------|---------|
+# | Damage |     1      |    0    |
+
+def load_emolex(path: str) -> pd.DataFrame:
+    return (pd.read_csv(path, names=['Word','Emotion','Association'], skiprows=1, sep='\t')
+        .groupby(['Word']).apply(lambda x: x.set_index('Emotion')['Association'])
+        .reset_index()
+        )
+
+def check_affect(sub_df: pd.DataFrame, key: str):
+    affects = sub_df['Affect'].reset_index(drop=True).str.contains(key, regex=False)
+    affects = affects[affects]
+    if affects.index.empty:
+        return 0
+    return sub_df['Score'].iloc[affects.index[0]]
+
+def get_scores(sub_df: pd.DataFrame, df2: pd.DataFrame):
+    return pd.DataFrame({
+        'Word': sub_df['Word'].iloc[0],
+        'Anger': check_affect(sub_df, 'anger'),
+        'Joy': check_affect(sub_df, 'joy'),
+        'Sadness': check_affect(sub_df, 'sadness'),
+        'Fear': check_affect(sub_df, 'fear')}, index=[0])
+
+# Unlike Emolex, each subgroup contains a variable number of affects (0-6)
+def load_emoaff(path: str) -> pd.DataFrame:
+    df = pd.read_csv(path, names=['Word','Score','Affect'], skiprows=1, sep='\t')
+    df2 = pd.DataFrame(columns=['Word', 'Anger', 'Joy', 'Sadness', 'Fear'])
+    rows = df.groupby('Word').apply(lambda x: get_scores(x, df2))
+    return df2.append(rows, ignore_index=True)
+
+def load_mpqa(path: str) -> pd.DataFrame:
+    return(pd.read_csv(path,  names=['Word','Sentiment'], skiprows=0)
+            .drop_duplicates(subset='Word')
+            .replace({'Sentiment': {'positive': 1, 'negative': -1, 'neutral': 0, 'both': 0}}))
+
+loaders = {
+    "eANEW": lambda x: pd.read_csv(x, encoding='utf-8', engine='python', index_col=0),
+    "EmoLex": load_emolex,
+    "EmoVAD": lambda x: pd.read_csv(x, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t'),
+    "EmoAff": load_emoaff,
+    "HSsent": None,
+    "MPQA": load_mpqa,
+}
+
+
 def main():
     args = parseargs()
     nltk.download('stopwords')
@@ -93,11 +145,21 @@ def main():
     nltk.download('wordnet')
     nltk.download('omw-1.4')
 
+    if(args.wordlist == 'All'):
+        for wlist in loaders:
+            gen_features(wlist, args)
+    
+    gen_features(loaders[args.wordlist], args)
+
+
+   
+
+def gen_features(loader, args):
     # load wordlist
     wlist_path = f"etc/wordlists/{wlists[args.wordlist]}"
-    # Must be done in each individual list reader, as different DFs must be loaded with different config options
+    wordlist = loader(wlist_path)
+    print(wordlist)
 
-    wordlist = pd.read_csv(wlist_path, names=['Word','Valence','Arousal','Dominance'], skiprows=1,  sep='\t')
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
 
@@ -128,4 +190,3 @@ def main():
 
     df3 = df.join(emo_word_stats)
     df3.to_csv(fname)
-   
