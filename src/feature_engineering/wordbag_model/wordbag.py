@@ -161,7 +161,7 @@ def gen_features(wlist, args):
     print(wordlist)
 
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
-    fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{args.wordlist}_features.csv"
+    fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{wlist}_features.csv"
 
     uncompressible_cols = ['submission.subreddit', 'submission.id', 'submission.url', 'submission.lang',
                 'submission.lang_p', 'id', 'lang', 'lang_p', 'replies',
