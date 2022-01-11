@@ -1,7 +1,5 @@
 import argparse
-# import cudf
 import json
-import numpy as np
 import pandas as pd
 import nltk
 import re
@@ -10,7 +8,6 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from os import walk
 from datetime import datetime
-from typing import List
 
 
 
@@ -38,6 +35,7 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument('--dataset', type=str, dest='dataset', required=True,
         help = "Name of the dataset which the comments represent")
     return parser.parse_args()
+
 
 def song_csv_generator(path: str):
     for subdir, _, files in walk(path):
@@ -70,6 +68,7 @@ def _tokenize_comment(comment: str):
             )
         ).value_counts().reset_index().rename(columns={'index': 'Word', 0: 'Count'})
 
+
 def vectorize_comment(x: pd.Series, wordlist: pd.DataFrame):
     c_vec = (pd.concat(list(x), axis=0, ignore_index=True)
             .pipe(pd.merge, wordlist, on='Word')
@@ -80,6 +79,7 @@ def vectorize_comment(x: pd.Series, wordlist: pd.DataFrame):
 
     c_vec.index = pd.Index(map(lambda x: f"{x[0]}.{x[1]}", c_vec.index.to_flat_index()))
     return c_vec.to_frame().T
+
 
 def tokenize_comments(df: pd.DataFrame):
     df['body'] = df['body'].map(_tokenize_comment)
@@ -101,12 +101,14 @@ def load_emolex(path: str) -> pd.DataFrame:
         .reset_index()
         )
 
+
 def check_affect(sub_df: pd.DataFrame, key: str):
     affects = sub_df['Affect'].reset_index(drop=True).str.contains(key, regex=False)
     affects = affects[affects]
     if affects.index.empty:
         return 0
     return sub_df['Score'].iloc[affects.index[0]]
+
 
 def get_scores(sub_df: pd.DataFrame, df2: pd.DataFrame):
     return pd.DataFrame({
@@ -122,6 +124,7 @@ def load_emoaff(path: str) -> pd.DataFrame:
     df2 = pd.DataFrame(columns=['Word', 'Anger', 'Joy', 'Sadness', 'Fear'])
     rows = df.groupby('Word').apply(lambda x: get_scores(x, df2))
     return df2.append(rows, ignore_index=True)
+
 
 def load_mpqa(path: str) -> pd.DataFrame:
     return(pd.read_csv(path,  names=['Word','Sentiment'], skiprows=0)
@@ -148,11 +151,9 @@ def main():
     if(args.wordlist == 'All'):
         for wlist in wlists:
             gen_features(wlist, args)
-    
-    gen_features(args.wordlist, args)
+    else:
+        gen_features(args.wordlist, args)
 
-
-   
 
 def gen_features(wlist, args):
     # load wordlist
