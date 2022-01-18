@@ -3,12 +3,11 @@ import json
 import pandas as pd
 import nltk
 import re
+from feature_engineering.song_loader import get_song_df
 
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from os import walk
 from datetime import datetime
-
 
 
 wlists = {
@@ -35,22 +34,6 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument('--dataset', type=str, dest='dataset', required=True,
         help = "Name of the dataset which the comments represent")
     return parser.parse_args()
-
-
-def song_csv_generator(path: str):
-    for subdir, _, files in walk(path):
-        for file in files:
-            fdir = subdir + "/" + file
-            yield fdir
-
-
-def dejsonify(path: str):
-    with open(path) as fp:
-        return pd.json_normalize(json.load(fp), ["submissions", "comments"],
-                meta=['song_name', 'artist_name', 'query_index', 'valence', 'arousal', 'dataset',
-                ['submission', 'title'], ['submission', 'body'], ['submission', 'lang'], ['submission', 'lang_p'],
-                ['submission', 'url'], ['submission', 'id'], ['submission', 'score'], ['submission', 'n_comments'],
-                ['submission', 'subreddit']])
 
 
 def _tokenize_comment(comment: str):
@@ -169,7 +152,7 @@ def gen_features(wlist, args):
                 'submission.title', 'submission.body']
 
     # TODO - Handle submission titles, submission bodies, WITHOUT dropping them. Tokenize and emovectorize.
-    df = (pd.concat([dejsonify(p) for p in song_csv_generator(args.input)], axis=0, ignore_index=True)
+    df = (get_song_df(args.input)
             .pipe(tokenize_comments)
             .drop(uncompressible_cols, axis=1))
 
