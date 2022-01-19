@@ -28,7 +28,7 @@ def parseargs() -> argparse.Namespace:
 
 def tokenize(comment: str, tokenizer) -> pd.Series:
     encoding = tokenizer.encode_plus(comment, add_special_tokens=True,
-        return_attention_mask=True, return_token_type_ids=True)
+        return_attention_mask=True, return_token_type_ids=True, max_length=1024, pad_to_max_length=True)
     return pd.Series([np.asarray(encoding['input_ids'], dtype='int32'),
             np.asarray(encoding['attention_mask'], dtype='int32'),
             np.asarray(encoding['token_type_ids'], dtype='int32')])
@@ -46,7 +46,7 @@ def main():
 
     song_df = get_song_df(args.input)
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
-        do_lower_case=True, add_special_tokens=True)
+        do_lower_case=True, add_special_tokens=True, max_length=1024, pad_to_max_length=True)
 
     song_df = generate_embeddings(song_df, tokenizer)
 
