@@ -35,10 +35,7 @@ def tokenize(comment: str, tokenizer) -> pd.Series:
 
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> pd.DataFrame:
     inputs = df['body'].progress_apply(lambda x: tokenize(x, tokenizer)).T
-    print(inputs.shape)
-    df['input_ids'] = map(lambda x: x[0], inputs)
-    df['input_masks'] = map(lambda x: x[1], inputs)
-    df['input_segments'] = map(lambda x: x[2], inputs)
+    df['input_ids'], df['input_masks'], df['input_segments'] = inputs
     return df
 
 def main():
