@@ -53,7 +53,7 @@ def main():
 
     config = DistilBertConfig(num_labels=6, return_all_scores=True)
     config.output_hidden_states = False
-    transformer_model = TFDistilBertForSequenceClassification.from_pretrained(distil_bert, config = config, return_all_scores=True)
+    transformer_model = TFDistilBertForSequenceClassification.from_pretrained(distil_bert, config = config)
     
     # input_ids = tf.keras.layers.Input(shape=(512,), name='input_token', dtype='int32')
     # input_masks_ids = tf.keras.layers.Input(shape=(512,), name='masked_token', dtype='int32')
