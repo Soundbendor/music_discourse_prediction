@@ -34,6 +34,8 @@ def tokenize(comment: str, tokenizer) -> Tuple[int, int, int]:
 
 def main():
     args = parseargs()
+    print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+
     song_df = get_song_df(args.input)
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
         do_lower_case=True, add_special_tokens=True)
