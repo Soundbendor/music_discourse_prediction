@@ -52,14 +52,13 @@ def main():
 
     config = DistilBertConfig(num_labels=6)
     config.output_hidden_states = False
-    transformer_model = TFDistilBertForSequenceClassification.from_pretrained(distil_bert, config = config)[0]
+    transformer_model = TFDistilBertForSequenceClassification.from_pretrained(distil_bert, config = config)
     
     input_ids = tf.keras.layers.Input(shape=(128,), name='input_token', dtype='int32')
     input_masks_ids = tf.keras.layers.Input(shape=(128,), name='masked_token', dtype='int32')
     X = transformer_model(input_ids, input_masks_ids)
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = X)
 
-    embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].apply(lambda x: x.to_numpy, axis=1)
-
-    print(embeddings)
+    embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].to_numpy()
+    model.predict(embeddings, verbose=1)
     
