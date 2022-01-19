@@ -28,7 +28,7 @@ def parseargs() -> argparse.Namespace:
 
 def tokenize(comment: str, tokenizer) -> pd.Series:
     encoding = tokenizer.encode_plus(comment, add_special_tokens=True,
-        return_attention_mask=True, return_token_type_ids=True, max_length=1024, padding='max_length', truncate=True)
+        return_attention_mask=True, return_token_type_ids=True, max_length=1024, padding='max_length')
     return pd.Series([np.asarray(encoding['input_ids'], dtype='int32'),
             np.asarray(encoding['attention_mask'], dtype='int32'),
             np.asarray(encoding['token_type_ids'], dtype='int32')])
