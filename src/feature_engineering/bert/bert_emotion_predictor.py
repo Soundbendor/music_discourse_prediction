@@ -64,6 +64,7 @@ def main():
     embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].to_numpy()
     predictions = transformer_model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1)
     print(predictions[0])
-    print(predictions.shape)
+    print(predictions.logits)
+    print(predictions.labels)
     
     
