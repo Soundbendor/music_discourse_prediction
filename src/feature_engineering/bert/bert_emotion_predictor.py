@@ -5,9 +5,9 @@ import tensorflow as tf
 
 from tqdm import tqdm
 from typing import Tuple
-from transformers.models.distilbert.tokenization_distilbert import DistilBertTokenizer
-from transformers.utils.dummy_tf_objects import TFDistilBertForSequenceClassification
-from transformers.models.distilbert.configuration_distilbert import DistilBertConfig
+from transformers import DistilBertTokenizer
+from transformers import TFDistilBertForSequenceClassification
+from transformers import DistilBertConfig
 from feature_engineering.song_loader import get_song_df
 
 
