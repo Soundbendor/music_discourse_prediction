@@ -34,17 +34,15 @@ def tokenize(comment: str, tokenizer) -> Tuple[np.ndarray, np.ndarray, np.ndarra
             np.asarray(encoding['token_type_ids'], dtype='int32'))
 
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> pd.DataFrame:
-    # for idx, crow in tqdm(df.iterrows()):
-    #     out = tokenize(crow['body'], tokenizer)
-    #     print(out)
-    #     crow['input_ids'], crow['input_masks'], crow['input_segments'] = out
-    df['input_ids'], df['input_masks'], df['input_segments'] = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
+    print(df['body'].progress_apply(lambda x: tokenize(x, tokenizer)).shape)
+    # df['input_ids'], df['input_masks'], df['input_segments'] = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
     return df
 
 def main():
     args = parseargs()
     tqdm.pandas()
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+    tf.debugging.set_log_device_placement(True)
 
     song_df = get_song_df(args.input)
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
