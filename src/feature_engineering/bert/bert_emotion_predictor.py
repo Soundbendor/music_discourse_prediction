@@ -10,7 +10,7 @@ from transformers.models.distilbert.configuration_distilbert import DistilBertCo
 from feature_engineering.song_loader import get_song_df
 
 
-distil_bert = 'distilbert-base-uncased-emotion'
+distil_bert = 'bhadresh-savani/distilbert-base-uncased-emotion'
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
