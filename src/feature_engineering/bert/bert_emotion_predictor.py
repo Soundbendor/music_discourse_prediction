@@ -29,8 +29,13 @@ def parseargs() -> argparse.Namespace:
 def tokenize(comment: str, tokenizer) -> Tuple[int, int, int]:
     return tokenizer.encode_plus(comment, add_special_tokens=True,
         return_attention_mask=True, return_token_type_ids=True)
-  
 
+def extract_ids(embedding: dict):
+    return embedding['input_ids'], embedding['attention_mask'], embedding['token_type_ids']
+
+def generate_embeddings(df: pd.DataFrame, tokenizer):
+    inputs = map(lambda x: tokenize(x, tokenizer), tqdm(df['body']))
+    df['input_ids'], df['input_masks'], df['input_segments'] = map(extract_ids, inputs)
 
 def main():
     args = parseargs()
@@ -40,7 +45,8 @@ def main():
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
         do_lower_case=True, add_special_tokens=True)
 
-    inputs = np.asarray(map(lambda x: tokenize(x, tokenizer), tqdm(song_df['body'])), dtype='int32')
+    song_df = generate_embeddings(song_df, tokenizer)
+
     config = DistilBertConfig(num_labels=6)
     config.output_hidden_states = False
     transformer_model = TFDistilBertForSequenceClassification.from_pretrained(distil_bert, config = config)[0]
@@ -49,6 +55,8 @@ def main():
     input_masks_ids = tf.keras.layers.Input(shape=(128,), name='masked_token', dtype='int32')
     X = transformer_model(input_ids, input_masks_ids)
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = X)
+
+    embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].apply(lambda x: x.to_numpy, axis=1)
 
     print(embeddings)
     
