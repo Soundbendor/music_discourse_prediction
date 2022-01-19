@@ -42,7 +42,7 @@ def main():
     args = parseargs()
     tqdm.pandas()
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
-    tf.debugging.set_log_device_placement(True)
+    # tf.debugging.set_log_device_placement(True)
 
     song_df = get_song_df(args.input)
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
