@@ -28,6 +28,7 @@ def parseargs() -> argparse.Namespace:
 def tokenize(comment: str, tokenizer) -> Tuple[int, int, int]:
     inputs = tokenizer.encode_plus(comment, add_special_tokens=True,
         return_attention_mask=True, return_token_type_ids=True)
+    print(inputs)
     return inputs['input_ids'], inputs['attention_mask'], inputs['token_type_ids']
 
 
