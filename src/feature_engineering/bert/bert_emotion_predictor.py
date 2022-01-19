@@ -38,11 +38,12 @@ def generate_embeddings(df: pd.DataFrame, tokenizer) -> pd.DataFrame:
     #     out = tokenize(crow['body'], tokenizer)
     #     print(out)
     #     crow['input_ids'], crow['input_masks'], crow['input_segments'] = out
-    df['input_ids'], df['input_masks'], df['input_segments'] = df['body'].apply(lambda x: tokenize(x, tokenizer))
+    df['input_ids'], df['input_masks'], df['input_segments'] = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
     return df
 
 def main():
     args = parseargs()
+    tqdm.pandas()
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
     song_df = get_song_df(args.input)
