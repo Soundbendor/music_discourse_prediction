@@ -8,6 +8,7 @@ from typing import Tuple
 from transformers import DistilBertTokenizer
 from transformers import TFDistilBertForSequenceClassification
 from transformers import DistilBertConfig
+
 from feature_engineering.song_loader import get_song_df
 
 
@@ -50,9 +51,9 @@ def main():
 
     song_df = generate_embeddings(song_df, tokenizer)
 
-    config = DistilBertConfig(num_labels=6)
+    config = DistilBertConfig(num_labels=6, return_all_scores=True)
     config.output_hidden_states = False
-    transformer_model = TFDistilBertForSequenceClassification.from_pretrained(distil_bert, config = config)
+    transformer_model = TFDistilBertForSequenceClassification.from_pretrained(distil_bert, config = config, return_all_scores=True)
     
     # input_ids = tf.keras.layers.Input(shape=(512,), name='input_token', dtype='int32')
     # input_masks_ids = tf.keras.layers.Input(shape=(512,), name='masked_token', dtype='int32')
@@ -63,5 +64,6 @@ def main():
     embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].to_numpy()
     predictions = transformer_model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1)
     print(predictions[0])
+    print(predictions.shape)
     
     
