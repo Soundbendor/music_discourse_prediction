@@ -26,16 +26,16 @@ def parseargs() -> argparse.Namespace:
         help = "Name of the dataset which the comments represent")
     return parser.parse_args()
 
-def tokenize(comment: str, tokenizer) -> Tuple[int, int, int]:
-    return tokenizer.encode_plus(comment, add_special_tokens=True,
+def tokenize(comment: str, tokenizer) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+    encoding = tokenizer.encode_plus(comment, add_special_tokens=True,
         return_attention_mask=True, return_token_type_ids=True)
+    return (np.asarray(encoding['input_ids'], dtype='int32'),
+            np.asarray(encoding['attention_mask'], dtype='int32'),
+            np.asarray(encoding['token_type_ids'], dtype='int32'))
 
-def extract_ids(embedding: dict):
-    return embedding['input_ids'], embedding['attention_mask'], embedding['token_type_ids']
-
-def generate_embeddings(df: pd.DataFrame, tokenizer):
-    inputs = map(lambda x: tokenize(x, tokenizer), tqdm(df['body']))
-    df['input_ids'], df['input_masks'], df['input_segments'] = map(extract_ids, inputs)
+def generate_embeddings(df: pd.DataFrame, tokenizer) -> pd.DataFrame:
+    df['input_ids'], df['input_masks'], df['input_segments'] = map(tokenize, tqdm(df['body']))
+    return df
 
 def main():
     args = parseargs()
