@@ -61,7 +61,7 @@ def main():
     print(model)
 
     embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].to_numpy()
-    predictions = model.predict(embeddings, verbose=1)
+    predictions = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1)
     print(predictions[0])
     
     
