@@ -58,7 +58,10 @@ def main():
     input_masks_ids = tf.keras.layers.Input(shape=(1024,), name='masked_token', dtype='int32')
     X = transformer_model(input_ids, input_masks_ids)
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = X)
+    print(model)
 
     embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].to_numpy()
-    model.predict(embeddings, verbose=1)
+    predictions = model.predict(embeddings, verbose=1)
+    print(predictions[0])
+    
     
