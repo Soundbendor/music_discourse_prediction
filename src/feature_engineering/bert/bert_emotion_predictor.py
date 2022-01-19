@@ -26,12 +26,12 @@ def parseargs() -> argparse.Namespace:
         help = "Name of the dataset which the comments represent")
     return parser.parse_args()
 
-def tokenize(comment: str, tokenizer) -> pd.Series[np.ndarray, np.ndarray, np.ndarray]:
+def tokenize(comment: str, tokenizer) -> pd.Series:
     encoding = tokenizer.encode_plus(comment, add_special_tokens=True,
         return_attention_mask=True, return_token_type_ids=True)
-    return pd.Series(np.asarray(encoding['input_ids'], dtype='int32'),
+    return pd.Series([np.asarray(encoding['input_ids'], dtype='int32'),
             np.asarray(encoding['attention_mask'], dtype='int32'),
-            np.asarray(encoding['token_type_ids'], dtype='int32'))
+            np.asarray(encoding['token_type_ids'], dtype='int32')])
 
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> pd.DataFrame:
     inputs = df['body'].progress_apply(lambda x: tokenize(x, tokenizer)).T
