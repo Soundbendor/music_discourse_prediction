@@ -28,7 +28,7 @@ def parseargs() -> argparse.Namespace:
 
 def tokenize(comment: str, tokenizer) -> pd.Series:
     encoding = tokenizer.encode_plus(comment, add_special_tokens=True,
-        return_attention_mask=True, return_token_type_ids=True, max_length=1024, padding='max_length')
+        return_attention_mask=True, return_token_type_ids=True, max_length=512, padding='max_length')
     return pd.Series([np.asarray(encoding['input_ids'], dtype='int32'),
             np.asarray(encoding['attention_mask'], dtype='int32'),
             np.asarray(encoding['token_type_ids'], dtype='int32')])
@@ -46,7 +46,7 @@ def main():
 
     song_df = get_song_df(args.input)
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
-        do_lower_case=True, add_special_tokens=True, max_length=1024, padding='max_length', truncate=True)
+        do_lower_case=True, add_special_tokens=True, max_length=512, padding='max_length', truncate=True)
 
     song_df = generate_embeddings(song_df, tokenizer)
 
@@ -54,14 +54,14 @@ def main():
     config.output_hidden_states = False
     transformer_model = TFDistilBertForSequenceClassification.from_pretrained(distil_bert, config = config)
     
-    input_ids = tf.keras.layers.Input(shape=(1024,), name='input_token', dtype='int32')
-    input_masks_ids = tf.keras.layers.Input(shape=(1024,), name='masked_token', dtype='int32')
-    X = transformer_model(input_ids, input_masks_ids)
-    model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = X)
-    print(model)
+    # input_ids = tf.keras.layers.Input(shape=(512,), name='input_token', dtype='int32')
+    # input_masks_ids = tf.keras.layers.Input(shape=(512,), name='masked_token', dtype='int32')
+    # X = transformer_model(input_ids, input_masks_ids)
+    # model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = X)
+    print(transformer_model)
 
     embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].to_numpy()
-    predictions = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1)
+    predictions = transformer_model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1)
     print(predictions[0])
     
     
