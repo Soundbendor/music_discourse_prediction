@@ -34,7 +34,7 @@ def tokenize(comment: str, tokenizer) -> pd.Series:
             np.asarray(encoding['token_type_ids'], dtype='int32')])
 
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> pd.DataFrame:
-    inputs = df['body'].progress_apply(lambda x: tokenize(x, tokenizer)).T
+    inputs = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
     df['input_ids'], df['input_masks'], df['input_segments'] = inputs
     return df
 
