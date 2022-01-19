@@ -34,7 +34,11 @@ def tokenize(comment: str, tokenizer) -> Tuple[np.ndarray, np.ndarray, np.ndarra
             np.asarray(encoding['token_type_ids'], dtype='int32'))
 
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> pd.DataFrame:
-    df['input_ids'], df['input_masks'], df['input_segments'] = map(lambda x: tokenize(x, tokenizer), tqdm(df['body']))
+    for idx, comment in tqdm(df.iterrows(df['body'])):
+        out = tokenize(comment, tokenizer)
+        print(out)
+        df['input_ids'].iloc[idx], df['input_masks'].iloc[idx], df['input_segments'].iloc[idx] = out
+    # df['input_ids'], df['input_masks'], df['input_segments'] = map(lambda x: tokenize(x, tokenizer), tqdm(df['body']))
     return df
 
 def main():
