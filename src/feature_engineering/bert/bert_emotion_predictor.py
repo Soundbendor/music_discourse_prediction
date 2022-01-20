@@ -64,6 +64,7 @@ def main():
     logits = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1).logits
     predictions = tf.nn.softmax(logits)
     print(predictions[0])
+    print(predictions.get_shape().as_list())
 
     
     
