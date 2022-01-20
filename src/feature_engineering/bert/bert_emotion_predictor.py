@@ -57,12 +57,11 @@ def main():
     
     input_ids = tf.keras.layers.Input(shape=(512,), name='input_token', dtype='int32')
     input_masks_ids = tf.keras.layers.Input(shape=(512,), name='masked_token', dtype='int32')
-    # X = transformer_model(input_ids, input_masks_ids)
-    # model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = X)
-    print(transformer_model)
+    X = transformer_model(input_ids, input_masks_ids)
+    model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = X)
 
     embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].to_numpy()
-    logits = transformer_model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1).logits
+    logits = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1).logits
     predictions = tf.nn.softmax(logits)
     print(predictions[0])
 
