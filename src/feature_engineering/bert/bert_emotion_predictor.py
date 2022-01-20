@@ -50,7 +50,7 @@ def main():
         do_lower_case=True, add_special_tokens=True, max_length=512, padding='max_length', truncate=True)
 
     song_df = generate_embeddings(song_df, tokenizer)
-    print(song_df[0])
+    print(song_df.iloc[0])
 
     config = DistilBertConfig(num_labels=6, return_all_scores=True)
     config.output_hidden_states = False
