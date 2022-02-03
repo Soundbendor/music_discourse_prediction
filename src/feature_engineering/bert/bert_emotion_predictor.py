@@ -44,7 +44,7 @@ def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
         return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', truncation=True, return_tensors='tf')
 
     
-def generate_embeddings(df: pd.DataFrame, tokenizer) -> tf.Dataset:
+def generate_embeddings(df: pd.DataFrame, tokenizer) -> tf.data.Dataset:
     encodings = tokenize(df['body'], tokenizer)
     return tf.data.Dataset.from_tensor_slices({
         'input_ids': encodings['input_ids'],
