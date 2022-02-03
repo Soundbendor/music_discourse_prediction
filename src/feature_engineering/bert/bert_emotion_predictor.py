@@ -91,12 +91,12 @@ def main():
 
     opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
 
-    model.compile(optimizer=opt, loss=tf.keras.losses.CosineSimilarity(), metrics=tf.keras.metrics.RootMeanSquaredError())
+    model.compile(optimizer=opt, loss=tf.keras.losses.CosineSimilarity(axis=1), metrics=tf.keras.metrics.RootMeanSquaredError())
 
     model.get_layer(name='tf_distil_bert_model').trainable = False
 
     print(model.summary())
-    print(song_embeddings.take(1).as_numpy_iterator())
+    print(list(song_embeddings.take(1).as_numpy_iterator()))
 
 
     # TODO - neptune
