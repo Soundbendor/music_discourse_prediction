@@ -40,7 +40,7 @@ def parseargs() -> argparse.Namespace:
 
 def tokenize(comment: str, tokenizer) -> pd.Series:
     encoding = tokenizer(comment, add_special_tokens=True,
-        return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length')
+        return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', return_tensors='np')
     return pd.Series([encoding['input_ids'], encoding['attention_mask']])
     
 
