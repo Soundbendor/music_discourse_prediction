@@ -40,15 +40,15 @@ def parseargs() -> argparse.Namespace:
     return parser.parse_args()
 
 def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
-    return tokenizer(comments, add_special_tokens=True,
+    return tokenizer(list(comments), add_special_tokens=True,
         return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', return_tensors='tf')
 
     
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
     encodings = tokenize(df['body'], tokenizer)
     return tf.data.Dataset.from_tensor_slices({
-        'input_ids': tf.convert_to_tensor(encodings['input_ids']),
-        'attention_mask': tf.convert_to_tensor(encodings['attention_mask']),
+        'input_ids': encodings['input_ids'],
+        'attention_mask': encodings['attention_mask'],
     }), tf.constant([df['valence'], df['arousal']])
     
 
