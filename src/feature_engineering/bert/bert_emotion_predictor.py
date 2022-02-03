@@ -41,7 +41,7 @@ def parseargs() -> argparse.Namespace:
 
 def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
     return tokenizer(list(comments), add_special_tokens=True,
-        return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', return_tensors='tf')
+        return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding=True, truncate=True, return_tensors='tf')
 
     
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
