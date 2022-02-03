@@ -40,13 +40,14 @@ def parseargs() -> argparse.Namespace:
 
 def tokenize(comment: str, tokenizer) -> pd.Series:
     encoding = tokenizer(comment, add_special_tokens=True,
-        return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', return_tensors='np')
+        return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', return_tensors='tf')
     return pd.Series([encoding['input_ids'], encoding['attention_mask']])
     
 
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
     encodings = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
-    print()
+    print(encodings[0].shape)
+    print(encodings[1].shape)
     return tf.data.Dataset.from_tensor_slices({
         'input_ids': encodings[0],
         'attention_mask': encodings[1],
