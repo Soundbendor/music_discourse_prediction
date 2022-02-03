@@ -38,17 +38,17 @@ def parseargs() -> argparse.Namespace:
         help = "Name of the dataset which the comments represent")
     return parser.parse_args()
 
-def tokenize(comment: str, tokenizer) -> Tuple[tf.Tensor, tf.Tensor]:
+def tokenize(comment: str, tokenizer) -> pd.DataFrame:
     encoding = tokenizer(comment, add_special_tokens=True,
         return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', return_tensors='tf')
-    return ((encoding['input_ids']), (encoding['attention_mask']))
+    return pd.DataFrame({'input_ids': encoding['input_ids'], 'attention_mask': encoding['attention_mask']})
     
 
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
-    input_ids, attention_mask = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
+    encodings = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
     return tf.data.Dataset.from_tensor_slices({
-        'input_ids': input_ids,
-        'attention_mask': attention_mask,
+        'input_ids': encodings['input_ids'],
+        'attention_mask': encodings['attention_mask'],
     }), tf.constant([df['valence'], df['arousal']])
     
 
