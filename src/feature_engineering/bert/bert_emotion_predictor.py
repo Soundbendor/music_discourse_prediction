@@ -46,10 +46,9 @@ def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
     
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> tf.data.Dataset:
     encodings = tokenize(df['body'], tokenizer)
-    print(np.transpose(df[['valence', 'arousal']].values).astype('float32').shape)
     return tf.data.Dataset.from_tensor_slices({
-        'input_ids': encodings['input_ids'],
-        'attention_mask': encodings['attention_mask'],
+        'input_token': encodings['input_ids'],
+        'masked_token': encodings['attention_mask'],
         'labels': tf.constant((df[['valence', 'arousal']].values).astype('float32'))
     }) 
     
