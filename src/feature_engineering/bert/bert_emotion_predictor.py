@@ -41,7 +41,7 @@ def parseargs() -> argparse.Namespace:
 def tokenize(comment: str, tokenizer) -> Tuple[tf.Tensor, tf.Tensor]:
     encoding = tokenizer(comment, add_special_tokens=True,
         return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', return_tensors='tf')
-    return encoding['input_ids'], encoding['attention_mask']
+    return ((encoding['input_ids']), (encoding['attention_mask']))
     
 
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
