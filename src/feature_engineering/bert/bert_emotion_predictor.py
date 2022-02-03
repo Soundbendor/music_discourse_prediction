@@ -95,7 +95,10 @@ def main():
 
     model.get_layer(index=3).trainable = False
 
+    print(model.summary())
 
+
+    # TODO - neptune
     model.fit(song_embeddings, verbose=1, epochs=100)
 
     # logits = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1).logits
