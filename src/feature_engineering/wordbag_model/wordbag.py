@@ -57,7 +57,7 @@ def vectorize_comment(x: pd.Series, wordlist: pd.DataFrame):
             .drop(['Word', 'Count'], axis=1)
             .aggregate(['min', 'max', 'mean', 'std'])
             .stack()
-            )
+        )
 
     c_vec.index = pd.Index(map(lambda x: f"{x[0]}.{x[1]}", c_vec.index.to_flat_index()))
     return c_vec.to_frame().T
@@ -81,7 +81,7 @@ def load_emolex(path: str) -> pd.DataFrame:
     return (pd.read_csv(path, names=['Word','Emotion','Association'], skiprows=1, sep='\t')
         .groupby(['Word']).apply(lambda x: x.set_index('Emotion')['Association'])
         .reset_index()
-        )
+    )
 
 
 def check_affect(sub_df: pd.DataFrame, key: str):
