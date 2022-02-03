@@ -91,7 +91,7 @@ def main():
 
     opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
 
-    model.compile(optimizer=opt, loss='mse', metrics=tf.keras.metrics.RootMeanSquaredError())
+    model.compile(optimizer=opt, loss=tf.keras.losses.CosineSimilarity(), metrics=tf.keras.metrics.RootMeanSquaredError())
 
     model.get_layer(index=3).trainable = False
 
