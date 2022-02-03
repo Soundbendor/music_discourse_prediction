@@ -92,7 +92,11 @@ def main():
     # TODO - use a better metric, idiot
     # NOTE - this is where the last error hits - dimension issue
     model.compile(optimizer=opt, loss='mse', metrics=tf.keras.metrics.RootMeanSquaredError())
+
+    for layer in model.layer[:2]:
+        layer.trainable = False
     print(model.summary())
+    print(song_embeddings)
 
     model.fit(song_embeddings)
 
