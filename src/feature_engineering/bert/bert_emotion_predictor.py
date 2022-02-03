@@ -84,13 +84,15 @@ def main():
     input_masks_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='masked_token', dtype='int32')
 
     output = transformer_model([input_ids, input_masks_ids])[0]
-    output = tf.keras.layers.Dense(NUM_LABEL, activation='softmax')(output)
+    output = tf.keras.layers.Dense(NUM_LABEL, activation='relu')(output)
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = output)
 
     opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
 
     # TODO - use a better metric, idiot
-    model.compile(optimizer=opt, loss='mse', metrics=['accuracy'])
+    # NOTE - this is where the last error hits - dimension issue
+    model.compile(optimizer=opt, loss='mse', metrics=tf.keras.metrics.RootMeanSquaredError())
+    print(model.summary())
 
     model.fit(song_embeddings)
 
