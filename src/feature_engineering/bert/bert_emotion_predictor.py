@@ -39,13 +39,13 @@ def parseargs() -> argparse.Namespace:
         help = "Name of the dataset which the comments represent")
     return parser.parse_args()
 
-def tokenize(comment: str, tokenizer) -> transformers.BatchEncoding:
-    return tokenizer(comment, add_special_tokens=True,
+def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
+    return tokenizer(comments, add_special_tokens=True,
         return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', return_tensors='tf')
 
     
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
-    encodings = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
+    encodings = tokenize(df['body'], tokenizer)
     return tf.data.Dataset.from_tensor_slices({
         'input_ids': tf.convert_to_tensor(encodings['input_ids']),
         'attention_mask': tf.convert_to_tensor(encodings['attention_mask']),
