@@ -44,12 +44,13 @@ def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
         return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', truncation=True, return_tensors='tf')
 
     
-def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
+def generate_embeddings(df: pd.DataFrame, tokenizer) -> tf.Dataset:
     encodings = tokenize(df['body'], tokenizer)
     return tf.data.Dataset.from_tensor_slices({
         'input_ids': encodings['input_ids'],
         'attention_mask': encodings['attention_mask'],
-    }), tf.constant([df['valence'], df['arousal']])
+        'labels': tf.constant([df['valence'], df['arousal']])
+    }) 
     
 
 
@@ -71,7 +72,7 @@ def main():
 
     # Create tf.Dataset with input ids, attention mask, and [valence, arousal] target labels
     # TODO - need a train-test split
-    song_embeddings, va_labels = generate_embeddings(song_df, tokenizer)
+    song_embeddings = generate_embeddings(song_df, tokenizer)
 
     # 2 labels: valence, arousal
     config = DistilBertConfig(num_labels=NUM_LABEL)
@@ -92,7 +93,7 @@ def main():
     # TODO - use a better metric, idiot
     model.compile(optimizer=opt, loss='mse', metrics=['accuracy'])
 
-    model.fit(song_embeddings, va_labels)
+    model.fit(song_embeddings)
 
     # logits = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1).logits
 
