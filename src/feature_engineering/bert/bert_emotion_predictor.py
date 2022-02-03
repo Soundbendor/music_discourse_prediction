@@ -1,18 +1,29 @@
 import argparse
+import re
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 
-from tqdm import tqdm
 from typing import Tuple
+from tqdm import tqdm
 from transformers import DistilBertTokenizer
 from transformers import TFDistilBertForSequenceClassification
 from transformers import DistilBertConfig
 
 from feature_engineering.song_loader import get_song_df
 
+# - load data from json 
+# - remove url's, html tags (maybe use that regex from wordbag?)
+# - tokenize
+# - convert attn. mask, input IDs, and label into tensor dataset
+# - build model architecture
+# -   -   adam optimizer with 5e-5 learn rate 
+# -   -   distilBERT with regression head on top (yes, i know it's called classification)
+# -   -    -    since it's a multi-target regression task, uses cross-entropy as loss function
 
-distil_bert = 'bhadresh-savani/distilbert-base-uncased-emotion'
+distil_bert = 'distilbert-base-uncased'
+MAX_SEQ_LEN = 512
+NUM_LABEL = 2
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -27,17 +38,20 @@ def parseargs() -> argparse.Namespace:
         help = "Name of the dataset which the comments represent")
     return parser.parse_args()
 
-def tokenize(comment: str, tokenizer) -> pd.Series:
-    encoding = tokenizer.encode_plus(comment, add_special_tokens=True,
-        return_attention_mask=True, return_token_type_ids=True, max_length=512, padding='max_length')
-    return pd.Series([np.asarray(encoding['input_ids'], dtype='int32'),
-            np.asarray(encoding['attention_mask'], dtype='int32'),
-            np.asarray(encoding['token_type_ids'], dtype='int32')])
+def tokenize(comment: str, tokenizer) -> Tuple[tf.Tensor, tf.Tensor]:
+    encoding = tokenizer.batch_encode_plus(comment, add_special_tokens=True,
+        return_attention_mask=True, return_token_type_ids=True, max_length=MAX_SEQ_LEN, padding='max_length', return_tensors='tf')
+    return encoding['input_ids'], encoding['attention_mask']
+    
 
-def generate_embeddings(df: pd.DataFrame, tokenizer) -> pd.DataFrame:
-    inputs = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
-    df['input_ids'], df['input_masks'], df['input_segments'] = inputs
-    return df
+def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
+    input_ids, attention_mask = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
+    return tf.data.Dataset.from_tensor_slices({
+        'input_ids': input_ids,
+        'attention_mask': attention_mask,
+    }), tf.constant([df['valence'], df['arousal']])
+    
+
 
 def main():
     args = parseargs()
@@ -46,26 +60,41 @@ def main():
     # tf.debugging.set_log_device_placement(True)
 
     song_df = get_song_df(args.input)
+
+    # Clean strings - remove urls and html tags
+    rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
+    song_df['body'] = song_df['body'].apply(lambda x: rx.sub('', x))
+
+    # Initialize tokenizer - set to automatically lower-case
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
         do_lower_case=True, add_special_tokens=True, max_length=512, padding='max_length', truncate=True)
 
-    song_df = generate_embeddings(song_df, tokenizer)
-    print(song_df.iloc[0])
+    # Create tf.Dataset with input ids, attention mask, and [valence, arousal] target labels
+    # TODO - need a train-test split
+    song_embeddings, va_labels = generate_embeddings(song_df, tokenizer)
 
-    config = DistilBertConfig(num_labels=6, return_all_scores=True)
+    # 2 labels: valence, arousal
+    config = DistilBertConfig(num_labels=NUM_LABEL)
     config.output_hidden_states = False
+
+
     transformer_model = TFDistilBertForSequenceClassification.from_pretrained(distil_bert, config = config)
     
-    input_ids = tf.keras.layers.Input(shape=(512,), name='input_token', dtype='int32')
-    input_masks_ids = tf.keras.layers.Input(shape=(512,), name='masked_token', dtype='int32')
-    X = transformer_model(input_ids, input_masks_ids)
-    model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = X)
+    input_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='input_token', dtype='int32')
+    input_masks_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='masked_token', dtype='int32')
 
-    embeddings = song_df[['input_ids', 'input_masks', 'input_segments']].to_numpy()
-    logits = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1).logits
-    predictions = tf.nn.softmax(logits)
-    print(predictions[0])
-    print(predictions.get_shape().as_list())
+    output = transformer_model(input_ids, input_masks_ids)
+    output = tf.keras.layers.Dense(NUM_LABEL, activation='softmax')(output)
+    model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = output)
+
+    opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
+
+    # TODO - use a better metric, idiot
+    model.compile(optimizer=opt, loss='mse', metrics=['accuracy'])
+
+    model.fit(song_embeddings, va_labels)
+
+    # logits = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1).logits
 
     
     
