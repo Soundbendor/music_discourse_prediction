@@ -93,9 +93,10 @@ def main():
 
     model.compile(optimizer=opt, loss=tf.keras.losses.CosineSimilarity(), metrics=tf.keras.metrics.RootMeanSquaredError())
 
-    model.get_layer(index=3).trainable = False
+    model.get_layer(name='tf_distil_bert_model').trainable = False
 
     print(model.summary())
+    print(song_embeddings.take(1).as_numpy_iterator())
 
 
     # TODO - neptune
