@@ -83,7 +83,7 @@ def main():
     input_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='input_token', dtype='int32')
     input_masks_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='masked_token', dtype='int32')
 
-    output = transformer_model([input_ids, input_masks_ids], num_labels=NUM_LABEL)[0]
+    output = transformer_model(input_ids, input_masks_ids)[0]
     output = tf.keras.layers.Dense(NUM_LABEL, activation='relu')(output)
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = output)
 
