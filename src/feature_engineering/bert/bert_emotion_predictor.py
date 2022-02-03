@@ -41,7 +41,7 @@ def parseargs() -> argparse.Namespace:
 
 def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
     return tokenizer(list(comments), add_special_tokens=True,
-        return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding=True, truncate=True, return_tensors='tf')
+        return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', truncation=True, return_tensors='tf')
 
     
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
@@ -67,7 +67,7 @@ def main():
 
     # Initialize tokenizer - set to automatically lower-case
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
-        do_lower_case=True, add_special_tokens=True, max_length=512, padding='max_length', truncate=True)
+        do_lower_case=True, add_special_tokens=True, max_length=MAX_SEQ_LEN, padding='max_length', truncate=True)
 
     # Create tf.Dataset with input ids, attention mask, and [valence, arousal] target labels
     # TODO - need a train-test split
@@ -83,7 +83,7 @@ def main():
     input_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='input_token', dtype='int32')
     input_masks_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='masked_token', dtype='int32')
 
-    output = transformer_model(input_ids, input_masks_ids)
+    output = transformer_model([input_ids, input_masks_ids])[0]
     output = tf.keras.layers.Dense(NUM_LABEL, activation='softmax')(output)
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = output)
 
