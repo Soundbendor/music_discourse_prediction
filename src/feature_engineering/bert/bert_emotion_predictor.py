@@ -46,6 +46,7 @@ def tokenize(comment: str, tokenizer) -> pd.Series:
 
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[tf.data.Dataset, tf.Tensor]:
     encodings = df['body'].progress_apply(lambda x: tokenize(x, tokenizer))
+    print(type(encodings[0]))
     print(encodings[0].shape)
     print(encodings[1].shape)
     return tf.data.Dataset.from_tensor_slices({
