@@ -50,7 +50,7 @@ def generate_embeddings(df: pd.DataFrame, tokenizer) -> tf.data.Dataset:
     return tf.data.Dataset.from_tensor_slices({
         'input_ids': encodings['input_ids'],
         'attention_mask': encodings['attention_mask'],
-        'labels': tf.constant(np.transpose(df[['valence', 'arousal']].values).astype('float32'))
+        'labels': tf.constant((df[['valence', 'arousal']].values).astype('float32'))
     }) 
     
 
