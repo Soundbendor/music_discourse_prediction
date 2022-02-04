@@ -96,7 +96,7 @@ def main():
 
 
     # TODO - neptune
-    model.fit(X={'input_token': ids, 'masked_token': attention_mask}, y = labels verbose=1, epochs=100)
+    model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100)
 
     # logits = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1).logits
 
