@@ -24,7 +24,7 @@ from feature_engineering.song_loader import get_song_df
 # -   -    -    since it's a multi-target regression task, uses cross-entropy as loss function
 
 distil_bert = 'distilbert-base-uncased'
-MAX_SEQ_LEN = 512
+MAX_SEQ_LEN = 128
 NUM_LABEL = 2
 
 def parseargs() -> argparse.Namespace:
@@ -105,6 +105,7 @@ def main():
     print(ids.shape)
     print(attention_mask.shape)
     # TODO - neptune
+    # TODO - out of memory with tensor - may need smaller batch size? 
     model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32))
 
     # TODO - predictions
