@@ -81,6 +81,7 @@ def main():
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
     strategy = tf.distribute.MultiWorkerMirroredStrategy()
     tf.debugging.set_log_device_placement(True)
+    
 
     song_df = get_song_df(args.input)
 
@@ -95,9 +96,8 @@ def main():
     with strategy.scope():
         model = create_model()
         print(model.summary())
-
         # TODO - neptune
-        model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100)
+        model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=640)
 
     # TODO - predictions
     
