@@ -79,7 +79,7 @@ def main():
     args = parseargs()
     tqdm.pandas()
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
-    strategy = tf.distribute.MirroredStrategy()
+    strategy = tf.distribute.MultiWorkerMirroredStrategy()
     tf.debugging.set_log_device_placement(True)
 
     song_df = get_song_df(args.input)
