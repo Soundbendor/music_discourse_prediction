@@ -102,6 +102,8 @@ def main():
 
     model = create_model()
     print(model.summary())
+    print(ids.shape)
+    print(attention_mask.shape)
     # TODO - neptune
     model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32))
 
