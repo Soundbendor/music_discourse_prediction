@@ -100,13 +100,12 @@ def main():
     # TODO - need a train-test split
     ids, attention_mask, labels = generate_embeddings(song_df)
 
-    model = create_model()
-    print(model.summary())
-    print(ids.shape)
-    print(attention_mask.shape)
-    # TODO - neptune
-    # TODO - out of memory with tensor - may need smaller batch size? 
-    model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32))
+    with strategy.scope():
+        model = create_model()
+        print(model.summary())
+        # TODO - neptune
+        # TODO - out of memory with tensor - may need smaller batch size? 
+        model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32*get_num_gpus()))
 
     # TODO - predictions
     
