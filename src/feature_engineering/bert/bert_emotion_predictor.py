@@ -100,11 +100,10 @@ def main():
     # TODO - need a train-test split
     ids, attention_mask, labels = generate_embeddings(song_df)
 
-    with strategy.scope():
-        model = create_model()
-        print(model.summary())
-        # TODO - neptune
-        model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32))
+    model = create_model()
+    print(model.summary())
+    # TODO - neptune
+    model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32))
 
     # TODO - predictions
     
