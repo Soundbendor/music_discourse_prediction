@@ -47,7 +47,7 @@ def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
 def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     encodings = tokenize(df['body'], tokenizer)
     
-    return np.asarray(encodings['input_ids']), np.asarray(encodings['attention_mask']), df[['valence', 'arousal']].values).astype('float32')))
+    return np.asarray(encodings['input_ids']), np.asarray(encodings['attention_mask']), (df[['valence', 'arousal']].values).astype('float32')))
 
 def main():
     args = parseargs()
