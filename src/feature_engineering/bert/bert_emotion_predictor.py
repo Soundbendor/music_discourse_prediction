@@ -5,7 +5,7 @@ import pandas as pd
 import tensorflow as tf
 import transformers
 
-from typing import Tuple
+from typing import List, Tuple
 from tqdm import tqdm
 from transformers import DistilBertTokenizer
 from transformers import TFDistilBertModel
@@ -44,14 +44,10 @@ def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
         return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', truncation=True, return_tensors='tf')
 
     
-def generate_embeddings(df: pd.DataFrame, tokenizer) -> tf.data.Dataset:
+def generate_embeddings(df: pd.DataFrame, tokenizer) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     encodings = tokenize(df['body'], tokenizer)
-    return tf.data.Dataset.from_tensor_slices(({
-        'input_token': encodings['input_ids'],
-        'masked_token': encodings['attention_mask'],
-    }, tf.constant((df[['valence', 'arousal']].values).astype('float32')))) 
     
-
+    return np.asarray(encodings['input_ids']), np.asarray(encodings['attention_mask']), df[['valence', 'arousal']].values).astype('float32')))
 
 def main():
     args = parseargs()
@@ -71,7 +67,7 @@ def main():
 
     # Create tf.Dataset with input ids, attention mask, and [valence, arousal] target labels
     # TODO - need a train-test split
-    song_embeddings = generate_embeddings(song_df, tokenizer)
+    ids, attention_mask, labels = generate_embeddings(song_df, tokenizer)
 
 
     config = DistilBertConfig(dropout=0.2, attention_dropout=0.2)
@@ -96,11 +92,11 @@ def main():
     model.get_layer(name='tf_distil_bert_model').trainable = False
 
     print(model.summary())
-    print(list(song_embeddings.take(1).as_numpy_iterator()))
+    # print(list(song_embeddings.take(1).as_numpy_iterator()))
 
 
     # TODO - neptune
-    model.fit(song_embeddings, verbose=1, epochs=100)
+    model.fit(X={'input_token': ids, 'masked_token': attention_mask}, y = labels verbose=1, epochs=100)
 
     # logits = model.predict([song_df['input_ids'].to_numpy(), song_df['input_masks'].to_numpy()], verbose=1).logits
 
