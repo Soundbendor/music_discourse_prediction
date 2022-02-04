@@ -104,7 +104,7 @@ def main():
         model = create_model()
         print(model.summary())
         # TODO - neptune
-        model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32*get_num_gpus()))
+        model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32))
 
     # TODO - predictions
     
