@@ -10,6 +10,7 @@ from tqdm import tqdm
 from transformers import DistilBertTokenizer
 from transformers import TFDistilBertModel
 from transformers import DistilBertConfig
+from tensorflow.python.client import device_lib
 
 from feature_engineering.song_loader import get_song_df
 
@@ -72,7 +73,13 @@ def create_model() -> tf.keras.Model:
     opt = tf.keras.optimizers.Adam()
 
     model.compile(optimizer=opt, loss=tf.keras.losses.CosineSimilarity(axis=1), metrics=tf.keras.metrics.RootMeanSquaredError())
+    model.get_layer(name='tf_distil_bert_model').trainable = False
     return model
+
+
+def get_num_gpus() -> int:
+    local_device_protos = device_lib.list_local_devices()
+    return len([x.name for x in local_device_protos if x.device_type == 'GPU'])
 
 
 def main():
@@ -97,7 +104,7 @@ def main():
         model = create_model()
         print(model.summary())
         # TODO - neptune
-        model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=640)
+        model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32*get_num_gpus()))
 
     # TODO - predictions
     
