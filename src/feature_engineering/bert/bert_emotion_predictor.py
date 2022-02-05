@@ -86,7 +86,7 @@ def main():
     args = parseargs()
     tqdm.pandas()
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
-    strategy = tf.distribute.MultiWorkerMirroredStrategy()
+    strategy = tf.distribute.MirroredStrategy()
     tf.debugging.set_log_device_placement(True)
     
 
