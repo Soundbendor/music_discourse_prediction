@@ -44,12 +44,15 @@ def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
     return tokenizer(list(comments), add_special_tokens=True,
         return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', truncation=True, return_tensors='tf')
 
-def generate_embeddings(df: pd.DataFrame) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
+def generate_embeddings(df: pd.DataFrame) -> tf.data.Dataset:
     # Initialize tokenizer - set to automatically lower-case
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
         do_lower_case=True, add_special_tokens=True, max_length=MAX_SEQ_LEN, padding='max_length', truncate=True)
     encodings = tokenize(df['body'], tokenizer)
-    return np.asarray(encodings['input_ids']), np.asarray(encodings['attention_mask']), (df[['valence', 'arousal']].values.astype('float32'))
+    return tf.data.Dataset.from_tensor_slices(({
+        'input_token': encodings['input_ids'],
+        'masked_token': encodings['attention_mask'],
+    }, tf.constant((df[['valence', 'arousal']].values).astype('float32')))) 
 
 def distilbert_layer(config: DistilBertConfig, input_ids, mask_ids) -> tf.keras.layers.Layer:
     config.output_hidden_states = False
@@ -78,19 +81,20 @@ def create_model() -> tf.keras.Model:
 
 
 def get_num_gpus() -> int:
-    local_device_protos = device_lib.list_local_devices()
-    return len([x.name for x in local_device_protos if x.device_type == 'GPU'])
+    return len(tf.config.list_physical_devices('GPU'))
 
 
 def main():
     args = parseargs()
     tqdm.pandas()
-    print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+    print(f"Num GPUs Available: {get_num_gpus()}")
     strategy = tf.distribute.MirroredStrategy()
     tf.debugging.set_log_device_placement(True)
     
-
+    # Load our data from JSONs
     song_df = get_song_df(args.input)
+    # TODO - ensure one song per example
+    # oh no. aggregation. 
 
     # Clean strings - remove urls and html tags
     rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
@@ -98,14 +102,16 @@ def main():
 
     # Create tf.Dataset with input ids, attention mask, and [valence, arousal] target labels
     # TODO - need a train-test split
-    ids, attention_mask, labels = generate_embeddings(song_df)
+    song_data_encodings = generate_embeddings(song_df)
+
+    # Batch our dataset
+    song_data_encodings = song_data_encodings.batch(32)
 
     with strategy.scope():
         model = create_model()
         print(model.summary())
         # TODO - neptune
-        # TODO - out of memory with tensor - may need smaller batch size? 
-        model.fit({'input_token': ids, 'masked_token': attention_mask}, y = labels, verbose=1, epochs=100, batch_size=(32*get_num_gpus()))
+        model.fit(song_data_encodings, verbose=1, epochs=100)
 
     # TODO - predictions
     
