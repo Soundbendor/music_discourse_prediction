@@ -4,13 +4,15 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 import transformers
+import configparser
+import neptune.new as neptune 
 
 from typing import Tuple
 from tqdm import tqdm
 from transformers import DistilBertTokenizer
 from transformers import TFDistilBertModel
 from transformers import DistilBertConfig
-from tensorflow.python.client import device_lib
+from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 
 from feature_engineering.song_loader import get_song_df
 
@@ -38,6 +40,8 @@ def parseargs() -> argparse.Namespace:
             Valid options are [Twitter, Youtube, Reddit, Lyrics].")
     parser.add_argument('--dataset', type=str, dest='dataset', required=True,
         help = "Name of the dataset which the comments represent")
+    parser.add_argument('-c', '--config', type=str, dest='config', required=True,
+        help="Credentials file for Neptune.AI")
     return parser.parse_args()
 
 def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
@@ -83,18 +87,33 @@ def create_model() -> tf.keras.Model:
 def get_num_gpus() -> int:
     return len(tf.config.list_physical_devices('GPU'))
 
+def _process_api_key(f_key: str) -> configparser.ConfigParser:
+    api_key = configparser.ConfigParser()
+    api_key.read(f_key)
+    return api_key
 
-def main():
-    args = parseargs()
-    tqdm.pandas()
+def tf_config() -> Tuple[tf.distribute.Strategy, tf.data.Options]: 
     print(f"Num GPUs Available: {get_num_gpus()}")
     strategy = tf.distribute.MirroredStrategy()
     tf.debugging.set_log_device_placement(True)
-    
+    options = tf.data.Options()
+    options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.OFF
+    return strategy, options
+
+def init_neptune(cfg: str):
+    creds = _process_api_key(cfg)
+    runtime = neptune.init(project=creds['CLIENT_INFO']['project_id'],
+                        api_token=creds['CLIENT_INFO']['api_token'])
+    return NeptuneCallback(run=runtime, base_namespace='metrics')
+
+def main():
+    args = parseargs()
+    distribution_strategy, ds_options  = tf_config()
+    # load neptune callback for keras
+    neptune_cbk = init_neptune(args.config)
+
     # Load our data from JSONs
     song_df = get_song_df(args.input)
-    # TODO - ensure one song per example
-    # oh no. aggregation. 
 
     # Clean strings - remove urls and html tags
     rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
@@ -104,15 +123,17 @@ def main():
     # TODO - need a train-test split
     song_data_encodings = generate_embeddings(song_df)
 
-    # Batch our dataset
-    song_data_encodings = song_data_encodings.batch(32)
+    # Batch our dataset according to available resources
+    song_data_encodings = song_data_encodings.batch(32 * get_num_gpus())
+    song_data_encodings = song_data_encodings.with_options(ds_options)
 
-    with strategy.scope():
+    with distribution_strategy.scope():
         model = create_model()
         print(model.summary())
         # TODO - neptune
-        model.fit(song_data_encodings, verbose=1, epochs=100)
+        model.fit(song_data_encodings, verbose=1, epochs=100, callbacks=[neptune_cbk])
 
     # TODO - predictions
+    # TODO - ensure one song per inference
     
     
