@@ -45,7 +45,7 @@ def parseargs() -> argparse.Namespace:
         help="Credentials file for Neptune.AI")
     return parser.parse_args()
 
-def tokenize(comments: pd.Series, tokenizer):
+def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
     return tokenizer(list(comments), add_special_tokens=True, return_attention_mask=True,
                     return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length',
                     truncation=True, return_tensors='tf', padding_side='right')
