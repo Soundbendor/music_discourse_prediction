@@ -131,7 +131,9 @@ def main():
         model = create_model()
         print(model.summary())
         # TODO - neptune - ensure loss is being reported 
-        model.fit(song_data_encodings, verbose=1, epochs=100, callbacks=[neptune_cbk])
+        model.fit(song_data_encodings, verbose=1, epochs=50, callbacks=[neptune_cbk])
+
+    model.save('reddit_amg_model')
 
     # TODO - predictions
     # TODO - ensure one song per inference
