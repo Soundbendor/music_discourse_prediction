@@ -48,12 +48,12 @@ def parseargs() -> argparse.Namespace:
 def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
     return tokenizer(list(comments), add_special_tokens=True, return_attention_mask=True,
                     return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length',
-                    truncation=True, return_tensors='tf', padding_side='right')
+                    truncation=True, return_tensors='tf')
 
 def generate_embeddings(df: pd.DataFrame) -> tf.data.Dataset:
     # Initialize tokenizer - set to automatically lower-case
     tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
-        do_lower_case=True, add_special_tokens=True, max_length=MAX_SEQ_LEN, padding='max_length', truncate=True)
+        do_lower_case=True, add_special_tokens=True, max_length=MAX_SEQ_LEN, padding='max_length', truncate=True, padding_side='right')
     encodings = tokenize(df['body'], tokenizer)
     return tf.data.Dataset.from_tensor_slices(({
         'input_token': encodings['input_ids'],
