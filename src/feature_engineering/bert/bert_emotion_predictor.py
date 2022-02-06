@@ -8,11 +8,9 @@ import configparser
 import neptune.new as neptune 
 
 from typing import Tuple
-from tqdm import tqdm
 from transformers import DistilBertTokenizer
 from transformers import TFDistilBertModel
 from transformers import DistilBertConfig
-import tensorflow.python.platform.build_info as build
 from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 
 from feature_engineering.song_loader import get_song_df
@@ -73,6 +71,8 @@ def create_model() -> tf.keras.Model:
 
     embed_layer = distilbert_layer(config, input_ids, input_masks_ids)
     output = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(50, return_sequences=True, dropout=0.1))(embed_layer)
+    # TODO - compare to BertPooler
+    # TODO - possibly try with 
     output = tf.keras.layers.GlobalAveragePooling1D()(output)
     output = tf.keras.layers.Dense(50, activation='relu')(output)
     output = tf.keras.layers.Dropout(0.2)(output)
