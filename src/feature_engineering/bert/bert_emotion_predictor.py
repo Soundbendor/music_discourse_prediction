@@ -94,7 +94,7 @@ def _process_api_key(f_key: str) -> configparser.ConfigParser:
 
 def tf_config() -> Tuple[tf.distribute.Strategy, tf.data.Options]: 
     print(f"Num GPUs Available: {get_num_gpus()}")
-    strategy = tf.distribute.MirroredStrategy()
+    strategy = tf.distribute.MultiWorerMirroredStrategy()
     tf.debugging.set_log_device_placement(True)
     options = tf.data.Options()
     options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.OFF
@@ -130,7 +130,7 @@ def main():
     with distribution_strategy.scope():
         model = create_model()
         print(model.summary())
-        # TODO - neptune
+        # TODO - neptune - ensure loss is being reported 
         model.fit(song_data_encodings, verbose=1, epochs=100, callbacks=[neptune_cbk])
 
     # TODO - predictions
