@@ -70,7 +70,7 @@ def create_model() -> tf.keras.Model:
     input_masks_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='masked_token', dtype='int32')
 
     embed_layer = distilbert_layer(config, input_ids, input_masks_ids)
-    output = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(50, return_sequences=True, dropout=0.1, recurrent_dropout=0.1))(embed_layer)
+    output = tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(50, return_sequences=True, dropout=0.1))(embed_layer)
     output = tf.keras.layers.GlobalAveragePooling1D()(output)
     output = tf.keras.layers.Dense(50, activation='relu')(output)
     output = tf.keras.layers.Dropout(0.2)(output)
