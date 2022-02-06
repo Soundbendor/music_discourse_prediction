@@ -12,6 +12,7 @@ from tqdm import tqdm
 from transformers import DistilBertTokenizer
 from transformers import TFDistilBertModel
 from transformers import DistilBertConfig
+import tensorflow.python.platform.build_info as build
 from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 
 from feature_engineering.song_loader import get_song_df
@@ -44,9 +45,10 @@ def parseargs() -> argparse.Namespace:
         help="Credentials file for Neptune.AI")
     return parser.parse_args()
 
-def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
-    return tokenizer(list(comments), add_special_tokens=True,
-        return_attention_mask=True, return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length', truncation=True, return_tensors='tf')
+def tokenize(comments: pd.Series, tokenizer):
+    return tokenizer(list(comments), add_special_tokens=True, return_attention_mask=True,
+                    return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length',
+                    truncation=True, return_tensors='tf', padding_side='right')
 
 def generate_embeddings(df: pd.DataFrame) -> tf.data.Dataset:
     # Initialize tokenizer - set to automatically lower-case
