@@ -129,11 +129,11 @@ def main():
     song_data_encodings = song_data_encodings.batch(32 * get_num_gpus())
     song_data_encodings = song_data_encodings.with_options(ds_options)
 
-    with distribution_strategy.scope():
-        model = create_model()
-        print(model.summary())
-        # TODO - neptune - ensure loss is being reported 
-        model.fit(song_data_encodings, verbose=1, epochs=50, callbacks=[neptune_cbk])
+    # with distribution_strategy.scope():
+    model = create_model()
+    print(model.summary())
+    # TODO - error on finishing one epoch - unknown cudnn status bad param
+    model.fit(song_data_encodings, verbose=1, epochs=50, callbacks=[neptune_cbk])
 
     model.save('reddit_amg_model')
 
