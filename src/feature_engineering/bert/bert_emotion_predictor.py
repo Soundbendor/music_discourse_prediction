@@ -79,7 +79,7 @@ def create_model() -> tf.keras.Model:
     output = tf.keras.layers.Dense(NUM_LABEL, activation='relu')(output)
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = output)
 
-    opt = tf.keras.optimizers.Adam()
+    opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
 
     model.compile(optimizer=opt, loss=tf.keras.losses.CosineSimilarity(axis=1), metrics=tf.keras.metrics.RootMeanSquaredError())
     model.get_layer(name='tf_distil_bert_model').trainable = False
@@ -126,14 +126,15 @@ def main():
     song_data_encodings = generate_embeddings(song_df)
 
     # Batch our dataset according to available resources
-    song_data_encodings = song_data_encodings.batch(32 * get_num_gpus())
+    # IMPORTANT: MUST drop remainder in order to prevent segfault when training with multiple GPUs + cuDNN kernel function
+    song_data_encodings = song_data_encodings.batch(64 * get_num_gpus(), drop_remainder=True)
     song_data_encodings = song_data_encodings.with_options(ds_options)
 
-    # with distribution_strategy.scope():
-    model = create_model()
-    print(model.summary())
-    # TODO - error on finishing one epoch - unknown cudnn status bad param
-    model.fit(song_data_encodings, verbose=1, epochs=50, callbacks=[neptune_cbk])
+    with distribution_strategy.scope():
+        model = create_model()
+        print(model.summary())
+        # TODO - error on finishing one epoch - unknown cudnn status bad param
+        model.fit(song_data_encodings, verbose=1, epochs=50, callbacks=[neptune_cbk])
 
     model.save('reddit_amg_model')
 
