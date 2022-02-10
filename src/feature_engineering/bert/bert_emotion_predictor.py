@@ -1,12 +1,16 @@
 import argparse
 import re
-
+import pandas as pd
 import tensorflow as tf
+
 from tensorflow.keras.callbacks import ModelCheckpoint
+from dataclasses import dataclass
 
 from feature_engineering.song_loader import get_song_df
-from .distilbert_handler import create_model, generate_embeddings
+from .model_assembler import create_model
+from .discourse_dataset import DiscourseDataSet
 from .tf_configurator import get_num_gpus, init_neptune, tf_config
+
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -31,6 +35,7 @@ def load_model(path: str) -> tf.keras.Model:
     except IOError:
         return create_model()
 
+
 def main():
     args = parseargs()
     distribution_strategy, ds_options  = tf_config()
@@ -39,26 +44,25 @@ def main():
                  ModelCheckpoint(args.model, monitor='loss',
                                  verbose=1, save_best_only=True, mode='min')]
 
-    # Load our data from JSONs
-    song_df = get_song_df(args.input)
+    # Load our data from JSONs and randomize the dataset
+    # We shuffle here because tensorflow does not currently support dataset shuffling
+    song_df = get_song_df(args.input).sample(frac=1)
 
     # Clean strings - remove urls and html tags
     rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
     song_df['body'] = song_df['body'].apply(lambda x: rx.sub('', x))
 
-    # Create tf.Dataset with input ids, attention mask, and [valence, arousal] target labels
-    # TODO - need a train-test split
-    song_data_encodings = generate_embeddings(song_df)
-
-    # Batch our dataset according to available resources
-    # IMPORTANT: MUST drop remainder in order to prevent segfault when training with multiple GPUs + cuDNN kernel function
-    song_data_encodings = song_data_encodings.batch(64 * get_num_gpus(), drop_remainder=True)
-    song_data_encodings = song_data_encodings.with_options(ds_options)
+    ds = DiscourseDataSet(song_df,
+        num_labels=2,
+        seq_len=128,
+        test_prop=0.15,
+        batch_size=(64 * get_num_gpus()),
+        options=ds_options)
 
     with distribution_strategy.scope():
         model = load_model(args.model)
         print(model.summary())
-        model.fit(song_data_encodings, verbose=1, epochs=50, callbacks=callbacks)
+        model.fit(ds.train, verbose=1, epochs=50, callbacks=callbacks)
 
     model.save('reddit_amg_model')
 
