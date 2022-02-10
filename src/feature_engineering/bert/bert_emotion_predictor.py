@@ -33,6 +33,7 @@ def load_model(path: str) -> tf.keras.Model:
     try:
         return tf.keras.models.load_model(path)
     except IOError:
+        print("Model checkpoint invalid. Opening new model.")
         return create_model()
 
 

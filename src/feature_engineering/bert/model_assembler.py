@@ -1,6 +1,4 @@
-import transformers
 import tensorflow as tf
-import pandas as pd
 
 from transformers import TFDistilBertModel
 from transformers import DistilBertConfig
