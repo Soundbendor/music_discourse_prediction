@@ -1,20 +1,13 @@
 import argparse
 import re
-import numpy as np
-import pandas as pd
+
 import tensorflow as tf
-import transformers
-import configparser
-import neptune.new as neptune 
 
-from typing import Tuple
-from transformers import DistilBertTokenizer
-
-from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 from tf.keras.callbacks import ModelCheckpoint
 
 from feature_engineering.song_loader import get_song_df
-from model_factory import create_model
+from model_factory import create_model, generate_embeddings
+from tf_configurator import get_num_gpus, init_neptune, tf_config
 
 # - load data from json 
 # - remove url's, html tags (maybe use that regex from wordbag?)
@@ -45,46 +38,6 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument('m', '--model', type=str, dest='model', required=True,
         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
     return parser.parse_args()
-
-
-def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
-    return tokenizer(list(comments), add_special_tokens=True, return_attention_mask=True,
-                    return_token_type_ids=False, max_length=MAX_SEQ_LEN, padding='max_length',
-                    truncation=True, return_tensors='tf')
-
-
-def generate_embeddings(df: pd.DataFrame) -> tf.data.Dataset:
-    # Initialize tokenizer - set to automatically lower-case
-    tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
-        do_lower_case=True, add_special_tokens=True, max_length=MAX_SEQ_LEN, padding='max_length', truncate=True, padding_side='right')
-    encodings = tokenize(df['body'], tokenizer)
-    return tf.data.Dataset.from_tensor_slices(({
-        'input_token': encodings['input_ids'],
-        'masked_token': encodings['attention_mask'],
-    }, tf.constant((df[['valence', 'arousal']].values).astype('float32')))) 
-
-
-def get_num_gpus() -> int:
-    return len(tf.config.list_physical_devices('GPU'))
-
-def _process_api_key(f_key: str) -> configparser.ConfigParser:
-    api_key = configparser.ConfigParser()
-    api_key.read(f_key)
-    return api_key
-
-def tf_config() -> Tuple[tf.distribute.Strategy, tf.data.Options]: 
-    print(f"Num GPUs Available: {get_num_gpus()}")
-    strategy = tf.distribute.MultiWorkerMirroredStrategy()
-    tf.debugging.set_log_device_placement(True)
-    options = tf.data.Options()
-    options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.OFF
-    return strategy, options
-
-def init_neptune(cfg: str):
-    creds = _process_api_key(cfg)
-    runtime = neptune.init(project=creds['CLIENT_INFO']['project_id'],
-                        api_token=creds['CLIENT_INFO']['api_token'])
-    return NeptuneCallback(run=runtime, base_namespace='metrics')
 
 def load_model(path: str) -> tf.keras.Model:
     try:
