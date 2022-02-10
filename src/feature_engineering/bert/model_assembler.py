@@ -48,7 +48,7 @@ def create_direct_model() -> tf.keras.Model:
     input_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='input_token', dtype='int32')
     input_masks_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name='masked_token', dtype='int32')
 
-    output = db_seq.distilbert(input_ids, input_masks_ids)[0]
+    output = db_seq(input_ids, input_masks_ids)[0]
     output = tf.keras.layers.Dropout(0.2)(output)
     output = tf.keras.layers.Dense(2, activation='relu')(output)
 
