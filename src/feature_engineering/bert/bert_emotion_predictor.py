@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow.keras.callbacks import ModelCheckpoint
 
 from feature_engineering.song_loader import get_song_df
-from model_factory import create_model, generate_embeddings
+from distilbert_handler import create_model, generate_embeddings
 from tf_configurator import get_num_gpus, init_neptune, tf_config
 
 def parseargs() -> argparse.Namespace:
