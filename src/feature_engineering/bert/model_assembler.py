@@ -12,7 +12,7 @@ MAX_SEQ_LEN = 128
 def _distilbert_layer(config: DistilBertConfig, input_ids, mask_ids) -> tf.keras.layers.Layer:
     config.output_hidden_states = False
     transformer_model = TFDistilBertModel.from_pretrained(distil_bert, config = config)
-    return transformer_model(input_ids, mask_ids)[0]
+    return transformer_model.distilbert(input_ids, mask_ids)[0]
 
 
 def create_model() -> tf.keras.Model:
