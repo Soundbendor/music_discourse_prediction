@@ -32,7 +32,7 @@ def create_model() -> tf.keras.Model:
     opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
 
     model.compile(optimizer=opt, loss=tf.keras.losses.CosineSimilarity(axis=1), metrics=tf.keras.metrics.RootMeanSquaredError())
-    model.get_layer(name='tf_distil_bert_model').trainable = False
+    model.get_layer(name='distilbert').trainable = False
     return model
 
 
