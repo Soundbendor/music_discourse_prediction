@@ -23,9 +23,9 @@ class DiscourseDataSet:
 
     def _to_datasets(self, df: pd.DataFrame) -> Tuple[TFDataset, TFDataset, TFDataset]:
         ds = self._generate_embeddings(df)
-        ds_train = ds.skip(2*(df.shape[1] * self.test_prop))
+        ds_train = ds.skip(int(2*(df.shape[1] * self.test_prop)))
         # we derive validation and test from holdout - this is a temp variable
-        ds_holdout = ds.take(2*(df.shape[1] * self.test_prop))
+        ds_holdout = ds.take(int(2*(df.shape[1] * self.test_prop)))
         ds_test, ds_validate = ds_holdout.shard(2, 0), ds_holdout.shard(2, 1)
         # IMPORTANT: MUST drop remainder in order to prevent segfault when training with multiple GPUs + cuDNN kernel function
         return tuple(map(lambda x: x.batch(self.batch_size, drop_remainder=True).with_options(self.options), [ds_train, ds_test, ds_validate]))
