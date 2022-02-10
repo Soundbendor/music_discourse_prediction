@@ -35,7 +35,7 @@ def create_model() -> tf.keras.Model:
 
     model.compile(
         optimizer=opt,
-        loss=tf.keras.losses.CosineSimilarity(axis=1),
+        loss='mae',
         metrics=tf.keras.metrics.RootMeanSquaredError()
     )
     model.get_layer(name='distilbert').trainable = False
