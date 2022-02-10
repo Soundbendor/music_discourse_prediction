@@ -57,7 +57,7 @@ def create_direct_model() -> tf.keras.Model:
 
     model.compile(
         optimizer=opt,
-        loss=tf.keras.losses.CosineSimilarity(axis=1),
+        loss=tf.keras.losses.CosineSimilarity(axis=0),
         metrics=tf.keras.metrics.RootMeanSquaredError()
     )
     # model.get_layer(name='tf_distil_bert_for_sequence_classification').trainable = False
