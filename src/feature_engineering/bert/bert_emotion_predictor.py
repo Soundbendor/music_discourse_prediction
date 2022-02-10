@@ -2,25 +2,11 @@ import argparse
 import re
 
 import tensorflow as tf
-
-from tf.keras.callbacks import ModelCheckpoint
+from tensorflow.keras.callbacks import ModelCheckpoint
 
 from feature_engineering.song_loader import get_song_df
 from model_factory import create_model, generate_embeddings
 from tf_configurator import get_num_gpus, init_neptune, tf_config
-
-# - load data from json 
-# - remove url's, html tags (maybe use that regex from wordbag?)
-# - tokenize
-# - convert attn. mask, input IDs, and label into tensor dataset
-# - build model architecture
-# -   -   adam optimizer with 5e-5 learn rate 
-# -   -   distilBERT with regression head on top (yes, i know it's called classification)
-# -   -    -    since it's a multi-target regression task, uses cross-entropy as loss function
-
-distil_bert = 'distilbert-base-uncased'
-MAX_SEQ_LEN = 128
-
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
