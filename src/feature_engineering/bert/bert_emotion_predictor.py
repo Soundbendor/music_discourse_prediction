@@ -21,7 +21,7 @@ def parseargs() -> argparse.Namespace:
         help = "Name of the dataset which the comments represent")
     parser.add_argument('-c', '--config', type=str, dest='config', required=True,
         help="Credentials file for Neptune.AI")
-    parser.add_argument('m', '--model', type=str, dest='model', required=True,
+    parser.add_argument('-m', '--model', type=str, dest='model', required=True,
         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
     return parser.parse_args()
 
