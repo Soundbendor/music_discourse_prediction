@@ -1,13 +1,11 @@
 import argparse
 import re
-import pandas as pd
 import tensorflow as tf
 
 from tensorflow.keras.callbacks import ModelCheckpoint
-from dataclasses import dataclass
 
 from feature_engineering.song_loader import get_song_df
-from .model_assembler import create_model
+from .model_assembler import create_direct_model, create_model
 from .discourse_dataset import DiscourseDataSet
 from .tf_configurator import get_num_gpus, init_neptune, tf_config
 
@@ -27,6 +25,8 @@ def parseargs() -> argparse.Namespace:
         help="Credentials file for Neptune.AI")
     parser.add_argument('-m', '--model', type=str, dest='model', required=True,
         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
+    parser.add_argument('--num_epoch', type=int, default=1, dest='num_epoch'
+        help="Epoch to start on, when loading from a checkpoint. Defaults to 1.")
     return parser.parse_args()
 
 def load_model(path: str) -> tf.keras.Model:
@@ -34,7 +34,7 @@ def load_model(path: str) -> tf.keras.Model:
         return tf.keras.models.load_model(path)
     except IOError:
         print("Model checkpoint invalid. Opening new model.")
-        return create_model()
+        return create_direct_model()
 
 
 def main():
@@ -63,11 +63,10 @@ def main():
     with distribution_strategy.scope():
         model = load_model(args.model)
         print(model.summary())
-        model.fit(ds.train, verbose=1, epochs=50, callbacks=callbacks)
+        model.fit(ds.train, verbose=1, epochs=50, callbacks=callbacks, initial_epoch=args.num_epoch)
 
-    model.save('reddit_amg_model')
+        model.save('reddit_amg_model')
+        model.evaluate(ds.validate, verbose=1, callbacks=callbacks)
 
-    # TODO - predictions
-    # TODO - ensure one song per inference
     
     
