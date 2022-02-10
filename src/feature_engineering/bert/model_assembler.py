@@ -50,7 +50,7 @@ def create_direct_model() -> tf.keras.Model:
 
     output = db_seq(input_ids, input_masks_ids)[0]
     # output = tf.keras.layers.Dropout(0.2)(output)
-    # output = tf.keras.layers.Dense(2, activation='relu')(output)
+    output = tf.keras.layers.Dense(2, activation='relu')(output)
 
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs = output)
     opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
