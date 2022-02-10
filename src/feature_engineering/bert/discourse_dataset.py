@@ -4,7 +4,6 @@ import pandas as pd
 
 from tensorflow.data import Dataset as TFDataset
 from typing import Tuple
-from transformers import DistilBertConfig
 from transformers import DistilBertTokenizer
 
 distil_bert = 'distilbert-base-uncased'
