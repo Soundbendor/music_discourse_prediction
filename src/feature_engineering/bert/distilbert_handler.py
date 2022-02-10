@@ -9,6 +9,7 @@ from transformers import DistilBertTokenizer
 
 distil_bert = 'distilbert-base-uncased'
 NUM_LABEL = 2
+MAX_SEQ_LEN = 128
 
 
 def _distilbert_layer(config: DistilBertConfig, input_ids, mask_ids) -> tf.keras.layers.Layer:
