@@ -16,7 +16,8 @@ def _distilbert_layer(config: DistilBertConfig, input_ids, mask_ids) -> tf.keras
     # summoning undocumented bullshit
     return transformer_model.distilbert(input_ids, mask_ids)[0]
 
-
+# TODO - change pooling method, and testme
+# TODO - fine tune on BERT
 def create_model() -> tf.keras.Model:
     config = DistilBertConfig(dropout=0.2, attention_dropout=0.2)
     

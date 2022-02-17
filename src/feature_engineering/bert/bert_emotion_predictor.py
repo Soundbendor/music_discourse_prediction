@@ -29,12 +29,11 @@ def parseargs() -> argparse.Namespace:
         help="Epoch to start on, when loading from a checkpoint. Defaults to 1.")
     return parser.parse_args()
 
-def load_model(path: str) -> tf.keras.Model:
+def load_weights(model: tf.keras.Model, path: str):
     try:
-        return tf.keras.models.load_model(path, compile=False)
+        model.load_weights(path)
     except IOError:
         print("Model checkpoint invalid. Opening new model.")
-        return create_direct_model()
 
 
 def main():
@@ -43,7 +42,8 @@ def main():
     # load neptune callback for keras
     callbacks = [init_neptune(args.config), 
                  ModelCheckpoint(args.model, monitor='loss',
-                                 verbose=1, save_best_only=True, mode='min')]
+                                 save_weights_only=True, verbose=1,
+                                 save_best_only=True, mode='min')]
 
     # Load our data from JSONs and randomize the dataset
     # We shuffle here because tensorflow does not currently support dataset shuffling
@@ -60,12 +60,15 @@ def main():
         batch_size=(64 * get_num_gpus()),
         options=ds_options)
 
+    model = create_direct_model()
+    load_weights(model, args.model)
+
     with distribution_strategy.scope():
-        model = load_model(args.model)
+        
         print(model.summary())
         model.fit(ds.train, verbose=1, epochs=50, callbacks=callbacks, initial_epoch=args.num_epoch)
-
-        model.save('reddit_amg_model')
+        # TODO - unable to load from saved state with distilbertc
+        model.save_weights('reddit_amg_model')
         model.evaluate(ds.validate, verbose=1, callbacks=callbacks)
 
     
