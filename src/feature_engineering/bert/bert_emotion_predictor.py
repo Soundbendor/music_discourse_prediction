@@ -25,8 +25,8 @@ def parseargs() -> argparse.Namespace:
         help="Credentials file for Neptune.AI")
     parser.add_argument('-m', '--model', type=str, dest='model', required=True,
         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
-    parser.add_argument('--num_epoch', type=int, default=0, dest='num_epoch',
-        help="Epoch to start on, when loading from a checkpoint. Defaults to 1.")
+    parser.add_argument('--num_epoch', type=int, default=50send, dest='num_epoch',
+        help="Number of epochs to train the model with")
     return parser.parse_args()
 
 def load_weights(model: tf.keras.Model, path: str):
@@ -66,7 +66,7 @@ def main():
         model = create_direct_model()
         load_weights(model, args.model)
         print(model.summary())
-        model.fit(ds.train, verbose=1, epochs=50, callbacks=callbacks, initial_epoch=args.num_epoch)
+        model.fit(ds.train, verbose=1, callbacks=callbacks, epochs=args.num_epoch)
         # TODO - unable to load from saved state with distilbertc
         model.save_weights('reddit_amg_model')
         model.evaluate(ds.validate, verbose=1, callbacks=callbacks)
