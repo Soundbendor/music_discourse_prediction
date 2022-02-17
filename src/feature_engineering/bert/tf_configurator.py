@@ -16,6 +16,13 @@ def _process_api_key(f_key: str) -> configparser.ConfigParser:
 
 def tf_config() -> Tuple[tf.distribute.Strategy, tf.data.Options]: 
     print(f"Num GPUs Available: {get_num_gpus()}")
+
+    configproto = tf.compat.v1.ConfigProto() 
+    configproto.gpu_options.allow_growth = True
+    configproto.gpu_options.polling_inactive_delay_msecs = 10
+    sess = tf.compat.v1.Session(config=configproto) 
+    tf.compat.v1.keras.backend.set_session(sess)
+
     strategy = tf.distribute.MultiWorkerMirroredStrategy()
     tf.debugging.set_log_device_placement(True)
     options = tf.data.Options()
