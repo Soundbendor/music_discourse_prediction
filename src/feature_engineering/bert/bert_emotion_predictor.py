@@ -25,7 +25,7 @@ def parseargs() -> argparse.Namespace:
         help="Credentials file for Neptune.AI")
     parser.add_argument('-m', '--model', type=str, dest='model', required=True,
         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
-    parser.add_argument('--num_epoch', type=int, default=50send, dest='num_epoch',
+    parser.add_argument('--num_epoch', type=int, default=50, dest='num_epoch',
         help="Number of epochs to train the model with")
     return parser.parse_args()
 
