@@ -60,11 +60,11 @@ def main():
         batch_size=(64 * get_num_gpus()),
         options=ds_options)
 
-    model = create_direct_model()
-    load_weights(model, args.model)
+    
 
     with distribution_strategy.scope():
-        
+        model = create_direct_model()
+        load_weights(model, args.model)
         print(model.summary())
         model.fit(ds.train, verbose=1, epochs=50, callbacks=callbacks, initial_epoch=args.num_epoch)
         # TODO - unable to load from saved state with distilbertc
