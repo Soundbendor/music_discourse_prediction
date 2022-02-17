@@ -32,7 +32,7 @@ def parseargs() -> argparse.Namespace:
 def load_weights(model: tf.keras.Model, path: str):
     try:
         model.load_weights(path)
-    except IOError:
+    except Exception:
         print("Model checkpoint invalid. Opening new model.")
 
 
