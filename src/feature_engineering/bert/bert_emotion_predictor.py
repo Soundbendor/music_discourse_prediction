@@ -67,7 +67,7 @@ def main():
         print(model.summary())
         
         model.fit(ds.train, verbose=1, callbacks=callbacks, epochs=args.num_epoch)
-        model.save_weights('reddit_amg_model')
+        model.save_weights('r_amg_model_finished')
         model.evaluate(ds.train, verbose=1, callbacks=callbacks)
 
     
