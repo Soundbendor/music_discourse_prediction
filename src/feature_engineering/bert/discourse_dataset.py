@@ -40,7 +40,6 @@ class DiscourseDataSet:
             truncation = True,
             return_tensors = 'tf')
 
-
     def _generate_embeddings(self, df: pd.DataFrame) -> tf.data.Dataset:
         tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
             do_lower_case=True,
