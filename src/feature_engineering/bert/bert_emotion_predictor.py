@@ -59,17 +59,16 @@ def main():
         test_prop=0.15,
         batch_size=(64 * get_num_gpus()),
         options=ds_options)
-
     
 
     with distribution_strategy.scope():
         model = create_direct_model()
         load_weights(model, args.model)
         print(model.summary())
+        
         model.fit(ds.train, verbose=1, callbacks=callbacks, epochs=args.num_epoch)
-        # TODO - unable to load from saved state with distilbertc
         model.save_weights('reddit_amg_model')
-        model.evaluate(ds.validate, verbose=1, callbacks=callbacks)
+        model.evaluate(ds.train, verbose=1, callbacks=callbacks)
 
     
     
