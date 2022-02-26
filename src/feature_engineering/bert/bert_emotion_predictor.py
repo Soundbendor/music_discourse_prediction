@@ -53,6 +53,7 @@ def main():
     rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
     song_df['body'] = song_df['body'].apply(lambda x: rx.sub('', x))
 
+    # TODO - find optimal token length
     ds = DiscourseDataSet(song_df,
         num_labels=2,
         seq_len=128,
@@ -68,6 +69,8 @@ def main():
         
         model.fit(ds.train, verbose=1, callbacks=callbacks, epochs=args.num_epoch)
         model.save_weights('r_amg_model_finished')
+
+        print("Validating...")
         model.evaluate(ds.train, verbose=1, callbacks=callbacks)
 
     
