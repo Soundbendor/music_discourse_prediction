@@ -162,3 +162,6 @@ out/
 # Ignore model stores
 *.data*
 *.index
+
+# Ignore neptune files
+.neptune/*
