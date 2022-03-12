@@ -65,10 +65,13 @@ def main():
         model = create_direct_model()
         load_weights(model, args.model)
         print(model.summary())
-        
+        # TODO - implement validation dataset
+        # see https://www.tensorflow.org/guide/keras/train_and_evaluate#using_a_validation_dataset 
         model.fit(ds.train, verbose=1, callbacks=callbacks, epochs=args.num_epoch)
         model.save_weights('r_amg_model_finished')
-        model.evaluate(ds.train, verbose=1, callbacks=callbacks)
+    test_results = model.evaluate(ds.test, verbose=1, callbacks=callbacks)
+    print(test_results)
+    print(model.metrics_names)
 
     
     

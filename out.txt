@@ -1,0 +1,135 @@
+2022-02-03 01:13:24.618315: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-02-03 01:13:30.239818: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2022-02-03 01:13:30.242976: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2022-02-03 01:13:31.440966: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: Quadro RTX 6000 computeCapability: 7.5
+coreClock: 1.77GHz coreCount: 72 deviceMemorySize: 23.65GiB deviceMemoryBandwidth: 625.94GiB/s
+2022-02-03 01:13:31.441125: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-02-03 01:13:31.447475: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2022-02-03 01:13:31.447596: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.10
+2022-02-03 01:13:31.452336: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-02-03 01:13:31.453927: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2022-02-03 01:13:31.459107: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2022-02-03 01:13:31.462285: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.10
+2022-02-03 01:13:31.471885: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2022-02-03 01:13:31.475167: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2022-02-03 01:14:56.863698: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-02-03 01:14:56.866517: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:3b:00.0 name: Quadro RTX 6000 computeCapability: 7.5
+coreClock: 1.77GHz coreCount: 72 deviceMemorySize: 23.65GiB deviceMemoryBandwidth: 625.94GiB/s
+2022-02-03 01:14:56.866607: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-02-03 01:14:56.866655: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+2022-02-03 01:14:56.866668: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.10
+2022-02-03 01:14:56.866680: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-02-03 01:14:56.866692: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2022-02-03 01:14:56.866705: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2022-02-03 01:14:56.866716: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.10
+2022-02-03 01:14:56.866728: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.7
+2022-02-03 01:14:56.868023: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2022-02-03 01:14:56.868053: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.10.1
+2022-02-03 01:14:57.450755: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-02-03 01:14:57.450803: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2022-02-03 01:14:57.450815: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2022-02-03 01:14:57.453020: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 22477 MB memory) -> physical GPU (device: 0, name: Quadro RTX 6000, pci bus id: 0000:3b:00.0, compute capability: 7.5)
+2022-02-03 01:14:57.453390: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2022-02-03 01:14:59.561416: W tensorflow/python/util/util.cc:348] Sets are not currently considered sequences, but this may change in the future, so consider avoiding using them.
+2022-02-03 01:14:59.623758: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.10
+Some layers from the model checkpoint at distilbert-base-uncased were not used when initializing TFDistilBertForSequenceClassification: ['vocab_transform', 'activation_13', 'vocab_layer_norm', 'vocab_projector']
+- This IS expected if you are initializing TFDistilBertForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFDistilBertForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some layers of TFDistilBertForSequenceClassification were not initialized from the model checkpoint at distilbert-base-uncased and are newly initialized: ['dropout_19', 'pre_classifier', 'classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+WARNING:tensorflow:AutoGraph could not transform <bound method TFDistilBertForSequenceClassification.call of <transformers.models.distilbert.modeling_tf_distilbert.TFDistilBertForSequenceClassification object at 0x2b53aed45370>> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: module 'gast' has no attribute 'Index'
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+Num GPUs Available:  1
+WARNING:tensorflow:AutoGraph could not transform <bound method TFDistilBertMainLayer.call of <transformers.models.distilbert.modeling_tf_distilbert.TFDistilBertMainLayer object at 0x2b53aee78eb0>> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: module 'gast' has no attribute 'Index'
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+WARNING:tensorflow:AutoGraph could not transform <bound method TFEmbeddings.call of <transformers.models.distilbert.modeling_tf_distilbert.TFEmbeddings object at 0x2b53aee78ee0>> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: module 'gast' has no attribute 'Index'
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+WARNING:tensorflow:AutoGraph could not transform <bound method TFTransformer.call of <transformers.models.distilbert.modeling_tf_distilbert.TFTransformer object at 0x2b53fc1da070>> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: module 'gast' has no attribute 'Index'
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+WARNING:tensorflow:AutoGraph could not transform <bound method TFTransformerBlock.call of <transformers.models.distilbert.modeling_tf_distilbert.TFTransformerBlock object at 0x2b53fc1da4c0>> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: module 'gast' has no attribute 'Index'
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+WARNING:tensorflow:AutoGraph could not transform <bound method TFMultiHeadSelfAttention.call of <transformers.models.distilbert.modeling_tf_distilbert.TFMultiHeadSelfAttention object at 0x2b53fc1da850>> and will run it as-is.
+Please report this to the TensorFlow team. When filing the bug, set the verbosity to 10 (on Linux, `export AUTOGRAPH_VERBOSITY=10`) and attach the full output.
+Cause: module 'gast' has no attribute 'Index'
+To silence this warning, decorate the function with @tf.autograph.experimental.do_not_convert
+WARNING:tensorflow:Model was constructed with shape (None, 512) for input KerasTensor(type_spec=TensorSpec(shape=(None, 512), dtype=tf.int32, name='input_token'), name='input_token', description="created by layer 'input_token'"), but it was called on an input with incompatible shape (512, 1).
+WARNING:tensorflow:Model was constructed with shape (None, 512) for input KerasTensor(type_spec=TensorSpec(shape=(None, 512), dtype=tf.int32, name='masked_token'), name='masked_token', description="created by layer 'masked_token'"), but it was called on an input with incompatible shape (512, 1).
+Traceback (most recent call last):
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/bin/bert_features", line 33, in <module>
+    sys.exit(load_entry_point('music-discourse-prediction', 'console_scripts', 'bert_features')())
+  File "/nfs/stak/users/beerya/Research/music_discourse_prediction/src/feature_engineering/bert/bert_emotion_predictor.py", line 95, in main
+    model.fit(song_embeddings)
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py", line 1100, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 828, in __call__
+    result = self._call(*args, **kwds)
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 871, in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 725, in _initialize
+    self._stateful_fn._get_concrete_function_internal_garbage_collected(  # pylint: disable=protected-access
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 2969, in _get_concrete_function_internal_garbage_collected
+    graph_function, _ = self._maybe_define_function(args, kwargs)
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 3361, in _maybe_define_function
+    graph_function = self._create_graph_function(args, kwargs)
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/eager/function.py", line 3196, in _create_graph_function
+    func_graph_module.func_graph_from_py_func(
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 990, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/eager/def_function.py", line 634, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py", line 977, in wrapper
+    raise e.ag_error_metadata.to_exception(e)
+ValueError: in user code:
+
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:805 train_function  *
+        return step_function(self, iterator)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:795 step_function  **
+        outputs = model.distribute_strategy.run(run_step, args=(data,))
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:1259 run
+        return self._extended.call_for_each_replica(fn, args=args, kwargs=kwargs)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:2730 call_for_each_replica
+        return self._call_for_each_replica(fn, args, kwargs)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/distribute/distribute_lib.py:3417 _call_for_each_replica
+        return fn(*args, **kwargs)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:788 run_step  **
+        outputs = model.train_step(data)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/keras/engine/training.py:755 train_step
+        loss = self.compiled_loss(
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/keras/engine/compile_utils.py:203 __call__
+        loss_value = loss_obj(y_t, y_p, sample_weight=sw)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/keras/losses.py:152 __call__
+        losses = call_fn(y_true, y_pred)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/keras/losses.py:256 call  **
+        return ag_fn(y_true, y_pred, **self._fn_kwargs)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/util/dispatch.py:201 wrapper
+        return target(*args, **kwargs)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/keras/losses.py:1198 mean_squared_error
+        return K.mean(math_ops.squared_difference(y_pred, y_true), axis=-1)
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/ops/gen_math_ops.py:10250 squared_difference
+        _, _, _op, _outputs = _op_def_library._apply_op_helper(
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/framework/op_def_library.py:748 _apply_op_helper
+        op = g._create_op_internal(op_type_name, inputs, dtypes=None,
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/framework/func_graph.py:590 _create_op_internal
+        return super(FuncGraph, self)._create_op_internal(  # pylint: disable=protected-access
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/framework/ops.py:3528 _create_op_internal
+        ret = Operation(
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/framework/ops.py:2015 __init__
+        self._c_op = _create_c_op(self._graph, node_def, inputs,
+    /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/envs/music_discourse_prediction/lib/python3.9/site-packages/tensorflow/python/framework/ops.py:1856 _create_c_op
+        raise ValueError(str(e))
+
+    ValueError: Dimensions must be equal, but are 512 and 2 for '{{node mean_squared_error/SquaredDifference}} = SquaredDifference[T=DT_FLOAT](model/dense/Softmax, ExpandDims_2)' with input shapes: [512,2], [2,1].
+
