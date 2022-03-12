@@ -23,7 +23,7 @@ def tf_config() -> Tuple[tf.distribute.Strategy, tf.data.Options]:
     sess = tf.compat.v1.Session(config=configproto) 
     tf.compat.v1.keras.backend.set_session(sess)
 
-    strategy = tf.distribute.MultiWorkerMirroredStrategy()
+    strategy = tf.distribute.MirroredStrategy()
     tf.debugging.set_log_device_placement(True)
     options = tf.data.Options()
     options.experimental_distribute.auto_shard_policy = tf.data.experimental.AutoShardPolicy.OFF
