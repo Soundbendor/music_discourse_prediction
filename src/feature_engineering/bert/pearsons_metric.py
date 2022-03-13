@@ -1,4 +1,5 @@
 import tensorflow as tf
+import tensorflow_probability as tfp
 
 # Source: https://gist.github.com/mhorlacher/8599d1204a48caa172e9ecfc0c73b989
 
@@ -17,7 +18,7 @@ class PearsonCorrelation(tf.keras.metrics.Mean):
             self.post_proc_fn = lambda y, y_pred: (y, y_pred)
 
     def _compute_correlation(self, y, y_pred):
-        corr = tf.stats.correlation(y, y_pred, sample_axis=1, event_axis=-1)
+        corr = tfp.stats.correlation(y, y_pred, sample_axis=1, event_axis=-1)
         return corr
 
     def _nan_to_zero(self, x):
