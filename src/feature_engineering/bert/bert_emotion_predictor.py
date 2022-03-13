@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow.keras.callbacks import ModelCheckpoint
 
 from feature_engineering.song_loader import get_song_df
-from .model_assembler import create_direct_model, create_model
+from .model_assembler import create_direct_model
 from .discourse_dataset import DiscourseDataSet
 from .tf_configurator import get_num_gpus, init_neptune, tf_config
 
@@ -15,19 +15,20 @@ def parseargs() -> argparse.Namespace:
         description="Feature extraction for social media sentiment using BERT."
     )
     parser.add_argument('-i', '--input_dir', dest='input', type=str,
-        help = "Path to the directory storing the JSON files for social media data.")
-    parser.add_argument('--source', required=True, type=str, dest='sm_type', 
-        help = "Which type of social media input is being delivered.\n\
+                        help="Path to the directory storing the JSON files for social media data.")
+    parser.add_argument('--source', required=True, type=str, dest='sm_type',
+                        help="Which type of social media input is being delivered.\n\
             Valid options are [Twitter, Youtube, Reddit, Lyrics].")
     parser.add_argument('--dataset', type=str, dest='dataset', required=True,
-        help = "Name of the dataset which the comments represent")
+                        help="Name of the dataset which the comments represent")
     parser.add_argument('-c', '--config', type=str, dest='config', required=True,
-        help="Credentials file for Neptune.AI")
+                        help="Credentials file for Neptune.AI")
     parser.add_argument('-m', '--model', type=str, dest='model', required=True,
-        help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
+                        help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
     parser.add_argument('--num_epoch', type=int, default=50, dest='num_epoch',
-        help="Number of epochs to train the model with")
+                        help="Number of epochs to train the model with")
     return parser.parse_args()
+
 
 def load_weights(model: tf.keras.Model, path: str):
     try:
@@ -38,7 +39,7 @@ def load_weights(model: tf.keras.Model, path: str):
 
 def main():
     args = parseargs()
-    distribution_strategy, ds_options  = tf_config()
+    distribution_strategy, ds_options = tf_config()
     # load neptune callback for keras
     callbacks = [init_neptune(args.config),
                  ModelCheckpoint(args.model, monitor='loss',
@@ -55,21 +56,20 @@ def main():
 
     # TODO - find optimal token length
     ds = DiscourseDataSet(song_df,
-        num_labels=2,
-        seq_len=128,
-        test_prop=0.15,
-        batch_size=(64 * get_num_gpus()),
-        options=ds_options)
-    
+                          num_labels=2,
+                          seq_len=128,
+                          test_prop=0.15,
+                          batch_size=(64 * get_num_gpus()),
+                          options=ds_options)
 
     with distribution_strategy.scope():
         model = create_direct_model()
         load_weights(model, args.model)
         print(model.summary())
-        
-        model.fit(ds.train, verbose=1, callbacks=callbacks, epochs=args.num_epoch)
+
+        model.fit(ds.train, verbose=1, callbacks=callbacks,
+                  epochs=args.num_epoch)
         model.save_weights('r_amg_model_finished')
 
         print("Validating...")
         model.evaluate(ds.test, verbose=1, callbacks=callbacks)
-
