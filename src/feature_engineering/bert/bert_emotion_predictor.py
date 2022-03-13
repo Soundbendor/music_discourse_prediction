@@ -40,7 +40,7 @@ def main():
     args = parseargs()
     distribution_strategy, ds_options  = tf_config()
     # load neptune callback for keras
-    callbacks = [init_neptune(args.config), 
+    callbacks = [init_neptune(args.config),
                  ModelCheckpoint(args.model, monitor='loss',
                                  save_weights_only=True, verbose=1,
                                  save_best_only=True, mode='min')]
@@ -71,7 +71,5 @@ def main():
         model.save_weights('r_amg_model_finished')
 
         print("Validating...")
-        model.evaluate(ds.train, verbose=1, callbacks=callbacks)
+        model.evaluate(ds.test, verbose=1, callbacks=callbacks)
 
-    
-    
