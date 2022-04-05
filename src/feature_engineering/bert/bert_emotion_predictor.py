@@ -66,7 +66,7 @@ def main():
                           options=ds_options)
 
     i = 0
-    for x, y in ds.test:
+    for x, y in ds.test.as_numpy_iterator():
         print(x)
         print(y)
         i += 1
