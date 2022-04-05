@@ -79,7 +79,7 @@ def main():
         print("\n\nTesting...")
         # TODO
         y_pred = model.predict(ds.test, verbose=1, callbacks=callbacks)
-        corr = tfp.correlation(y_pred, ds.test)
+        corr = tfp.stats.correlation(y_pred, ds.test)
         print(corr)
         pd.Dataframe(y_pred).to_csv("results.csv")
 
