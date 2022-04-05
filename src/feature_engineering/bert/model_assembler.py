@@ -3,7 +3,6 @@ import tensorflow as tf
 from transformers import TFDistilBertModel
 from transformers import TFDistilBertForSequenceClassification
 from transformers import DistilBertConfig
-from .pearsons_metric import PearsonCorrelation
 
 
 distil_bert = 'distilbert-base-uncased'
@@ -70,7 +69,7 @@ def create_direct_model() -> tf.keras.Model:
     model.compile(
         optimizer=opt,
         loss='mse',
-        metrics=[tf.keras.metrics.RootMeanSquaredError(), PearsonCorrelation()]
+        metrics=[tf.keras.metrics.RootMeanSquaredError()]
     )
     # model.get_layer(name='tf_distil_bert_for_sequence_classification').trainable = False
     return model
