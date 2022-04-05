@@ -4,7 +4,7 @@
 #SBATCH -A cascades
 #SBATCH --job-name=music_emotion_pred
 #SBATCH -t 3-00:00:00
-#SBATCH --gres=gpu:6
+#SBATCH --gres=gpu:5
 #SBATCH --export=ALL
 
 
