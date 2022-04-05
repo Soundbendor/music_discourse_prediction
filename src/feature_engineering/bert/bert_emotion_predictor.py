@@ -65,6 +65,10 @@ def main():
                           batch_size=(64 * get_num_gpus()),
                           options=ds_options)
 
+    for x, y in ds.test:
+        print(x)
+        print(y)
+
     with distribution_strategy.scope():
         model = create_direct_model()
         load_weights(model, args.model)
@@ -79,8 +83,9 @@ def main():
 
         print("\n\nTesting...")
         # TODO
+
         y_pred = model.predict(ds.test, verbose=1, callbacks=callbacks)
-        corr = tfp.stats.correlation(y_pred, ds.test[2])
+        corr = tfp.stats.correlation(y_pred, ds.test)
         print(corr)
         pd.Dataframe(y_pred).to_csv("results.csv")
 
