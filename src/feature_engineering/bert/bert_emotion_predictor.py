@@ -58,7 +58,7 @@ def main():
     rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
     song_df['body'] = song_df['body'].apply(lambda x: rx.sub('', x))
 
-    X, y = song_df.drop(['valence', 'arousal'], axis=1), song_df[['valence' 'arousal']]
+    X, y = song_df.drop(['valence', 'arousal'], axis=1), song_df[['valence', 'arousal']]
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8)
 
