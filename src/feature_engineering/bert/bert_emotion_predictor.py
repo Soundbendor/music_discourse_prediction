@@ -1,6 +1,7 @@
 import argparse
 import re
 import tensorflow as tf
+import tensorflow_probability as tfp
 
 from tensorflow.keras.callbacks import ModelCheckpoint
 
@@ -71,5 +72,11 @@ def main():
                   epochs=args.num_epoch)
         model.save_weights('r_amg_model_finished')
 
-        print("Validating...")
-        model.evaluate(ds.test, verbose=1, callbacks=callbacks)
+        print("\n\nValidating...")
+        model.evaluate(ds.validate, verbose=1, callbacks=callbacks)
+
+        print("\n\nTesting...")
+        # TODO
+        y_pred = model.predict(ds.test, verbose=1, callbacks=callbacks)
+        corr = tfp.correlation(y_pred, ds.test)
+
