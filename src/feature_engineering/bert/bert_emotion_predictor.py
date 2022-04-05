@@ -52,6 +52,7 @@ def main():
     # We shuffle here because tensorflow does not currently support dataset shuffling
     song_df = get_song_df(args.input).sample(frac=1)
 
+
     # Clean strings - remove urls and html tags
     rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
     song_df['body'] = song_df['body'].apply(lambda x: rx.sub('', x))
@@ -79,7 +80,7 @@ def main():
         print("\n\nTesting...")
         # TODO
         y_pred = model.predict(ds.test, verbose=1, callbacks=callbacks)
-        corr = tfp.stats.correlation(y_pred, ds.test)
+        corr = tfp.stats.correlation(y_pred, ds.test[2])
         print(corr)
         pd.Dataframe(y_pred).to_csv("results.csv")
 
