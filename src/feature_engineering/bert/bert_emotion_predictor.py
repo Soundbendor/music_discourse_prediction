@@ -65,12 +65,6 @@ def main():
                           batch_size=(64 * get_num_gpus()),
                           options=ds_options)
 
-    i = 0
-    for x, y in ds.test.as_numpy_iterator():
-        print(x)
-        print(y)
-        i += 1
-
     print(f"total iter: {i}")
 
     with distribution_strategy.scope():
@@ -88,7 +82,9 @@ def main():
         print("\n\nTesting...")
         # TODO
 
-        y_pred = model.predict(ds.test, verbose=1, callbacks=callbacks)
+        preds = model.predict(ds.test, verbose=1, callbacks=callbacks)
+        print(preds)
+        y_pred = [y for y in ds.test.unbatch()]
         corr = tfp.stats.correlation(y_pred, ds.test)
         print(corr)
         pd.Dataframe(y_pred).to_csv("results.csv")
