@@ -65,9 +65,13 @@ def main():
                           batch_size=(64 * get_num_gpus()),
                           options=ds_options)
 
+    i = 0
     for x, y in ds.test:
         print(x)
         print(y)
+        i += 1
+
+    print(f"total iter: {i}")
 
     with distribution_strategy.scope():
         model = create_direct_model()
