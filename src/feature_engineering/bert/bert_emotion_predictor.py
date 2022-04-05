@@ -2,6 +2,7 @@ import argparse
 import re
 import tensorflow as tf
 import tensorflow_probability as tfp
+import pandas as pd
 
 from tensorflow.keras.callbacks import ModelCheckpoint
 
@@ -79,4 +80,6 @@ def main():
         # TODO
         y_pred = model.predict(ds.test, verbose=1, callbacks=callbacks)
         corr = tfp.correlation(y_pred, ds.test)
+        print(corr)
+        pd.Dataframe(y_pred).to_csv("results.csv")
 
