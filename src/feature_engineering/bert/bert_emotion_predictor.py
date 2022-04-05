@@ -5,6 +5,8 @@ import tensorflow_probability as tfp
 import pandas as pd
 
 from tensorflow.keras.callbacks import ModelCheckpoint
+from sklearn.model_selection import train_test_split
+from scipy.stats import pearsonr
 
 from feature_engineering.song_loader import get_song_df
 from .model_assembler import create_direct_model
@@ -56,35 +58,40 @@ def main():
     rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
     song_df['body'] = song_df['body'].apply(lambda x: rx.sub('', x))
 
+    X, y = song_df.drop(['valence', 'arousal'], axis=1), song_df[['valence' 'arousal']]
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8)
+
     # TODO - find optimal token length
-    ds = DiscourseDataSet(song_df,
-                          num_labels=2,
-                          seq_len=128,
-                          test_prop=0.15,
-                          batch_size=(64 * get_num_gpus()),
-                          options=ds_options)
+    # ds = DiscourseDataSet(song_df,
+    #                       num_labels=2,
+    #                       seq_len=128,
+    #                       test_prop=0.15,
+    #                       batch_size=(64 * get_num_gpus()),
+    #                       options=ds_options)
 
     with distribution_strategy.scope():
         model = create_direct_model()
         load_weights(model, args.model)
         print(model.summary())
 
-        model.fit(ds.train, verbose=1, callbacks=callbacks,
+        model.fit(x=X_train, y=y_train, verbose=1, callbacks=callbacks,
                   epochs=args.num_epoch)
         model.save_weights('r_amg_model_finished')
 
-        print("\n\nValidating...")
-        model.evaluate(ds.validate, verbose=1, callbacks=callbacks)
+        # print("\n\nValidating...")
+        # model.evaluate(ds.validate, verbose=1, callbacks=callbacks)
 
         print("\n\nTesting...")
         # TODO
 
-        preds = model.predict(ds.test, verbose=1, callbacks=callbacks)
-        labels = [y.numpy() for _, y in ds.test.unbatch()]
-        print(labels)
-        print(labels[0].shape)
-        print(len(labels))
+        preds = model.predict(X_test, verbose=1, callbacks=callbacks)
+        
+        print(preds)
+
         y_pred = preds
-        corr = tfp.stats.correlation(y_pred, labels)
-        print(corr)
-        pd.DataFrame(y_pred).to_csv("results.csv")
+        valence_corr = pearsonr(y_test[[0]], preds[[0]])
+        arr_corr = pearsonr(y_test[[1]], preds[[1]])
+        print(f"Pearson's Correlation - Valence: {valence_corr}")
+        print(f"Pearson's Correlation - Valence: {arr_corr}")
+
