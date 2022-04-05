@@ -52,7 +52,6 @@ def main():
     # We shuffle here because tensorflow does not currently support dataset shuffling
     song_df = get_song_df(args.input).sample(frac=1)
 
-
     # Clean strings - remove urls and html tags
     rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
     song_df['body'] = song_df['body'].apply(lambda x: rx.sub('', x))
@@ -64,8 +63,6 @@ def main():
                           test_prop=0.15,
                           batch_size=(64 * get_num_gpus()),
                           options=ds_options)
-
-    print(f"total iter: {i}")
 
     with distribution_strategy.scope():
         model = create_direct_model()
