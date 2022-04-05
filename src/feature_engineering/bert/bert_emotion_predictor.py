@@ -81,7 +81,7 @@ def main():
 
         preds = model.predict(ds.test, verbose=1, callbacks=callbacks)
         print(preds)
-        y_pred = [y for y in ds.test.unbatch()]
+        y_pred = [y for _, y in ds.test.unbatch()]
         corr = tfp.stats.correlation(y_pred, ds.test)
         print(corr)
         pd.Dataframe(y_pred).to_csv("results.csv")
