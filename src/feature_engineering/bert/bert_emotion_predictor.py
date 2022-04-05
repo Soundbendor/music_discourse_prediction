@@ -1,7 +1,8 @@
 import argparse
 import re
+import numpy as np
+import transformers
 import tensorflow as tf
-import tensorflow_probability as tfp
 import pandas as pd
 
 from tensorflow.keras.callbacks import ModelCheckpoint
@@ -10,9 +11,10 @@ from scipy.stats import pearsonr
 
 from feature_engineering.song_loader import get_song_df
 from .model_assembler import create_direct_model
-from .discourse_dataset import DiscourseDataSet
+from transformers import DistilBertTokenizer
 from .tf_configurator import get_num_gpus, init_neptune, tf_config
 
+distil_bert = 'distilbert-base-uncased'
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -59,8 +61,9 @@ def main():
     song_df['body'] = song_df['body'].apply(lambda x: rx.sub('', x))
 
     X, y = song_df.drop(['valence', 'arousal'], axis=1), song_df[['valence', 'arousal']]
+    X = generate_embeddings(X)
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8)
+    X_train, X_test, y_train, y_test = train_test_split(X, y.values, train_size=0.8)
 
     # TODO - find optimal token length
     # ds = DiscourseDataSet(song_df,
@@ -75,7 +78,7 @@ def main():
         load_weights(model, args.model)
         print(model.summary())
 
-        model.fit(x=X_train, y=y_train, verbose=1, callbacks=callbacks,
+        model.fit(x=np.asarray(X_train[['input_token', 'masked_token']]).astype('int'), y=y_train, verbose=1, callbacks=callbacks,
                   epochs=args.num_epoch)
         model.save_weights('r_amg_model_finished')
 
@@ -86,12 +89,34 @@ def main():
         # TODO
 
         preds = model.predict(X_test, verbose=1, callbacks=callbacks)
-        
         print(preds)
-
-        y_pred = preds
         valence_corr = pearsonr(y_test[[0]], preds[[0]])
         arr_corr = pearsonr(y_test[[1]], preds[[1]])
         print(f"Pearson's Correlation - Valence: {valence_corr}")
         print(f"Pearson's Correlation - Valence: {arr_corr}")
 
+
+def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
+    return tokenizer(list(comments),
+                     add_special_tokens=True,
+                     return_attention_mask=True,
+                     return_token_type_ids=False,
+                     max_length=128,
+                     padding='max_length',
+                     truncation=True,
+                     return_tensors='np')
+
+
+def generate_embeddings(df: pd.DataFrame) -> tf.data.Dataset:
+    tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
+                                                    do_lower_case=True,
+                                                    add_special_tokens=True,
+                                                    max_length=128,
+                                                    padding='max_length',
+                                                    truncate=True,
+                                                    padding_side='right')
+
+    encodings = tokenize(df['body'], tokenizer)
+    df['input_token'] = encodings['input_ids']
+    df['masked_token'] = encodings['attention_mask']
+    return df
