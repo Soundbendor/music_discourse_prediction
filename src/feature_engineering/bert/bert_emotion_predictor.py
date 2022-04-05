@@ -79,9 +79,12 @@ def main():
         print("\n\nTesting...")
         # TODO
 
-        preds = model.predict(ds.test.unbatch(), verbose=1, callbacks=callbacks)
-        labels = [y for _, y in ds.test.unbatch()]
-        y_pred = [y for _, y in preds]
+        preds = model.predict(ds.test, verbose=1, callbacks=callbacks)
+        labels = [y.numpy() for _, y in ds.test.unbatch()]
+        print(labels)
+        print(labels[0].shape)
+        print(len(labels))
+        y_pred = preds
         corr = tfp.stats.correlation(y_pred, labels)
         print(corr)
-        pd.Dataframe(y_pred).to_csv("results.csv")
+        pd.DataFrame(y_pred).to_csv("results.csv")
