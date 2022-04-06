@@ -89,7 +89,7 @@ def main():
         print("\n\nTesting...")
         # TODO
         test_inputs = [np.asarray(x).astype('int') for x in [X_test['input_token'], X_test['masked_token']]]
-        preds = model.predict(inputs=test_inputs, y=y_test, batch_size=(64 * get_num_gpus()) verbose=1, callbacks=callbacks)
+        preds = model.predict(inputs=test_inputs, y=y_test, batch_size=(64 * get_num_gpus()), verbose=1, callbacks=callbacks)
         print(preds)
         valence_corr = pearsonr(y_test[[0]], preds[[0]])
         arr_corr = pearsonr(y_test[[1]], preds[[1]])
