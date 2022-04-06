@@ -118,6 +118,6 @@ def generate_embeddings(df: pd.DataFrame) -> tf.data.Dataset:
                                                     padding_side='right')
 
     encodings = tokenize(df['body'], tokenizer)
-    df['input_token'] = [np.asarray(x).astype('int') for x in encodings['input_ids']]
-    df['masked_token'] = [np.asarray(x).astype('int') for x in encodings['attention_mask']]
+    df['input_token'] = [np.array(x).astype('int') for x in encodings['input_ids']]
+    df['masked_token'] = [np.array(x).astype('int') for x in encodings['attention_mask']]
     return df
