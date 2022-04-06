@@ -78,7 +78,8 @@ def main():
         load_weights(model, args.model)
         print(model.summary())
 
-        model.fit(x=np.asarray(X_train[['input_token', 'masked_token']]).astype('int'), y=y_train, verbose=1, callbacks=callbacks,
+        inputs = [np.asarray(x).astype('int') for x in [X_train['input_token'], X_train['masked_token']]]
+        model.fit(inputs=inputs, y=y_train, verbose=1, batch_size=(64 * get_num_gpus()), callbacks=callbacks,
                   epochs=args.num_epoch)
         model.save_weights('r_amg_model_finished')
 
