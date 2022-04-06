@@ -78,7 +78,7 @@ def main():
         load_weights(model, args.model)
         print(model.summary())
 
-        train_inputs = [np.asarray(x.to_numpy()) for x in [X_train['input_token'], X_train['masked_token']]]
+        train_inputs = [x.to_numpy() for x in [X_train['input_token'], X_train['masked_token']]]
         model.fit(x=train_inputs, y=y_train, verbose=1, batch_size=(64 * get_num_gpus()), callbacks=callbacks,
                   epochs=args.num_epoch)
         model.save_weights('r_amg_model_finished')
@@ -88,7 +88,7 @@ def main():
 
         print("\n\nTesting...")
         # TODO
-        test_inputs = [np.asarray(x.to_numpy()) for x in [X_test['input_token'], X_test['masked_token']]]
+        test_inputs = [x.to_numpy() for x in [X_test['input_token'], X_test['masked_token']]]
         preds = model.predict(x=test_inputs, y=y_test, batch_size=(64 * get_num_gpus()), verbose=1, callbacks=callbacks)
         print(preds)
         valence_corr = pearsonr(y_test[[0]], preds[[0]])
