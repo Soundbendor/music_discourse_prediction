@@ -1,2 +1,2 @@
-model_checkpoint_path: "r_amg_model_finished"
-all_model_checkpoint_paths: "r_amg_model_finished"
+model_checkpoint_path: "test_model"
+all_model_checkpoint_paths: "test_model"

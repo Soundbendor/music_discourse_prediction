@@ -1,25 +1,24 @@
 import argparse
-import re
-import numpy as np
-import transformers
+import os
 import tensorflow as tf
-import pandas as pd
+import neptune.new as neptune
 
+from dotenv import load_dotenv
 from tensorflow.keras.callbacks import ModelCheckpoint
-from sklearn.model_selection import train_test_split
 from scipy.stats import pearsonr
-
 from feature_engineering.song_loader import get_song_df
-from .model_assembler import create_direct_model
-from transformers import DistilBertTokenizer
-from .tf_configurator import get_num_gpus, init_neptune, tf_config
+from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 
-distil_bert = 'distilbert-base-uncased'
+from .discourse_dataset import DiscourseDataSet, generate_embeddings
+from .model_assembler import create_model
+
+SEQ_LEN = 128
+BATCH_SIZE = 64
+
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Feature extraction for social media sentiment using BERT."
-    )
+        description="Feature extraction for social media sentiment using BERT.")
     parser.add_argument('-i', '--input_dir', dest='input', type=str,
                         help="Path to the directory storing the JSON files for social media data.")
     parser.add_argument('--source', required=True, type=str, dest='sm_type',
@@ -27,8 +26,6 @@ def parseargs() -> argparse.Namespace:
             Valid options are [Twitter, Youtube, Reddit, Lyrics].")
     parser.add_argument('--dataset', type=str, dest='dataset', required=True,
                         help="Name of the dataset which the comments represent")
-    parser.add_argument('-c', '--config', type=str, dest='config', required=True,
-                        help="Credentials file for Neptune.AI")
     parser.add_argument('-m', '--model', type=str, dest='model', required=True,
                         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
     parser.add_argument('--num_epoch', type=int, default=50, dest='num_epoch',
@@ -43,81 +40,62 @@ def load_weights(model: tf.keras.Model, path: str):
         print("Model checkpoint invalid. Opening new model.")
 
 
+def get_num_gpus() -> int:
+    return len(tf.config.list_physical_devices('GPU'))
+
+
+def init_neptune():
+    load_dotenv()
+    runtime = neptune.init(project=os.getenv('NEPTUNE_PROJECT_ID'),
+                           api_token=os.getenv('NEPTUNE_API_TOKEN'))
+    return NeptuneCallback(run=runtime, base_namespace='metrics')
+
+
 def main():
     args = parseargs()
-    distribution_strategy, ds_options = tf_config()
     # load neptune callback for keras
-    callbacks = [init_neptune(args.config),
+    callbacks = [init_neptune(),
                  ModelCheckpoint(args.model, monitor='loss',
                                  save_weights_only=True, verbose=1,
                                  save_best_only=True, mode='min')]
 
     # Load our data from JSONs and randomize the dataset
     # We shuffle here because tensorflow does not currently support dataset shuffling
-    song_df = get_song_df(args.input).sample(frac=1)
+    song_df = get_song_df(args.input)
 
-    # Clean strings - remove urls and html tags
-    rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
-    song_df['body'] = song_df['body'].apply(lambda x: rx.sub('', x))
+    ds = DiscourseDataSet(song_df, t_prop=0.15)
 
-    X, y = song_df.drop(['valence', 'arousal'], axis=1), song_df[['valence', 'arousal']]
-    X = generate_embeddings(X)
-
-    X_train, X_test, y_train, y_test = train_test_split(X, y.values, train_size=0.8)
-
-    # TODO - find optimal token length
-    # ds = DiscourseDataSet(song_df,
-    #                       num_labels=2,
-    #                       seq_len=128,
-    #                       test_prop=0.15,
-    #                       batch_size=(64 * get_num_gpus()),
-    #                       options=ds_options)
-
-    with distribution_strategy.scope():
-        model = create_direct_model()
+    with tf.distribute.MultiWorkerMirroredStrategy().scope():
+        model = create_model()
         load_weights(model, args.model)
         print(model.summary())
 
-        train_inputs = [x.to_numpy() for x in [X_train['input_token'], X_train['masked_token']]]
-        model.fit(x=train_inputs, y=y_train, verbose=1, batch_size=(64 * get_num_gpus()), callbacks=callbacks,
-                  epochs=args.num_epoch)
-        model.save_weights('r_amg_model_finished')
+        print(ds.X_train)
+        print(ds.X_train.shape)
+        print(ds.y_train)
+        print(ds.y_train.shape)
 
-        # print("\n\nValidating...")
-        # model.evaluate(ds.validate, verbose=1, callbacks=callbacks)
+        model.fit(x=generate_embeddings(ds.X_train, SEQ_LEN),
+                  y=ds.y_train,
+                  verbose=1,
+                  batch_size=(BATCH_SIZE * get_num_gpus()),
+                  callbacks=callbacks,
+                  epochs=args.num_epoch)
 
         print("\n\nTesting...")
-        # TODO
-        test_inputs = [x.to_numpy() for x in [X_test['input_token'], X_test['masked_token']]]
-        preds = model.predict(x=test_inputs, y=y_test, batch_size=(64 * get_num_gpus()), verbose=1, callbacks=callbacks)
-        print(preds)
-        valence_corr = pearsonr(y_test[[0]], preds[[0]])
-        arr_corr = pearsonr(y_test[[1]], preds[[1]])
+        y_pred = model.predict(x=generate_embeddings(ds.X_test, SEQ_LEN),
+                               batch_size=(BATCH_SIZE * get_num_gpus()),
+                               verbose=1,
+                               callbacks=callbacks)
+
+        print(y_pred)
+        print(y_pred.shape)
+
+        print(ds.X_test)
+        print(ds.y_test)
+        print(ds.y_test.shape)
+        
+        valence_corr = pearsonr(ds.y_test[:, 0], y_pred[:, 0])
+        arr_corr = pearsonr(ds.y_test[:, 1], y_pred[:, 1])
         print(f"Pearson's Correlation - Valence: {valence_corr}")
-        print(f"Pearson's Correlation - Valence: {arr_corr}")
-
-
-def tokenize(comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
-    return tokenizer(list(comments),
-                     add_special_tokens=True,
-                     return_attention_mask=True,
-                     return_token_type_ids=False,
-                     max_length=128,
-                     padding='max_length',
-                     truncation=True,
-                     return_tensors='np')
-
-
-def generate_embeddings(df: pd.DataFrame) -> tf.data.Dataset:
-    tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
-                                                    do_lower_case=True,
-                                                    add_special_tokens=True,
-                                                    max_length=128,
-                                                    padding='max_length',
-                                                    truncate=True,
-                                                    padding_side='right')
-
-    encodings = tokenize(df['body'], tokenizer)
-    df['input_token'] = [np.array(x).astype('int') for x in encodings['input_ids']]
-    df['masked_token'] = [np.array(x).astype('int') for x in encodings['attention_mask']]
-    return df
+        print(f"Pearson's Correlation - Arousal: {arr_corr}")

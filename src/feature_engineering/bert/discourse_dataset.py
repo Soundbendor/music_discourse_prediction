@@ -1,54 +1,57 @@
 import transformers
-import tensorflow as tf
 import pandas as pd
+import numpy as np
+import re
 
-from tensorflow.data import Dataset as TFDataset
-from typing import Tuple
-from transformers import DistilBertTokenizer
+from sklearn.model_selection import train_test_split
+from transformers import DistilBertTokenizerFast
 
 distil_bert = 'distilbert-base-uncased'
 
 
-class DiscourseDataSet:
+def _tokenize(comments: pd.Series, tokenizer, seq_len: int) -> transformers.BatchEncoding:
+    return tokenizer(list(comments),
+                     add_special_tokens=True,
+                     return_attention_mask=True,
+                     return_token_type_ids=False,
+                     max_length=seq_len,
+                     padding='max_length',
+                     truncation=True,
+                     return_tensors='tf')
 
-    def __init__(self, df: pd.DataFrame, num_labels: int, seq_len: int, test_prop: float, batch_size: int, options: tf.data.Options) -> None:
-        self.num_labels = num_labels
-        self.seq_len = seq_len
-        self.test_prop = test_prop
-        self.batch_size = batch_size
-        self.options = options
-        self.train, self.test, self.validate = self._to_datasets(df)
 
-    def _to_datasets(self, df: pd.DataFrame) -> Tuple[TFDataset, TFDataset, TFDataset]:
-        ds = self._generate_embeddings(df)
-        ds_train = ds.skip(int(2*(df.shape[0] * self.test_prop)))
-        # we derive validation and test from holdout - this is a temp variable
-        ds_holdout = ds.take(int(2*(df.shape[0] * self.test_prop)))
-        ds_test, ds_validate = ds_holdout.shard(2, 0), ds_holdout.shard(2, 1)
-        # IMPORTANT: MUST drop remainder in order to prevent segfault when training with multiple GPUs + cuDNN kernel function
-        return tuple(map(lambda x: x.batch(self.batch_size, drop_remainder=True).with_options(self.options), [ds_train, ds_test, ds_validate]))
-
-    def _tokenize(self, comments: pd.Series, tokenizer) -> transformers.BatchEncoding:
-        return tokenizer(list(comments),
-                         add_special_tokens=True,
-                         return_attention_mask=True,
-                         return_token_type_ids=False,
-                         max_length=self.seq_len,
-                         padding='max_length',
-                         truncation=True,
-                         return_tensors='tf')
-
-    def _generate_embeddings(self, df: pd.DataFrame) -> tf.data.Dataset:
-        tokenizer = DistilBertTokenizer.from_pretrained(distil_bert,
+def generate_embeddings(df: pd.DataFrame, seq_len: int) -> dict:
+    tokenizer = DistilBertTokenizerFast.from_pretrained(distil_bert,
                                                         do_lower_case=True,
                                                         add_special_tokens=True,
-                                                        max_length=self.seq_len,
+                                                        max_length=seq_len,
                                                         padding='max_length',
                                                         truncate=True,
                                                         padding_side='right')
 
-        encodings = self._tokenize(df['body'], tokenizer)
-        return tf.data.Dataset.from_tensor_slices(({
-            'input_token': encodings['input_ids'],
-            'masked_token': encodings['attention_mask']},
-            tf.constant((df[['valence', 'arousal']].values).astype('float32'))))
+    encodings = _tokenize(df['body'], tokenizer, seq_len)
+    return {'input_token': encodings['input_ids'],
+            'masked_token': encodings['attention_mask']}
+
+
+class DiscourseDataSet:
+    def __init__(self, df: pd.DataFrame, t_prop: float):
+        self.df = self._clean_str(df)
+        self.X = df.drop(['valence', 'arousal'], axis=1)
+        self.y = df[['valence', 'arousal']]
+        self.X_train, self.X_test, self.y_train, self.y_test = self._split_data(self.X,
+                                                                                self.y,
+                                                                                train_size=t_prop)
+
+    # NOTE - ONLY cleans comment bodies. Adapt to post titles if needed.
+    def _clean_str(self, df: pd.DataFrame):
+        rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
+        df['body'] = df['body'].apply(lambda x: rx.sub('', x))
+        return df
+
+    def _split_data(self, X, y, train_size):
+        X_train, X_test, y_train, y_test = train_test_split(X, y.values, train_size=train_size)
+        return X_train, X_test, self._convert_labels(y_train), self._convert_labels(y_test)
+
+    def _convert_labels(self, a):
+        return np.asarray(a).astype('float32')
