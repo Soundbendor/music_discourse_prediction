@@ -88,13 +88,6 @@ def main():
                                verbose=1,
                                callbacks=callbacks)
 
-        print(y_pred)
-        print(y_pred.shape)
-
-        print(ds.X_test)
-        print(ds.y_test)
-        print(ds.y_test.shape)
-        
         valence_corr = pearsonr(ds.y_test[:, 0], y_pred[:, 0])
         arr_corr = pearsonr(ds.y_test[:, 1], y_pred[:, 1])
         print(f"Pearson's Correlation - Valence: {valence_corr}")
