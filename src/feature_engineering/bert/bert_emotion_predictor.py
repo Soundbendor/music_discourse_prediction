@@ -114,8 +114,8 @@ def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str
     m, b = np.polyfit(df[x_key], df[y_key], 1)
     plt.plot(df[x_key], m*df[x_key]+b, 'r:', alpha=0.2, linewidth=2)
     fig.suptitle(title)
-    fig.xlabel(x_key)
-    fig.ylabel(y_key)
+    plt.xlabel(x_key)
+    plt.ylabel(y_key)
     fig.savefig(fname)
     plt.clf()
 
