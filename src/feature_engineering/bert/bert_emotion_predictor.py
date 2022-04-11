@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import tensorflow as tf
 import neptune.new as neptune
+import matplotlib.pyplot as plt
 
 from dotenv import load_dotenv
 from tensorflow.keras.callbacks import ModelCheckpoint
@@ -89,6 +90,7 @@ def main():
         arr_corr = pearsonr(ds.y_test[:, 1], y_pred[:, 1])
         print(f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
         print(f"Pearson's Correlation (comment level) - Arousal: {arr_corr}")
+        
         aggregate_predictions(ds.X_test, ds.y_test, y_pred)
  
 
@@ -97,9 +99,17 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     X['arousal'] = y[:, 1]
     X['val_pred'] = pred[:, 0]
     X['aro_pred'] = pred[:, 1]
+    X.to_csv("Song-level-predictions-amg.csv")
     results = X.groupby(['song_name'])[['valence', 'arousal', 'val_pred', 'aro_pred']].mean()
     valence_corr = pearsonr(results['valence'], results['val_pred'])
     arr_corr = pearsonr(results['arousal'], results['aro_pred'])
     print(f"Pearson's Correlation (song level) - Valence: {valence_corr}")
     print(f"Pearson's Correlation (song level) - Arousal: {arr_corr}")
+    scatterplot(X, 'valence', 'val_pred', 'valence_scatter')
+    scatterplot(X, 'arousal', 'aro_pred', 'arousal_scatter')
+
+def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str) -> None:
+    plt.scatter(x = df[x_key], y = df[y_key])
+    plt.savefig(fname)
+    plt.clf()
 
