@@ -99,17 +99,21 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     X['arousal'] = y[:, 1]
     X['val_pred'] = pred[:, 0]
     X['aro_pred'] = pred[:, 1]
-    X.to_csv("Song-level-predictions-amg.csv")
     results = X.groupby(['song_name'])[['valence', 'arousal', 'val_pred', 'aro_pred']].mean()
+    results.to_csv("Song-level-predictions-amg.csv")
     valence_corr = pearsonr(results['valence'], results['val_pred'])
     arr_corr = pearsonr(results['arousal'], results['aro_pred'])
     print(f"Pearson's Correlation (song level) - Valence: {valence_corr}")
     print(f"Pearson's Correlation (song level) - Arousal: {arr_corr}")
-    scatterplot(X, 'valence', 'val_pred', 'valence_scatter')
-    scatterplot(X, 'arousal', 'aro_pred', 'arousal_scatter')
+    scatterplot(results, 'valence', 'val_pred', 'valence_scatter')
+    scatterplot(results, 'arousal', 'aro_pred', 'arousal_scatter')
 
-def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str) -> None:
+def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str) -> None:
+    fig = plt.figure()
     plt.scatter(x = df[x_key], y = df[y_key], alpha=0.5, s = 10)
-    plt.savefig(fname)
+    fig.suptitle(title)
+    fig.xlabel(x_key)
+    fig.ylabel(y_key)
+    fig.savefig(fname)
     plt.clf()
 
