@@ -41,7 +41,7 @@ class DiscourseDataSet:
         self.y = df[['valence', 'arousal']]
         self.X_train, self.X_test, self.y_train, self.y_test = self._split_data(self.X,
                                                                                 self.y,
-                                                                                train_size=t_prop)
+                                                                                test_size=t_prop)
 
     # NOTE - ONLY cleans comment bodies. Adapt to post titles if needed.
     def _clean_str(self, df: pd.DataFrame):
@@ -49,8 +49,8 @@ class DiscourseDataSet:
         df['body'] = df['body'].apply(lambda x: rx.sub('', x))
         return df
 
-    def _split_data(self, X, y, train_size):
-        X_train, X_test, y_train, y_test = train_test_split(X, y.values, train_size=train_size)
+    def _split_data(self, X, y, test_size):
+        X_train, X_test, y_train, y_test = train_test_split(X, y.values, test_size=test_size)
         return X_train, X_test, self._convert_labels(y_train), self._convert_labels(y_test)
 
     def _convert_labels(self, a):
