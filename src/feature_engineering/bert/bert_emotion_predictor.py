@@ -1,5 +1,7 @@
 import argparse
 import os
+import pandas as pd
+import numpy as np
 import tensorflow as tf
 import neptune.new as neptune
 
@@ -74,6 +76,7 @@ def main():
         print(ds.X_train.shape)
         print(ds.y_train)
         print(ds.y_train.shape)
+        print(ds.y_test.shape)
 
         model.fit(x=generate_embeddings(ds.X_train, SEQ_LEN),
                   y=ds.y_train,
@@ -90,5 +93,19 @@ def main():
 
         valence_corr = pearsonr(ds.y_test[:, 0], y_pred[:, 0])
         arr_corr = pearsonr(ds.y_test[:, 1], y_pred[:, 1])
-        print(f"Pearson's Correlation - Valence: {valence_corr}")
-        print(f"Pearson's Correlation - Arousal: {arr_corr}")
+        print(f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
+        print(f"Pearson's Correlation (comment level) - Arousal: {arr_corr}")
+        aggregate_predictions(ds.X_test, ds.y_test, y_pred)
+ 
+
+def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
+    X['valence'] = y[:, 0]
+    X['arousal'] = y[:, 1]
+    X['val_pred'] = pred[:, 0]
+    X['aro_pred'] = pred[:, 0]
+    results = X.groupby(['song_name'])[['valence', 'arousal', 'val_pred', 'aro_pred']].mean()
+    valence_corr = pearsonr(results['valence'], results['val_pred'])
+    arr_corr = pearsonr(results['arousal'], results['aro_pred'])
+    print(f"Pearson's Correlation (song level) - Valence: {valence_corr}")
+    print(f"Pearson's Correlation (song level) - Arousal: {arr_corr}")
+
