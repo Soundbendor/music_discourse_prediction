@@ -105,8 +105,8 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     arr_corr = pearsonr(results['arousal'], results['aro_pred'])
     print(f"Pearson's Correlation (song level) - Valence: {valence_corr}")
     print(f"Pearson's Correlation (song level) - Arousal: {arr_corr}")
-    scatterplot(results, 'valence', 'val_pred', 'valence_scatter')
-    scatterplot(results, 'arousal', 'aro_pred', 'arousal_scatter')
+    scatterplot(results, 'valence', 'val_pred', 'valence_scatter', 'Valence')
+    scatterplot(results, 'arousal', 'aro_pred', 'arousal_scatter', 'Arousal')
 
 def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str) -> None:
     fig = plt.figure()
