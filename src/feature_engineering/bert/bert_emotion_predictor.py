@@ -72,12 +72,6 @@ def main():
         load_weights(model, args.model)
         print(model.summary())
 
-        print(ds.X_train)
-        print(ds.X_train.shape)
-        print(ds.y_train)
-        print(ds.y_train.shape)
-        print(ds.y_test.shape)
-
         model.fit(x=generate_embeddings(ds.X_train, SEQ_LEN),
                   y=ds.y_train,
                   verbose=1,
@@ -102,7 +96,7 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     X['valence'] = y[:, 0]
     X['arousal'] = y[:, 1]
     X['val_pred'] = pred[:, 0]
-    X['aro_pred'] = pred[:, 0]
+    X['aro_pred'] = pred[:, 1]
     results = X.groupby(['song_name'])[['valence', 'arousal', 'val_pred', 'aro_pred']].mean()
     valence_corr = pearsonr(results['valence'], results['val_pred'])
     arr_corr = pearsonr(results['arousal'], results['aro_pred'])
