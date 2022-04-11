@@ -109,7 +109,7 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     scatterplot(X, 'arousal', 'aro_pred', 'arousal_scatter')
 
 def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str) -> None:
-    plt.scatter(x = df[x_key], y = df[y_key])
+    plt.scatter(x = df[x_key], y = df[y_key], alpha=0.5, s = 10)
     plt.savefig(fname)
     plt.clf()
 
