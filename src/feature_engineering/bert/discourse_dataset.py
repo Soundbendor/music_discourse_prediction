@@ -4,6 +4,7 @@ import numpy as np
 import re
 
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 from transformers import DistilBertTokenizerFast
 
 distil_bert = 'distilbert-base-uncased'
@@ -54,4 +55,6 @@ class DiscourseDataSet:
         return X_train, X_test, self._convert_labels(y_train), self._convert_labels(y_test)
 
     def _convert_labels(self, a):
+        scaler = MinMaxScaler(feature_range=(0,1))
+        a = scaler.fit_transform(a)
         return np.asarray(a).astype('float32')
