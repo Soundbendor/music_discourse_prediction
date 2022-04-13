@@ -12,4 +12,4 @@
 #export LD_LIBRARY_PATH=/nfs/guille/eecs_research/soundbendor/beerya/cuda/lib64/
 source /nfs/guille/eecs_research/soundbendor/beerya/miniconda3/bin/activate
 source activate mdp
-bert_features -i /nfs/guille/eecs_research/soundbendor/music_discourse/reddit/AMG1608 --source Reddit --dataset AMG1608 -m reddit_amg_model --num_epoch 1
+bert_features -i /nfs/guille/eecs_research/soundbendor/music_discourse/reddit/AMG1608 --source Reddit --dataset AMG1608 -m reddit_amg_model --num_epoch 15
