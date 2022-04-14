@@ -50,10 +50,10 @@ class DiscourseDataSet:
 
     def _split_data(self, df: pd.DataFrame, test_size):
         np.random.seed(RAND_SEED)
-        ids = df['Song Title'].unique()
+        ids = df['song_name'].unique()
         test_indices = np.random.choice(ids, size=(len(ids) * test_size), replace=False)
-        test_subset = df.loc[df['Song Title'].isin(ids)]
-        train_subset = df.loc[~df['Song Title'].isin(ids)]
+        test_subset = df.loc[df['song_name'].isin(test_indices)]
+        train_subset = df.loc[~df['song_name'].isin(test_indices)]
         print(test_subset.shape)
         print(train_subset.shape)
         return train_subset.drop(['Valence', 'Arousal'], axis=1), test_subset.drop(['Valence', 'Arousal'], axis=1), self._convert_labels(train_subset['Valence', 'Arousal']), self._convert_labels(test_subset['Valence', 'Arousal'])
