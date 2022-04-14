@@ -8,7 +8,7 @@ from sklearn.preprocessing import MinMaxScaler
 from transformers import DistilBertTokenizerFast
 
 distil_bert = 'distilbert-base-uncased'
-
+RAND_SEED = 128
 
 def _tokenize(comments: pd.Series, tokenizer, seq_len: int) -> transformers.BatchEncoding:
     return tokenizer(list(comments),
@@ -38,10 +38,8 @@ def generate_embeddings(df: pd.DataFrame, seq_len: int) -> dict:
 class DiscourseDataSet:
     def __init__(self, df: pd.DataFrame, t_prop: float):
         self.df = self._clean_str(df)
-        self.X = df.drop(['valence', 'arousal'], axis=1)
-        self.y = df[['valence', 'arousal']]
-        self.X_train, self.X_test, self.y_train, self.y_test = self._split_data(self.X,
-                                                                                self.y,
+        # TODO - introduce validation subset
+        self.X_train, self.X_test, self.y_train, self.y_test = self._split_data(self.df,
                                                                                 test_size=t_prop)
 
     # NOTE - ONLY cleans comment bodies. Adapt to post titles if needed.
@@ -50,7 +48,13 @@ class DiscourseDataSet:
         df['body'] = df['body'].apply(lambda x: rx.sub('', x))
         return df
 
-    def _split_data(self, X, y, test_size):
+    def _split_data(self, df: pd.DataFrame, test_size):
+        np.random.seed(RAND_SEED)
+        ids = df['Song Title'].unique()
+        test_indices = np.random.choice(ids, size=(len(ids) * test_size), replace=False)
+        test_subset = df.loc[df['Song Title'].isin(ids)]
+        train_subset = df.loc[~df['Song Title'].isin(ids)]
+        print(test_subset.)
         X_train, X_test, y_train, y_test = train_test_split(X, y.values, test_size=test_size)
         return X_train, X_test, self._convert_labels(y_train), self._convert_labels(y_test)
 
