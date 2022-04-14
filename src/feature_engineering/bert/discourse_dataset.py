@@ -54,9 +54,9 @@ class DiscourseDataSet:
         test_indices = np.random.choice(ids, size=(len(ids) * test_size), replace=False)
         test_subset = df.loc[df['Song Title'].isin(ids)]
         train_subset = df.loc[~df['Song Title'].isin(ids)]
-        print(test_subset.)
-        X_train, X_test, y_train, y_test = train_test_split(X, y.values, test_size=test_size)
-        return X_train, X_test, self._convert_labels(y_train), self._convert_labels(y_test)
+        print(test_subset.shape)
+        print(train_subset.shape)
+        return train_subset.drop(['Valence', 'Arousal'], axis=1), test_subset.drop(['Valence', 'Arousal'], axis=1), self._convert_labels(train_subset['Valence', 'Arousal']), self._convert_labels(test_subset['Valence', 'Arousal'])
 
     def _convert_labels(self, a):
         scaler = MinMaxScaler(feature_range=(0,1))
