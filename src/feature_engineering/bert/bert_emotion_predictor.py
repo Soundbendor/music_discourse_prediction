@@ -99,6 +99,7 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     X['arousal'] = y[:, 1]
     X['val_pred'] = pred[:, 0]
     X['aro_pred'] = pred[:, 1]
+    print(X[['valence', 'arousal', 'val_pred', 'aro_pred']].describe())
     results = X.groupby(['song_name'])[['valence', 'arousal', 'val_pred', 'aro_pred']].mean()
     results.to_csv("Song-level-predictions-amg.csv")
     valence_corr = pearsonr(results['valence'], results['val_pred'])
