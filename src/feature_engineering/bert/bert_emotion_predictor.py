@@ -47,17 +47,13 @@ def get_num_gpus() -> int:
     return len(tf.config.list_physical_devices('GPU'))
 
 
-def init_neptune():
-    load_dotenv()
-    runtime = neptune.init(project=os.getenv('NEPTUNE_PROJECT_ID'),
-                           api_token=os.getenv('NEPTUNE_API_TOKEN'))
-    return NeptuneCallback(run=runtime, base_namespace='metrics')
-
-
 def main():
     args = parseargs()
+    load_dotenv()
     # load neptune callback for keras
-    callbacks = [init_neptune(),
+    neptune_runtime = neptune.init(project=os.getenv('NEPTUNE_PROJECT_ID'),
+                                   api_token=os.getenv('NEPTUNE_API_TOKEN'))
+    callbacks = [NeptuneCallback(run=neptune_runtime, base_namespace='metrics'),
                  ModelCheckpoint(args.model, monitor='loss',
                                  save_weights_only=True, verbose=1,
                                  save_best_only=True, mode='min')]
@@ -89,14 +85,13 @@ def main():
 
         valence_corr = pearsonr(ds.y_test[:, 0], y_pred[:, 0])
         arr_corr = pearsonr(ds.y_test[:, 1], y_pred[:, 1])
-        print(
-            f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
+        print(f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
         print(f"Pearson's Correlation (comment level) - Arousal: {arr_corr}")
 
-        aggregate_predictions(ds.X_test, ds.y_test, y_pred)
+        aggregate_predictions(ds.X_test, ds.y_test, y_pred, neptune_runtime)
 
 
-def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
+def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run: neptune.Run):
     X['valence'] = y[:, 0]
     X['arousal'] = y[:, 1]
     X['val_pred'] = pred[:, 0]
@@ -109,11 +104,11 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     arr_corr = pearsonr(results['arousal'], results['aro_pred'])
     print(f"Pearson's Correlation (song level) - Valence: {valence_corr}")
     print(f"Pearson's Correlation (song level) - Arousal: {arr_corr}")
-    scatterplot(results, 'valence', 'val_pred', 'valence_scatter', 'Valence')
-    scatterplot(results, 'arousal', 'aro_pred', 'arousal_scatter', 'Arousal')
+    scatterplot(results, 'valence', 'val_pred', 'valence_scatter', 'Valence', run)
+    scatterplot(results, 'arousal', 'aro_pred', 'arousal_scatter', 'Arousal', run)
 
 
-def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str) -> None:
+def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str, run: neptune.Run) -> None:
     fig = plt.figure()
     plt.scatter(x=df[x_key], y=df[y_key], alpha=0.5, s=10)
     m, b = np.polyfit(df[x_key], df[y_key], 1)
@@ -121,5 +116,6 @@ def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str
     fig.suptitle(title)
     plt.xlabel(x_key)
     plt.ylabel(y_key)
+    run[title].log(fig)
     fig.savefig(fname)
     plt.clf()
