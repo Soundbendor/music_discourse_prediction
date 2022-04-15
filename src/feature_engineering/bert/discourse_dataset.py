@@ -11,6 +11,7 @@ from transformers import DistilBertTokenizerFast
 distil_bert = 'distilbert-base-uncased'
 RAND_SEED = 128
 
+
 def _tokenize(comments: pd.Series, tokenizer, seq_len: int) -> transformers.BatchEncoding:
     return tokenizer(list(comments),
                      add_special_tokens=True,
