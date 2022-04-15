@@ -56,7 +56,7 @@ class DiscourseDataSet:
         train_subset = df.loc[~df['song_name'].isin(test_indices)]
         print(test_subset.shape)
         print(train_subset.shape)
-        return train_subset.drop(['valence', 'arousal'], axis=1), test_subset.drop(['valence', 'arousal'], axis=1), self._convert_labels(train_subset['valence', 'arousal']), self._convert_labels(test_subset['valence', 'arousal'])
+        return train_subset.drop(['valence', 'arousal'], axis=1), test_subset.drop(['valence', 'arousal'], axis=1), self._convert_labels(train_subset[['valence', 'arousal']]), self._convert_labels(test_subset[['valence', 'arousal']])
 
     def _convert_labels(self, a):
         scaler = MinMaxScaler(feature_range=(0,1))
