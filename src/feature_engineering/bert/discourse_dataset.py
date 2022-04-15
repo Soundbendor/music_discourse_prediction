@@ -1,3 +1,4 @@
+from typing import Tuple
 import transformers
 import pandas as pd
 import numpy as np
@@ -39,8 +40,12 @@ class DiscourseDataSet:
     def __init__(self, df: pd.DataFrame, t_prop: float):
         self.df = self._clean_str(df)
         # TODO - introduce validation subset
-        self.X_train, self.X_val, self.X_test, self.y_train, self.y_val, self.y_test = self._split_data(self.df,
-                                                                                                        test_size=t_prop)
+        self.X_train,\
+            self.X_val,\
+            self.X_test,\
+            self.y_train,\
+            self.y_val,\
+            self.y_test = self._split_data(self.df, test_size=t_prop)
 
     # NOTE - ONLY cleans comment bodies. Adapt to post titles if needed.
     def _clean_str(self, df: pd.DataFrame):
@@ -48,29 +53,32 @@ class DiscourseDataSet:
         df['body'] = df['body'].apply(lambda x: rx.sub('', x))
         return df
 
-
     def _split_data(self, df: pd.DataFrame, test_size):
         np.random.seed(RAND_SEED)
+        holdout_train_split = self._split_songs(df, test_size)
+        test_validate_split = self._split_songs(holdout_train_split['Holdout'], 0.5)
+        print(holdout_train_split['Include'].shape)
+        print(holdout_train_split['Holdout'].shape)
+        print(test_validate_split['Include'].shape)
+        print(test_validate_split['Holdout'].shape)
+
+        return self._features(holdout_train_split['Include']),\
+            self._features(test_validate_split['Include']),\
+            self._features(test_validate_split['Holdout']),\
+            self._convert_labels(holdout_train_split['Include']),\
+            self._convert_labels(test_validate_split['Include']),\
+            self._convert_labels(test_validate_split['Holdout'])
+
+    def _split_songs(self, df: pd.DataFrame, test_size: int) -> dict:
         ids = df['song_name'].unique()
         holdout_indices = np.random.choice(ids, size=int(len(ids) * test_size), replace=False)
-        train_subset = df.loc[~df['song_name'].isin(holdout_indices)]
-        test_indices = np.random.choice(holdout_indices, size=int(len(holdout_indices) * 0.5), replace=False)
-        test_subset = df.loc[df['song_name'].isin(test_indices)]
-        validation_subset = df.loc[~df['song_name'].isin(test_indices)]
-        print(test_subset.shape)
-        print(train_subset.shape)
-        print(validation_subset.shape)
-        return self._features(train_subset),\
-            self._features(validation_subset),\
-            self._features(test_subset),\
-            self._convert_labels(train_subset),\
-            self._convert_labels(validation_subset),\
-            self._convert_labels(test_subset)
-
+        holdout_df = df.loc[df['song_name'].isin(holdout_indices)]
+        include_df = df.loc[~df['song_name'].isin(holdout_indices)]
+        return {'Holdout': holdout_df,
+                'Include': include_df}
 
     def _features(self, a: pd.DataFrame) -> pd.DataFrame:
         return a.drop(['valence', 'arousal'], axis=1)
-
 
     def _convert_labels(self, a: pd.DataFrame):
         a = a[['valence', 'arousal']]

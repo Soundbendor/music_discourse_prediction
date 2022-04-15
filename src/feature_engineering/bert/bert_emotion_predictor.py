@@ -77,7 +77,7 @@ def main():
                   y=ds.y_train,
                   verbose=1,
                   batch_size=(BATCH_SIZE * get_num_gpus()),
-                  validation_data = generate_embeddings(ds.X_val, SEQ_LEN),
+                  validation_data=generate_embeddings(ds.X_val, SEQ_LEN),
                   callbacks=callbacks,
                   epochs=args.num_epoch)
 
@@ -89,11 +89,12 @@ def main():
 
         valence_corr = pearsonr(ds.y_test[:, 0], y_pred[:, 0])
         arr_corr = pearsonr(ds.y_test[:, 1], y_pred[:, 1])
-        print(f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
+        print(
+            f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
         print(f"Pearson's Correlation (comment level) - Arousal: {arr_corr}")
-        
+
         aggregate_predictions(ds.X_test, ds.y_test, y_pred)
- 
+
 
 def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     X['valence'] = y[:, 0]
@@ -101,7 +102,8 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     X['val_pred'] = pred[:, 0]
     X['aro_pred'] = pred[:, 1]
     print(X[['valence', 'arousal', 'val_pred', 'aro_pred']].describe())
-    results = X.groupby(['song_name'])[['valence', 'arousal', 'val_pred', 'aro_pred']].mean()
+    results = X.groupby(['song_name'])[
+        ['valence', 'arousal', 'val_pred', 'aro_pred']].mean()
     results.to_csv("Song-level-predictions-amg.csv")
     valence_corr = pearsonr(results['valence'], results['val_pred'])
     arr_corr = pearsonr(results['arousal'], results['aro_pred'])
@@ -110,9 +112,10 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray):
     scatterplot(results, 'valence', 'val_pred', 'valence_scatter', 'Valence')
     scatterplot(results, 'arousal', 'aro_pred', 'arousal_scatter', 'Arousal')
 
+
 def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str) -> None:
     fig = plt.figure()
-    plt.scatter(x = df[x_key], y = df[y_key], alpha=0.5, s = 10)
+    plt.scatter(x=df[x_key], y=df[y_key], alpha=0.5, s=10)
     m, b = np.polyfit(df[x_key], df[y_key], 1)
     plt.plot(df[x_key], m*df[x_key]+b, 'r:', alpha=0.2, linewidth=2)
     fig.suptitle(title)
@@ -120,4 +123,3 @@ def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str
     plt.ylabel(y_key)
     fig.savefig(fname)
     plt.clf()
-
