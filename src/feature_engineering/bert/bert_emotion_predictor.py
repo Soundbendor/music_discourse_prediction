@@ -77,7 +77,7 @@ def main():
                   y=ds.y_train,
                   verbose=1,
                   batch_size=(BATCH_SIZE * get_num_gpus()),
-                  validation_data = generate_embeddings(ds.X_val, SEQ_LEN)
+                  validation_data = generate_embeddings(ds.X_val, SEQ_LEN),
                   callbacks=callbacks,
                   epochs=args.num_epoch)
 
