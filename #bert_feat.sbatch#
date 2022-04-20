@@ -1,5 +1,4 @@
 #!/bin/bash
-#SBATCH -w cn-m-1
 #SBATCH -p cascades
 #SBATCH -A cascades
 #SBATCH --job-name=music_emotion_pred
