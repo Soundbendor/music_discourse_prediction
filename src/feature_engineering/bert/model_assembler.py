@@ -1,11 +1,11 @@
 import tensorflow as tf
 import tensorflow.keras.backend as K
 
-from transformers import TFDistilBertForSequenceClassification
-from transformers import DistilBertConfig
+from transformers import TFAutoModelForSequenceClassification
+from transformers import AutoConfig
 
 
-distil_bert = 'distilbert-base-uncased'
+distil_bert = 'cardiffnlp/twitter-roberta-base-emotion'
 NUM_LABEL = 2
 MAX_SEQ_LEN = 128
 
@@ -25,8 +25,8 @@ def correlation_coefficient_loss(y_true, y_pred):
 
 
 def create_model() -> tf.keras.Model:
-    config = DistilBertConfig(num_labels=NUM_LABEL)
-    db_seq = TFDistilBertForSequenceClassification.from_pretrained(
+    config = AutoConfig(num_labels=NUM_LABEL)
+    db_seq = TFAutoModelForSequenceClassification.from_pretrained(
         distil_bert, config=config)
 
     input_ids = tf.keras.layers.Input(
