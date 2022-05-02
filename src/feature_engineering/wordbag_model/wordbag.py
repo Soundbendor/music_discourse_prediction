@@ -1,6 +1,7 @@
 import argparse
 import pandas as pd
 import nltk
+import numpy as np
 import re
 from feature_engineering.song_loader import get_song_df
 
@@ -155,21 +156,21 @@ def gen_features(wlist, args):
 
     uncompressible_cols = ['submission.subreddit', 'submission.id', 'submission.url', 'submission.lang',
                            'submission.lang_p', 'id', 'lang', 'lang_p', 'replies',
-                           'submission.title', 'submission.body']
+                           'submission.body']
 
     # TODO - Handle submission titles, submission bodies, WITHOUT dropping them. Tokenize and emovectorize.
     df = (get_song_df(args.input)
           .pipe(tokenize_comments)
           .drop(uncompressible_cols, axis=1))
 
-    emo_word_stats = df.groupby(['query_index'])['body'].apply(
+    song_groups = df.groupby(['query_index'])
+
+    # TODO - count number of emotive words
+    emo_word_stats = song_groups['body'].apply(
         lambda x: vectorize_comment(x, wordlist))
 
-    df.drop('body', axis=1, inplace=True)
-
-    df = df.groupby(['query_index']).aggregate({
+    df = song_groups.aggregate({
         'score': 'mean',
-        'submission.n_comments': lambda x: x.apply(pd.to_numeric).mean(),
         'submission.score': lambda x: x.apply(pd.to_numeric).mean(),
         'arousal': lambda x: x.iloc[0],
         'valence': lambda x: x.iloc[0],
@@ -177,6 +178,7 @@ def gen_features(wlist, args):
         'artist_name': lambda x: x.iloc[0],
         'song_name': lambda x: x.iloc[0],
     })
-
-    df3 = df.join(emo_word_stats)
+    df3 = df.join(emo_word_stats.reset_index())
+    df3 = df3.join(song_groups['body'].aggregate(lambda x: np.sum(x.apply(lambda y: sum(y['Count'])))).rename('n_words'))
+    df3 = df3.join(song_groups.apply(lambda x: x.groupby(['submission.title']).apply(lambda y: y.iloc[0])['submission.n_comments'].aggregate('sum')).rename('n_comments'))
     df3.to_csv(fname)
