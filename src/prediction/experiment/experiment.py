@@ -22,6 +22,7 @@ from sklearn.model_selection import GridSearchCV
 
 N_SPLITS = 5
 
+
 class Experiment(ABC):
     def __init__(self, dataset: Dataset, config: ExperimentFactory, output) -> None:
         self.ds = dataset
@@ -30,7 +31,6 @@ class Experiment(ABC):
         self.output_fname = output
         self.report = Report()
 
-
     def run_experiment(self) -> None:
 
         test_size = self.config.get_preprocessing_args()['test_size']
@@ -38,13 +38,12 @@ class Experiment(ABC):
         model = self.config.get_model()
         fs = self.config.get_feature_selection_strategy()
         pipe = self._build_pipeline(fs, sampler, model)
-        
-        
+
         self.report.set_dataset_info(self.ds.summary)
 
         results_predicted = pd.DataFrame(columns=self._get_keys())
         results_actual = pd.DataFrame(columns=self._get_keys())
-        
+
         for key in self._get_keys():
             print(f'\nMaking predictions for {key}\n')
 
@@ -55,6 +54,7 @@ class Experiment(ABC):
             results_predicted[key] = y_pred
             results_actual[key] = expset.y_test
 
+        results_predicted.to_csv('predictions_out.csv')
         self._generate_vis(results_predicted, results_actual)
         self.report.output_report(self.output_fname)
 
@@ -75,16 +75,15 @@ class Experiment(ABC):
         gs = gs.fit(expset.X_train, expset.y_train)
         return gs.best_estimator_
 
-
     def _build_grid_search(self, estimator, gs_args: dict):
 
         return GridSearchCV(
-            estimator= estimator, 
-            param_grid= gs_args['param_grid'],
-            refit= True,
-            cv= gs_args['cv'],
-            scoring= gs_args['scoring'],
-            n_jobs= -1,
+            estimator=estimator,
+            param_grid=gs_args['param_grid'],
+            refit=True,
+            cv=gs_args['cv'],
+            scoring=gs_args['scoring'],
+            n_jobs=-1,
             verbose=2
         )
 
@@ -100,15 +99,14 @@ class Experiment(ABC):
             y_hat = estimator.predict(X_test)
             cv_summary.score_cv(y_test, y_hat)
 
-
-        y_test_pred = estimator.predict(expset.X_test)        
+        y_test_pred = estimator.predict(expset.X_test)
         self.report.set_summary_stats(key, cv_summary)
         return y_test_pred
 
     def correl_pearson(self, y_test, y_hat):
         correl, _ = pearsonr(y_test, y_hat)
         return correl
-    
+
     def correl_spearman(self, y_test, y_hat):
         correl, _ = spearmanr(y_test, y_hat)
         return correl
@@ -123,15 +121,13 @@ class Experiment(ABC):
 
     # Defines which keys we will be running prediction for.
     @abstractmethod
-    def _get_keys(self) -> list: 
+    def _get_keys(self) -> list:
         pass
 
     @abstractmethod
     def _generate_vis(self, df_pred: pd.DataFrame, df_results: pd.DataFrame) -> None:
         pass
 
-    
 
 class ExperimentTypeNotFoundError(Exception):
     pass
-

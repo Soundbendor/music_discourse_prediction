@@ -1,0 +1,2 @@
+query_index,score,submission.score,arousal,valence,dataset,artist_name,song_name,n_words,submission.n_comments,min.Valence,min.Arousal,min.Dominance,max.Valence,max.Arousal,max.Dominance,mean.Valence,mean.Arousal,mean.Dominance,std.Valence,std.Arousal,std.Dominance
+1171,1,5.0,0.06313125,-0.2397375,AMG1608,George Jones,Why Baby Why,80,2,0.52,0.157,0.278,0.812,0.642,0.704,0.6756818181818182,0.41372727272727267,0.5034090909090909,0.0751901629607265,0.11941730823667694,0.11500296438867051
