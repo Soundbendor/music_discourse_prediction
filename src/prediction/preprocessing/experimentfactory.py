@@ -27,7 +27,7 @@ class ExperimentFactory:
         cfp = ConfigParser()
         cfp.read(config)
         self.config = cfp
-            
+
     def _get_arg(self, key) -> dict:
         table = self.config[key]
         return {k: v.strip().lower() for k, v in table.items()}
@@ -52,17 +52,14 @@ class ExperimentFactory:
             'cv': int(gs_args['cv'])
         }
 
-
     def get_param_grid(self) -> list:
         pgrid_args = self._get_arg('PARAM_GRID')
         return [{k: self.ini_range(v)} for k, v in pgrid_args.items()]
-        
 
     def ini_range(self, v):
         args = [x for x in v.split(',')]
         tp: Type = locate(args.pop(0))
         return [tp(x) for x in args]
-
 
     def get_sampling_strategy(self) -> imb.base.BaseSampler:
         sampling_args = self._get_arg('SAMPLER')
@@ -75,11 +72,11 @@ class ExperimentFactory:
 
     def get_model(self) -> skl.base.BaseEstimator:
         model_config = self._get_arg('MODEL')
-        
+
         supported_models = {
             'linearregressor': LinearRegression(),
             'randomforestregressor': RandomForestRegressor(n_jobs=-1),
-            'kneighborsregressor': KNeighborsRegressor(), 
+            'kneighborsregressor': KNeighborsRegressor(),
             'mlpregressor': MLPRegressor(verbose=True),
             'randomforestclassifier': RandomForestClassifier(n_jobs=-1),
         }
@@ -87,12 +84,12 @@ class ExperimentFactory:
         return supported_models[model_config['model']]
 
     def get_feature_selection_strategy(self):
-        fselect_config = self._get_arg('FEATURE_SELECTION')        
+        fselect_config = self._get_arg('FEATURE_SELECTION')
         percent = fselect_config['percent_features']
 
         supported_selection_methods = {
             'pca': PCA(float(fselect_config['n_components'])),
-            'f_regression': SelectPercentile(score_func=f_regression, percentile=percent), 
+            'f_regression': SelectPercentile(score_func=f_regression, percentile=percent),
             'mutual_info_regression': SelectPercentile(score_func=mutual_info_regression, percentile=percent),
             'none': None
         }
@@ -101,10 +98,10 @@ class ExperimentFactory:
     def get_preprocessing_args(self) -> dict:
         pre_config = self._get_arg('PREPROCESSING')
         return {
-            'threshold': float(pre_config['threshold']), 
-            'test_size': float(pre_config['test_size']), 
-            'valence_key': self.config['CONTROL']['valence_key'], 
-            'arousal_key': self.config['CONTROL']['arousal_key'], 
+            'threshold': float(pre_config['threshold']),
+            'test_size': float(pre_config['test_size']),
+            'valence_key': self.config['CONTROL']['valence_key'],
+            'arousal_key': self.config['CONTROL']['arousal_key'],
             'meta_cols': re.sub(r"\s+", "", self.config['PREPROCESSING']['meta_cols']).split(',')
         }
 

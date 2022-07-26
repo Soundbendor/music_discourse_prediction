@@ -1,0 +1,2 @@
+query_index,score,submission.score,arousal,valence,dataset,artist_name,song_name,n_words,submission.n_comments,min.Anger,min.Joy,min.Sadness,min.Fear,max.Anger,max.Joy,max.Sadness,max.Fear,mean.Anger,mean.Joy,mean.Sadness,mean.Fear
+1171,1,5.0,0.06313125,-0.2397375,AMG1608,George Jones,Why Baby Why,80,2,0.0,0.212,0.0,0.0,0.0,0.212,0.0,0.0,0.0,0.212,0.0,0.0

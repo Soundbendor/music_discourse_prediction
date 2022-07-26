@@ -9,7 +9,8 @@ def _song_csv_generator(path: str):
             fdir = subdir + "/" + file
             yield fdir
 
-
+# WARN - THIS IS VERY BAD.
+# This function truncates any files which did not have comments in the file. 
 def _dejsonify(path: str) -> pd.DataFrame:
     
     with open(path) as fp:
