@@ -1,0 +1,9 @@
+\begin{tabular}{lrrrrrrrrrrr}
+\toprule
+{} &  AMG1608\_reddit &  AMG1608\_youtube &  AMG1608\_twitter &  DEAM\_reddit &  DEAM\_youtube &  DEAM\_twitter &  PmEmo\_reddit &  PmEmo\_youtube &  PmEmo\_twitter &  Deezer\_reddit &  Deezer\_twitter \\
+\midrule
+Total Songs       &         1431.00 &           978.00 &           789.00 &       202.00 &       1486.00 &         86.00 &        636.00 &         740.00 &         336.00 &        5660.00 &         5059.00 \\
+Total Submissions &         9778.00 &         11412.00 &          1265.00 &       845.00 &       5438.00 &        169.00 &       4156.00 &        6061.00 &         539.00 &       53822.00 &         9600.00 \\
+Total Comments    &       129545.00 &        217077.00 &          4940.00 &     13971.00 &      53067.00 &        726.00 &     103267.00 &      121519.00 &        2268.00 &      698676.00 &        49871.00 \\
+\bottomrule
+\end{tabular}
