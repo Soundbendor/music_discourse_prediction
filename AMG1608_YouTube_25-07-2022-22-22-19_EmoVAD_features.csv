@@ -1,2 +1,0 @@
-query_index,score,submission.score,arousal,valence,dataset,artist_name,song_name,n_comments,n_words,min.Valence,min.Arousal,min.Dominance,max.Valence,max.Arousal,max.Dominance,mean.Valence,mean.Arousal,mean.Dominance,std.Valence,std.Arousal,std.Dominance
-0,0.2,1710.0,-0.335959375,0.15131875,AMG1608,Ben Webster,Chelsea Bridge,105,153,0.073,0.163,0.12,1.0,0.784,0.886,0.6329999999999999,0.4660571428571429,0.48297142857142866,0.23130423052513227,0.19392796462136366,0.18899058266520707
