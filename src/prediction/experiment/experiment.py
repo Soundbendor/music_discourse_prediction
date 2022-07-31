@@ -61,7 +61,7 @@ class Experiment(ABC):
             results_predicted[key] = y_pred
             results_actual[key] = expset.y_test
 
-        results_predicted.to_csv('predictions_out.csv')
+        results_predicted.to_csv(f"out/predictions/{self.output_fname}_predictions_out.csv")
         self._generate_vis(results_predicted, results_actual)
         self.report.output_report(self.output_fname)
 
@@ -96,7 +96,7 @@ class Experiment(ABC):
 
     def _cross_validate(self, key: str, estimator, expset: ExperimentSet):
         cv_summary = CVSummary(self.metrics)
-        kfold = self._get_k_fold(N_SPLITS, expset)
+        # kfold = self._get_k_fold(N_SPLITS, expset)
         # print("\n---Beginning cross validation---")
         # for k, (i_train, i_test) in tqdm(enumerate(kfold), total=N_SPLITS):
         #     X_train, y_train = expset.X_train[i_train], expset.y_train[i_train]
