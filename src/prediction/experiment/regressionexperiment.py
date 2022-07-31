@@ -20,7 +20,7 @@ class RegressionExperiment(Experiment):
 
     def split_dataset(self, ds: Dataset, test_size: int, key: str):
         X, y = ds.get_data(key)
-        return train_test_split(X, y, test_size=test_size)
+        return train_test_split(X, y, test_size=test_size, random_state=128)
 
     def _get_k_fold(self, n_splits: int, expset: ExperimentSet):
         print(expset.X_train.shape)
