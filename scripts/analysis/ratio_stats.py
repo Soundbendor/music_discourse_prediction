@@ -31,6 +31,9 @@ for ds in datasets.keys():
             df['submission.id'].unique())
         df_total_results.loc[f'{ds}_{src}', 'Total Comments'] = len(df)
 
+        df[['query_index', 'body']].groupby(
+            'query_index').agg({'body': lambda x: sum(x.apply(lambda y: print(y)))})
+
         df_ratio_results.loc[f'{ds}_{src}', 'Submissions per Song'] = df[[
             'query_index', 'submission.id']].groupby('query_index').agg('nunique').mean()['submission.id']
         df_ratio_results.loc[f'{ds}_{src}', 'Comments per Song'] = df[[
