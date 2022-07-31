@@ -14,7 +14,7 @@ class DatasetSummary:
         return self.n_features
 
     def get_n_comments(self) -> int:
-        return int(sum(self.meta_df['submission.n_comments']))
+        return int(sum(self.meta_df['n_comments']))
 
     def get_n_words(self) -> int:
         return int(sum(self.meta_df['n_words']))

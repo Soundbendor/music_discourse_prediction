@@ -170,6 +170,7 @@ def gen_features(wlist, args) -> None:
 
     # TODO - Handle submission titles, submission bodies, WITHOUT dropping them. Tokenize and emovectorize.
     df = (get_song_df(args.input)
+          .dropna(subset=['body'])
           .pipe(tokenize_comments))
 
     df0 = df
@@ -187,10 +188,6 @@ def gen_features(wlist, args) -> None:
         'artist_name': lambda x: x.iloc[0],
         'song_name': lambda x: x.iloc[0],
     })
-
-    # TODO - resolve inconsisent output numbers for number of comments, score, number of words, et c.
-    # everything is wildly bigger than it should be
-    # seems as if only throws results off when looking at whole dataset of youtube comments?!
 
     df['n_comments'] = df0.groupby(['query_index']).apply(lambda x: x.groupby(['submission.id'])['submission.n_comments'].aggregate(lambda x: x.iloc[0]).aggregate('sum'))
     df['n_words'] = df0.groupby(['query_index'])['body'].aggregate(lambda x: sum(x.apply(lambda y: y['Count'])))

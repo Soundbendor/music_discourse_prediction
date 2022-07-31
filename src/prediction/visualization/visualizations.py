@@ -10,11 +10,6 @@ from sklearn.metrics import confusion_matrix
 def circumplex_model(data: pd.DataFrame, title, fname, val_key='Valence', aro_key='Arousal') -> None:
     os.makedirs(os.path.dirname(fname), exist_ok=True)
 
-    # TODO -this is deceptive
-#     scaler = MinMaxScaler(feature_range=(-1, 1))
-#     data = data[[val_key, aro_key]]
-#     data = pd.DataFrame(scaler.fit_transform(data), columns=data.columns)
-
     plt_size = 10
     fig, ax = plt.subplots(figsize=(plt_size, plt_size))
     plt.xlim(-0.12, 1.12)

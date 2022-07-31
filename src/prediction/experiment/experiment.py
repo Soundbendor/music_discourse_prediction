@@ -1,5 +1,6 @@
 
 import pandas as pd
+import json
 
 from .cvsummary import CVSummary
 from .report import Report
@@ -44,12 +45,18 @@ class Experiment(ABC):
         results_predicted = pd.DataFrame(columns=self._get_keys())
         results_actual = pd.DataFrame(columns=self._get_keys())
 
+        # We'll just always grid search on valence, since it's the harder problem.
+        gs_expset = ExperimentSet(self.ds, self._get_keys()[0], self.split_dataset, test_size)
+        best_est = self._run_grid_search(pipe, gs_expset)
+
+        with open(f"out/parameters/{self.output_fname}_params.json", 'a', encoding='utf-8') as param_file:
+            json.dump({k: v for k, v in best_est.get_params().items() if 'model__' in k}, param_file)
+
         for key in self._get_keys():
             print(f'\nMaking predictions for {key}\n')
 
             expset = ExperimentSet(self.ds, key, self.split_dataset, test_size)
 
-            best_est = self._run_grid_search(pipe, expset)
             y_pred = self._cross_validate(key, best_est, expset)
             results_predicted[key] = y_pred
             results_actual[key] = expset.y_test
@@ -76,7 +83,7 @@ class Experiment(ABC):
         return gs.best_estimator_
 
     def _build_grid_search(self, estimator, gs_args: dict):
-
+        print(gs_args['param_grid'])
         return GridSearchCV(
             estimator=estimator,
             param_grid=gs_args['param_grid'],
@@ -84,22 +91,24 @@ class Experiment(ABC):
             cv=gs_args['cv'],
             scoring=gs_args['scoring'],
             n_jobs=-1,
-            verbose=2
+            verbose=2,
         )
 
     def _cross_validate(self, key: str, estimator, expset: ExperimentSet):
         cv_summary = CVSummary(self.metrics)
         kfold = self._get_k_fold(N_SPLITS, expset)
-        print("\n---Beginning cross validation---")
-        for k, (i_train, i_test) in tqdm(enumerate(kfold), total=N_SPLITS):
-            X_train, y_train = expset.X[i_train], expset.y[i_train]
-            X_test, y_test = expset.X[i_test], expset.y[i_test]
+        # print("\n---Beginning cross validation---")
+        # for k, (i_train, i_test) in tqdm(enumerate(kfold), total=N_SPLITS):
+        #     X_train, y_train = expset.X_train[i_train], expset.y_train[i_train]
+        #     X_test, y_test = expset.X_train[i_test], expset.y_train[i_test]
 
-            estimator.fit(X_train, y_train)
-            y_hat = estimator.predict(X_test)
-            cv_summary.score_cv(y_test, y_hat)
+        #     estimator.fit(X_train, y_train)
+        #     y_hat = estimator.predict(X_test)
+        #     cv_summary.score_cv(y_test, y_hat)
 
+        estimator.fit(expset.X_train, expset.y_train)
         y_test_pred = estimator.predict(expset.X_test)
+        cv_summary.score_cv(expset.y_test, y_test_pred)
         self.report.set_summary_stats(key, cv_summary)
         return y_test_pred
 
