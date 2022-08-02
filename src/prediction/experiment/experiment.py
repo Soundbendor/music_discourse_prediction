@@ -49,8 +49,11 @@ class Experiment(ABC):
         gs_expset = ExperimentSet(self.ds, self._get_keys()[0], self.split_dataset, test_size)
         best_est = self._run_grid_search(pipe, gs_expset)
 
-        with open(f"out/parameters/{self.output_fname}_params.json", 'a', encoding='utf-8') as param_file:
-            json.dump({k: v for k, v in best_est.get_params().items() if 'model__' in k}, param_file)
+        try:
+            with open(f"out/parameters/{self.output_fname}_params.json", 'a', encoding='utf-8') as param_file:
+                json.dump({k: v for k, v in best_est.get_params().items() if 'model__' in k}, param_file)
+        except TypeError:
+            print(best_est.get_params())
 
         for key in self._get_keys():
             print(f'\nMaking predictions for {key}\n')
