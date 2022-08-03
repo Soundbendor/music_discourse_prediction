@@ -34,9 +34,9 @@ def main():
                 for label_key in zip(['eANEW', 'emoVAD'], [f"mean.{key[:1].upper()}.Mean.Sum", f"mean.{key}"]):
                     y_true = scaler.fit_transform(df[key.lower()].values.reshape(-1, 1)).ravel()
                     y_pred = scaler.fit_transform(df[label_key[1]].values.reshape(-1, 1)).ravel()
-                    results[f"{df['dataset'].iloc[0]}_{sm_source}"][f"{key}_pearson"] = pearsonr(y_true, y_pred)[0]
-                    results[f"{df['dataset'].iloc[0]}_{sm_source}"][f"{key}_r2"] = r2_score(y_true, y_pred)
-                    results[f"{df['dataset'].iloc[0]}_{sm_source}"][f"{key}_mse"] = mean_squared_error(y_true, y_pred)
+                    results[f"{df['dataset'].iloc[0]}_{sm_source}_{label_key[0]}"][f"{key}_pearson"] = pearsonr(y_true, y_pred)[0]
+                    results[f"{df['dataset'].iloc[0]}_{sm_source}_{label_key[0]}"][f"{key}_r2"] = r2_score(y_true, y_pred)
+                    results[f"{df['dataset'].iloc[0]}_{sm_source}_{label_key[0]}"][f"{key}_mse"] = mean_squared_error(y_true, y_pred)
                     pearsons = pearsonr(y_true, y_pred)[0]
                     r2 = r2_score(y_true, y_pred)
                     mse = mean_squared_error(y_true, y_pred)
