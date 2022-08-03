@@ -65,6 +65,7 @@ class Experiment(ABC):
             results_actual[key] = expset.y_test
 
         results_predicted.to_csv(f"out/predictions/{self.output_fname}_predictions_out.csv")
+        results_actual.to_csv(f"out/predictions/{self.output_fname}_actual_out.csv")
         self._generate_vis(results_predicted, results_actual)
         self.report.output_report(self.output_fname)
 

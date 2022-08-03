@@ -3,6 +3,7 @@ import pandas as pd
 import nltk
 import numpy as np
 import re
+from functools import partial
 from feature_engineering.song_loader import get_song_df
 
 from nltk.corpus import stopwords
