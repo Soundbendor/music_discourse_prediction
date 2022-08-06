@@ -50,13 +50,13 @@ class Dataset:
 
     def _label_data(self, df) -> pd.DataFrame:
         
-        df.loc[(df[self.val_key] >= 0) & (df[self.aro_key] >= 0),
+        df.loc[(df[self.val_key] >= 0.5) & (df[self.aro_key] >= 0.5),
                self.label_key] = self.class_names['happy']
-        df.loc[(df[self.val_key] >= 0) & (df[self.aro_key] < 0),
+        df.loc[(df[self.val_key] >= 0.5) & (df[self.aro_key] < 0.5),
                self.label_key] = self.class_names['upset']
-        df.loc[(df[self.val_key] < 0) & (df[self.aro_key] < 0),
+        df.loc[(df[self.val_key] < 0.5) & (df[self.aro_key] < 0.5),
                self.label_key] = self.class_names['depressed']
-        df.loc[(df[self.val_key] < 0) & (df[self.aro_key] >= 0),
+        df.loc[(df[self.val_key] < 0.5) & (df[self.aro_key] >= 0.5),
                self.label_key] = self.class_names['calm']
 
         return df
