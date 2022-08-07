@@ -90,7 +90,7 @@ def main():
                   verbose=1,
                   batch_size=(BATCH_SIZE * get_num_gpus()),
                   validation_data=(generate_embeddings(
-                      ds.X_val, SEQ_LEN), ds.y_val),
+                      ds.X_val, SEQ_LEN, args.model_name), ds.y_val),
                   callbacks=callbacks,
                   epochs=args.num_epoch)
 
