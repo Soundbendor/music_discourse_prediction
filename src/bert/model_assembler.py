@@ -80,6 +80,7 @@ def create_model_new() -> tf.keras.Model:
 
 
 def create_roberta_model() -> tf.keras.Model:
+    # error here on config
     config = AutoConfig(num_labels=NUM_LABEL)
     db_seq = TFAutoModelForSequenceClassification.from_pretrained(
         roberta, config=config)

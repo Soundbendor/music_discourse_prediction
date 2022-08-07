@@ -14,7 +14,7 @@ from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
 from prediction.visualization.visualizations import circumplex_model
-from .model_assembler import create_model, create_roberta_model
+from .model_assembler import create_model, create_model_new, create_roberta_model
 
 SEQ_LEN = 128
 BATCH_SIZE = 64
@@ -70,7 +70,7 @@ def main():
         if args.model_option == 'roberta':
             model = create_roberta_model()
         else:
-            model = create_new_model()
+            model = create_model_new()
         load_weights(model, args.model)
         print(model.summary())
 
