@@ -8,7 +8,7 @@ from sklearn.metrics import confusion_matrix
 
 
 def circumplex_model(data: pd.DataFrame, title, fname, val_key='Valence', aro_key='Arousal') -> None:
-    os.makedirs(os.path.dirname(fname), exist_ok=True)
+#     os.makedirs(os.path.dirname(fname), exist_ok=True)
 
     plt_size = 10
     fig, ax = plt.subplots(figsize=(plt_size, plt_size))
