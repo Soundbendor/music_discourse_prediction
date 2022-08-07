@@ -13,7 +13,7 @@ from feature_engineering.song_loader import get_song_df
 from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
-from src.prediction.visualization.visualizations import circumplex_model
+from prediction.visualization.visualizations import circumplex_model
 from .model_assembler import create_model
 
 SEQ_LEN = 128
