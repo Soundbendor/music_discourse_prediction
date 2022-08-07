@@ -39,7 +39,7 @@ def generate_embeddings(df: pd.DataFrame, seq_len: int) -> dict:
 
 class DiscourseDataSet:
     def __init__(self, df: pd.DataFrame, t_prop: float):
-        self.df = self._clean_str(df.drop(how='any', subset=['body']))
+        self.df = self._clean_str(df.dropna(how='any', subset=['body']))
         # TODO - introduce validation subset
         self.X_train,\
             self.X_val,\
