@@ -14,7 +14,7 @@ from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
 from prediction.visualization.visualizations import circumplex_model
-from .model_assembler import create_model
+from .model_assembler import create_model, create_roberta_model
 
 SEQ_LEN = 128
 BATCH_SIZE = 64
@@ -34,6 +34,7 @@ def parseargs() -> argparse.Namespace:
                         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
     parser.add_argument('--num_epoch', type=int, default=50, dest='num_epoch',
                         help="Number of epochs to train the model with")
+    parser.add_argument('--model_option', type=str, default='distilbert', dest='model_option')
     return parser.parse_args()
 
 
@@ -66,7 +67,10 @@ def main():
     ds = DiscourseDataSet(song_df, t_prop=0.15)
 
     with tf.distribute.MultiWorkerMirroredStrategy().scope():
-        model = create_model()
+        if args.model_option == 'roberta':
+            model = create_roberta_model()
+        else:
+            model = create_model()
         load_weights(model, args.model)
         print(model.summary())
 
