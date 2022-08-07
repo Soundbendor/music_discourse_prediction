@@ -1,7 +1,9 @@
 import argparse
 import pandas as pd
 import nltk
+import numpy as np
 import re
+from functools import partial
 from feature_engineering.song_loader import get_song_df
 
 from nltk.corpus import stopwords
@@ -36,7 +38,7 @@ def parseargs() -> argparse.Namespace:
 
 
 def _tokenize_comment(comment: str):
-    rx = re.compile(r'(?:<.*?>)|(?:[^\w\s\'])|(?:\d+)')
+    rx = re.compile(r'(?:\[\S*\])|(?:<.*?>)|(?:[^\w\s\'])|(?:\d+)|(?:http\S*)')
     lemmatizer = WordNetLemmatizer()
     stop_words = stopwords.words('english')
 
@@ -45,7 +47,7 @@ def _tokenize_comment(comment: str):
                map(lemmatizer.lemmatize,
                    nltk.word_tokenize(
                        rx.sub('', comment)
-                   )
+                    )
                    )
                )
     ).value_counts().reset_index().rename(columns={'index': 'Word', 0: 'Count'})
@@ -129,6 +131,10 @@ loaders = {
     "MPQA": load_mpqa,
 }
 
+uncompressible_cols = ['submission.subreddit', 'submission.id', 'submission.url', 'submission.lang',
+                       'submission.lang_p', 'id', 'lang', 'lang_p', 'replies',
+                       'submission.body']
+
 
 def main():
     args = parseargs()
@@ -137,15 +143,10 @@ def main():
     nltk.download('wordnet')
     nltk.download('omw-1.4')
 
-    if(args.wordlist == 'All'):
-        for wlist in wlists:
-            gen_features(wlist, args)
-    else:
-        gen_features(args.wordlist, args)
+    gen_features(args.wordlist, args)
 
 
-def gen_features(wlist, args):
-    # load wordlist
+def get_features(wlist, args, song_groups, df) -> pd.DataFrame:
     wlist_path = f"etc/wordlists/{wlists[wlist]}"
     wordlist = loaders[wlist](wlist_path)
     print(wordlist)
@@ -153,23 +154,34 @@ def gen_features(wlist, args):
     timestamp = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
     fname = f"{args.dataset}_{args.sm_type}_{timestamp}_{wlist}_features.csv"
 
-    uncompressible_cols = ['submission.subreddit', 'submission.id', 'submission.url', 'submission.lang',
-                           'submission.lang_p', 'id', 'lang', 'lang_p', 'replies',
-                           'submission.title', 'submission.body']
+    # TODO - count number of emotive words
+    emo_word_stats = song_groups['body'].apply(
+        lambda x: vectorize_comment(x, wordlist))
+    
+    print(emo_word_stats)
+    print(df)
+    df3 = df.join(emo_word_stats)
+    df3 = df3.reset_index().set_index('query_index').drop('level_1', axis=1)
+    df3.to_csv(fname)
+
+    return emo_word_stats
+
+
+def gen_features(wlist, args) -> None:
 
     # TODO - Handle submission titles, submission bodies, WITHOUT dropping them. Tokenize and emovectorize.
     df = (get_song_df(args.input)
-          .pipe(tokenize_comments)
-          .drop(uncompressible_cols, axis=1))
+          .dropna(subset=['body'])
+          .pipe(tokenize_comments))
 
-    emo_word_stats = df.groupby(['query_index'])['body'].apply(
-        lambda x: vectorize_comment(x, wordlist))
+    df0 = df
+    print(len(df))
+    df = df.drop(uncompressible_cols, axis=1)
 
-    df.drop('body', axis=1, inplace=True)
+    song_groups = df.groupby(['query_index'])
 
-    df = df.groupby(['query_index']).aggregate({
+    df = song_groups.aggregate({
         'score': 'mean',
-        'submission.n_comments': lambda x: x.apply(pd.to_numeric).mean(),
         'submission.score': lambda x: x.apply(pd.to_numeric).mean(),
         'arousal': lambda x: x.iloc[0],
         'valence': lambda x: x.iloc[0],
@@ -178,5 +190,19 @@ def gen_features(wlist, args):
         'song_name': lambda x: x.iloc[0],
     })
 
-    df3 = df.join(emo_word_stats)
-    df3.to_csv(fname)
+    df['n_comments'] = df0.groupby(['query_index']).apply(lambda x: x.groupby(['submission.id'])['submission.n_comments'].aggregate(lambda x: x.iloc[0]).aggregate('sum'))
+    df['n_words'] = df0.groupby(['query_index'])['body'].aggregate(lambda x: sum(x.apply(lambda y: y['Count'])))
+    print(df)
+
+    # WARN - This is generating inaccurate dataset summary statistics by summing the sum of words from all datasets
+    if wlist == 'All':
+        feature_space = pd.concat(
+            [get_features(wordlist, args, song_groups, df) for wordlist in wlists], axis=1)
+        print(feature_space)
+        df3 = df.join(feature_space)
+        df3 = df3.reset_index().set_index('query_index').drop('level_1', axis=1)
+
+        df3.to_csv(f'all_{args.dataset}_{args.sm_type}.csv')
+    else:
+        feature_space = get_features(wlist, args, song_groups, df)
+    # load wordlist
