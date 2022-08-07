@@ -65,6 +65,7 @@ def create_model_new() -> tf.keras.Model:
 
     # max pooling layer? 
     output = db_seq(input_ids, input_masks_ids).last_hidden_state[:, 0, :]
+    output = tf.keras.layers.Dense(768, activation='relu')(output)
     output = tf.keras.layers.Dense(MAX_SEQ_LEN, activation='relu')(output)
     output = tf.keras.layers.Dense(2, activation='relu')(output)
 
