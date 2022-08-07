@@ -121,8 +121,8 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run:
     scatterplot(results, 'arousal', 'aro_pred',
                 'arousal_scatter', 'Arousal', run)
 
-    circumplex_model(results, f"{fname}_predicted.png", 'val_pred', 'aro_pred')
-    circumplex_model(results, f"{fname}_actual.png", 'valence', 'arousal')
+    circumplex_model(results, f"{fname}_predicted.png", val_key='val_pred', aro_key='aro_pred')
+    circumplex_model(results, f"{fname}_actual.png", val_key='valence', aro_key='arousal')
 
 
 def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str, run: neptune.Run) -> None:
