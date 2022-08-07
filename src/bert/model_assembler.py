@@ -63,7 +63,7 @@ def create_model_new() -> tf.keras.Model:
     input_masks_ids = tf.keras.layers.Input(
         shape=(MAX_SEQ_LEN,), name='masked_token', dtype='int32')
 
-    output = db_seq(input_ids, input_masks_ids)[0]
+    output = db_seq(input_ids, input_masks_ids).last_hidden_state[:, 0, :]
     output = tf.keras.layers.Dense(MAX_SEQ_LEN, activation='relu')(output)
     output = tf.keras.layers.Dense(2, activation='relu')(output)
 
