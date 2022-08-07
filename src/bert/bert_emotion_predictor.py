@@ -35,7 +35,7 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument('--num_epoch', type=int, default=50, dest='num_epoch',
                         help="Number of epochs to train the model with")
     parser.add_argument('--model_option', type=str, default='distilbert', dest='model_option')
-    parser.add_argument('intersection_type', type=str, default='NA', dest='intersection_type')
+    parser.add_argument('--intersection_type', type=str, default='NA', dest='intersection_type')
     return parser.parse_args()
 
 
