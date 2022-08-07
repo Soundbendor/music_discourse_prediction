@@ -13,6 +13,7 @@ from feature_engineering.song_loader import get_song_df
 from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
+from src.prediction.visualization.visualizations import circumplex_model
 from .model_assembler import create_model
 
 SEQ_LEN = 128
@@ -73,7 +74,8 @@ def main():
                   y=ds.y_train,
                   verbose=1,
                   batch_size=(BATCH_SIZE * get_num_gpus()),
-                  validation_data=(generate_embeddings(ds.X_val, SEQ_LEN), ds.y_val),
+                  validation_data=(generate_embeddings(
+                      ds.X_val, SEQ_LEN), ds.y_val),
                   callbacks=callbacks,
                   epochs=args.num_epoch)
 
@@ -85,13 +87,16 @@ def main():
 
         valence_corr = pearsonr(ds.y_test[:, 0], y_pred[:, 0])
         arr_corr = pearsonr(ds.y_test[:, 1], y_pred[:, 1])
-        print(f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
+
+        print(
+            f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
         print(f"Pearson's Correlation (comment level) - Arousal: {arr_corr}")
 
-        aggregate_predictions(ds.X_test, ds.y_test, y_pred, neptune_runtime)
+        aggregate_predictions(ds.X_test, ds.y_test, y_pred, neptune_runtime,
+                              f"{args.sm_type}_{args.dataset}")
 
 
-def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run: neptune.Run):
+def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run: neptune.Run, fname: str):
     X['valence'] = y[:, 0]
     X['arousal'] = y[:, 1]
     X['val_pred'] = pred[:, 0]
@@ -99,13 +104,25 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run:
     print(X[['valence', 'arousal', 'val_pred', 'aro_pred']].describe())
     results = X.groupby(['song_name'])[
         ['valence', 'arousal', 'val_pred', 'aro_pred']].mean()
-    results.to_csv("Song-level-predictions-amg.csv")
+
+    results.to_csv(f"{fname}_results.csv")
+
     valence_corr = pearsonr(results['valence'], results['val_pred'])
     arr_corr = pearsonr(results['arousal'], results['aro_pred'])
+
+    run['valence_p'] = valence_corr
+    run['arousal_p'] = arr_corr
+
     print(f"Pearson's Correlation (song level) - Valence: {valence_corr}")
     print(f"Pearson's Correlation (song level) - Arousal: {arr_corr}")
-    scatterplot(results, 'valence', 'val_pred', 'valence_scatter', 'Valence', run)
-    scatterplot(results, 'arousal', 'aro_pred', 'arousal_scatter', 'Arousal', run)
+
+    scatterplot(results, 'valence', 'val_pred',
+                'valence_scatter', 'Valence', run)
+    scatterplot(results, 'arousal', 'aro_pred',
+                'arousal_scatter', 'Arousal', run)
+
+    circumplex_model(results, f"{fname}_predicted.png", 'val_pred', 'aro_pred')
+    circumplex_model(results, f"{fname}_actual.png", 'valence', 'arousal')
 
 
 def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str, run: neptune.Run) -> None:
