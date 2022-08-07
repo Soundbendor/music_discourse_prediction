@@ -34,7 +34,7 @@ def parseargs() -> argparse.Namespace:
                         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
     parser.add_argument('--num_epoch', type=int, default=50, dest='num_epoch',
                         help="Number of epochs to train the model with")
-    parser.add_argument('--model_name', type=str, default='distilbert-base-cased', dest='model_option')
+    parser.add_argument('--model_name', type=str, default='distilbert-base-cased', dest='model_name')
     parser.add_argument('--intersection_type', type=str, default='NA', dest='intersection_type')
     return parser.parse_args()
 
