@@ -4,12 +4,11 @@ import tensorflow.keras.backend as K
 from transformers import TFDistilBertForSequenceClassification
 from transformers import TFDistilBertModel
 from transformers import DistilBertConfig
-from transformers import TFAutoModelForSequenceClassification
-from transformers import AutoConfig
+from transformers import TFRobertaModel
 
 
 distil_bert = 'distilbert-base-uncased'
-roberta = 'cardiffnlp/twitter-roberta-base-emotion'
+roberta = 'roberta-base-cased'
 NUM_LABEL = 2
 MAX_SEQ_LEN = 128
 
@@ -82,18 +81,17 @@ def create_model_new() -> tf.keras.Model:
 
 
 def create_roberta_model() -> tf.keras.Model:
-    # error here on config
-    config = AutoConfig(num_labels=NUM_LABEL)
-    db_seq = TFAutoModelForSequenceClassification.from_pretrained(
-        roberta, config=config)
+    db_seq = TFRobertaModel.from_pretrained(roberta)
 
     input_ids = tf.keras.layers.Input(
         shape=(MAX_SEQ_LEN,), name='input_token', dtype='int32')
     input_masks_ids = tf.keras.layers.Input(
         shape=(MAX_SEQ_LEN,), name='masked_token', dtype='int32')
 
-    output = db_seq(input_ids, input_masks_ids)[0]
-    # output = tf.keras.layers.Dropout(0.2)(output)
+    # max pooling layer? 
+    output = db_seq(input_ids, input_masks_ids).last_hidden_state[:, 0, :]
+    output = tf.keras.layers.Dense(768, activation='relu')(output)
+    output = tf.keras.layers.Dense(MAX_SEQ_LEN, activation='relu')(output)
     output = tf.keras.layers.Dense(2, activation='relu')(output)
 
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs=output)
@@ -104,5 +102,5 @@ def create_roberta_model() -> tf.keras.Model:
         loss='mse',
         metrics=[tf.keras.metrics.RootMeanSquaredError(), correlation_coefficient_loss]
     )
-    # model.get_layer(name='tf_distil_bert_for_sequence_classification').trainable = False
+    model.get_layer(name='tf_distil_bert_model').trainable = False
     return model
