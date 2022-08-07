@@ -31,7 +31,8 @@ def get_records(df: pd.DataFrame) -> pd.DataFrame:
 
 def main():
     mpl.style.use("ggplot")
-    df = pd.read_csv('correlation_results.csv')
+    plt.rcParams.update({'font.size': 18})
+    df = pd.read_csv('out/correlation_results/correlation_results.csv')
     df_records = get_records(df)
 
     df_records = df_records.replace('MOAF', 'All')
