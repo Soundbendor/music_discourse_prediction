@@ -8,7 +8,7 @@ from transformers import TFRobertaModel
 
 
 distil_bert = 'distilbert-base-uncased'
-roberta = 'roberta-base-cased'
+roberta = 'roberta-base'
 NUM_LABEL = 2
 MAX_SEQ_LEN = 128
 
@@ -102,5 +102,5 @@ def create_roberta_model() -> tf.keras.Model:
         loss='mse',
         metrics=[tf.keras.metrics.RootMeanSquaredError(), correlation_coefficient_loss]
     )
-    model.get_layer(name='tf_distil_bert_model').trainable = False
+    model.get_layer(name='tf_roberta_model').trainable = False
     return model
