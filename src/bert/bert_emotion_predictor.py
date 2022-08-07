@@ -70,7 +70,7 @@ def main():
         if args.model_option == 'roberta':
             model = create_roberta_model()
         else:
-            model = create_model()
+            model = create_new_model()
         load_weights(model, args.model)
         print(model.summary())
 
