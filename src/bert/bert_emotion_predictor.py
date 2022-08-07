@@ -34,7 +34,7 @@ def parseargs() -> argparse.Namespace:
                         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
     parser.add_argument('--num_epoch', type=int, default=50, dest='num_epoch',
                         help="Number of epochs to train the model with")
-    parser.add_argument('--model_option', type=str, default='distilbert', dest='model_option')
+    parser.add_argument('--model_name', type=str, default='distilbert-base-cased', dest='model_option')
     parser.add_argument('--intersection_type', type=str, default='NA', dest='intersection_type')
     return parser.parse_args()
 
@@ -81,14 +81,11 @@ def main():
     ds = DiscourseDataSet(song_df, t_prop=0.15)
 
     with tf.distribute.MultiWorkerMirroredStrategy().scope():
-        if args.model_option == 'roberta':
-            model = create_roberta_model()
-        else:
-            model = create_model_new()
+        model = create_model(args.model_name)
         load_weights(model, args.model)
         print(model.summary())
 
-        model.fit(x=generate_embeddings(ds.X_train, SEQ_LEN),
+        model.fit(x=generate_embeddings(ds.X_train, SEQ_LEN, args.model_name),
                   y=ds.y_train,
                   verbose=1,
                   batch_size=(BATCH_SIZE * get_num_gpus()),

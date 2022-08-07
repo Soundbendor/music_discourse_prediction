@@ -6,9 +6,8 @@ import re
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from transformers import DistilBertTokenizerFast
+from transformers import DistilBertTokenizerFast, RobertaTokenizerFast
 
-distil_bert = 'distilbert-base-uncased'
 RAND_SEED = 128
 
 
@@ -23,15 +22,25 @@ def _tokenize(comments: pd.Series, tokenizer, seq_len: int) -> transformers.Batc
                      return_tensors='tf')
 
 
-def generate_embeddings(df: pd.DataFrame, seq_len: int) -> dict:
-    tokenizer = DistilBertTokenizerFast.from_pretrained(distil_bert,
-                                                        do_lower_case=True,
-                                                        add_special_tokens=True,
-                                                        max_length=seq_len,
-                                                        padding='max_length',
-                                                        truncate=True,
-                                                        padding_side='right')
+def generate_embeddings(df: pd.DataFrame, seq_len: int, model: str) -> dict:
+    tokenizers = {
+        'distilbert-base-cased': DistilBertTokenizerFast('distilbert-base-cased',
+                                                         do_lower_case=True,
+                                                         add_special_tokens=True,
+                                                         max_length=seq_len,
+                                                         padding='max_length',
+                                                         truncate=True,
+                                                         padding_side='right'),
+        'roberta-base': RobertaTokenizerFast('roberta-based',
+                                             do_lower_case=True,
+                                             add_special_tokens=True,
+                                             max_length=seq_len,
+                                             padding='max_length',
+                                             truncate=True,
+                                             padding_side='right')
+    }
 
+    tokenizer = tokenizers[model]
     encodings = _tokenize(df['body'], tokenizer, seq_len)
     return {'input_token': encodings['input_ids'],
             'masked_token': encodings['attention_mask']}
@@ -57,7 +66,8 @@ class DiscourseDataSet:
     def _split_data(self, df: pd.DataFrame, test_size):
         np.random.seed(RAND_SEED)
         holdout_train_split = self._split_songs(df, test_size)
-        test_validate_split = self._split_songs(holdout_train_split['Holdout'], 0.5)
+        test_validate_split = self._split_songs(
+            holdout_train_split['Holdout'], 0.5)
         print(holdout_train_split['Include'].shape)
         print(holdout_train_split['Holdout'].shape)
         print(test_validate_split['Include'].shape)
@@ -72,7 +82,8 @@ class DiscourseDataSet:
 
     def _split_songs(self, df: pd.DataFrame, test_size: int) -> dict:
         ids = df['song_name'].unique()
-        holdout_indices = np.random.choice(ids, size=int(len(ids) * test_size), replace=False)
+        holdout_indices = np.random.choice(
+            ids, size=int(len(ids) * test_size), replace=False)
         holdout_df = df.loc[df['song_name'].isin(holdout_indices)]
         include_df = df.loc[~df['song_name'].isin(holdout_indices)]
         return {'Holdout': holdout_df,
@@ -83,6 +94,6 @@ class DiscourseDataSet:
 
     def _convert_labels(self, a: pd.DataFrame):
         a = a[['valence', 'arousal']]
-        scaler = MinMaxScaler(feature_range=(0,1))
+        scaler = MinMaxScaler(feature_range=(0, 1))
         a = scaler.fit_transform(a)
         return np.asarray(a).astype('float32')
