@@ -77,7 +77,7 @@ def create_model_new() -> tf.keras.Model:
         loss='mse',
         metrics=[tf.keras.metrics.RootMeanSquaredError(), correlation_coefficient_loss]
     )
-    # model.get_layer(name='tf_distil_bert_for_sequence_classification').trainable = False
+    model.get_layer(name='tf_distil_bert_model').trainable = False
     return model
 
 
