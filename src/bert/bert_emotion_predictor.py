@@ -14,7 +14,7 @@ from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
 from prediction.visualization.visualizations import circumplex_model
-from .model_assembler import create_model, create_model_new, create_roberta_model
+from .model_assembler import create_model
 
 SEQ_LEN = 128
 BATCH_SIZE = 64
