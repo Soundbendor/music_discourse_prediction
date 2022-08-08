@@ -95,7 +95,7 @@ def main():
                   epochs=args.num_epoch)
 
         print("\n\nTesting...")
-        y_pred = model.predict(x=generate_embeddings(ds.X_test, SEQ_LEN),
+        y_pred = model.predict(x=generate_embeddings(ds.X_test, SEQ_LEN, args.model_name),
                                batch_size=(BATCH_SIZE * get_num_gpus()),
                                verbose=1,
                                callbacks=callbacks)
