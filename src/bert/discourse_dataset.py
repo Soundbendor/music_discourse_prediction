@@ -60,7 +60,7 @@ class DiscourseDataSet:
     # NOTE - ONLY cleans comment bodies. Adapt to post titles if needed.
     def _clean_str(self, df: pd.DataFrame):
         rx = re.compile(r'(?:<.*?>)|(?:http\S+)')
-        df.loc['body'] = df['body'].apply(lambda x: rx.sub('', x))
+        df['body'] = df['body'].apply(lambda x: rx.sub('', x))
         return df
 
     def _split_data(self, df: pd.DataFrame, test_size):
