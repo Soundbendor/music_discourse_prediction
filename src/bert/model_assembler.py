@@ -33,7 +33,7 @@ def create_model(model_name: str) -> tf.keras.Model:
 
     # max pooling layer? 
     output = db_seq(input_ids, input_masks_ids).last_hidden_state[:, 0, :]
-    output = tf.keras.layers.Dense(768, activation='relu')(output)
+    # output = tf.keras.layers.Dense(768, activation='relu')(output)
     output = tf.keras.layers.Dense(MAX_SEQ_LEN, activation='relu')(output)
     output = tf.keras.layers.Dense(2, activation='relu')(output)
 
@@ -45,6 +45,6 @@ def create_model(model_name: str) -> tf.keras.Model:
         loss='mse',
         metrics=[tf.keras.metrics.RootMeanSquaredError(), correlation_coefficient_loss]
     )
-    model.get_layer(index=2).trainable = False
+    # model.get_layer(index=2).trainable = False
     return model
 
