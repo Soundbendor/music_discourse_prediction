@@ -34,8 +34,10 @@ def parseargs() -> argparse.Namespace:
                         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.")
     parser.add_argument('--num_epoch', type=int, default=50, dest='num_epoch',
                         help="Number of epochs to train the model with")
-    parser.add_argument('--model_name', type=str, default='distilbert-base-cased', dest='model_name')
-    parser.add_argument('--intersection_type', type=str, default='NA', dest='intersection_type')
+    parser.add_argument('--model_name', type=str,
+                        default='distilbert-base-cased', dest='model_name')
+    parser.add_argument('--intersection_type', type=str,
+                        default='NA', dest='intersection_type')
     return parser.parse_args()
 
 
@@ -52,16 +54,18 @@ def get_num_gpus() -> int:
 
 def get_songs(args: argparse.Namespace):
     if args.intersection_type == 'intersect':
-        reddit = get_song_df(f"{args.input}/reddit")
-        twitter = get_song_df(f"{args.input}/twitter")
-        youtube = get_song_df(f"{args.input}/youtube")
-        df2 = reddit.merge(twitter, how='inner', on='query_index', suffixes=('_reddit', '_youtube'))
-        df3 = df2.merge(youtube, how='inner', on='query_index', suffixes=('', '_youtube'))
+        reddit = get_song_df(
+            f"{args.input}/reddit").dropna(how='any', subset=['body'])
+        twitter = get_song_df(
+            f"{args.input}/twitter").dropna(how='any', subset=['body'])
+        youtube = get_song_df(
+            f"{args.input}/youtube").dropna(how='any', subset=['body'])
         df = pd.concat([reddit, twitter, youtube])
-        df = df.drop(df[df['query_index'].isin(df3)])
-        print(df.describe())
-        return df
+        return df[(df['query_index'].isin(twitter['query_index'])) &
+                  (df['query_index'].isin(reddit['query_index'])) &
+                  (df['query_index'].isin(youtube['query_index']))]
     return get_song_df(args.input)
+
 
 def main():
     args = parseargs()
@@ -76,7 +80,7 @@ def main():
 
     # Load our data from JSONs and randomize the dataset
     # We shuffle here because tensorflow does not currently support dataset shuffling
-    song_df = get_song_df(args.input)
+    song_df = get_songs(args)
 
     ds = DiscourseDataSet(song_df, t_prop=0.15)
 
@@ -136,8 +140,10 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run:
     scatterplot(results, 'arousal', 'aro_pred',
                 'arousal_scatter', 'Arousal', run)
 
-    circumplex_model(results, f"{fname} - Predicted", fname=f"{fname}_predicted.png", val_key='val_pred', aro_key='aro_pred')
-    circumplex_model(results, f"{fname} - Actual", fname=f"{fname}_actual.png", val_key='valence', aro_key='arousal')
+    circumplex_model(results, f"{fname} - Predicted",
+                     fname=f"{fname}_predicted.png", val_key='val_pred', aro_key='aro_pred')
+    circumplex_model(results, f"{fname} - Actual",
+                     fname=f"{fname}_actual.png", val_key='valence', aro_key='arousal')
 
 
 def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str, run: neptune.Run) -> None:
