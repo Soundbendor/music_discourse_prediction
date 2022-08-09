@@ -58,6 +58,10 @@ def get_songs(args: argparse.Namespace):
             f"{args.input}/reddit").dropna(how='any', subset=['body'])
         twitter = get_song_df(
             f"{args.input}/twitter").dropna(how='any', subset=['body'])
+        if args.dataset == 'deezer':
+            df = pd.concat([reddit, twitter])
+            return df[(df['query_index'].isin(twitter['query_index'])) &
+                      (df['query_index'].isin(reddit['query_index']))]
         youtube = get_song_df(
             f"{args.input}/youtube").dropna(how='any', subset=['body'])
         df = pd.concat([reddit, twitter, youtube])
