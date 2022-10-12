@@ -1,7 +1,7 @@
 import tensorflow as tf
 import tensorflow.keras.backend as K
 
-from transformers import TFAutoModel
+from transformers.utils.dummy_tf_objects import TFAutoModel
 
 
 NUM_LABEL = 2
