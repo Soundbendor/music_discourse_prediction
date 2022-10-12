@@ -1,8 +1,8 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Union
 
 
-from src.data_mining.jsonbuilder import Comment, Submission
+from src.data_mining.jsonbuilder import Comment 
 
 # See https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/place
 @dataclass
@@ -38,7 +38,7 @@ class TwitterComment(Comment):
     # URL dict should contain url, display_url, title, and description.
     urls: List[dict]
     # We're just getting the raw contexrt annotations for now, since this data is difficult to process
-    context_annotations: List[TwitterContextEntity | TwitterContextDomain]
+    context_annotations: List[Union[TwitterContextEntity, TwitterContextDomain]]
     author_id: str
     conversation_id: str
     referenced_tweets: List[dict]
