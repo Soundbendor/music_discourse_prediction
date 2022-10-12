@@ -37,6 +37,8 @@ class RedditBot(CommentMiner):
         c_lang = self.l_detect(comment.body)
         return Comment(
             id=comment.id,
+            # Should this just be upvotes (t0 match youtube/twitter APIs)
+            # put downvotes as a reddit data contract specific field?
             score=comment.score,
             body=comment.body,
             replies=len(comment.replies),
