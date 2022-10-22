@@ -6,7 +6,7 @@ class Comment:
     id: str
     score: int
     body: str 
-    replies: int
+    reply_count: int
     lang: str
     # TODO - extract this to platform specific data contracts where it is necesscary 
     # reddit(?), youtube(?)

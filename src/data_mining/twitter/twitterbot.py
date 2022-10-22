@@ -1,4 +1,5 @@
 import requests
+import itertools
 import tweepy
 import os 
 
@@ -9,6 +10,8 @@ from dotenv import load_dotenv
 from data_mining.commentminer import CommentMiner
 from data_mining.jsonbuilder import Submission, Comment
 from typing import Iterator
+
+from src.data_mining.twitter.twitterbuilder import TwitterComment
 
 
 class TwitterBot(CommentMiner):
@@ -86,12 +89,15 @@ class TwitterBot(CommentMiner):
 
     def process_comments(self, tweet: tweepy.Tweet) -> Comment:
         # TODO: Pull text language from twitter API, remove reference to l_detect
-        c_lang = self.l_detect(tweet.text)
-        return Comment(
+        return TwitterComment(
             id=str(tweet.id),
-            score=tweet.public_metrics['like_count'],
             body=tweet.text,
-            replies=tweet.public_metrics['reply_count'],
-            lang=c_lang.lang,
-            lang_p=c_lang.prob
+            lang=tweet.lang
+            reply_count=tweet.public_metrics['reply_count'],
+            score=tweet.public_metrics['like_count'],
+            cashtags=[x['tag'] for x in tweet.entities.cashtags],
+            hashtags=[x['tag'] for x in tweet.entities.hashtags],
+            mentions=[x['username'] for x in tweet.entities.mentions],
+            urls={k:v for k,v in tweet.entities.urls.items() if k in ['url', 'title', 'description', 'display_url']},
+            context_annotations=itertools.chain([TwitterContextEntity(id=x.id, name=x.name, description=x.description) for k, v in tweet.context_annotations.items() if k == 'entitiy'][])
         )

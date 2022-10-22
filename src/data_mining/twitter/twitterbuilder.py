@@ -1,10 +1,15 @@
+import itertools
+# WARN - May not be compatible with future versions. See PEP 649 https://peps.python.org/pep-0649/
+from __future__ import annotations
 from dataclasses import dataclass
+# Maintained for backwards-compatability, technically not required
 from typing import List, Union
 
 
 from src.data_mining.jsonbuilder import Comment 
 
 # See https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/place
+
 @dataclass
 class TwitterContextEntity:
     id: str
@@ -18,6 +23,12 @@ class TwitterContextDomain:
     name: str
     description: str
 
+def filter_context(dict) -> Union[TwitterContextDomain, TwitterContextEntity]:
+   return {k:v for k,v in dict.items() if k in fields(TwitterContextEntity)}
+
+def form_context_annotations(annotations: List[dict]) -> List[Union[TwitterContextDomain, TwitterContextDomain]]:
+    return itertools.chain([[TwitterContextDomain(**filter_context(v)) if k == 'domain' else TwitterContextEntity(**filter_context(v)) for k, v in y.items()] for y in annotations])
+    
     
 @dataclass
 class TwitterLocation:
@@ -48,6 +59,7 @@ class TwitterComment(Comment):
     geo: dict
     retweet_count: int
     entity_annotations: List[dict]
+    replies: List[TwitterComment]
 
 
 # Problem - Submissions are also tweets, should have same fields.
