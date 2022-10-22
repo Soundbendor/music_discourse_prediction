@@ -13,12 +13,11 @@ from typing import Iterator
 
 from src.data_mining.twitter.twitterbuilder import TwitterComment
 
-
 class TwitterBot(CommentMiner):
 
     def __init__(self, f_key: str, search_depth: int = 10) -> None:
         self.api = self.auth_handler()
-        self.twitter_epoch = datetime(2006, 03, 26)
+        self.twitter_epoch = datetime(2006, 3, 26)
 
     def auth_handler(self) -> tweepy.Client:
         load_dotenv()
@@ -37,7 +36,7 @@ class TwitterBot(CommentMiner):
                                           sort_order='relevancy',
                                           # TODO - determine optimial max results for retrieval
                                           max_results=10,
-                                          start_time=self.twitter_epoch
+                                          start_time=self.twitter_epoch,
                                           expansions='referenced_tweets.id,author_id,in_reply_to_user_id,geo.place_id',
                                           tweet_fields='entities,geo,lang,public_metrics,conversation_id,created_at,\
                                               context_annotations,author_id,text',
