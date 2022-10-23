@@ -1,0 +1,1803 @@
+song_id,artist_name,song_name,Genre,valence,arousal
+2,"The New Mystikal Troubadours	","	Tonight  A Lonely Century	","	Blues	",3.1,3
+3,"Kevin MacLeod	","	DD Groove	","	Blues	",3.5,3.3
+4,"Kevin MacLeod	","	Slow Burn	","	Blues	",5.7,5.5
+5,"My Bubba & Mi	","	Nothing Much	","	Blues	",4.4,5.3
+7,"Kevin MacLeod	","	Hustle	","	Blues	",5.8,6.4
+8,"Kevin MacLeod	","	Dirt Rhodes	","	Blues	",3.2,4.8
+10,"Arne Bang Huseby	","	Stormy Blues	","	Blues	",4,4.7
+12,"Sul Rebel	","	Rebel Blues	","	Blues	",5.5,5.8
+13,"My Bubba & Mi	","	Oh Kiss No	","	Blues	",3.2,4
+17,"Phoephus	","	Fjcb Reddit Gtr Fills Mix	","	Blues	",4.4,6
+18,"Black Rebel Motorcycle Club	","	Beat The Devil's Tattoo (Live @ KEXP)	","	Blues	",4.8,3.9
+19,"WHO'S PANDA	","	Vultures	","	Blues	",5.9,4.3
+20,"Stevie's Amp Shack	","	Blues Shuffle in A One Take Improv Exercise	","	Blues	",5.4,6.5
+21,"Cian Nugent	","	My War Blues	","	Blues	",6.6,6.3
+22,"The New Mystikal Troubadours	","	The Holy Feele	","	Blues	",4,4.8
+24,"Bombay Laughing Club	","	Workin Boy Blues	","	Blues	",5.3,3.9
+25,"The Jon Spencer Blues Explosion	","	RL Got Soul	","	Blues	",7.9,4.7
+31,"Short Hand	","	All is Right	","	Blues	",4.7,3.8
+32,"The Agrarians	","	Princely & Comely	","	Blues	",4.2,3.3
+35,"Olima Anditi	","	Apoli	","	Blues	",4.8,6.5
+37,"The Jon Spencer Blues Explosion	","	Afro	","	Blues	",6.6,5.3
+39,"Barrence Whitfield and The Savages	","	Ramblin' Rose	","	Blues	",7.3,5.4
+40,"Chuck Prophet	","	You And Me Baby (Holding On) (Live @ KEXP)	","	Blues	",4.6,4.8
+41,"The New Mystikal Troubadours	","	Like Nothing Else	","	Blues	",4.3,5.1
+42,"The New Mystikal Troubadours	","	A Cinematic Influence	","	Blues	",6.1,5.1
+43,"The Agrarians	","	PuritansToo ","	Blues	",6.7,3.5
+44,"Digital Primitives	","	Walkabout	","	Blues	",3.9,4.9
+45,"Mountain Cult	","	Untitled 05	","	Blues	",5.1,2.1
+46,"Little Howlin' Wolf	","	Shes Too Fat	","	Blues	",5.3,4
+47,"Jahzzar	","	Boulevard St Germain	","	Blues	",4.4,4.4
+48,"The New Mystikal Troubadours	","	Our Sacred Cues	","	Blues	",4.5,4.8
+49,"The Agrarians	","	Our Nights on the Turnpike	","	Blues	",3.9,5.3
+50,"Jahzzar	","	Railroad's Whiskey Co	","	Blues	",3.6,4.8
+51,"The Agrarians	","	Fathers Tell Yr Sons ","	Blues	",3.6,3.2
+52,"The Agrarians	","	Recognize An Hour Divine	","	Blues	",4.6,5.1
+53,"The New Mystikal Troubadours	","	Owed to Old Poets  Our Role in the Play	","	Blues	",4.3,5.1
+54,"Fit and the Conniptions	","	Broken	","	Blues	",3.1,3.3
+55,"Big Bill Broonzy	","	Baby Please Don't Go ","	Blues	",5.8,5.4
+56,"Vieux Farka Touré	","	Fafa	","	Blues	",6.4,5.8
+58,"Fit and the Conniptions	","	Nothing's Any Fun Any More	","	Blues	",3.3,3.4
+59,"The Agrarians	","	The Truth Is What We Make of It	","	Blues	",5.3,4.1
+60,"Michael Chapman & The Woodpiles	","	Heat Index	","	Blues	",4.3,6.4
+62,"Zombie Prom Queen	","	Baby's Got Morphine Eyes	","	Blues	",6.2,3.9
+64,"The New Mystikal Troubadours	","	Jungle Love Revisited	","	Blues	",3.6,4.9
+65,"The Jon Spencer Blues Explosion	","	Bellbottoms	","	Blues	",6.4,5.8
+67,"The Jon Spencer Blues Explosion	","	Gadzooks	","	Blues	",7.2,6.8
+68,"Cian Nugent	","	Sixes & Sevens (Excerpt)	","	Blues	",3.8,4.9
+69,"Billy Childish	","	Keep Your Lamp Trimmed And Burning [traditional]	","	Blues	",3.2,3.9
+70,"Michael Chapman & The Woodpiles	","	Deportee	","	Blues	",4.4,3.6
+71,"The Agrarians	","	The Daily Dose Age	","	Blues	",5.9,3.7
+72,"Crete Boom	","	Bona Fide	","	Blues	",6.7,5.6
+73,"Solo Dja Kabako	","	Lalalala	","	Blues	",5.8,5.6
+74,"Mount Carmel	","	Interview	","	Blues	",3,4.3
+76,"Mountain Cult	","	Untitled 07	","	Blues	",4.3,3.2
+77,"The Rope River Blues Band	","	Yr Blues Tripping	","	Blues	",4.2,2.9
+78,"Mr. & Mrs. Smith	","	How to go to sleep	","	Blues	",3.4,3.9
+79,"Digital Primitives	","	No Holiday	","	Blues	",5.5,5.5
+80,"Lorenzo's Music	","	Roulette	","	Blues	",6,5.1
+81,"The Agrarians	","	The Newest Fashions	","	Blues	",6.1,3.9
+82,"Mr. & Mrs. Smith	","	Goin On	","	Blues	",2.9,3.5
+83,"Paul  Wine  Jones	","	If You Love Me Like You Say	","	Blues	",6.1,5.8
+84,"Mount Carmel	","	Swallow Me Up	","	Blues	",5.9,5.6
+85,"Lantern	","	Out Of Our Heads	","	Blues	",7.1,6.2
+86,"Eat at Joe's	","	Eat at Joe's	","	Blues	",5.4,5.6
+87,"Mountain Cult	","	Untitled 04	","	Blues	",5.3,2.6
+88,"Lorenzo's Music	","	We All Fall Down	","	Blues	",6.7,5.5
+89,"The New Mystikal Troubadours	","	Common Experiences Man ","	Blues	",4.5,4.8
+90,"Fit and the Conniptions	","	Wood For The Trees	","	Blues	",4.3,4.2
+91,"Sim Cain	","	One	","	Blues	",4.5,5.5
+92,"The Rope River Blues Band	","	Further	","	Blues	",5.8,4.7
+93,"Betsy Olson	","	Waitin' (Live @ KEXP)	","	Blues	",7.2,6
+95,"Steve Gunn	","	Old Strange	","	Blues	",3.3,4.6
+96,"The Devil Makes Three	","	Aces and Twos (Live @ KEXP)	","	Blues	",6.8,6.9
+98,"The Agrarians	","	The Index of Memory	","	Blues	",4.3,2.7
+99,"The New Mystikal Troubadours	","	Chamber Blues' Tidal Band Presents	","	Blues	",4.3,4.1
+101,"Mr. & Mrs. Smith	","	Least the Ocean is Wet	","	Blues	",3.4,2.8
+102,"Marisa Anderson	","	Electricity	","	Blues	",6.5,5.4
+103,"Mountain Cult	","	Untitled 01	","	Blues	",5.6,3.3
+104,"The Rope River Blues Band	","	Ben Jonson's Blues	","	Blues	",6.1,3.3
+105,"mojo monkeys	","	Girl Might Do	","	Blues	",6.5,5
+106,"Fit and the Conniptions	","	Wander In A Dream	","	Blues	",4.6,3.3
+107,"Tarred Brigade	","	We Three Kings	","	Blues	",6,4.8
+108,"Califone	","	Giving Away The Bride (Live @ KEXP)	","	Blues	",4.5,4.2
+109,"The Agrarians	","	You're the Wave  Wander!	","	Blues	",4.4,4.5
+110,"The Agrarians	","	(Come On and Feele) The Faith in Me	","	Blues	",4.4,2.8
+111,"Jawbone	","	Drop Down Low	","	Blues	",5.3,5.3
+112,"Barrence Whitfield and The Savages	","	Big Mamou	","	Blues	",6.8,6.4
+113,"The New Mystikal Troubadours	","	(Shuffling Towards) Art's Holy Shrine	","	Blues	",5.4,3.8
+114,"Vieux Farka Touré	","	Inne (Live @ KEXP)	","	Blues	",4.8,5.7
+115,"Barrence Whitfield and The Savages	","	Bip Bop Bip	","	Blues	",8.4,7.8
+116,"Fit and the Conniptions	","	Mistress Song	","	Blues	",4.4,3.9
+117,"Delta Dreambox	","	Queen of Loneliness	","	Blues	",3.9,5
+118,"Cooper-Moore & Assif Tsahar	","	America	","	Blues	",4.9,4.6
+119,"Amen Dunes	","	Ethio Song	","	Blues	",4.3,3.2
+120,"Steve Gunn	","	Mr Franklin	","	Blues	",3.8,5
+121,"Mr. & Mrs. Smith	","	The not so flashy Exit	","	Blues	",3.1,3.9
+122,"The Agrarians	","	The Attack of Ev'ry Time	","	Blues	",5.5,4.6
+123,"Vieux Farka Touré	","	Awei Womei (Live @ KEXP)	","	Blues	",6.1,6.2
+124,"The Agrarians	","	The Banks of Eternity	","	Blues	",3.7,2.8
+125,"The Agrarians	","	Songtress' Sweet Song	","	Blues	",4.5,4.2
+126,"Lee Maddeford	","	Le petit jardin (with Les Gauchers Orchestra)	","	Classical	",5.1,6.1
+127,"Evgeny Grinko	","	Sunset	","	Classical	",3,5.3
+128,"Fabrizio Paterlini	","	Veloma	","	Classical	",3.6,4
+129,"Oskar Schuster	","	Sneeuwland	","	Classical	",4.2,6
+130,"Jared C. Balogh	","	Strides	","	Classical	",3.3,4.2
+131,"Dexter Britain	","	Wonderland (Instrumental)	","	Classical	",6.1,4.9
+133,"Ophir Ilzetzki	","	Aleph	","	Classical	",2.8,2.2
+134,"Dexter Britain	","	Summers Coming	","	Classical	",5.4,6
+135,"Jody Pou	","	O Solitude (H	","	Classical	",3.7,3.5
+136,"Mystic Morrison Visions	","	Fourth	","	Classical	",6.8,6.2
+137,"Aaron Dunn-Sonatina No. 1 in C Major 	","	 I	","	Classical	",4.3,5.8
+138,"Silver Process	","	Encounters With Abusive Men	","	Classical	",3.8,2.4
+140,"Jared C. Balogh	","	Shaking Off The Rust	","	Classical	",4.2,4.5
+142,"Circus Marcus-Aux puces nº2 	","	 Carosello	","	Classical	",4.6,4.8
+143,"Circus Marcus	","	Aux puces nº5	","	Classical	",4,4.9
+144,"krackatoa	","	The Passing of Time	","	Classical	",3.4,4.7
+145,"Kevin MacLeod	","	The Forest and the Trees	","	Classical	",3.1,5.4
+146,"Marcel Pequel	","	Nine	","	Classical	",2.4,3.5
+148,"krackatoa	","	Bending Light Infinity version	","	Classical	",4.7,5
+149,"Kevin MacLeod	","	Gagool	","	Classical	",3.4,3.1
+150,"Steven Arntson	","	Bow to Your Neighbor (Excerpt)	","	Classical	",5,5.4
+151,"James Beaudreau	","	Pacifico	","	Classical	",4,4.5
+152,"Dexter Britain	","	The Tea Party	","	Classical	",4.4,5.6
+153,"Evgeny Grinko	","	Blizzard	","	Classical	",3.9,4.5
+154,"Lee Maddeford	","	Ouverture	","	Classical	",4.2,4.1
+155,"Jared C. Balogh	","	Cyprus	","	Classical	",3.6,5.4
+156,"Lee Maddeford	","	Wheel of fortune (with Les Gauchers Orchestra)	","	Classical	",6.4,6.7
+157,"Jamie Evans	","	Opening Doors	","	Classical	",4,6.2
+158,"Peter Rudenko	","	5 00 AM	","	Classical	",2.1,3.6
+159,"Silver Process	","	Awaken From A Nightmare	","	Classical	",3.8,3.1
+160,"Advent Chamber Orchestra-Bughici 	","	 Suite for Violin 9 Hora vivace","	Classical	",3.5,3.5
+161,"MIT Concert Choir	","	O Fortuna	","	Classical	",6.3,3.5
+162,"Circus Marcus	","	Le bal de Rémy	","	Classical	",3.7,4.6
+163,"Jared C. Balogh	","	Caught In A Realm	","	Classical	",3.6,4.5
+164,"Silver Process-Skid	","	Row Night	","	Classical	",4.1,2.9
+166,"Dexter Britain	","	Stop It (Instrumental)	","	Classical	",3.1,4.2
+167,"Circus Marcus-Aux puces nº1 	","	 Les chaises Louis XVI	","	Classical	",2.7,3.3
+168,"Kevin MacLeod	","	Funeral March for Brass	","	Classical	",3.3,3.4
+169,"Jody Pou	","	Black Coffee	","	Classical	",2.4,2.8
+170,"Circus Marcus-Aux puces nº6 	","	 La Flor de Olmedo	","	Classical	",3,5
+171,"Chris Zabriskie	","	That Kid in Fourth Grade Who Really Liked the Denver Broncos	","	Classical	",2.1,3.6
+172,"Chris Zabriskie	","	The Temperature of the Air on the Bow of the Kaleetan	","	Classical	",3.8,5
+173,"Andrew Bisset-Cultural Dis	","	Ease	","	Classical	",4.6,2.2
+174,"Jamie Evans	","	War And Peace	","	Classical	",4,3.8
+175,"Steven Arntson	","	Don't You Want to Go to Heaven Uncle Sam  ","	Classical	",3.7,4.3
+176,"Marcel Pequel	","	Six	","	Classical	",2.4,3.9
+177,"IKOS David Clifton with the choirs of Peterborough Cathedral	","	O Come O Come Emmanuel	","	Classical	",4.8,5.6
+178,"K-Conjog	","	Uno Is Walking	","	Classical	",2.8,3.7
+179,"Dexter Britain	","	The Time To Run	","	Classical	",5.2,6
+180,"Jared C. Balogh	","	Bridging and Mending	","	Classical	",4.8,5.9
+181,"Steven Arntson	","	A Muddy Heart	","	Classical	",3.7,2.5
+182,"Jessica Pavone	","	Dedicated to Elizabeth Cotten (with Matt Bauder)	","	Classical	",2.2,3.7
+184,"Fabrizio Paterlini-Forever blue (March Rosetta re	","	imagined version)	","	Classical	",3.6,3.4
+185,"Kevin MacLeod	","	Ghost Dance	","	Classical	",4.9,4.6
+186,"Dexter Britain	","	Nights Tale	","	Classical	",3.7,4
+187,"Evgeny Grinko	","	Other Child Room	","	Classical	",2.5,3.7
+188,"Lee Maddeford	","	Tom's Lullaby (with Les Gauchers Orchestra)	","	Classical	",4,3.3
+189,"Sláinte	","	Wild Rover with Bellevue Chamber Chorus	","	Classical	",6.5,7.1
+190,"Kevin MacLeod	","	Virtutes Instrumenti	","	Classical	",2.8,3.1
+191,"Kimiko Ishizaka	","	Variatio 14 a 2 Clav	","	Classical	",5.1,6.3
+192,"Steven Arntson	","	Lucky	","	Classical	",5.8,6.1
+193,"Matthew Mehlan	","	Hands	","	Classical	",4.1,3
+194,"Jamie Evans	","	Reminiscence	","	Classical	",2.7,4.7
+195,"Rebecca Foon	","	Golden Alley Reprise	","	Classical	",4.2,2.7
+196,"Lanark	","	Borodin Butterfly	","	Classical	",4.3,4.5
+197,"Marcel Pequel	","	Eight	","	Classical	",2.2,2.8
+198,"Lee Rosevere	","	Red Danube	","	Classical	",1.9,3.3
+199,"John Harrison with the Wichita State University Chamber Players	","	Spring Mvt 1 Allegro	","	Classical	",5.3,5.7
+201,"Circus Marcus	","	Les crocodiles mangent aussi les bonshommes Wizzards	","	Classical	",3.7,4.8
+202,"Chance's end	","	God Rest Ye Merry Gentlemen	","	Classical	",4.6,5.2
+203,"Jared C. Balogh	","	WATCHING IT SNOW WHILE THINKING OF YOU	","	Classical	",3.5,4.8
+204,"Joe Merolla	","	Sinfonia di Violoncello e AM RadioFinitura","	Classical	",3.6,2.2
+205,"Chris Zabriskie	","	Prelude No	","	Classical	",3,4.5
+206,"Ophir Ilzetzki	","	Unisons	","	Classical	",2.3,2.6
+207,"Dexter Britain	","	Notebook Reading	","	Classical	",4.8,4.8
+208,"Dexter Britain	","	Leave Well Enough Alone (Instrumental)	","	Classical	",4.8,6.5
+209,"Kevin MacLeod	","	Amazing Grace 2011	","	Classical	",3.1,4.6
+210,"Advent Chamber Orchestra-Bughici 	","	 Suite for Violin 8 Ardeleneascamoderato ","	Classical	",4.2,5.5
+211,"Dexter Britain	","	After Christmas	","	Classical	",3.1,4.9
+212,"Dexter Britain	","	My Song For January	","	Classical	",4.6,5.4
+213,"Silver Process	","	Graveyard Illusions	","	Classical	",2.6,2.5
+214,"Arnaud Roy	","	Blue sox	","	Classical	",3.6,4.1
+215,"Silver Process	","	In A Party Watching A Party	","	Classical	",3.2,2.6
+216,"Lloyd Rodgers	","	On Things Invisible to the Eye (Act II)	","	Classical	",4.5,5.3
+217,"Jamie Evans	","	Haunted	","	Classical	",3.5,4.8
+218,"Evgeny Grinko	","	the piano of the old seaman	","	Classical	",2.9,4
+219,"The New Heaven and The New Earth	","	The Book of Floating	","	Classical	",2.4,3.8
+220,"Silver Process	","	Jazz Band With Jazz Hands	","	Classical	",4.1,3.4
+221,"The New York Underground Orchestra (Conducted By Assif Tsahar)	","	First	","	Classical	",4.3,3.4
+222,"Ophir Ilzetzki	","	ha'zman	","	Classical	",3.8,4.3
+223,"Marcel Pequel	","	One	","	Classical	",2.2,3.5
+224,"LE CHEVALIER DE RINCHY	","	jingles interludes et dimanche minuit","	Classical	",5.5,5.7
+225,"Jared C. Balogh	","	The Anticipation Of Spring	","	Classical	",3.7,4.2
+226,"Jared C. Balogh	","	A TOUGH DECISION	","	Classical	",4.9,5
+227,"Jared C. Balogh	","	SELF REFLECT	","	Classical	",3.1,3.5
+228,"Evgeny Grinko	","	Woody Allen	","	Classical	",3.5,4
+229,"Dexter Britain	","	Slow Motion Strut Version Two	","	Classical	",4.8,4.8
+231,"Dexter Britain	","	Train	","	Classical	",4.1,5.6
+232,"Advent Chamber Orchestra-Dvorak 	","	 Serenade for Strings Op22 in E Major larghetto	","	Classical	",2.5,2.7
+233,"Jared C. Balogh	","	HURRY UP AND RAIN	","	Classical	",4.7,4.5
+234,"Jessica Pavone	","	Dedicated to Leroy Jenkins	","	Classical	",3.5,3.9
+235,"Steven Arntson	","	Flight of the Moth	","	Classical	",3,3.7
+236,"Chuck Bettis & Joe Merolla	","	Transmutation Of Metals	","	Classical	",2.5,2.4
+237,"Steven Arntson	","	Birth	","	Classical	",4.2,3.9
+238,"Kevin MacLeod-J. S. Bach  Prelude in C 	","	 BWV 846	","	Classical	",3,4.6
+239,"Marcel Pequel	","	Seven	","	Classical	",2.3,3.3
+240,"Puh	","	Gammelvals	","	Classical	",6.4,6.6
+241,"Dexter Britain	","	After The Week I've Had	","	Classical	",4.1,4.6
+242,"IKOS David Clifton with the choirs of Peterborough Cathedral	","	Silent Night	","	Classical	",3.5,4.7
+243,"MIT Concert Choir	","	Ave formosissima — O Fortuna (reprise)	","	Classical	",7.2,4.1
+244,"Steven Arntson	","	Valediction	","	Classical	",4.3,4.2
+245,"Advent Chamber Orchestra-Handel 	","	 Entrance to the Queen of Sheba for Two Oboes Strings and Continuo allegro ","	Classical	",4.2,6.1
+246,"Silver Process	","	Traumatic Childhood	","	Classical	",4.9,3.2
+247,"Jared C. Balogh	","	Micro Composition 10	","	Classical	",3.9,4.5
+248,"Dexter Britain	","	Chasing Time	","	Classical	",3.4,3.7
+250,"John Harrison with the Wichita State University Chamber Players	","	Winter Mvt 3 Allegro	","	Classical	",3.4,3.6
+253,"The Rope River Blues Band	","	Dance!	","	Country	",6.6,2.5
+254,"Scott Joplin	","	Original Rags (1900 piano roll) ","	Country	",5.3,7.4
+257,"Stompin' Riff Raffs	","	Wine Wine Wine	","	Country	",7.6,6.9
+258,"Mr. & Mrs. Smith	","	ChainSmoke Days	","	Country	",4.3,4.3
+260,"The Moaners	","	Detroit	","	Country	",5.3,3.6
+262,"Scott Joplin	","	The Entertainer (1902 piano roll) ","	Country	",5.6,6.9
+264,"Peter Case	","	House Rent Jump	","	Country	",5.3,5.5
+265,"George P. Watson	","	Emmet's Cuckoo Song	","	Country	",4.5,6.4
+266,"Jason Shaw	","	SOLO ACOUSTIC GUITAR	","	Country	",3.6,4.8
+269,"Paper Navy	","	Swan Song	","	Country	",4.3,4.8
+270,"John H. Glover-Kind	","	I Do Like To Be Beside The Seaside (1907 piano roll) ","	Country	",6.1,7.1
+272,"Jason Shaw	","	JENNY'S THEME	","	Country	",5.9,6.4
+273,"Shake That Little Foot	","	Western Country	","	Country	",5.4,7.2
+274,"LE CLUB DES CHATS	","	Mochi	","	Country	",7.7,6
+275,"Caühaüs	","	Rednecks with White Faces	","	Country	",5.3,5.5
+276,"Secret Jane	","	Blackberry Hedge	","	Country	",6.1,5.3
+278,"Jason Shaw	","	ACOUSTIC BLUES	","	Country	",5.5,5.1
+279,"Krestovsky	","	Party	","	Country	",3.6,4.7
+280,"Flying Cloud	","	Upper Room	","	Country	",4.2,3.3
+281,"Percy Wenrich	","	The Smiler (1907Zonophone Concert Band) ","	Country	",5.4,7
+282,"Dr. Frankenstein	","	Have You Seen It 	","	Country	",3.2,4.2
+284,"Jahzzar	","	Last Dance	","	Country	",4.4,5.2
+285,"Lucas Gonze	","	Death Valley Waltz	","	Country	",3.5,5.1
+286,Scott Joplin-Maple Leaf Rag (1899 Geisz version) ," Z. Brewster	","	Country	",5.7,6.9
+288,"Jason Shaw	","	WORDS	","	Country	",3.5,5.2
+289,"Scott Joplin	","	Pine Apple Rag (1908 piano roll) ","	Country	",5.7,6.7
+290,"Abe Sada	","	The City	","	Country	",2.1,3.9
+292,"Stompin' Riff Raffs	","	Horror Show	","	Country	",7.3,7.4
+293,"Party People in a Can	","	Ayahuasca	","	Country	",6.3,4.2
+294,"Moore and Gardner	","	Chinese Blues (1916 George Gershwin piano roll) ","	Country	",5.5,6.5
+296,"Caravan of Thieves	","	Candy	","	Country	",5.9,5.7
+297,"Wooden Ambulance	","	My Friend	","	Country	",3.1,3.6
+298,"Moore & Sons	","	Obvious	","	Country	",4,5.4
+299,"Jason Shaw	","	RUNNING WATERS	","	Country	",2.8,4.3
+300,"The Brought Low	","	What I Found	","	Country	",6.8,4.5
+301,"Shane Tutmarc	","	Never Turnin' Back (Live @ KEXP)	","	Country	",3.2,3.7
+302,"Rose's Pawn Shop	","	Danger Behind The Wheel (Live @ KEXP)	","	Country	",6.6,7
+303,"The Canoes	","	American English	","	Country	",7,6.4
+304,"Jeremy Cohen & Matt Munisteri	","	Rose Room	","	Country	",3.8,4.6
+305,"Rex Allen	","	Riding Down To Mexico	","	Country	",6.4,6.8
+306,"James Scott	","	Frog Legs Rag (1906 piano roll)","	Country	",5.7,6.7
+307,"Shake That Little Foot	","	Turkey in the Straw	","	Country	",6.1,6.8
+308,"Jason Shaw	","	WHEELS	","	Country	",4.3,6.6
+309,"Dr. Frankenstein	","	Theme for  The Mad Thinker 	","	Country	",5.3,5.8
+310,"Mr. & Mrs. Smith	","	Neighborhood Funeral Dress	","	Country	",2.1,2.7
+311,"Caravan of Thieves	","	Ghostwriter	","	Country	",5.8,6.9
+312,"Austin Leonard Jones	","	Wild Guide	","	Country	",4.6,5.8
+313,"Jason Shaw	","	TRAVEL LIGHT	","	Country	",3.6,5.3
+314,"Austin Leonard Jones	","	Ox Driving Song	","	Country	",5.8,5.9
+315,"Shake That Little Foot	","	Scotland the Brave	","	Country	",6.4,7.5
+316,"Kenny Tudrick	","	The River	","	Country	",2.8,3.5
+317,"Waylon Thornton	","	Rose Water	","	Country	",6.1,4.3
+318,"Dr. Frankenstein	","	Emergency Exit	","	Country	",5.9,5.9
+319,"Lucas Gonze	","	Frog In The Well	","	Country	",4.5,6.6
+320,"Stompin' Riff Raffs	","	99 Chicks	","	Country	",7.4,6.6
+321,"Dr. Frankenstein	","	Necrófago	","	Country	",7.3,6
+322,"Pee Wee King	","	I Wanna Say Hello	","	Country	",6.1,7.6
+323,"The Water Tower Bucket Boys	","	Pilgim Song (Live @ KEXP)	","	Country	",4.82,5.73
+324,"Jason Shaw	","	SERENITY	","	Country	",3.3,4.7
+325,"Chatham County Line	","	Birmingham Jail	","	Country	",5.5,5.4
+326,"Jason Shaw	","	THINGAMAJIG	","	Country	",5.4,7.2
+327,"Bandana Splits	","	Ricky Dee	","	Country	",6,7.1
+328,"U Can Unlearn Guitar	","	Imna 'Merican	","	Country	",5.2,4.2
+329,"Edith Frost	","	Cars and Parties	","	Country	",3.3,4.2
+330,"Vonn Krapp Family	","	Loco Two	","	Country	",5.9,3.1
+332,"Jason Shaw	","	FUNKY JUNKY	","	Country	",5.5,6.9
+333,"Thee Irma & Louise	","	Live at the Winston	","	Country	",6.7,6.1
+334,"Universal Jubilaires	","	Childhood Days	","	Country	",5.9,5.9
+335,"Trampled By Turtles	","	Help You (Live @ KEXP)	","	Country	",6.8,6.8
+336,"The Shut-Ins	","	Rock n Roll McDonald's	","	Country	",6.1,6.6
+338,"Bureaucratica	","	Southern Gothic	","	Country	",3,3.8
+339,"Jason Shaw	","	ROCKY TOP	","	Country	",5.9,6.9
+340,"Peter Case	","	30 Days in the Workhouse	","	Country	",3.8,4.6
+341,"Audra Kubat	","	Columbine	","	Country	",3.8,4.4
+342,"Jason Shaw	","	ACOUSTIC MEDITATION	","	Country	",4,5.1
+343,"Chatham County Line	","	Clear Blue Sky	","	Country	",7,8.1
+344,"Jason Shaw	","	ONE FINE DAY	","	Country	",4.6,5.2
+345,"Stompin' Riff Raffs	","	You Shake Me	","	Country	",7.2,6.5
+346,"Jason Shaw	","	TENNESEE HAYRIDE	","	Country	",6.7,7.3
+347,"Johnny Bond	","	Goodbye Old Paint	","	Country	",3.82,5.82
+348,"Austin Leonard Jones	","	I Wish I Was A Headlight	","	Country	",5,5.7
+349,"Jim Long	","	There Were Some Famous Artists	","	Country	",4.6,5.8
+350,"Jason Shaw	","	BACK TO THE WOODS	","	Country	",6,6.5
+352,"Lucas Gonze	","	Talk About Suffering	","	Country	",5.5,4.5
+353,"Johnny Bond	","	Birmingham Jail	","	Country	",4,4.8
+354,"Eric Villa	","	 If Not For Your Sweet Heart 	","	Country	",7.1,6.4
+355,"Al Duvall-Stuck On A Hat	","	Check Girl	","	Country	",5.1,6.5
+356,"Jason Shaw	","	SNAPPY	","	Country	",4.6,5.6
+357,"D. Charles Speer & the Helix	","	Red Clay Road	","	Country	",4.8,6.5
+358,"Bill Crosson	","	Love Song To Little Trees	","	Country	",5.6,4.2
+359,"Jahzzar	","	Bed	","	Country	",2.5,3.7
+360,"Jason Shaw	","	NICE AND EASY	","	Country	",2.5,5.5
+361,"Jason Shaw	","	AUTUMN SUNSET	","	Country	",2.55,3.36
+362,"Jason Shaw	","	RIVER MEDITATION	","	Country	",4,5.9
+364,"Jason Shaw	","	MOUNTAIN SUN	","	Country	",5.5,6.5
+365,"Shake That Little Foot	","	Waterbound	","	Country	",6,7.1
+366,"Golden Boys	","	Dirty Fingernails	","	Country	",6.9,6.1
+367,"Tift Merritt	","	After Today	","	Country	",3.1,2.7
+368,"Spade Cooley &  the Western Swing Dance Gang Feat. Tex Williams	","	Better Do It Now	","	Country	",4.8,6.1
+369,"Mr. & Mrs. Smith	","	Mr	","	Country	",2.9,3.4
+370,"The Trumpeteers	","	Little Wooden Church	","	Country	",3.8,3.4
+371,"Stapleton Brothers-Call of the Whip-Poor	","	Will	","	Country	",5.2,6.6
+372,"QQQ	","	Runaway Puppy	","	Country	",3.6,4.8
+374,"The Crevulators	","	Gambler's Blues	","	Country	",7,4.9
+375,"Mr. & Mrs. Smith	","	Bit a Bullet	","	Country	",1.9,2.8
+376,"Broke For Free	","	Night Owl	","	Electronic	",5,5.9
+378,"Graphiqs Groove	","	Deep Sky Blue	","	Electronic	",5.5,5.9
+379,"LJ Kruzer	","	Chantiers Navals 412	","	Electronic	",1.9,2.9
+380,"Macaw	","	Five Minutes at the Rainforest Cafe	","	Electronic	",5.6,4.8
+381,"Hot Fire-Them Never Love No Bans 	","	 DnB Mix (Germany)	","	Electronic	",6,6.7
+383,"Neuroleptic Trio	","	Neuroleptic trio instrumental 5	","	Electronic	",4.2,3.6
+384,"Ghost Hunter	","	Whirlwind Dance	","	Electronic	",3.6,4.1
+386,"Broke For Free	","	As Colorful As Ever	","	Electronic	",5,5.5
+387,"Risey	","	Memories Of Thailand (Beat Doctor's 'stuck in Britain' remix)	","	Electronic	",6.2,6.2
+390,"Beat Culture	","	Midori	","	Electronic	",5.7,6.2
+391,"Morphamish	","	Another Position (original mix)	","	Electronic	",5.5,6.1
+392,"Ghostly Dust Machine	","	Ode To A Baby Snowstorm	","	Electronic	",3.4,4.8
+393,"Max Tundra	","	Lysine	","	Electronic	",6,6.4
+395,"Foniqz	","	Spectrum (Subdiffusion Mix)	","	Electronic	",6.7,6.2
+397,"Lucky Dragons	","	Mercy	","	Electronic	",7,7
+399,"Dexter Britain	","	Waking Up (Instrumental)	","	Electronic	",6.7,7
+400,"Asthmatic Astronaut	","	Run The Tape	","	Electronic	",5.1,5.6
+401,"Broke For Free	","	Something Elated	","	Electronic	",5.5,6.4
+402,"Patrick Lee	","	Quittin' Time	","	Electronic	",7.1,7.1
+403,"Daddy_Scrabble	","	Flying pea v	","	Electronic	",5.1,5.2
+404,"Broke For Free	","	Calm The Fuck Down	","	Electronic	",6.9,6.8
+405,"Kevin MacLeod	","	Presenterator	","	Electronic	",6.1,7.4
+406,"Smersh	","	My God Those Legs	","	Electronic	",5.3,4.3
+407,"Digi G'Alessio-ekiti son feat valeska 	","	 april deegee rmx	","	Electronic	",4.3,4.5
+408,"EeL	","	snow world under the white moon	","	Electronic	",6.6,6.1
+410,"Zero V	","	Twinkling	","	Electronic	",3.8,5.1
+415,"Phoniandflore	","	Dubsteady	","	Electronic	",6,5.2
+416,"Bitbasic	","	Please Mind the Dubstep	","	Electronic	",5.5,5.2
+419,"Antiphon	","	over and under	","	Electronic	",3.3,4
+420,"Casetofoane	","	90	","	Electronic	",4.5,5.4
+422,"Lee Rosevere	","	Moonlight and Roses	","	Electronic	",2.8,3.7
+423,"Glass Boy	","	My Pretty Looking Clothes	","	Electronic	",5.2,4.5
+425,"Decktonic	","	Stars	","	Electronic	",7.1,6.8
+426,"Asura	","	Whispering Through	","	Electronic	",5.3,5.3
+427,"Tours	","	Enthusiast	","	Electronic	",5.2,5.8
+428,"Revolution Void	","	How Exciting	","	Electronic	",6.6,6.6
+429,"Chris Zabriskie	","	Divider	","	Electronic	",3.3,4.3
+430,"Vitus Von Degen	","	Black Gloves	","	Electronic	",4,2.9
+431,"Dub Terminator	","	Dub steps	","	Electronic	",6.1,5.5
+432,"Pierlo	","	Barbarian	","	Electronic	",5.3,5.3
+435,"Broke For Free	","	Warm Up Suit	","	Electronic	",4.5,5.9
+436,"Digi G'Alessio	","	raw instrumental pt	","	Electronic	",4.3,5.2
+437,"Psychadelik Pedestrian	","	Night Beach	","	Electronic	",5.2,4.3
+440,"Immortal Beats	","	Oh Wee	","	Electronic	",5.3,6.3
+441,"M.W.D.	","	Singing Forest	","	Electronic	",4.6,5.1
+442,"Volfoniq-Memori [Amentu Segretu 	","	 Arrogalla remix feat Andrea Congia]	","	Electronic	",4.1,4.5
+444,"Augustus Bro & Gallery Six	","	People Living And Leaving Big Citys	","	Electronic	",2.3,2.5
+445,"Bacalao	","	Casual Graphic Designer	","	Electronic	",2.4,4.6
+448,"Anitek	","	Destination	","	Electronic	",6.7,6.5
+449,"Orbique	","	simple	","	Electronic	",3.6,3.8
+450,"Ghosts	","	Grief And Sleep	","	Electronic	",4.1,5
+451,"Thick Business	","	Smoothest Runes	","	Electronic	",4.9,4.4
+452,"YACHT-Shangri	","	La (instrumental)	","	Electronic	",5.45,6.75
+453,"Broke For Free	","	Only Instrumental	","	Electronic	",4.6,5.6
+454,"Wake	","	Steppin	","	Electronic	",5,4.8
+455,"Music For Your Plants	","	Expedition Chant Cup	","	Electronic	",5.4,5.7
+456,"Stickfigure	","	Crack in Time	","	Electronic	",6.1,2.3
+458,"Nameless Dancers	","	Night Fly	","	Electronic	",3.4,5
+459,"Mutherpluckin' B	","	Cryin in the Delta Wind	","	Electronic	",6.3,6.1
+460,"Flex Vector	","	Inner Demon	","	Electronic	",3.8,3.8
+461,"Sycamore Drive	","	Ocean Breeze	","	Electronic	",4.8,4.4
+462,"Morsa-Erotic Post	","	Ironic (feat	","	Electronic	",5.8,4.6
+463,"Lomovolokno	","	Overlay Star	","	Electronic	",5,5.7
+464,"Plurabelle	","	Ropes	","	Electronic	",5.1,5.6
+466,"Fanas	","	Forever falling up	","	Electronic	",6.6,5.9
+467,"Peter Sharp	","	Runtime error	","	Electronic	",5.7,6.8
+468,"Zero V	","	Hiss	","	Electronic	",3.6,3.4
+469,"Broke For Free	","	Knock Knock	","	Electronic	",5.1,5.3
+472,"Listen With Sarah	","	I	","	Electronic	",6.5,5.2
+473,"Illocanblo	","	SmurfPulser	","	Electronic	",7.1,5.5
+475,"Morphamish + MAKO	","	Ooo	","	Electronic	",5.6,5
+477,"Decktonic	","	Night Drive	","	Electronic	",7.1,7.2
+478,"Zero V	","	Initiation	","	Electronic	",2.8,3.2
+479,"Jiony	","	Not Found (Invisible)	","	Electronic	",4.5,5.7
+480,"Lee Rosevere-Chapter Seven - Re	","	entry	","	Electronic	",2.7,4.1
+481,"Dexter Britain	","	Seeing The Future	","	Electronic	",3.4,4.7
+482,"Julian Winter	","	LA	","	Electronic	",1.9,3.5
+484,"Beat Doctor	","	Got Me (club mix)	","	Electronic	",6.4,6.5
+485,"Psychadelik Pedestrian	","	Coral Reef	","	Electronic	",2.6,3.7
+486,"Pulselooper	","	Neurociencia	","	Electronic	",6.2,5.7
+487,"Foniqz	","	D2	","	Electronic	",4.5,5.3
+488,"Blear Moon	","	Cold Summer Landscape	","	Electronic	",1.6,3.4
+489,"The Protagonist!	","	Pink Fuzz!	","	Electronic	",4.6,5.2
+490,"Apes on Tapes	","	Chico (The Way Out)	","	Electronic	",3.9,3.7
+492,"M-PeX	","	Beryllos	","	Electronic	",4.4,4.8
+493,"General Fuzz	","	summer	","	Electronic	",3.7,4.9
+494,"Deltason	","	Garden Theme	","	Electronic	",3.7,4.1
+496,"Adubter	","	OutroDub	","	Electronic	",4.7,5.9
+497,"Flex Vector	","	The Beat Goes On	","	Electronic	",6.2,5.7
+498,"Altered Carbon	","	Drown	","	Electronic	",2.9,2.8
+499,"Isle	","	Bayview	","	Electronic	",3.6,3.6
+500,"Music For Your Plants	","	القذافي الأمازون الحرس	","	Electronic	",6,5.2
+501,"Possimiste	","	Behind The Seas	","	Folk	",2.5,4.4
+502,"The Rope River Blues Band	","	Capulet	","	Folk	",4.8,4.6
+503,"Plushgoolash	","	Big Gay Water Fight	","	Folk	",5.8,6.4
+504,"Sam Shalabi	","	Rebetikaud	","	Folk	",4.8,4
+506,"Keshco	","	Like Home	","	Folk	",2.9,4.1
+507,"Caligine	","	Mε Πιάνουνε Ζαλάδες	","	Folk	",4.9,4.8
+512,"Costa and Nero	","	Rast'e Tou Teke	","	Folk	",5.1,5.4
+513,"Chan Wai Fat	","	Dream (instrumental)	","	Folk	",3.1,4.2
+514,"Jason Shaw	","	SIDEWALK	","	Folk	",4.3,5.8
+515,"Plankton Wat	","	Hash Smugglers Blues	","	Folk	",3.8,3.4
+518,"Free Piece of Tape	","	Burning School	","	Folk	",4.1,3.4
+519,"Morus Alba	","	MDMA (Pt	","	Folk	",6.8,5.3
+520,"Moore & Sons	","	Broken Spell	","	Folk	",4,5.5
+521,"Black Twig Pickers and Steve Gunn	","	Old Strange	","	Folk	",3.8,4.6
+522,"Mike Cooper & Viv Corringham	","	New Rembetika   14	","	Folk	",3.5,2.7
+523,"The Upsidedown-E	","	Love	","	Folk	",5.1,5.9
+524,"Nettle	","	Black Eyes	","	Folk	",3.3,4
+525,"Cooper-Moore	","	(h) Banjo Arba Minch Garden	","	Folk	",4.3,4.8
+527,"Michael Chapman & The Woodpiles	","	A Stranger's Map of Texas	","	Folk	",4,5.7
+529,"Hiiragi Fukuda	","	TV Dinner	","	Folk	",4.7,5.8
+530,"The New Mystikal Troubadours	","	The Tropical Lounge Prayer Directory	","	Folk	",3.3,3.5
+535,"Black Twig Pickers and Steve Gunn	","	Sally in the Garden Sifting Sand	","	Folk	",6.1,6.5
+536,"Steven Arntson	","	Don't You Want to Go to HeavenUncle Sam  ","	Folk	",5.1,4.5
+537,"Astral Social Club	","	Efoumernam Ena Vradi	","	Folk	",5,2.6
+540,"Steve Gunn	","	Trouba	","	Folk	",4.1,4.4
+544,"Rho	","	Day Into Night	","	Folk	",4.8,4.5
+547,"Mr. & Mrs. Smith	","	It's all right	","	Folk	",3.4,4.8
+550,"Michael Chapman & The Woodpiles	","	Titanic	","	Folk	",4.2,5.9
+551,"Moore & Sons	","	Harmless Blues	","	Folk	",3.2,4
+554,"Paneye	","	Wave Graves	","	Folk	",2.8,5
+555,"The Agrarians	","	Views of The Holy & Divine	","	Folk	",5.2,4.8
+556,"Steven Arntson	","	Life on the Odyssean Wave	","	Folk	",5.6,6.1
+558,"My Bubba & Mi	","	Good Night Heart	","	Folk	",2.8,3.2
+560,"Jahzzar	","	Vanlig	","	Folk	",2.9,4.6
+561,"La Minor	","	La Minor Live at Pacific Parc Vol	","	Folk	",6.9,7
+564,"Fit and the Conniptions	","	Solemn Ground	","	Folk	",4.7,4.9
+565,"Amen Dunes	","	Sousta Politiki	","	Folk	",3.1,3
+568,"U Can Unlearn Guitar	","	The Incredible Infection of Unintended Invection	","	Folk	",5.4,3.1
+574,"Kevin MacLeod	","	Cattails	","	Folk	",4.5,4.8
+577,"Jahzzar	","	Look inside	","	Folk	",5.6,5.5
+579,"red_robin	","	The Surveyor	","	Folk	",3.1,3.2
+580,"Cian Nugent	","	Grass Above My Head	","	Folk	",2.4,4.4
+581,"Atlas Sound	","	Mona Lisa	","	Folk	",5.3,6
+582,"Jason Shaw	","	12 MORNINGS	","	Folk	",3.1,4.9
+584,"Ignatz	","	Stin Ypoga	","	Folk	",2.5,2.4
+585,"Yair Yona	","	The Bright New Year (By Bert Jansch)	","	Folk	",4,4.2
+586,"Greg Gibbs	","	Hemoglobin (Live at the Tonic Room)	","	Folk	",5.2,5.9
+591,"The Sons Of The Pioneers	","	Whoopee Ti Yi Yo	","	Folk	",5.7,6.2
+592,"Pietnastka	","	Tape Eater	","	Folk	",5.45,5.09
+594,"Chan Wai Fat	","	Di Hei Hei (sung by Po Sun Yi)	","	Folk	",4.2,3.1
+597,"Keshco	","	Wafternoon	","	Folk	",4.8,6.4
+598,"Jahzzar	","	Joke	","	Folk	",4,5.6
+600,"Joe Mazzola	","	32 Ford	","	Folk	",3.5,4
+605,"The Simple Carnival	","	Flirt	","	Folk	",4.4,6
+606,"Jahzzar	","	Ice Cream	","	Folk	",4.1,5.6
+607,"James Blackshaw	","	Past Has Not Passed	","	Folk	",4.4,6.1
+608,"Daniel Padden	","	Adinatisa O Kaymenos	","	Folk	",2.9,3.8
+609,"M-PeX	","	Eter	","	Folk	",5.3,5.55
+610,"Jahzzar	","	Shine	","	Folk	",6.3,6.5
+611,"Jahzzar	","	Car Crash	","	Folk	",5.1,4.8
+612,"Black Twig Pickers	","	Wild Horse of Stony Point	","	Folk	",5.6,6.6
+613,"Jahzzar	","	Going to	","	Folk	",5.2,6.8
+614,"Josh Woodward	","	I Want To Destroy Something Beautiful	","	Folk	",4.3,3.7
+615,"Moore & Sons	","	Talking	","	Folk	",3.2,5
+616,"Greg Gibbs	","	Hot Kettle and a Lonely Gun	","	Folk	",3.5,5
+617,"The Peach Tree	","	A Clean Slate	","	Folk	",6.5,3
+620,"M-PeX	","	Aqua	","	Folk	",5.8,4.4
+621,"Carter Thornton	","	The Blender is Not Built For That	","	Folk	",2.9,4.4
+622,"Greg Gibbs	","	Zoo	","	Folk	",4.5,5
+623,"Jahzzar	","	Anniversary	","	Folk	",3.8,5.9
+625,"Moore & Sons	","	Night Ahead	","	Folk	",3.1,4.4
+628,"Latché Swing	","	Hungaria	","	Jazz	",4.9,6.8
+629,"Goto80 and the Uwe Schenk Band	","	Volksing Ferretismico	","	Jazz	",7.4,7.6
+631,"WWIII	","	Lansdowne	","	Jazz	",7.6,3.1
+632,"Northbound	","	Forward	","	Jazz	",4.2,5.4
+634,"Quantum Jazz	","	If I Can't Dance It's Not My Revolution	","	Jazz	",4.7,5.8
+635,"Rat City Brass	","	The Third Man Theme (Live @ KEXP)	","	Jazz	",6.6,7.6
+637,"Evgeny Grinko	","	It smells like Chamomile Tea	","	Jazz	",2.2,3.6
+638,"Evgeny Grinko	","	Winter Sunshine	","	Jazz	",3.2,4.4
+639,"Zero V	","	Indian Summer	","	Jazz	",6.1,6.3
+640,"Los Sundayers	","	¡Qué Paciencia!	","	Jazz	",7.6,7.8
+643,"Goto80 and the Uwe Schenk Band	","	Thriller Iller	","	Jazz	",3.5,4.2
+644,"Antony Raijekov	","	By the Coast (2004)	","	Jazz	",4.3,5.6
+645,"Cosmic Analog Ensemble	","	Mutatis Mutandis	","	Jazz	",4.6,5.7
+646,"Kevin MacLeod	","	Backed Vibes Clean	","	Jazz	",3.1,3.8
+647,"Revolution Void	","	Scattered Knowledge	","	Jazz	",3,5.8
+648,"Latché Swing	","	Swing 39	","	Jazz	",5.1,6.8
+649,"Nature	","	I Remember You	","	Jazz	",6.2,6.7
+650,"Ido Bukelman	","	City Tail	","	Jazz	",6,4.2
+651,"The Underscore Orkestra	","	Balancing Act	","	Jazz	",6.4,7.1
+652,"Zero V	","	Don't Rush	","	Jazz	",3.2,4.3
+653,"Kriss	","	Jazz Club	","	Jazz	",5.3,6.5
+654,"Dizzy Banjo-Jazzy Macys (disquiet0038	","	asrealasitgets2)	","	Jazz	",5.1,4.4
+656,"Stephan Siebert	","	when	","	Jazz	",2.6,4.1
+657,"Goto80 and the Uwe Schenk Band	","	Ponky Fonky Ferret	","	Jazz	",5.1,5.6
+658,"Kevin MacLeod	","	AcidJazz	","	Jazz	",4.4,5.7
+660,"Daddy_Scrabble	","	05 CherryBlossom	","	Jazz	",2.1,2.8
+661,"Oaxacan	","	Are	","	Jazz	",2.2,2.8
+662,"Latché Swing	","	Rythme Gitan	","	Jazz	",5.9,5.1
+663,"Spartak	","	Rail Star Mode	","	Jazz	",3.3,4.3
+664,"Goto80 and the Uwe Schenk Band	","	Cable Swingin' Ferret	","	Jazz	",7,6.6
+665,"Latché Swing	","	Sweet Georgia Brown	","	Jazz	",5.7,6.2
+666,"Digital Primitives	","	Crackle & Pop	","	Jazz	",5.3,5
+667,"Caravan of Thieves	","	I Can't Behave	","	Jazz	",4.2,4.9
+668,"Daddy_Scrabble	","	LordDa Mercy	","	Jazz	",5,5.3
+671,"Latché Swing	","	Menilmontant	","	Jazz	",3.1,3.7
+672,"Kevin MacLeod	","	Vibe Ace	","	Jazz	",4.4,6.3
+673,"Los Sundayers	","	Mirando Hacia Atrás	","	Jazz	",6.6,6.7
+674,"Latché Swing	","	Songe D'Automne	","	Jazz	",6.8,7.4
+675,"Merkel & Fritzemeier	","	Meetin' & Movin'	","	Jazz	",5.1,5.8
+676,"The Underscore Orkestra	","	Chosen Kale Mazel Tov	","	Jazz	",6.6,6.6
+677,"Neuroleptic Trio	","	Neuroleptic trio instrumental 6	","	Jazz	",6.5,5.3
+681,"The Underscore Orkestra	","	Devil with the Devil	","	Jazz	",4.9,6.6
+682,"Nature	","	Resonance	","	Jazz	",4.8,6
+684,"Rushus	","	magic of fog	","	Jazz	",4.3,4.9
+685,"Curha	","	George	","	Jazz	",4.5,3.6
+686,"Sergi Boal	","	is there anybody out there	","	Jazz	",3.4,5.5
+687,"The Underscore Orkestra	","	Balancing Act Chosen Kale Mazel Tov ","	Jazz	",7.3,7.4
+688,"Lee Maddeford	","	Irresistible Yvette (with Les Gauchers Quintet)	","	Jazz	",4.3,5
+689,"Antony Raijekov-Ambient	","	M (2003)	","	Jazz	",3.8,4.6
+690,"Ann Alee	","	Infant Holy Infant Lowly ","	Jazz	",2.4,4.4
+691,"Nature	","	Hard Time Killing Floor Blues	","	Jazz	",5,3.7
+692,"Breuss Arrizabalaga Quintet-Nfamoudou	","	Boudougou	","	Jazz	",6.9,6.1
+693,"Mystic Morrison Visions	","	Impressive	","	Jazz	",6.2,5.3
+695,"Sunny Jain's Red Baraat Festival	","	Track 6	","	Jazz	",5.9,6.2
+696,"Nature	","	Extraordinary Vibe	","	Jazz	",5.3,5.8
+697,"DJ Harrison	","	VA Riding (Single Edit)	","	Jazz	",4.8,5.8
+698,"Bonobo	","	The Keeper (Live @ KEXP)	","	Jazz	",3.9,3.7
+699,"Jared C. Balogh	","	SYMPHONIC SLIDE	","	Jazz	",3.7,4.5
+700,"Sephirot	","	Moon Dream (Extended Mix)	","	Jazz	",4.8,5.6
+702,"WWIII	","	Shipyard	","	Jazz	",7.5,3.3
+703,"Jazz at Mladost Club	","	Arana	","	Jazz	",5.1,6
+704,"Daddy_Scrabble	","	Monkeys have arrived	","	Jazz	",4.1,4.2
+706,"The Underscore Orkestra	","	Amari Szi	","	Jazz	",5.5,6
+707,"Ben Holmes and Patrick Farrell	","	Prelude #2 in A Minor (Chopin)	","	Jazz	",3.2,3.1
+708,"Trans Atlantic Rage	","	NO MATH 7	","	Jazz	",3.2,3.2
+709,"The Underscore Orkestra	","	Jovanko	","	Jazz	",5.8,5
+710,"Ehran Elisha and Roy Campbell	","	They Enter Through the Ear	","	Jazz	",5.4,5.1
+711,"Kevin MacLeod	","	Dances and Dames	","	Jazz	",2.9,3.1
+712,"Kevin MacLeod	","	As I Figure	","	Jazz	",3.4,5.3
+713,"MarginalS	","	parte 1 parte 4 ","	Jazz	",4.9,6.3
+714,"Nature	","	In The Techno Tent	","	Jazz	",4.4,4.8
+715,"Jared C. Balogh	","	PULLING MYSELF UP THROUGH	","	Jazz	",2.9,4.3
+717,"The Underscore Orkestra	","	Underscore Underwear	","	Jazz	",4.5,4.9
+718,"The Underscore Orkestra	","	Cocek	","	Jazz	",5.9,6.5
+719,"Los Sundayers	","	Transparente	","	Jazz	",7.1,7.2
+721,"Nature	","	Mic Check	","	Jazz	",5.7,5.5
+722,"Quantum Jazz	","	Orbiting A Distant Planet	","	Jazz	",5.7,7
+723,"ProleteR	","	April Showers	","	Jazz	",6.5,7.2
+724,"Rotterdam Ska Jazz Foundation	","	RSJFoundation live at Pacific Parc	","	Jazz	",6,6.1
+725,"Mystic Morrison Visions	","	Octopus	","	Jazz	",5.1,5.1
+726,"Cooper-Moore	","	Trio Take 5	","	Jazz	",7,3.6
+727,"Jared C. Balogh	","	THE HAPPIEST LIFE	","	Jazz	",4.3,4.5
+728,"The Underscore Orkestra	","	Magdalena	","	Jazz	",6.9,7.5
+729,"The Luddites	","	Pepper Spray Blues	","	Jazz	",6.4,3.5
+730,"Keinzweiter	","	Mircoobee	","	Jazz	",3.7,4.5
+731,"Neuroleptic Trio	","	Džejbe Džejbe	","	Jazz	",7.3,5.8
+732,"The Underscore Orkestra	","	Dobur Vecher	","	Jazz	",5.6,6.3
+733,"Yair Yona	","	Mad About You	","	Jazz	",4.3,5
+734,"Hugo 'Droopy' Contini	","	Sandu	","	Jazz	",5.7,6.3
+735,"Revolution Void	","	Invisible Walls	","	Jazz	",4.3,4.9
+736,"Kevin MacLeod-Night on the Docks 	","	 Sax	","	Jazz	",2.7,3.7
+737,"DJ Harrison	","	Some Other Place	","	Jazz	",4.1,4.9
+738,"The Underscore Orkestra	","	Blue Draggish	","	Jazz	",5.5,6.2
+739,"Quantum Jazz	","	Balcarabic Chicken	","	Jazz	",6.2,6.9
+740,"Gilad Atzmon	","	Futoristico	","	Jazz	",3.7,4
+741,"The Underscore Orkestra	","	Broken String	","	Jazz	",4.6,4.4
+742,"OPRACHINA-Oprachina 	","	 Nitro	","	Jazz	",6.1,6.5
+743,"Blue Swerver	","	Tasky	","	Jazz	",3.1,5
+744,"Thiago França	","	Capadócia	","	Jazz	",6.1,5.5
+745,"Kreng	","	Maia	","	Jazz	",4.2,1.6
+746,"The Moonlighters	","	My Blackbirds Are Bluebirds Now	","	Jazz	",3.7,4.6
+747,"Stephan Siebert-auf	","	bruch	","	Jazz	",3.6,4.9
+748,"Dirty Beaches	","	Night City	","	Jazz	",5.1,4.4
+749,"Slumgum	","	Big Fun (New Ruckus)	","	Jazz	",4.2,4.9
+750,"Ben Holmes and Patrick Farrell	","	Street Song  Honga	","	Jazz	",5.3,5.7
+756,"Plurabelle	","	Lips	","	Pop	",5.9,6.8
+757,"Kurt Vile	","	Freeway	","	Pop	",6,6.1
+758,"ghostandthesong	","	Ou Inme	","	Pop	",4.8,5.9
+759,"Lame Drivers	","	Frozen Egg	","	Pop	",6.7,5.9
+763,"Jahzzar	","	Siesta	","	Pop	",3.5,5.5
+764,"Sleeping Policemen	","	Vogelbird	","	Pop	",6.3,7.5
+767,"Windom Earle	","	kirblooey	","	Pop	",5.2,6.5
+769,"AMANDA	","	Chaos	","	Pop	",6.2,5
+773,"U.S. Girls	","	The Island Song	","	Pop	",4.5,4.7
+775,"Ghost Hunter	","	In The Early Months Of The Emergency	","	Pop	",3.7,4.4
+776,"Ghost Hunter	","	Through The Haze Of The Green Glasses	","	Pop	",3.5,4.5
+777,"The Strangers	","	A Little Too Fast	","	Pop	",6.2,5.1
+779,"Macaw	","	What Circle Where	","	Pop	",2.8,5.3
+780,"The Wildbunch	","	Gay_Bar_videogame	","	Pop	",5.8,6.2
+781,"Delicate Steve	","	Butterfly	","	Pop	",4.9,6.3
+782,"The Strangers	","	Who Are You	","	Pop	",7.2,4.7
+784,"Benjamin Bret	","	Le Gateau Au Yaourt	","	Pop	",4.7,5.7
+787,"coverclub.nl-Schotel van de Dag 	","	 Ride The Tide	","	Pop	",6.1,6.3
+789,"Austin Leonard Jones	","	No Slow Dancing	","	Pop	",3.9,5.2
+790,"Sycamore Drive	","	City Sounds	","	Pop	",7.2,5.4
+791,"Lezet	","	West Bank	","	Pop	",2.7,4.6
+794,"Two Bicycles	","	Window #3	","	Pop	",2.5,4.2
+795,"Ergo Phizmiz	","	Simon Cowell	","	Pop	",2.2,3.5
+796,"Learning Music	","	Ghost Transference	","	Pop	",5.2,5.1
+797,"Monday Night Fever	","	Sunday Lovers	","	Pop	",4.9,5.4
+798,"Casetofoane	","	Waha	","	Pop	",6.5,5.9
+799,"Ducktails	","	Beach Point Pleasant	","	Pop	",4.1,5.6
+800,"Les Oreilles-Quarante	","	Cinq	","	Pop	",4.5,4.5
+801,"Keshco	","	Marty Feldman	","	Pop	",3.3,3.5
+804,"Jahzzar	","	Birthday Cake	","	Pop	",6.9,6.8
+805,"Keshco	","	Son Of A Systems Engineer Manager	","	Pop	",2.2,3.5
+806,"coverclub.nl-Laura Vane & the Vipertones 	","	 Christmas Day With Me	","	Pop	",6.4,6.6
+807,"Björn & Gorden	","	Ftgrr	","	Pop	",4.8,6.5
+808,"Greg Gibbs	","	Lost	","	Pop	",3.1,4.3
+810,"Los Amparito	","	El barzón	","	Pop	",6.5,6.6
+811,"Party People in a Can	","	Tourist Shooting Tar Balls	","	Pop	",4.1,4.9
+813,"My Bubba & Mi	","	Wild & You	","	Pop	",6.2,6.7
+814,"etc.	","	re bitterfly	","	Pop	",6.1,5.3
+815,"Plurabelle	","	LightLivid ","	Pop	",5.5,5.9
+818,"Miró Belle	","	In Fielder	","	Pop	",5.9,6.8
+819,"Ergo Phizmiz	","	Tilly's Punctured Romancer	","	Pop	",4,5.7
+820,"Plurabelle	","	Wallflower	","	Pop	",6.4,6.4
+823,"Gringo Star	","	You Want It	","	Pop	",4.8,4.8
+824,"Sycamore Drive	","	Untold Story	","	Pop	",7.2,7
+825,"FAVORS	","	I Keep My Soul Alive with Different Kinds of Germs	","	Pop	",4.1,5.7
+826,"Dean & Britta	","	I'll Keep It With Mine	","	Pop	",4,4.7
+829,"Jahzzar	","	Talk to me	","	Pop	",2.3,4.5
+830,"Casetofoane	","	Enel	","	Pop	",5.3,5.9
+831,"Casetofoane	","	Electrohood	","	Pop	",5.2,6.2
+833,"Casetofoane	","	Rocky 5000	","	Pop	",5,5.8
+834,"Keshco	","	Fly By Night	","	Pop	",4.7,4.3
+836,"The Scallions	","	Memories Are Made of This	","	Pop	",7.1,5.7
+839,"Ergo Phizmiz	","	Fun With Petroleum	","	Pop	",5.7,4.4
+841,"Kurt Vile	","	Nicotine Blues	","	Pop	",4.2,4.7
+844,"Gustav Taxén	","	Wizball	","	Pop	",3.8,3.4
+845,"Christian Vestergaard	","	The Great Giana Sisters (Piano cover)	","	Pop	",5.1,4
+846,"Flora	","	High Buildings	","	Pop	",6,5.5
+848,"Shirley and Spinoza-Half	","	Eating Baby Lions Nightmare	","	Pop	",2.2,2.7
+850,"Ergo Phizmiz	","	Strange Things	","	Pop	",3.6,3.1
+851,"How How-Tetrolux 	","	 Etam Etamski	","	Pop	",5,4.4
+852,"Andrea Baroni	","	Erebus (piano)	","	Pop	",4.5,4.7
+854,"My Bubba & Mi	","	Through & Through	","	Pop	",2.9,3.8
+855,"The Family Simpson	","	2","	Pop	",2.9,4.5
+856,"Sloan	","	The Other Man	","	Pop	",6.7,5.6
+857,"Charlotte Gainsbourg	","	Trick Pony (Live @ KEXP)	","	Pop	",4.9,5.3
+858,"Jahzzar	","	Alive	","	Pop	",4.4,4.5
+859,"Moonove	","	Delta	","	Pop	",3.6,5.1
+860,"MrJuan	","	Señor Bomba	","	Pop	",6.6,6.7
+863,"Computer Magic	","	The End of Time	","	Pop	",6.4,7
+864,"Jahzzar	","	Polaroid	","	Pop	",5.7,5.9
+865,"The Mythics	","	Love Me Like You	","	Pop	",2.8,4.6
+866,"Deerhoof	","	Basket Ball Get Your Groove Back (Live @ KEXP)	","	Pop	",5.8,5.1
+867,"Duda Nunes	","	Saudades	","	Pop	",5.8,6.5
+869,"Plurabelle	","	cuts&bruises	","	Pop	",2.6,4.1
+871,"Sycamore Drive	","	Deep Thought Process	","	Pop	",6.4,6
+872,"Cranston	","	Ticking Away	","	Pop	",3.4,5.5
+873,"YACHT	","	Summer Song (Instrumental)	","	Pop	",6.8,7
+874,"Black Math	","	This Love's Got to Change	","	Pop	",6.3,4.4
+876,"et_	","	Kopeika	","	Rock	",6.3,6.7
+879,"State Shirt	","	Computer	","	Rock	",5.6,6
+880,"Hogan Grip	","	Stance Gives You Balance	","	Rock	",4.9,3.8
+882,"Jahzzar	","	The last ones	","	Rock	",5.3,5.2
+884,"Ghost Hunter	","	Old White Eye	","	Rock	",5.5,5
+886,"krackatoa	","	Mariachi Bandits of Gatling Gun Ridge	","	Rock	",5.9,5.4
+887,"Kraus	","	Happening for Lulu	","	Rock	",5.1,5.6
+889,"The Freak Fandango Orchestra	","	Requiem for a Fish	","	Rock	",6.9,7.2
+890,"Holy Coast	","	The Beach! The Beach!	","	Rock	",3.6,4.7
+891,"Gillicuddy	","	Jupiter The Blue	","	Rock	",3.4,5.5
+892,"Paneye	","	North Sea Radio	","	Rock	",3.9,2.9
+893,"Tyrannic Toy	","	Blackroad	","	Rock	",7.3,3.3
+897,"reed blue & exteenager	","	arriba	","	Rock	",4.9,4.3
+898,"Room For A Ghost	","	No	","	Rock	",6.4,5.5
+899,"Linus Akesson	","	One Man And His Piano	","	Rock	",5.3,6.3
+902,"Arrogalla remixes Dadub	","	Naramiddu poita (feat	","	Rock	",7,3.3
+903,"Vivian Girls	","	Wild Eyes (live @ WFMU)	","	Rock	",5.9,5.6
+904,"krackatoa	","	Something In the Woods	","	Rock	",5.7,4.2
+908,"Karen Cooper Complex	","	You Can't Have It   Shinjuku Birdwalk	","	Rock	",5.5,4.9
+909,"Juanitos	","	Exotica	","	Rock	",6,5.5
+910,"YACHT	","	Utopia (instrumental)	","	Rock	",7,6.6
+911,"Original Innocence	","	Jungle Law	","	Rock	",7.1,4
+913,"Mountain Cult	","	Untitled 06	","	Rock	",4.8,3.3
+915,"Noi	","	Everything Is Changing	","	Rock	",5,5.2
+921,"Juanitos	","	Sambarama	","	Rock	",5.9,6.1
+924,"Juanitos	","	Strange Italian Song	","	Rock	",5.4,6.2
+925,"Charles Atlas	","	Photosphere	","	Rock	",4.9,5.7
+926,"Everlone	","	Flying Alaska V	","	Rock	",4,5.5
+928,Waiters, the  13 O' Clock in the Morning ,"	Rock	",5,4
+931,"Halloween	","	Mickey Maos	","	Rock	",6.3,6.5
+932,"…And You Will Know Us By The Trail Of Dead	","	Crowning Of A Heart (Live @ KEXP)	","	Rock	",4.5,4.9
+934,"Lame Drivers	","	Other Side	","	Rock	",6.2,6.4
+936,"Dumbo Gets Mad	","	Plumy Tale	","	Rock	",5.4,4.7
+938,"Milk Music	","	Thrashing In The Unknown	","	Rock	",7.3,4.2
+939,"Richard There	","	You should go on	","	Rock	",6.2,2.7
+941,"Morphamish+ Tekkerz	","	Get My Fix (Morphamish Mix)	","	Rock	",7.2,5.9
+942,"Pajaro	","	Santa Leone	","	Rock	",4.8,4.1
+944,"Shark 	","	Hey Grrl	","	Rock	",7.1,6.5
+945,"The Ghost Of 29 Megacycles	","	Leelo (Part 1)	","	Rock	",2.3,2.8
+949,"Waylon Thornton	","	Favorite Secrets	","	Rock	",5.7,6.1
+952,"Glass Boy	","	Monday at 12	","	Rock	",4.2,3.7
+954,"Doron Deutsch	","	Bruce Lee (acoustic Jam)	","	Rock	",5.1,5.5
+955,"Everlone	","	Blind Eyes	","	Rock	",3.8,5.6
+956,"end's not near	","	Indian Summer	","	Rock	",4.5,5.4
+957,"un automne à Lob-Nor	","	boss A	","	Rock	",2.8,4.7
+958,"Trailblazer	","	(Untitled 1)	","	Rock	",5.5,5.1
+959,"springtide	","	Indyair	","	Rock	",6.2,6.4
+960,"Anamanaguchi	","	Helix Nebula	","	Rock	",7.7,7.7
+961,"James Beaudreau	","	Union Square	","	Rock	",5.6,5.5
+962,"Ice Age	","	Rotting Heights	","	Rock	",7.4,3.4
+964,"J.Walker & The Crossguards	","	Driftin' Around	","	Rock	",7.6,7
+967,"Daniel Johnston	","	I Had A Dream	","	Rock	",2.8,4.4
+968,"Abe Sada-Black	","	Bar Trombone	","	Rock	",3.8,3.2
+970,"Pharaos	","	The Pharaos' Theme	","	Rock	",6.6,6.6
+973,"Mount Carmel	","	Swagg's & Elliot	","	Rock	",6.5,4.6
+974,"Karl Blau	","	Crucial Contact	","	Rock	",4.1,4.2
+976,"Glass Boy	","	Merry Christmas	","	Rock	",6.2,5.9
+977,"Black Math	","	Suck City	","	Rock	",7.3,3.5
+978,"krackatoa	","	Absolutely Gorgeous	","	Rock	",7.7,6.1
+979,"Rue Royale	","	Deck the Halls	","	Rock	",3.1,5.5
+980,"Mahjongg	","	Tell The Police The Truth	","	Rock	",5.8,4.3
+981,"Morphamish	","	Bottums Up	","	Rock	",6.7,6.6
+983,"YACHT	","	Tripped & Fell In Love (instrumental)	","	Rock	",4.8,6.3
+985,"Beach House	","	Zebra (Live @ KEXP)	","	Rock	",3.9,6.1
+986,"Suicide	","	Girl	","	Rock	",5.8,4.5
+987,"Jack Ruby	","	Hit and Run	","	Rock	",6.3,3.6
+988,"Bluebrain	","	The Pull	","	Rock	",5.4,5.9
+989,"Vespre	","	piste quatre	","	Rock	",6.3,6.4
+990,"Jenifer Avila	","	El Tranvía	","	Rock	",6,6.1
+991,"Moore & Sons	","	Moving Away	","	Rock	",3.1,3.5
+993,"Hogan Grip	","	Stance Gives You Power	","	Rock	",4.4,3.8
+994,"Morphamish remixes Full Blush	","	Engine #3 (Morphamish Remix)	","	Rock	",6.6,5.3
+995,"Benjamin Bret	","	Honte De Toi	","	Rock	",4.7,2.4
+996,"Jahzzar	","	Fireworks	","	Rock	",6,6.7
+997,"Halloween	","	Monster On Campus	","	Rock	",6.4,6.7
+999,"Jahzzar	","	So Easy	","	Rock	",4.1,5.9
+1000,"Republic Of Lights-Got You Surrounded 	","	 Single	","	Rock	",6.8,5.6
+1001,The Rope River Blues Band,Weatherman,SoulRB-Country-Folk-Pop-Experimental-Rock-Blues,4.4,3.8
+1002,Kidney Brothers (The Numbers Band),Wolf,Blues-SoulRB-Rock,4.5,3.2
+1003,Samm Bennett,My My My,Blues-SoulRB-Folk-Experimental,5.3,3.3
+1004,The Rope River Blues Band,Visitor,SoulRB-Country-Folk-Pop-Rock-Blues,3.8,4.7
+1005,Brother JT,Summer,Blues-SoulRB-Rock,5.4,5.1
+1006,Wildbirds and Peacedrums,The Window,Blues-SoulRB,4.6,4.4
+1007,Wildbirds and Peacedrums,Doubt/Hope,Blues-SoulRB,5.2,5.4
+1008,Brother JT,Warm's The New Cool,Blues-SoulRB-Rock,6,5.4
+1009,Big Bill Broonzy, Please Don't Go,SoulRB-Blues,3.5,3.7
+1010,The Relatives,Bad Trip,Blues-SoulRB-Rock,6.5,6.5
+1011,Cooper-Moore & Assif Tsahar,The Eight,SoulRB-Blues,4.5,3
+1012,Little Howlin' Wolf,Baltimore Raven,SoulRB-Blues,4.3,2.9
+1013,Loren Connors and Bill Orcutt,Untitled 3,SoulRB-Blues,3.2,3.5
+1014,Nobody's Bizness,Down in the Dumps,SoulRB-Blues,4.9,4.5
+1015,Patchwork on the Blues,Good 'ol Shoe,SoulRB-Blues,5.9,6.3
+1016,Wildbirds and Peacedrums,Lost Love,Blues-SoulRB,3.3,1.9
+1017,James Beaudreau,Hare,SoulRB-Blues-Experimental-Rock,4.1,3.8
+1018,James Beaudreau,Nebula,SoulRB-Blues-Experimental-Rock,3.7,2.5
+1019,James Beaudreau,Plum,SoulRB-Blues-Experimental-Rock,4.3,2.8
+1020,Mr. & Mrs. Smith,magic magic,SoulRB-Blues-Folk,3.4,2.5
+1021,Steve Gunn,The Lurker,Blues-SoulRB-Folk,6.2,4.8
+1022,Mr. & Mrs. Smith,Sirens,SoulRB-Blues-Folk,3.3,3.3
+1023,Mr. & Mrs. Smith,Paris,SoulRB-Blues-Folk,2.9,2.3
+1024,Roger McGuinn,St James Infirmary,SoulRB-Blues-Folk,3.2,2.9
+1025,Barrence Whitfield and The Savages,Willie Meehan,Blues-SoulRB-Rock,5.1,6.1
+1026,Mr. & Mrs. Smith, with Love,SoulRB-Blues-Folk-Experimental,3.7,2.8
+1027,The New Mystikal Troubadours,Thyme,SoulRB-Blues-Folk-Experimental,4.6,3.8
+1028,The New Mystikal Troubadours,Summer's Song,SoulRB-Blues-Folk-Experimental,4.5,4.8
+1029,Little Howlin' Wolf,Big Ole Bear,Blues-SoulRB,3.9,4.5
+1030,Wildbirds and Peacedrums,There Is No Light,Blues-SoulRB,5.7,5.2
+1031,The New Mystikal Troubadours,I,SoulRB-Blues-Folk-Experimental-Rock,4.8,5
+1032,The Agrarians,Bury the Dead,SoulRB-Blues-Folk-Experimental-Rock,3.3,4.1
+1033,The New Mystikal Troubadours,Copenhagen,SoulRB-Blues-Folk-Experimental-Rock,5.3,5.6
+1034,The Agrarians,Farewell Song,SoulRB-Blues-Folk-Experimental-Rock,3.3,2.8
+1035,The KrestArians,A Little Soul,SoulRB-Blues-Folk-Pop-Experimental-Rock,4.3,4.2
+1036,The KrestArians, Merry Gentlemen,SoulRB-Blues-Folk-Pop-Experimental-Rock,4.8,3
+1037,Fit and the Conniptions,Many Many,SoulRB-Blues-Folk-Rock,5,4.4
+1038,Fit and the Conniptions,Spider Song,SoulRB-Blues-Folk-Rock,5,4.1
+1039,Fit and the Conniptions,Spellbound,SoulRB-Blues-Folk-Rock,6.3,4.6
+1040,Fit and the Conniptions,Storm's Over,SoulRB-Blues-Folk-Rock,6.2,5.3
+1041,Fit and the Conniptions,You Can't Lose,SoulRB-Blues-Folk-Rock,5.6,5.4
+1042,Jeremy Wallace,Virginia,Blues-Country-SoulRB-Folk,5,4.3
+1043,Malty Media,Bracken Bed,SoulRB-Blues-International-Electronic,4.9,5
+1044,Cantonement Jazz Band,Thinking Of You,SoulRB-Blues-Jazz,7.1,6.1
+1045,Yair Yona,Russian Dance,SoulRB-Blues-Jazz-Folk,4.4,3.1
+1046,Joe Marson and The Satisfied Mind,Someday Soon,SoulRB-Blues-Pop-Rock,5.6,5
+1047,Colin Shaddick & Roger Nicholls,Blues For Brownie,SoulRB-Blues-Pop-Rock,5.3,4.4
+1048,Break The Bans,Escape,SoulRB-Blues-Rock,5,6.7
+1049,Break The Bans,Hey Girl,SoulRB-Blues-Rock,5.3,6.7
+1050,Guitar Lightnin Lee and His Thunder Band,Amsterdam,SoulRB-Blues-Rock,6,5.8
+1051,The Re-Stoned,return,SoulRB-Blues-Rock,5.2,5.3
+1052,The Re-Stoned,jam,SoulRB-Blues-Rock,5.5,6.6
+1053,Sound Of Ground,Breathe,SoulRB-Blues-Rock,4.5,6.3
+1054,Break The Bans,Lover,SoulRB-Blues-Rock,3.7,6.3
+1055,Break The Bans,Sexy Lady,SoulRB-Blues-Rock,3.7,6.3
+1056,Navel,Frozen Souls,SoulRB-Blues-Rock,4.2,5
+1057,Sound Of Ground,Shelter Between Sky and Ground,SoulRB-Blues-Rock,4.7,7.1
+1058,Sound Of Ground,Camino Infinito,SoulRB-Blues-Rock,4,5.8
+1059,Sound Of Ground,Green Turning Light,SoulRB-Blues-Rock,4.7,7.5
+1060,Break The Bans,Gay Bar,SoulRB-Blues-Rock,5.2,6.1
+1061,mojo monkeys,Bodacious,SoulRB-Blues-Rock,6.5,6.2
+1062,Zombie Prom Queen,Fever,SoulRB-Blues-Rock,4.1,4.3
+1063,The Re-Stoned,sleeping world,SoulRB-Blues-Rock,5.2,6.4
+1064,Beans & Bullets,Love Machine,SoulRB-Blues-Rock,5.2,7.1
+1065,The Re-Stoned,mountain giant,SoulRB-Blues-Rock,6,6.4
+1066,Glass Candy,Life After Sundown,SoulRB,6.1,5.5
+1067,BJ Block & Dawn Pemberton,Tender,SoulRB,4,3.4
+1068,BJ Block & Dawn Pemberton,Without You,SoulRB,5.9,5.3
+1069,Glass Candy,Hurt,SoulRB,4.3,5.6
+1070,Glass Candy,The Chameleon,SoulRB,5.2,5.8
+1071,The Discoghosts,Jellyfish,SoulRB,6.5,5.3
+1072,The Discoghosts,Monsterdance (feat. Hasi International™),SoulRB,6.3,5.5
+1073,Dr Freebs,Sunshine,SoulRB,5.2,3.8
+1074,The Discoghosts,For The Ladies (feat. Hasi International™),SoulRB,6.8,6.4
+1075,Tracky Birthday,Balla!,SoulRB,6.4,6.6
+1076,The Discoghosts,Straight But Gayish,SoulRB,6,5
+1077,The Discoghosts,Happy Joy,SoulRB,6.4,4.8
+1078,Tracky Birthday,Eöööhh! (with The Discoghosts),SoulRB,6.8,6
+1079,T Bird,Goin' Down to the Bus Stop,SoulRB,6.9,5.6
+1080,Tracky Birthday,Newish Disco,SoulRB,6,5
+1081,Karl Blau,Kill The Messenger,SoulRB,5,3.5
+1082,Glass Candy,Sugar &amp; Whitebread (instrumental),SoulRB,6.7,6.4
+1083,Glass Candy,Sugar &amp; Whitebread,SoulRB,6.1,6.6
+1084,airtone,something,SoulRB,5.1,3.4
+1085,Podington Bear,Good,SoulRB-Electronic,6.1,5.2
+1086,Andrea,Work the Middle,SoulRB-Electronic,5.9,4.3
+1087,Nambavan, drugs and Russian girls,SoulRB-Electronic,6,6.4
+1088,Virt,Five Nine Seven Eight,SoulRB-Electronic,7.3,6.6
+1089,Bomb Boy,Ignition,SoulRB-Electronic,6.4,6.6
+1090,Nambavan, drugs and Russian girls,SoulRB-Electronic,5.6,6.6
+1091,Nambavan, drugs and Russian girls,SoulRB-Electronic,5.7,5.8
+1092,Nambavan, drugs and Russian girls,SoulRB-Electronic,5.8,6.3
+1093,Spiedkiks,The Day Before,SoulRB-Electronic,5.8,6
+1094,Zabutom,Endorphemeral,SoulRB-Electronic,6.4,6.3
+1095,Simon Stålenhag,Ripple Boogie,SoulRB-Electronic,6.2,6.2
+1096,hizmi,Pendulum II,SoulRB-Electronic,3.8,3.6
+1097,Madbrain,Oskari the Heimfanker,SoulRB-Electronic,5.5,5.4
+1098,Shogun,V.S.O.P.M.,SoulRB-Electronic,6.8,6.3
+1099,Smoked Meat Fax Machine,Victory,SoulRB-Electronic-Rock,5.7,5.9
+1100,Smoked Meat Fax Machine,Slums of Heaven,SoulRB-Electronic-Rock,6.3,5.6
+1101,The Vainglories,Part 1,Classical-Experimental-Electronic,3.7,2.4
+1102,Kosta T,Smile,Classical-Instrumental-Folk-Experimental,2.3,4.5
+1103,Podington Bear,Colorado,Classical-Experimental-Electronic,3.6,3.5
+1104,Jared C. Balogh,FOR YOU,Classical-Jazz-Experimental,4.2,4.4
+1105,The New York Underground Orchestra (Conducted By Assif Tsahar),Second,Classical-Experimental,3.8,3.7
+1106,The New York Underground Orchestra (Conducted By Assif Tsahar),Third,Classical-Experimental,3,3.9
+1107,Assif Tsahar's Project Solitude,Solitude,Classical-Experimental,3,3.2
+1108,Les Petits Chanteurs de Montigny,Cantique de Jean Racine (Gabriel Fauré),Classical,4.8,3.7
+1109,Nest,Kyoto,Classical-Experimental-Electronic,4.2,2.4
+1110,Diablo Swing Orchestra,Heroines,Classical-Jazz-International-Rock,5.1,5.4
+1111,No Regrets For Our Youth,Old New World,Classical-Experimental,3.2,2.9
+1112,No Regrets For Our Youth,Steady,Classical-Experimental,3.1,2.3
+1113,No Regrets For Our Youth,Dance,Classical-Experimental,3.4,3
+1114,Nest,Marefjellet,Classical-Experimental-Electronic,3.4,3.3
+1115,The Tudor Consort,Amen,Classical,4.4,3.9
+1116,Peter Rudenko,If,Classical,5.7,3
+1117,The Vainglories,Part 3,Classical-Experimental-Electronic,4.2,3.4
+1118,Nest,Lodge,Classical-Experimental-Electronic,4,1.9
+1119,Peter Rudenko,Waiting,Classical,3.4,2.1
+1120,Nest,Cad Goddeu,Classical-Experimental-Electronic,3.4,2.8
+1121,Nest,Charlotte,Classical-Experimental-Electronic,3.9,2.3
+1122,IKOS David Clifton with the choirs of Peterborough Cathedral,O Little Town Of Bethlehem,Classical,6.8,5.4
+1123,Jared C. Balogh,ROSE,Classical-Jazz,3.1,3.1
+1124,David Borden,Part 1,Classical-Experimental-Electronic,5.4,5.1
+1125,Jared C. Balogh,MAY,Classical-Jazz-Experimental,4.9,3
+1126,No Regrets For Our Youth,Trace,Classical-Experimental,3.9,3.2
+1127,Assif Tsahar's Project Solitude,Love Is,Classical-Experimental,3.4,3
+1128,Lee Maddeford,Dreams,Classical-SoulRB-Folk,3.7,2.7
+1129,IKOS David Clifton with the choirs of Peterborough Cathedral,In The Bleak Mid~Winter,Classical,3.5,2.4
+1130,The Vainglories,Part 2,Classical-Experimental-Electronic,3.8,3.1
+1131,The Tudor Consort,Kyrie Eleison,Classical,4.5,3.4
+1132,The Tudor Consort,Benedictus,Classical,4.6,3.4
+1133,Fabrizio Paterlini,Lontana,Classical,5,2.4
+1134,Podington Bear,Fantasy,Classical-Pop-Experimental-Electronic,4.1,2.1
+1135,Podington Bear,Ever,Classical-Experimental-Electronic,3.1,2.7
+1136,Marcel Pequel,May,Classical-Experimental,4.5,3.4
+1137,Steven Arntson,Learn,Classical-Folk,4.3,4.2
+1138,Jared C. Balogh,FIN,Classical-Jazz,4.4,3.7
+1139,Kimiko Ishizaka,Aria,Classical,5.1,2.5
+1140,David Borden,Part 9,Classical-Experimental-Electronic,5.9,5.4
+1141,Jared C. Balogh,TEAR,Classical-Jazz-Pop-Experimental,4.5,3.6
+1142,Marcel Pequel,February,Classical-Experimental,3.2,2.1
+1143,Lee Maddeford and  Roland Vouilloz,Trip,Classical-Instrumental-Experimental-Spoken,3.8,5.1
+1144,James Kibbie,BWV 598: Pedal-Exercitium,Classical,3.7,4.6
+1145,The Tudor Consort,Sanctus,Classical,4.7,2.4
+1146,Muhal Richard Abrams,Duet for Violin and Piano,Classical-Jazz,2.6,3.4
+1147,Lanark,Valentina,Classical-International-Experimental-Electronic,4.6,3.6
+1148,Bosques de mi Mente,El transcurrir de las horas,Classical-Instrumental-Experimental,3.4,3
+1149,Fabrizio Paterlini,Viandanze,Classical,4,2.6
+1150,Fabrizio Paterlini,Profondo Blu,Classical,4.1,2.3
+1151,Dr. Phibes and The Ten Plagues of Egypt,O Fortuna,Classical-Experimental-Rock,5,5.6
+1152,Lee Maddeford,Finale,Classical-International-Spoken,6.1,5.6
+1153,Peter Rudenko,The Fall,Classical,3.9,2.5
+1154,Lee Maddeford,Mome,Classical-International-Spoken,3.9,4.4
+1155,Andrew Christopher Smith, for String Quartet,Classical,4.2,4.3
+1156,The Tleilaxu Music Machine,Tleilaxuburg5 Movement V,Classical-Electronic,7,5.6
+1157,The Tleilaxu Music Machine,Tleilaxuburg5 Movement IV,Classical-Electronic,6.9,6.1
+1158,The Tleilaxu Music Machine,Tleilaxuburg5 Movement III,Classical-Electronic,6.2,6.2
+1159,The Tleilaxu Music Machine,Tleilaxuburg5 Movement II,Classical-Electronic,5.8,6
+1160,The Tleilaxu Music Machine,Tleilaxuburg5 Movement I,Classical-Electronic,6.4,5.4
+1161,Kosta T,Impression,Classical-Experimental,4.1,2.5
+1162,Ventolyn & Becotyde,Screen,Classical-Instrumental-Electronic,3.6,3.8
+1163,IKOS David Clifton with the choirs of Peterborough Cathedral,For Unto Us A Child Is Born,Classical,6.2,5.3
+1164,Marcel Pequel,January,Classical-Experimental,3.6,3.1
+1165,Ventolyn & Becotyde,posture,Classical-Instrumental-Electronic,3.5,2.8
+1166,E. R. Goodman,Open Door,Classical-Country-Jazz-Folk-Experimental,4.6,3.3
+1167,Marcel Pequel,March,Classical-Experimental,3.6,2.8
+1168,Corey Cerovsek, piano,Classical,4.4,3.3
+1169,Lanark,Chopin Bee,Classical-International-Experimental-Electronic,3.9,2.8
+1170,Evgeny Grinko,other child room,Classical-Experimental,3.1,2.1
+1171,Podington Bear,Crow,Classical-Experimental-Electronic,3.6,1.9
+1172,E. R. Goodman,Morning,Classical-Country-Jazz-Folk-Experimental,3.9,2.5
+1173,John Moran,Dream Time,Classical-Spoken,4.3,4
+1174,No Regrets For Our Youth,Thinking Different Doing Same vs. Doing Different Thinking Same,Classical-Experimental,3.6,3.3
+1175,Mandy Mozart Feat. Jiin Ko,Coincidence,Classical-Electronic,3.7,3.4
+1176,IKOS David Clifton with the choirs of Peterborough Cathedral,Bethlehem Down,Classical,4.9,2.7
+1177,IKOS David Clifton with the choirs of Peterborough Cathedral,Away In A Manger,Classical,5.2,3.3
+1178,Nicola Benedetti, piano,Classical,4.9,4.5
+1179,Evgeny Grinko,28359840921=42,Classical-Experimental,3.4,4.1
+1180,Circus Marcus,La rencontre,Classical-Experimental,3.3,2.6
+1181,Lee Maddeford and  Roland Vouilloz,Black Man,Classical-Instrumental-Experimental-Spoken,3.7,4.4
+1182,Textile Audio,Inside,Classical-Electronic,2.7,2.2
+1183,James Kibbie,BWV 591: Little Harmonic Labyrinth,Classical,3.7,3.2
+1184,Marcel Pequel,Two,Classical-Instrumental,4.2,2.3
+1185,James Kibbie,BWV 590: Pastorale in F Major - 4. [Gigue,Classical,6.2,4.8
+1186,Jozef van Wissem,How The Soul Has Arrived At Understanding Of Her Nothingness,Classical-Experimental,3.7,1.9
+1187,Ventolyn & Becotyde,Cable,Classical-Instrumental-Electronic,4.4,4.1
+1188,Circus Marcus,Les accouplements répétitifs,Classical-Experimental,4.7,3.3
+1189,Circus Marcus,La tragédie de la femme a poils,Classical-Experimental,4.8,3.2
+1190,Circus Marcus,La chambre,Classical-Experimental,3.5,2.2
+1191,Podington Bear,Sunset,Classical-Instrumental-Pop-Experimental-Electronic,4.4,2.6
+1192,E. R. Goodman,Driving,Classical-Country-Jazz-Folk-Experimental,3.7,2.9
+1193,E. R. Goodman,Always Greener,Classical-Country-Jazz-Folk-Experimental,4.4,3.9
+1194,E. R. Goodman,Nothing,Classical-Country-Jazz-Folk-Experimental,3.4,2.5
+1195,Lee Maddeford and  Roland Vouilloz,Sailing,Classical-Instrumental-Experimental-Spoken,4.2,4
+1196,Lee Maddeford and  Roland Vouilloz,Free Me,Classical-Instrumental-Experimental-Spoken,3.8,2.7
+1197,Kosta T,New Life,Classical-Experimental,3.9,2.8
+1198,Felipe Sarro,Miroirs II Oiseaux Tristes,Classical,3.5,1.8
+1199,Textile Audio,Punishment,Classical-Electronic,4.5,3.5
+1200,James Kibbie,BWV 590: Pastorale in F Major - 3. [Aria,Classical,3.2,3.6
+1201,Shannon And The Clams,Flowers,Country-Rock,6,5.5
+1202,The Black Swans,Friends,Country-Folk-Rock,4.1,2.7
+1203,The 'Mericans,Charlotte,Country-Folk-Rock,4,3.4
+1204,The Volebeats,One I Love,Country,6.6,5.5
+1205,The Pine Valley Cosmonauts - Alejandro Escovedo &amp; Jon Langford With Dave Alvin,Bad News,Country,6,5.7
+1206,My Morning Jacket,One Big Holiday,Country-Folk-Pop-Rock,5.1,5.8
+1207,LE CLUB DES CHATS,The swimming pool,Country-Pop,4.7,3.4
+1208,Factories and Alleyways,Hallelujah,Country-Folk,6.2,4.6
+1209,Matt Valentine & Erika Elder,Cold Rain,Country-Folk-Rock,4.4,2.7
+1210,Edith Frost,Temporary Loan,Country-Folk-Rock,3.8,2.4
+1211,Alejandro Escovedo,Rosalie,Country-Folk,5.5,4.7
+1212,Alejandro Escovedo,One More Time,Country-Folk,3.5,2.7
+1213,Edith Frost,Walk on the Fire,Country-Folk-Rock,3.1,2.8
+1214,Rex Hobart &amp; the Misery Boys,Nothin' But Nothin',Country,6.2,5.3
+1215,The Cracker Cats, We Plant Trees,Country-Folk-Pop,6.2,5.6
+1216,The Meat Purveyors,More Man,Country,5.5,5.3
+1217,Edith Frost,Wonder Wonder,Country-Folk-Rock,3.9,2.6
+1218,The 'Mericans,Off The Trail,Country-Folk-Rock,3.9,4.1
+1219,Edith Frost,Pony Song,Country-Folk-Rock,4.3,2.2
+1220,Edith Frost,Who,Country-Folk-Rock,3.6,2.2
+1221,The Meat Purveyors,Hanged Man,Country,5.4,5.3
+1222,Matt Valentine & Erika Elder,The Burden,Country-Folk-Rock,4.1,3.2
+1223,Golden Boys,California,Country-Rock,4.6,5.6
+1224,Boris & Olivier,Morgenstern,Country-Electronic,6.2,6.8
+1225,Two Prong,Earth,Country-Folk-Rock,3.4,4.6
+1226,Matt Valentine & Erika Elder,East Mountain Joint,Country-Folk-Rock,3.9,3.8
+1227,Jimmy Cousins,Trouble,Country-SoulRB-Pop,4.7,5.7
+1228,Glenn Jones,Little Dog's Day,Country-Folk,5.4,3.3
+1229,The Meat Purveyors,Circus Clown,Country,5.2,4.3
+1230,Mild Winter,One More Night,Country-Folk-Rock,5.3,3.7
+1231,Jimmy Cousins,Moment,Country-Rock,5.5,6.5
+1232,The Meat Purveyors,Muleskinner,Country,6.9,6.3
+1233,Alejandro Escovedo,I Was Drunk,Country-Folk,5.5,4.8
+1234,Stray Dogg,Almost,Country-Folk,4.6,3
+1235,Megan Jean and the Klay Family Band,Red Red,Country,4.9,5.8
+1236,Trailer Bride,Hope Is A Thing With Feathers,Country-Folk,4.5,4.9
+1237,Stray Dogg,Soul,Country-Folk,4.1,3.3
+1238,Oakley Hall,Landlord,Country-Rock,5.5,5.1
+1239,Th' Legendary Shack Shakers,Pinetree Boogie,Country,6.3,6.7
+1240,Alejandro Escovedo,Broken Bottle,Country-Folk,2.7,2.6
+1241,Stray Dogg,Break,Country-Folk,4.1,3.7
+1242,Sean Hayes,Alabama Chicken,Country-Folk,4.7,4.3
+1243,The Crevulators,Hung Over,Country-Rock,5.8,5.7
+1244,Benji Hughes,Country Love,Country-Rock,4.6,3.7
+1245,The Meat Purveyors,Look On Your Face,Country,6.4,5.3
+1246,Lee Maddeford,Babe,Country-Folk-Pop,4.5,3.1
+1247,Jimmy Cousins,Bottle,Country-SoulRB-Pop,4.4,6.3
+1248,Mild Winter,Prayer,Country-Folk-Rock,3.7,3
+1249,Oakley Hall,Light of My Love,Country-Rock,5.1,5.6
+1250,Hayvanlar Alemi,Karpuzkafa 777,Country-International-Rock,7,7.4
+1251,Lee Maddeford,I'm going home,Country-Folk-Pop,6.9,6.3
+1252,Dr. Frankenstein,O Cérebro do Morto,Country-Rock,5.2,5.1
+1253,Navel,Our Mother The Mountain,Country-Rock,4.1,3
+1254,Th' Legendary Shack Shakers,Help Me From My Brain,Country,4.7,6.2
+1255,Stray Dogg,Don't Go,Country-Folk,3.4,2
+1256,Factories and Alleyways,Life Is Now,Country-Folk,5.7,5.5
+1257,Waylon Thornton,Four,Country-Instrumental-Folk,5,3.8
+1258,Shannon And The Clams,Louie,Country-Rock,5.7,5.6
+1259,Monk Turner + Fascinoma,Prisoner,Country-Pop,3.6,2.8
+1260,The Crevulators,Anything You Want,Country-Rock,7.2,6.5
+1261,The Black Swans,Joe Tex,Country-Folk-Rock,3.8,3.1
+1262,Trailer Bride,Skinny White Girl,Country-Folk,4.5,4.8
+1263,The Pine Valley Cosmonauts - Skid Marks With Sally Timms,Homicide,Country,5.8,5.1
+1264,Al Duvall,Where The Comet Falls,Country-Folk,4.6,3.6
+1265,Carsie Blanton,Smoke Alarm,Country-Folk-Pop,5.8,5.5
+1266,Jimmy Cousins,Ladies,Country-SoulRB-Pop,5.6,5.1
+1267,Uke Stanza,The Picket Line,Country-Folk,4.5,3.7
+1268,Glenn Jones,A Geranium for Mano-A-Mano,Country-Folk,5.3,3.7
+1269,Pine Valley Cosmonauts W/ Puerto Muerto,The Hangman's Song,Country,3.5,4.4
+1270,Voodoo Puppets,Intro,Country-Rock,4.6,5.3
+1271,Stray Dogg,Disappear,Country-Folk,4.6,4.7
+1272,Waylon Thornton,Six,Country-Instrumental-Folk,4,3.2
+1273,Colin Langenus,Blues,Country-Experimental-Rock,4.8,5.6
+1274,Robo,Es un crimen,Country,6,5.4
+1275,Wooden Ambulance,New Love,Country-Folk-Rock,3.5,2.8
+1276,Noise Problems Selections,Storm,Country-Pop,4.8,5.5
+1277,Carsie Blanton,Honest Truth,Country-Folk-Pop,2.9,2.2
+1278,Carsie Blanton,All We Got,Country-Folk-Pop,5.1,4.1
+1279,The Moaners,Monkey Tongue,Country-Rock,5.6,4.2
+1280,Carsie Blanton,Idiot Heart,Country-Folk-Pop,5.9,5.4
+1281,Jason Shaw,PARTING GLASS,Country-Folk,5.4,4.5
+1282,Colin L. Orchestra,Nothing to Say,Country-Rock,6.8,6.4
+1283,Two Prong,Stream,Country-Pop-Rock,3.3,5.2
+1284,Boris & Olivier,I can't help myself,Country-Electronic,6.3,6.6
+1285,These Hills of Gold,Free Association,Country-Pop-Rock,5.1,4.9
+1286,The 'Mericans,Mason/Dixon,Country-Folk-Rock,3.8,3
+1287,Alice Rose, We Plant Trees,Country-Folk-Pop,4.5,4.3
+1288,Bill Crosson, We Plant Trees,Country-Folk-Pop,5.2,3.4
+1289,Glenn Jones,Fahey's Car,Country-Folk,5,4.4
+1290,Dallas Kincaid, you got a broken heart,Country,6.6,6.6
+1291,Shake That Little Foot,The Lark in the Clear Air,Country-International,3.6,2.5
+1292,Trailer Bride,Itchin' For You,Country-Folk,5.6,5.2
+1293,Trailer Bride,Too Many Snakes,Country-Folk,5.7,5.1
+1294,Trailer Bride,Pasture,Country-Folk,5.9,5.5
+1295,Moonshine Willy,18 Wheels,Country,6.9,6.4
+1296,Alejandro Escovedo,Everybody Loves Me,Country-Folk,5,5.9
+1297,Al Duvall,Bury Me In Shellac,Country-Folk,4.8,3.7
+1298,The Cornell Hurd Band,Don't Wipe Your Face With Your Shirt,Country-Spoken,6.9,5.6
+1299,Protestant Work Ethic,As They Are Blown Here And There,Country,4.5,4.7
+1300,Al Duvall,Five Against One,Country-Folk,6,4.5
+1301,Jupiter Makes Me Scream,Blow,Electronic,4.4,2.8
+1302,Jupiter Makes Me Scream,Picture,Electronic,4.4,3.8
+1303,The Courier,Feel Right,Electronic-Rock,6.1,6.5
+1304,Control Alt Deus,Control,Electronic-Rock,5.2,6.3
+1305,The S.K.,Alone,Electronic,4.7,6.2
+1306,Band of Mad Women,The Cave,Electronic,5.3,5.3
+1307,Source Of Yellow,Maybe!,Electronic-Rock,5.1,5.4
+1308,Just Plain Ant,Take Me Away,Electronic,5.8,5.3
+1309,Mizuki's Last Chance,Yeah,Electronic,6.5,7.4
+1310,High Places,From Stardust to Sentience,Electronic,5.1,4.4
+1311,The Womb,Lullaby,Electronic-Rock,4.1,3.5
+1312,The Womb,Overture,Electronic-Rock,5.3,4
+1313,The Hunters,Shine,Electronic,4.2,3
+1314,The Womb,Disco Suicide,Electronic-Rock,4.1,4.1
+1315,Tab & Anitek,Follow the Leader,Electronic,7,6.4
+1316,Tab & Anitek,Dreams,Electronic,5.2,4
+1317,The Easton Ellises,Black Love,Electronic,5.3,6.2
+1318,Mr. Bitterness and the Guilty Pleasures,Lost,Electronic-Rock,4.8,4.3
+1319,The Kandis Project,Jammin,Electronic,6.5,5.6
+1320,Zombectro & JDDJ3J,Macabre,Electronic,3.8,6.5
+1321,happiness in aeroplanes,alphaville,Electronic,4.5,5.7
+1322,Pink Skull,(part 3),Electronic-Rock,6.5,5.5
+1323,Pogo,Lost,Electronic,5.5,5
+1324,The Carrier Wave,Sky Eyes,Electronic,6.1,6.7
+1325,The Munitionettes,Cold,Electronic-Rock,5.9,5.8
+1326,Peter Sharp,Come to me,Electronic,6.1,5
+1327,All India Radio,Lucky,Electronic,5.5,2.8
+1328,Monokle & Galun,Long,Electronic,4.4,2.7
+1329,Monokle & Galun,Means,Electronic,5.3,4.2
+1330,I.D. & Baobinga,The King,Electronic,5.7,7.2
+1331,Dan Deacon,Woof Woof,Electronic,5.3,4.4
+1332,Illusion of Safety,Wasteland,Electronic,2.5,2.3
+1333,Suicide,Dream Baby Dream,Electronic-Rock,4.5,5.7
+1334,I Have Clones,Eyes,Electronic,3.8,7.8
+1335,Nine Inch Nails,9 Ghosts I,Electronic-Rock,5.4,5.6
+1336,The VME,Sorry,Electronic,3.6,2.7
+1337,Je deviens dj en 3 jours,Intro,Electronic,5,6.5
+1338,Tom Woxom,Diego,Electronic,6.2,6.4
+1339,Anamanaguchi,Sting Operation,Electronic-Rock,7.2,6.8
+1340,Pornophonique,Sad Robot,Electronic-Rock,6.4,5.7
+1341,Maps And Diagrams,The World And You,Electronic,3.5,3.2
+1342,The Easton Ellises,Insomnia,Electronic,6.5,6.4
+1343,krackatoa,I am a Drone,Electronic,6,5.4
+1344,jonas the plugexpert,Brie,Electronic,6.3,5.5
+1345,BrandyAlexanderProject + Laps,Rain,Electronic,4.5,2.9
+1346,Nameless Dancers,Night Dance,Electronic,6.5,5.6
+1347,Marc de Blanchard,Pont,Electronic,4.6,4
+1348,Anamanaguchi,Jetpack Blues Sunset Hues,Electronic-Rock,5.8,6.3
+1349,Björn & Gorden,V,Electronic-Rock,5.2,5.2
+1350,Jupiter Makes Me Scream,This Girl,Electronic,4,2.6
+1351,Bit Shifter,Hexadecimal Genome,Electronic,6.3,5.9
+1352,The Model,The Simple Life,Electronic,6.7,6.4
+1353,krackatoa,Goldengate honey,Electronic,5.3,6.4
+1354,julien neto,From Cover To Cover,Electronic,4.6,2
+1355,The Kirbi,Metronome,Electronic,6.3,3.8
+1356,Etiket Zerø feat. MC B.Wayne,Afrika,Electronic,5.2,5.2
+1357,Ant The Symbol,The Nosebleed,Electronic,4.5,6
+1358,The Rapture,Sister Saviour (Blackstrobe Remix),Electronic-Rock,6,6
+1359,Out Of Orion (Ox3),Horror House,Electronic,3.6,3.4
+1360,Tab & Anitek,Air,Electronic,5.5,2.9
+1361,un automne à Lob-Nor,birds,Electronic-Rock,4.4,2.5
+1362,Nine Inch Nails,7 Ghosts I,Electronic-Rock,4.4,5.4
+1363,Cold Cave,Love Comes Close,Electronic-Rock,5.1,3.6
+1364,Blue Stork,END,Electronic,4.3,6.2
+1365,Bit Shifter,Particle Charge,Electronic,6.5,6.4
+1366,The Easton Ellises,Glitches,Electronic,5.4,6.3
+1367,Bit Shifter,Reformat The Planet,Electronic,7.1,7.2
+1368,The Kandis Project,Be Sweet,Electronic,3.4,3.3
+1369,Bit Shifter,Activation Theme,Electronic,6.8,6.6
+1370,Cornelius,Wataridori 2,Electronic,4.3,4.1
+1371,Dan Deacon,Of the Mountains,Electronic,5.7,5.4
+1372,DJ Spooky,Nocturne,Electronic,4.8,5.2
+1373,pink,magical shower outrun,Electronic,6.6,5.7
+1374,happiness in aeroplanes,white noise,Electronic,6,4.1
+1375,Band of Mad Women,Water Song,Electronic,5.6,5.6
+1376,krackatoa,Speedracer,Electronic,7,6.6
+1377,krackatoa,Blood Moon Rising,Electronic-Rock,3.7,3.1
+1378,Björn & Gorden,III,Electronic-Rock,5.5,5.7
+1379,krackatoa,Look up to the Sky,Electronic,5.8,5.7
+1380,un automne à Lob-Nor,untitled,Electronic-Rock,4.1,4.5
+1381,Wisp,Out Of Season,Electronic,6.1,7.1
+1382,epsilon not,waiting,Electronic,4.8,4.7
+1383,khonnor,Blindness Bats,Electronic,5.6,3
+1384,Sabi,Screaming Bulb (10'3'23),Electronic,5.8,5.4
+1385,I.D. & Baobinga,Red Dust,Electronic,6,6
+1386,Math and Physics Club,Graduation Day,Electronic,5.9,5
+1387,Bit Shifter,Chase Init_,Electronic,6.1,4.5
+1388,Anamanaguchi,Power Supply,Electronic-Rock,6.8,7.8
+1389,Guitar Wizards of the Future,Indiana,Electronic,4.2,3.3
+1390,Doctor P,Sweet Shop,Electronic,6.1,6.3
+1391,Azoora feat. graciellita,Ugly Weather,Electronic,4.3,5.7
+1392,Anamanaguchi,Airbase,Electronic-Rock,6.2,6.7
+1393,Thievery Corporation,DC 3000,Electronic,6.2,4.1
+1394,Jesse Futerman,blue,Electronic,6,4.1
+1395,The Womb,Laurensong,Electronic-Rock,4.7,3.5
+1396,The Courier,Panic Attack,Electronic-Rock,6.1,6
+1397,Sabi,Wet,Electronic,4.3,3.3
+1398,Norrin Radd,Process of Macrocosmic Emaciation,Electronic-Rock,6.9,7.6
+1399,kilowatts,Glob Story,Electronic,6.1,6.4
+1400,Norrin Radd,Four Lights,Electronic-Rock,5.6,5.8
+1401,Mars Payne,The End,Folk-Rock,5.8,5.3
+1402,Harry the Cap,The Little Drummer Boy,Folk-Electronic,5.6,2.5
+1403,Josh Woodward,Go,Folk-Pop,5.6,5.1
+1404,Art of Flying,sleep,Folk-Rock,3.8,2.7
+1405,Art of Flying,air,Folk-Rock,3.7,2.2
+1406,Art of Flying,garden of earthly delights,Folk-Rock,3.9,3.7
+1407,The Wingdale Community Singers,No Rest,Folk,3.6,3.8
+1408,The Subhuman,Whatever,Folk-Pop,4.2,5
+1409,Johnny Favourite and the Exs,Of Love,Folk-Pop-Rock,4.9,3.7
+1410,Suspicious for the Winter,Empty Streets,Folk-Pop-Rock,6,4.4
+1411,Roach Davies And The Fleas,Do Wanna,Folk-Rock,3.9,2.7
+1412,Roach Davies And The Fleas,Old Mine,Folk-Rock,4.6,3.2
+1413,Roach Davies And The Fleas,Navigator,Folk-Rock,4.3,4.1
+1414,Bad Night Moon Shadow,Wonder,Folk-Experimental-Rock,3.7,4
+1415,Misay Day,Sunday,Folk,5.7,4.7
+1416,Howie Mitchell & Charlotte Williams,Instrumental,Folk,4.4,2.7
+1417,Howie Mitchell & Charlotte Williams,Greensleeves,Folk,4.6,2.4
+1418,Trinity the Band of Pan,the kingdom,Folk-Experimental,4.3,3.8
+1419,Trinity the Band of Pan,descend,Folk-Experimental,3.7,2.5
+1420,The Dove and The Wolf,On the Other Side,Folk,4.8,3.1
+1421,Howie & Ann Mitchell,Medley,Folk,4.2,3.2
+1422,The Dove & The Wolf,On the Other Side,Folk-Experimental-Rock,4.1,2.8
+1423,The Peach Tree,Begin,Folk-Electronic-Rock,4.2,5.5
+1424,The Peach Tree,A Star,Folk-Electronic-Rock,4.5,3.5
+1425,The Peach Tree,The Promise,Folk-Electronic-Rock,5.1,5.2
+1426,The Nighttime Adventure Society,L.A.,Folk-Pop,6.6,6.4
+1427,Delphine Dora & The Unexpected,Big mess,Folk-Pop-Experimental,5,4.9
+1428,Entertainment for the Braindead,A River,Folk-Pop,4.7,3.5
+1429,Delphine Dora & The Unexpected,the absence,Folk-Pop-Experimental,3,2.3
+1430,Delphine Dora & The Unexpected,Waltz,Folk-Pop-Experimental,4.6,3.2
+1431,The Chapin Sisters,Let Me Go,Folk,4.1,4.1
+1432,The Peach Tree,Seventeen,Folk-Electronic-Rock,3.7,2.6
+1433,Collection of the Late Howell Bend,Side A,Folk-Experimental,4,3.6
+1434,The Chapin Sisters,Don't Love You,Folk,3.7,2.8
+1435,The Peach Tree,Hold On,Folk-Experimental-Electronic-Rock,3.6,5.3
+1436,Inch Chua,Hurt,Folk-Pop,4.7,3.8
+1437,The Simple Carnival,Misery,Folk-Pop-Rock,5.1,4.5
+1438,My Bubba & Mi,Really Really,Folk,3.6,2.9
+1439,My Bubba & Mi,Gone,Folk,4.1,2.9
+1440,Rocketship Park,Head,Folk-Rock,5.1,4.9
+1441,Ben Mason,Easy,Folk-Pop-Rock,5,4
+1442,Entertainment for the Braindead,Winter.,Folk-Pop,5.3,2.8
+1443,Entertainment for the Braindead,Afternoon.,Folk-Pop,5.8,2.9
+1444,Entertainment for the Braindead,Cocoon.,Folk-Pop,4.6,3.1
+1445,Entertainment for the Braindead,Home.,Folk-Pop,5.1,3.6
+1446,Entertainment for the Braindead,Sleep.,Folk-Pop,5.8,3.2
+1447,The Wispy Hummers,In Your Eyes,Folk-Rock,4.4,4.1
+1448,The Wispy Hummers,My Love,Folk-Pop-Experimental-Rock,4.4,4.4
+1449,Srch Party,Man,Folk,4.6,4.1
+1450,Clare and The Reasons,PS,Folk-Pop,5.7,5
+1451,Clare and The Reasons,The Lake,Folk-Pop,5.1,4.8
+1452,The LibraryAnns,#6,Folk-Pop,4.2,3.9
+1453,Mark Humble & Dave Foster,Stella,Folk-Rock,4,3.8
+1454,The LibraryAnns,#5,Folk-Pop,5.2,3.6
+1455,Not From This World,Pain,Folk,4.1,4.2
+1456,Not From This World,We,Folk,4.3,2.2
+1457,Falcao and Monashee,Money,Folk,5.4,4.8
+1458,Falcao and Monashee,Heaven,Folk,4.2,4.7
+1459,Live at WFMU on Gaylord Fields' Show on September 25,Sons And Daughters,Bird of Youth,5.4,5.1
+1460,The Twin Atlas,Shout Out,Folk,4.8,3.9
+1461,The Twin Atlas,Roll On,Folk,5.3,4.2
+1462,The Twin Atlas,Fall Away,Folk,4.8,3.9
+1463,Spires That in the Sunset Rise,Clouds,Folk,3.3,3
+1464,Mike Doughty,Looking At The World From The Bottom Of A Well,Folk-Rock,4.8,4.4
+1465,Jack and the Pulpits,Pirates,Folk-Rock,5.2,3.7
+1466,The Wyld Olde Souls,Give It To You,Folk,6.1,4.5
+1467,Bakers At Dawn,Love,Folk,4,4.2
+1468,Learning Music, Hands,Folk-Pop-Rock,3.7,2
+1469,The Family Simpson,Siren,Folk-Pop-Rock,3.1,3.2
+1470,The Family Simpson,Soup,Folk-Pop-Rock,5.1,3.2
+1471,Andrew Vincent And The Pirates,Martha,Folk-Rock,7.3,6.8
+1472,Jonathan Coulton,Re: Your Brains,Folk,5,5.2
+1473,Jonathan Coulton,I Feel Fantastic,Folk,6.1,6
+1474,Jonathan Coulton,Code Monkey,Folk,6.6,6.4
+1475,The Subhuman,The shining sun,Folk-Pop,4.3,3.2
+1476,The Subhuman,Vietnam,Folk-Pop,4.5,5.1
+1477,Kelly Hogan &amp; The Pine Valley Cosmonauts,Gone,Folk-Rock,5.1,4.5
+1478,The Snow,All One,Folk-Pop,5.1,3.5
+1479,The Snow,Fools Gold,Folk-Pop,5,5.1
+1480,The Shivers,Kisses,Folk-Rock,4.8,5.3
+1481,The Snow,Reptile,Folk-Pop,3.9,3.7
+1482,Alec K. Redfearn & the Eyesores,Ohio,Folk,4.3,3.4
+1483,The Dutchess And The Duke,The River,Folk,3.9,3.8
+1484,The Dutchess And The Duke,Hands,Folk,4.4,3.8
+1485,Uke of Spaces Corners,Highway,Folk,4.7,3.8
+1486,The Bowmans,Forever,Folk,3.7,2.9
+1487,Welcome Wizard,Home,Folk-Experimental-Electronic,4.3,2.4
+1488,The Dutchess And The Duke,Out of Time,Folk,4.9,3.9
+1489,John Wicks and Paul Collins,Rock and Roll Girl,Folk-Rock,4.9,4.6
+1490,Twi the Humble Feather,Seasons,Folk,3.8,3.1
+1491,Alec K Redfearn & the Seizures,Rise,Folk-Experimental,4.8,5.2
+1492,Father Sleep,Couldn't,Folk-Pop,3.3,2.8
+1493,Not From This World,Apart,Folk,4,6.1
+1494,Cath and Phil Tyler,Sunshine,Folk,4.9,3.8
+1495,The Wyld Olde Souls,Maybe,Folk,4.4,3.9
+1496,The Nighttime Adventure Society,Washington,Folk-Pop,6.1,5.8
+1497,Silver Jews,Random Rules,Folk-Rock,4.4,3.6
+1498,Silver Jews,Pony,Folk-Rock,4.8,3.8
+1499,Falcao and Monashee,California,Folk,4.8,4.5
+1500,Art of Flying,lies,Folk-Rock,3.8,3.2
+1501,Shadow Priest,Love,Hip-Hop-Experimental-Electronic,5,4.9
+1502,Ain't No Love,Shine,Hip-Hop-Pop-Electronic,7.2,7
+1503,Tab & Anitek,Placebo,Hip-Hop-Electronic,5.9,4.1
+1504,The Impossebulls,Enemy,Hip-Hop,6,5.9
+1505,Black Dice,Pigs,Hip-Hop-Experimental,4.2,4.9
+1506,niwa,When She Looked At Me (I Saw Her Wondering),Hip-Hop,5,4.8
+1507,Broke n phono,in,Hip-Hop,5.5,5.7
+1508,Apes on Tapes,Les,Hip-Hop-Experimental-Electronic,5.9,5.3
+1509,epsilon not,that way,Hip-Hop-Instrumental-Electronic,5.9,5.4
+1510,The Honorable Sleaze,Higher,Hip-Hop,4.1,5.6
+1511,The NSJ Crew,Good Time,Hip-Hop,5.5,5.6
+1512,The NSJ Crew,Haunted,Hip-Hop,3.8,5.2
+1513,The NSJ Crew,The Nellie,Hip-Hop,6.1,6.3
+1514,The Hate Noise,Herb,Hip-Hop,4.6,5.4
+1515,Dälek,Culture for Dollars,Hip-Hop,4.4,4.8
+1516,Blank & Kytt, Crazy,Hip-Hop,5.6,4.9
+1517,Broke For Free,A Year,Hip-Hop-Electronic,6,5
+1518,The House Arts,Strip,Hip-Hop-Electronic,6.1,6.3
+1519,The Hate Noise,Stereo,Hip-Hop,5,5.6
+1520,The Honorable Sleaze,The Last One,Hip-Hop,5.3,5.3
+1521,The Honorable Sleaze,Too Much,Hip-Hop,4.8,4.9
+1522,The Honorable Sleaze,Intro,Hip-Hop,5.2,5.7
+1523,The Honorable Sleaze,Lovin',Hip-Hop,6.9,4.8
+1524,The Insider,One Fine Day,Hip-Hop-Electronic,5.6,4.4
+1525,The Insider,Right,Hip-Hop-Electronic,4.5,4.5
+1526,Broke For Free,The Great,Hip-Hop-Electronic,5.9,5.9
+1527,Black Ant,B.,Hip-Hop,4.5,4.7
+1528,Deal The Villain,Who Knows,Hip-Hop,5.5,4.6
+1529,Height With Friends,The World,Hip-Hop,5.4,5.7
+1530,Deal The Villain,Want You,Hip-Hop,6.2,4.2
+1531,Deal The Villain,Sweet,Hip-Hop,5.1,4.8
+1532,Deal The Villain,Judas,Hip-Hop,5.8,5.6
+1533,The Custodian of Records,Hey,Hip-Hop-Instrumental,5.2,5.3
+1534,The Good People,Love Lost,Hip-Hop,5.7,5.7
+1535,Jay Slim,Star,Hip-Hop,5.4,5.3
+1536,The Years,much much love,Hip-Hop,4.8,3.4
+1537,The Years,Lover's Rock,Hip-Hop,5.9,3.4
+1538,Bilal Bashir &amp; Divine Styler,Rain,Hip-Hop,6.3,4.7
+1539,Black Ant,Sleep.,Hip-Hop,4.4,4.7
+1540,The Insider,Vibration,Hip-Hop-Electronic,5.7,5.1
+1541,Broke For Free,If,Hip-Hop-Electronic,5.2,4.6
+1542,Broke For Free,Nola,Hip-Hop-Electronic,5.5,5.5
+1543,Comfort Fit,The Hunt,Hip-Hop,6.1,5.4
+1544,Luck & Ripps,Rock On,Hip-Hop,6.4,5.4
+1545,It's Notherground Music!!,Future Music,Hip-Hop,4.8,4.8
+1546,Comfort Fit,Planetary Picknick,Hip-Hop,5.3,4.4
+1547,Ache de noche,Todo,Hip-Hop,4,5.8
+1548,Comfort Fit,Emotional Draft,Hip-Hop,4.6,3.7
+1549,James Pants,Bird,Hip-Hop-Electronic,4.9,5.2
+1550,Shlohmo,Ghosts pt. 2,Hip-Hop,4.8,3.7
+1551,Comfort Fit,Hairy Crushed Nuts,Hip-Hop,5.6,5.4
+1552,The Hate Noise,Easy Ride,Hip-Hop,5.6,5.6
+1553,Os Trasnos De Moscoso,Primavera,Hip-Hop,5.6,5.9
+1554,Dan the Automator,Relaxation Spa Treatment,Hip-Hop,5.8,4.5
+1555,Adam & Alma,Back To The Sea,Hip-Hop-Pop-Electronic,4.4,2.9
+1556,Mr Ascofi,Sam,Hip-Hop,4.7,6.1
+1557,El Klan de los DeDeTe,Loco,Hip-Hop-Electronic,5.5,6.3
+1558,Dälek,Ever Somber,Hip-Hop,3.4,5.9
+1559,Comfort Fit,Miles of Smiles,Hip-Hop,5.8,5.2
+1560,jonas the plugexpert,Interlude,Hip-Hop-Electronic,5.2,5.2
+1561,It's Notherground Music!!,Let's Do It,Hip-Hop,5,6
+1562,The Hate Noise,Bow Down,Hip-Hop,4.8,6.3
+1563,Om Unit,Neptune,Hip-Hop-Electronic,5.1,5.7
+1564,Tracky Birthday,Websiiite (with Dragan Espenschied),Hip-Hop-Electronic,6.1,6.4
+1565,The Professional Savage,Life's A Beach,Hip-Hop,4.6,4.9
+1566,T Bird,Nickles And Dimes,Hip-Hop,6.2,5.3
+1567,K. Sparks,Over,Hip-Hop,4,5
+1568,The Hate Noise,Bicycle,Hip-Hop,5.4,6
+1569,Moa Pillar,Water Lily,Hip-Hop-Electronic,5.6,5.8
+1570,Tab & Anitek,Disclosure,Hip-Hop-Electronic,5.2,4.6
+1571,Double Helix (Morphamish & Texture),Science Fiction,Hip-Hop-Electronic,4.4,6.9
+1572,Kris Anderson - Studio 11,Top Of The World,Hip-Hop-Instrumental,5.5,5
+1573,Bram Nelson,Le Mort Du Petit Prince,Hip-Hop-Electronic,4.9,3.6
+1574,Bram Nelson,City Harmony,Hip-Hop-Electronic,5.9,5.4
+1575,Tab & Anitek,Mirage,Hip-Hop-Electronic,5.2,5.1
+1576,C. Scott,Humphrey,Hip-Hop-Electronic,5.4,3.9
+1577,Tab & Anitek,Drifter,Hip-Hop-Electronic,5.2,4.7
+1578,Blank & Kytt, Crazy,Hip-Hop,5.9,4.8
+1579,Alaclair Ensemble,Qui,Hip-Hop,5.8,4.9
+1580,John Ming,Floating,Hip-Hop-Electronic,6.1,5.2
+1581,Beastie Boys,Now Get Busy,Hip-Hop,6.5,6.1
+1582,Syndrôm & Kendall WA,I Rise,Hip-Hop,5.9,5.4
+1583,Broke For Free,Something Old,Hip-Hop-Electronic,5.6,5.2
+1584,Questionmark Embargo,Intro,Hip-Hop-Electronic,4.9,4.6
+1585,Steve Anderson,You to Me,Hip-Hop-Electronic,5,3.9
+1586,Food For Animals,Elephants,Hip-Hop,4.3,5
+1587,Save Slaves,Vote,Hip-Hop-Electronic,5,5.5
+1588,Slugabed,Power Of The Mind,Hip-Hop-Electronic,4.9,5.8
+1589,Volfoniq,My dub is taiwan (remix KouChouChing),Hip-Hop-International-Folk,5.8,6.1
+1590,EPMD,You're a Customer,Hip-Hop,4.2,6.2
+1591,She Has A Cold,NEW 9.0,Hip-Hop-Electronic,5.9,4.7
+1592,ILLUS and DJ Johnny Juice,Ready Remix,Hip-Hop,6.1,6.4
+1593,No Color,Los Angeles,Hip-Hop-Electronic,4.7,3.5
+1594,Tha Silent Partner,Cinema,Hip-Hop-Electronic,5.6,5.4
+1595,The Years,I Are,Hip-Hop,5.6,5.9
+1596,Invisible Inc,Paradise,Hip-Hop-Electronic,5.5,5.1
+1597,Fanatic,Dream,Hip-Hop,5.5,5
+1598,Dälek,Asylum (Permanent Underclass),Hip-Hop,4.3,5.5
+1599,Dälek,Tarnished,Hip-Hop,3.6,4.1
+1600,Blank & Kytt, Crazy,Hip-Hop,5.6,5.6
+1601,Audiotoolz,Eastern View,International-Electronic,5,5.3
+1602,Axial,Peregum,International-Folk-Experimental,5,3.7
+1603,Axial,Filha da Palavra,International-Folk-Experimental,5.4,3.9
+1604,Axial,Tamanquero,International-Folk-Experimental,4.5,3.6
+1605,Axial,Papaloko,International-Folk-Experimental,5.6,4
+1606,Salam,Allhou,International,5.6,4.9
+1607,Zee Avi,Bitter Heart,International-Folk,4.5,3
+1608,Diablo Swing Orchestra,Poetic Pitbull Revolutions,International-Rock,4.5,7
+1609,Diablo Swing Orchestra,Balrog Boogie,International-Rock,6.4,6.5
+1610,Axial,Iemanja,International-Folk-Experimental,6.4,4.1
+1611,Diablo Swing Orchestra,Gunpowder Chant,International-Rock,5.7,6.2
+1612,Diablo Swing Orchestra,D'angelo,International-Rock,3.8,3.1
+1613,Diablo Swing Orchestra,Rag Doll Physics,International-Rock,6.2,6.6
+1614,Gilberto Gil,Oslodum,International-Folk,6.6,4.6
+1615,Mombojo,Adelaide,International-Folk-Pop,5.7,4.6
+1616,Mombojo,Faaca,International-Folk-Pop,4.8,5.5
+1617,Audiotoolz,Advanced Japanese Folk,International-Electronic,6.1,5.9
+1618,Mombojo,Nem Parece,International-Folk-Pop,6.1,3.9
+1619,Mombojo,O Ceu,International-Folk-Pop,5.2,5.3
+1620,Hayvanlar Alemi,Bahar Patlatan,International-Rock,6.3,5.7
+1621,The Freak Fandango Orchestra, death and a drunken monkey,International-Folk-Rock,6.1,6
+1622,The Freak Fandango Orchestra, death and a drunken monkey,International-Folk-Rock,6,5.9
+1623,Beatstar,My Way,International-Electronic,5.6,5.3
+1624,Wrekkerz vs Audiotoolz,Hungarian Fightclub,International-Electronic,5.7,6.4
+1625,Ceu,Bubuia,International,4.9,4.4
+1626,Freestep,Aboriginal Soundsystem (Triad remix),International-Electronic,6.1,6
+1627,Oso El Roto,Demonio,International-Experimental-Rock,4.4,3.9
+1628,Yva Las Vegass,Mariposas,International-Folk-Rock,4.7,4.8
+1629,The Freak Fandango Orchestra, death and a drunken monkey,International-Folk-Rock,6.4,6.3
+1630,Hayvanlar Alemi,Guarana Superpower,International-Rock,6,5.4
+1631,Bo Marley + Disrupt + Volfoniq,L'Anchoïade,International,5.7,4.8
+1632,Au fond du car,Soleil nocturne,International-Folk-Experimental,5.2,3.4
+1633,Vialka,Bamako,International-Experimental-Rock,6.5,6.3
+1634,Pattern Industries,Felix Is My Friend,International-Electronic,5.5,6.1
+1635,Teleradio Donoso,Amar en el campo,International-Instrumental-Rock,6.8,6.1
+1636,Arjopa,A little khoomei Song,International-Folk-Experimental,4.6,5.2
+1637,Inlets,Pictures of Trees,International-Folk-Pop,5.5,3.6
+1638,Bo Marley + Disrupt + Volfoniq,La Tapenade,International,5.9,3.9
+1639,Bo Marley + Disrupt + Volfoniq,La Brandade,International,5.3,5.3
+1640,Paniks,Jelena,International-Folk,6.6,6.1
+1641,Trabajo,Mortal,International-Electronic,4.6,5.3
+1642,Trabajo,Udan Mas,International-Electronic,5.1,4.9
+1643,El bien,El norte,International-Pop-Rock,4.4,4.3
+1644,The Prefab Messiahs,Prefab City Dub (Edit),International-Pop-Rock,5,5.9
+1645,Mikey Murka,Sensi Addict,International-Electronic,5.8,5.7
+1646,Azevedo Silva,Dó,International-Folk,4.5,3.7
+1647,The Freak Fandango Orchestra,Hitmans Lovesong feat. Paola Graziano,International-Rock,7.1,5.8
+1648,Selva de Mar,LLAVES,International-Instrumental-Experimental,3.9,2.5
+1649,Hayvanlar Alemi,MEGA Lambada,International-Rock,6.1,6
+1650,Lucas Perný a Miloslav Kollár,Swinging London 1966,International-Experimental-Rock,5.9,4.7
+1651,Vialka,Village Mentality,International-Folk-Experimental-Rock,4.8,6
+1652,The Freak Fandango Orchestra,Late as Usual,International-Rock,7.2,6.3
+1653,Superbus,No Porno Please,International-Electronic,4.3,3.1
+1654,Audiotoolz,Advanced Japanese folk (Djet remix),International-Electronic,4.8,3.1
+1655,Midival Punditz,Drifting,International-Pop-Electronic,6.1,6.1
+1656,Salam,Tara,International,4.7,4
+1657,Hayvanlar Alemi,Güve Diskosu,International-Rock,5.6,5.7
+1658,Sound: The Encounter,Mina,International,6.2,5.9
+1659,Trabajo,The Myth,International-Electronic,4.6,4.6
+1660,Caballo & the Mothafu Kings,Persistance,International-Electronic,5.2,5.5
+1661,Ben Et Béné,Boubek,International-Electronic-Rock,5.7,6.3
+1662,Lucas Perný a Miloslav Kollár,Husľový kľúč,International-Experimental-Rock,6.1,6
+1663,Inlets,Sunfed Shapes,International-Folk-Pop,4.6,4.9
+1664,Salam,Drogue,International,4.2,4
+1665,Lucas Perný a Miloslav Kollár,Astral Gate,International-Experimental-Rock,5.6,5.7
+1666,Alexandre Bateiras,Porto Largo,International-Folk,3.8,3.3
+1667,Paniks,Devojka,International-Folk,6,7.5
+1668,Sida,Sida,International-Rock,5.5,5.5
+1669,The Anchoras,Jah Love,International-Experimental,5.5,4.9
+1670,Mastermind XS,Stop That Mission,International,5.9,5.4
+1671,Inlets,You Are an Effigy,International-Folk-Pop,4.2,3.3
+1672,Inlets,Roots on Sidewalks,International-Folk-Pop,4.4,2.6
+1673,A Hawk and a Hacksaw,The Man Who Sold His Beard,International-Folk,6.1,5.9
+1674,Chico Correa and Electronic Band,Lelê,International-Folk-Electronic-Rock,5,5.3
+1675,Vialka,Thessaloniki,International-Experimental-Rock,5.5,5.7
+1676,Mastermind XS,Memories Of A Machine,International,5.6,4.9
+1677,Mastermind XS,Sunny Day,International,6.8,6.4
+1678,Dengue Fever,Tiger Phone Card,International,5.1,4.2
+1679,Alec K Redfearn & the Seizures,The Hole,International-Folk-Experimental,5.4,5.6
+1680,Los Amparito,Las Miradas de Magaly,International-Pop,6.8,6.1
+1681,Damscray,Sarira Bride,International-Electronic,5,3.5
+1682,Hayvanlar Alemi,Mavi Sepet,International-Rock,6.1,5.8
+1683,Alexandre Bateiras,Canção da Ribeira,International-Folk,6,4.8
+1684,Alexandre Bateiras,Canção de Alvito,International-Folk,5.1,5
+1685,Mastermind XS,Not Free But Not Afraid,International,5.4,4.5
+1686,Oso El Roto,Los papeles,International-Experimental-Rock,3.7,3.3
+1687,Normaa,International Calling,International-Electronic,5.1,4.7
+1688,Damscray,Dancing Tiger,International-Electronic,5.2,4.7
+1689,Xerak,Pxlcoucou,International-Electronic-Rock,7.1,6.4
+1690,Hayvanlar Alemi,Crossroad Metamorphosis,International-Rock,5.4,4.6
+1691,Azevedo Silva,Rugas,International-Folk,3.7,3.6
+1692,Azevedo Silva,Abutres,International-Folk,3.8,3.3
+1693,Azevedo Silva,Era Uma Vez,International-Folk,4.4,3.8
+1694,Vialka,Only The Wrong Survive,International-Folk-Experimental-Rock,4.5,6.1
+1695,Vialka,Village Mentality Part Two,International-Experimental-Rock,5.7,5.6
+1696,Prin' La Lá,Naves que dan vueltas a un balon,International-Instrumental,3.8,3.3
+1697,Inlets,See Her,International-Folk-Pop,3.3,2.8
+1698,Ofir Klemperer, come here,International-Folk-Pop-Experimental-Rock,4.5,4.5
+1699,Damscray,Rural Metric Seven,International-Electronic,5.1,5
+1700,Damscray,Your Rainbow Colour Changer,International-Electronic,5.6,5
+1701,Assif Tsahar,JAM,Jazz,4,3.1
+1702,Assif Tsahar,JAM,Jazz,4.1,3.9
+1703,The Chris Kelsey 4, “The Oppo­site of Paul Desmond”),Jazz,5.3,6.7
+1704,Jason Ajemian & The Highlife,Soak up the Sun,Jazz-Rock,5.3,6.4
+1705,Jason Ajemian & The Highlife,Monsters,Jazz-Rock,4,4.4
+1706,Voodoo Suite,Voodoo,Jazz,4.9,4
+1707,Sandro Marinoni & Stefano Roncarolo,The Crow,Jazz,3.5,4
+1708,The Watery Graves of Portland,The News,Jazz-Rock,4.2,3.6
+1709,Seth Paynter and Kevin Patton,_F,Jazz-Experimental-Electronic,4,3.8
+1710,Bob James Trio,And On,Jazz-Experimental,3.6,2.9
+1711,Somewhere Off Jazz Street,Echo,Jazz-Instrumental-Electronic,5,3.2
+1712,Sandro Marinoni & Stefano Roncarolo,Air,Jazz,4.4,2.9
+1713,Glows in the Dark,The Silence,Jazz,6.2,5.7
+1714,Adam & Alma,Smile For Me,Jazz-Instrumental-Pop-Electronic,6.1,4
+1715,krackatoa,We think we know it all,Jazz-Electronic,5.9,5.6
+1716,krackatoa,Shark on the Lot,Jazz-Experimental-Electronic,5.8,5.4
+1717,Terrero De Jesus,Xangô,Jazz-International-Experimental,6,4.8
+1718,Nheap,The Snow That Never Falls Down,Jazz-Experimental-Electronic-Rock,4.7,3.5
+1719,Nheap,Crossings,Jazz-Experimental-Electronic-Rock,5,3.3
+1720,Har-You Percussion Group,Welcome To The Party,Jazz,7.5,6
+1721,Nheap,Sands,Jazz-Experimental-Electronic-Rock,4.2,2.9
+1722,Martin Lowack,Evening,Jazz,5,3.1
+1723,Nheap,Daily Improvisation,Jazz-Experimental-Electronic-Rock,4.3,3.4
+1724,Learning Music,#3,Jazz-Folk-Pop-Rock,3.7,3.3
+1725,Jazz at Mladost Club,Caravan,Jazz,5.2,4.4
+1726,Somewhere Off Jazz Street,Dawn,Jazz-Instrumental-Electronic,4.6,3.2
+1727,Assif Tsahar,deals,Jazz,4.9,4.7
+1728,Zloty Dawai,Teleopsis belzebuth,Jazz-Experimental,3.1,4.7
+1729,Nheap,Rides,Jazz-Experimental-Electronic-Rock,5.1,5.4
+1730,Revolution Void,Nebulous Notions,Jazz-Hip-Hop-Electronic,5.3,3.9
+1731,Stefano Roncarolo & Sandro Marinoni,Mirage,Jazz-Experimental-Electronic,4.2,3.6
+1732,Bliss Blood & Al Street,Paradise,Jazz-International,4.2,3
+1733,Trio Metrik,Vogelperspektive,Jazz-Experimental,3.8,3.3
+1734,Revolution Void,Factum par Fictio,Jazz-Hip-Hop-Electronic,5.1,5.2
+1735,Mentz,Sleepy,Jazz-Electronic,4.7,3
+1736,Mentz,Tumble,Jazz-Electronic,4.7,3.1
+1737,Zloty Dawai,Hydrofugarious spasm,Jazz-Experimental,3.6,3.6
+1738,Zloty Dawai,Adsurb Peotry,Jazz-Experimental,2.8,4.8
+1739,Zloty Dawai,Squid in the mouth,Jazz-Experimental,3.7,2.8
+1740,Neuroleptic Trio,I,Jazz-Electronic,5.3,4.3
+1741,Stefano Roncarolo & Sandro Marinoni,Point of no return,Jazz-Experimental-Electronic,3.3,3.5
+1742,Quantum Jazz,Intro,Jazz,6.8,5.1
+1743,The Swing Ninjas,Blue Drag,Jazz,6.8,6.5
+1744,The New Mellow Edwards,First Loser,Jazz,4.9,4.3
+1745,ProleteR,The Misfit Song,Jazz-Hip-Hop-Rock,7.1,5.9
+1746,Terrero De Jesus,Ogum,Jazz-International-Experimental,5.7,4.8
+1747,Stefano Roncarolo & Sandro Marinoni,Lhasa,Jazz-Experimental-Electronic,4.3,2.9
+1748,Bacco Baccanels,Fearless little John,Jazz-International-Pop,5.4,4.1
+1749,Gepel,Empingue,Jazz-International,6.7,4.6
+1750,Revolution Void,Accelerated Lifestyle,Jazz-Hip-Hop-Electronic,4.7,5.3
+1751,Steve MacKay and the Blue Prostitutes,Improv,Jazz,4.1,4.3
+1752,Revolution Void,City Lights at Night,Jazz-Electronic,5.5,6.1
+1753,Miro,I,Jazz-Experimental,3.2,3.4
+1754,Somewhere Off Jazz Street,Fly,Jazz-Instrumental-Electronic,4.2,2.4
+1755,Revolution Void,Weekend Amnesia,Jazz-Hip-Hop-Electronic,6.4,5.7
+1756,Sandro Marinoni & Stefano Roncarolo with Roberto Padovan,Sad Song,Jazz,4.4,3.9
+1757,Trio Metrik,Bäume in freier Wildbahn,Jazz-Experimental,5,3.1
+1758,Calypso,Copacabana Palace Hotel,Jazz,5.4,3
+1759,Terrero De Jesus,Oxum,Jazz-International-Experimental,5.4,4.7
+1760,Mentz,Shackles,Jazz-Electronic,4.3,4.1
+1761,Scott Kettner's Brazilian Brass Band,Big Leg Woman,Jazz-International,7.9,7.1
+1762,Pablie,Trying Jazz,Jazz-Hip-Hop,6.1,5.4
+1763,Mike Link &amp; Harvey Taylor,Night Song,Jazz-Electronic,4.4,3.5
+1764,Jaap Blonk & Splinks,Duende,Jazz-Experimental,4.9,4
+1765,Taiga Blues,Karussell,Jazz-Experimental,5.8,4.6
+1766,Stefano Roncarolo & Sandro Marinoni,Meditation,Jazz-Experimental-Electronic,3.7,3
+1767,Kreng,Merope,Jazz-Electronic,3.8,2.4
+1768,Somewhere Off Jazz Street,Ghost,Jazz-Instrumental-Electronic,4.1,3.1
+1769,M.A.G. Trio,All the things,Jazz,5.9,5.3
+1770,Assif Tsahar & Tatsuya Nakatani,Come Sunday,Jazz,4.5,2.9
+1771,Plaistow,Steve Reich,Jazz-Experimental-Rock,4.9,5.3
+1772,Oprachina,Attimi,Jazz,5.6,4.3
+1773,Plaistow,Aki's Apple,Jazz-Experimental-Rock,5.4,4.1
+1774,Bacco Baccanels,Mi fa,Jazz-International-Pop,4.9,4.8
+1775,Jonah Dempcy,Mother Matrix Most Mysterious,Jazz,4.6,3
+1776,Jonah Dempcy,Upsurge,Jazz,4.8,3.8
+1777,Jonah Dempcy,Myriad Ways,Jazz,5.3,4.4
+1778,Jonah Dempcy,Lumen Arcanum,Jazz,4.4,3.2
+1779,Jonah Dempcy,Azurescent,Jazz,5.7,2.9
+1780,Stefano Roncarolo & Sandro Marinoni,Song for Lisa,Jazz-Experimental-Electronic,4.8,3.5
+1781,Gitarrenarmee,Composing after playing part 3,Jazz-Experimental,4.2,2.7
+1782,Interkosmos,Edentrip,Jazz-Experimental-Electronic-Rock,4.7,5.2
+1783,Somewhere Off Jazz Street,Dusk,Jazz-Instrumental-Electronic,4.2,3.3
+1784,M.A.G. Trio,Spain,Jazz,5.5,5.1
+1785,Trio Metrik,Reisefenster,Jazz-Experimental,5.6,5.2
+1786,Schizoïd Bass,Through Fields,Jazz-Experimental,4.2,3.1
+1787,Gepel,Ta vieja y ya no sale,Jazz-International,3.9,3.4
+1788,Jooklo Duo with C. Spencer Yeh,Set the Fire,Jazz-Experimental,3.6,6
+1789,Revolution Void,Ventus Solaris,Jazz-Electronic,5.9,5.1
+1790,julia a. miller,2,Jazz-Experimental,3.8,3.3
+1791,Oprachina,Porta D'Arce,Jazz,5.3,3.3
+1792,Quantum Jazz,Jingle Jazz,Jazz,6.1,5.1
+1793,Antony Raijekov,Drop of whisper (2005),Jazz-Electronic,5.1,4.2
+1794,Antony Raijekov,Deep blue (2005),Jazz-Electronic,4.2,3.7
+1795,Tim Berne,Sequel Ex,Jazz,3.9,3
+1796,Necronomikon Quartett,Sofawende,Jazz-Rock,5.8,6
+1797,Goat,The High Priestess,Jazz-Experimental-Electronic,3.6,4.1
+1798,Pavel Tukki, The Universe & Everything,Jazz,5.7,4
+1799,Antony Raijekov,EXIT 65 (2005),Jazz-Electronic,5.8,4.5
+1800,Jaap Blonk & Splinks,Hymne,Jazz-Experimental,3.4,2.6
+1801,Fire To The Stars,Sunday,Pop-Experimental-Rock,3.4,2.8
+1802,The Color and Sound,Graves,Pop-Rock,5.7,6.6
+1803,The Spectacular Fantastic,Everything,Pop-Rock,4.1,3.6
+1804,The Spectacular Fantastic,California,Pop-Rock,5.7,5.9
+1805,The Spectacular Fantastic,In the mood,Pop-Rock,5.7,4.9
+1806,The Spectacular Fantastic,Out of time,Pop-Rock,6.5,6.2
+1807,The Spectacular Fantastic,This old heart,Pop-Rock,5.7,5.3
+1808,The Attraction,Emma,Pop-Rock,5.4,5.3
+1809,Zola Jesus,Dog,Pop-Rock,4,4.1
+1810,The Fresh & Onlys,Don't Give Up,Pop-Rock,4.1,4
+1811,Silence Is Sexy,Low,Pop-Rock,4.6,4.7
+1812,Silence Is Sexy,Talk,Pop-Rock,5,5
+1813,The Womb,Sex Club,Pop,6.1,5.7
+1814,Huge Face,Going to Hell,Pop-Rock,6,5.8
+1815,The Womb,Hey Hey Hey Hey Hey,Pop-Electronic-Rock,6.4,5.8
+1816,Podington Bear,In,Pop-Experimental-Electronic,5,4.5
+1817,No Monster Club,No Life,Pop-Rock,6.6,6
+1818,The Scallions,Goodbye,Pop-Experimental-Rock,4.3,3.2
+1819,The Scallions,2,Pop-Experimental-Rock,4.1,4.1
+1820,The Scallions,Gladys,Pop-Experimental-Rock,4.5,4.4
+1821,I Am Not Lefthanded,Falling,Pop,6.2,6.6
+1822,Silence Is Sexy,Ennio,Pop-Rock,4.7,3.5
+1823,The Dick Burrills,Hey Joe,Pop-Experimental,2.7,5.6
+1824,The Womb,Torre,Pop-Electronic-Rock,6.2,5.7
+1825,The Womb,U,Pop-Electronic-Rock,4.8,4.5
+1826,The Womb,The Crawl,Pop-Rock,5.1,3.7
+1827,Rackets Vs. VED,Just Friends,Pop-Electronic,5.6,6.7
+1828,The Sand Pebbles,Natalie,Pop,5.8,6.6
+1829,Dave Shuford,NATCH 2,Pop-Experimental-Rock,4.8,3.6
+1830,Black Math,To You,Pop-Electronic-Rock,5.7,5.3
+1831,The Kyoto Connection,Fly,Pop-Electronic,6.2,5.6
+1832,Mother Of Pearl,Heaven,Pop,5.7,5.2
+1833,Eros and the Eschaton,Over and Over,Pop-Rock,4.5,3.2
+1834,The Moot,Spaceman,Pop,6.3,5.7
+1835,The Keith Walsh Experience,Infinity,Pop-Rock,5.3,3.2
+1836,Greenskeepers,Lotion,Pop-Electronic-Rock,5.6,4.6
+1837,The Hathaway Family Plot,Sunshine,Pop-Experimental,4.2,2.9
+1838,The Lost Patrol,Homecoming,Pop-Rock,4.6,5
+1839,The Lost Patrol,Play With Fire,Pop-Rock,6,5.7
+1840,Adam & Alma,Naked,Pop-Electronic,4.8,5.4
+1841,Adam & Alma,Things,Pop-Electronic,4.6,3.1
+1842,The New Drum,The frog,Pop-Experimental-Electronic,5.8,6.3
+1843,The New Drum,Electricity,Pop-Experimental-Electronic,4.9,4.7
+1844,The Baskervilles,Apartment,Pop,6.1,5.5
+1845,The Pop Winds,Feel It,Pop,5.9,5.9
+1846,Silence is full of birds,Flowers,Pop-Experimental-Electronic,5.8,5.8
+1847,Charles Ray Experience,Drown,Pop-Experimental-Rock,3.2,2.6
+1848,The Lost Patrol,Lost At Sea,Pop-Rock,5.5,5
+1849,The Baskervilles,A Little More Time,Pop,6,5.8
+1850,Memoryhouse,Lately (Deuxième),Pop-Electronic-Rock,3.7,2.7
+1851,The Universal Thump,Cockatoos,Pop-Rock,4.6,3.3
+1852,Friends or Whatever,Maybe,Pop-Electronic-Rock,4.1,4.7
+1853,The Suzan,Jungle,Pop,6.5,5.7
+1854,The Pop Winds,Fools,Pop,5.2,4.5
+1855,The Laureates,Hello,Pop-Rock,5.4,6
+1856,Dan Deacon,The Crystal Cat,Pop-Electronic,6.1,6.7
+1857,The Pop Winds,Little Sister,Pop-Experimental,5.3,5
+1858,The Pop Winds,The Sun,Pop-Experimental,5.2,5.6
+1859,Ariel Pink's Haunted Graffiti,Want Me,Pop-Rock,5.2,5
+1860,The Gasoline Brothers,Over Me,Pop,3.7,3.5
+1861,Ergo Phizmiz and the Midnight Florists,Groove Is In The Heart,Pop-Rock,5.1,5
+1862,Fresh Body Shop,All you've never felt,Pop-Rock,5.1,4.9
+1863,The Rabbits,Have It,Pop-Rock,6.4,5.7
+1864,The Rabbits,Live For Today,Pop-Rock,6.1,7.4
+1865,The Suzan,Come,Pop,6.8,5.9
+1866,The Cannanes,Mirage,Pop-Rock,4.8,4.5
+1867,The Cannanes,Guilty,Pop-Rock,4.2,4
+1868,Monk Turner,With You,Pop,5.8,5
+1869,Daniel Johnston,True Love Will Find You In The End,Pop-Rock,4.1,3.7
+1870,The Kyoto Connection,Take on me,Pop,5.4,5.6
+1871,The Kyoto Connection,Take On Me,Pop-Electronic,6.4,6.6
+1872,Jay Tholen,I Know,Pop-Electronic,4.5,4.2
+1873,Memoryhouse,To the Lighthouse,Pop-Electronic-Rock,4.7,3.4
+1874,The Electric Nature,Dance With Me,Pop-Electronic-Rock,5,6.3
+1875,The Rabbits,Tower,Pop-Rock,6.3,6.2
+1876,The Suzan,Devils,Pop,6.3,5
+1877,Talkshow Boy,Black Remix,Pop-Electronic,6.2,5.5
+1878,The Suzan,Home,Pop,6.7,6.3
+1879,The Kolour Kult,Overload,Pop-Electronic,5.4,6.4
+1880,Plastic Flowers,Silence,Pop-Rock,5.4,3.2
+1881,The Pop Winds,In Harmony,Pop-Experimental,5,5.2
+1882,The Paparazzi,Hi,Pop-Rock,5.5,6.2
+1883,Podington Bear,LA,Pop-Experimental-Electronic,5.6,4.5
+1884,Neon Indian,Terminally Chill,Pop-Electronic,6.5,5.6
+1885,Fire To The Stars,Stay Down,Pop-Experimental-Rock,3.9,3.9
+1886,The Scallions,Final Frame,Pop-Experimental-Rock,4.1,3
+1887,Silence Is Sexy,Us,Pop-Rock,6,5.8
+1888,Molloy And His Bike,Flutter,Pop-Experimental-Electronic,3.4,3.2
+1889,Silence Is Sexy,Sympathy,Pop-Rock,5.6,5.5
+1890,The Golden Hours,Satellite,Pop-Rock,6,5.8
+1891,Podington Bear,Camp,Pop-Electronic,5,3.5
+1892,Void Vision,One,Pop-Electronic,5.1,6.1
+1893,Logan Whitehurst and The Jr. Science Club,I Want to Rock,Pop-Rock,6.3,6.2
+1894,Sally Crewe And the Sudden Moves,It's Only Love,Pop-Rock,4.8,4.8
+1895,Wheels on Fire,Ambulance,Pop-Rock,6.5,5.9
+1896,Adam & Alma,Bon,Pop-Electronic,4.9,2.1
+1897,The Sea Life,Shoot Me Down,Pop-Rock,4.2,3.8
+1898,The Paparazzi,My O My,Pop-Rock,5.1,4.2
+1899,Half-handed Cloud,Bees Are Trying To Build Their Nest In You.,Pop-Rock,5,4.1
+1900,The Toothaches,Don't Be Lonely,Pop-Rock,6.5,6.7
+1901,The Zombiecops,Girl,Rock,5.2,6.4
+1902,Violins is not the answer, dead.,Rock,4.4,7.3
+1903,Violins is not the answer, dead.,Rock,3.2,6.9
+1904,Pk jazz Collective & Alex Fry,Way Out,Rock,4.1,3.4
+1905,Violins is not the answer,sick,Rock,3.7,6.5
+1906,Violins is not the answer,in the end,Rock,4.4,6.2
+1907,Inside the Mind,Live And Die,Rock,4.9,6.5
+1908,Fred and Toody,Lost,Rock,5.2,5.1
+1909,Inside the Mind,Feelings,Rock,4.9,5
+1910,Inside the Mind,To You,Rock,3.8,3.3
+1911,Inside the Mind,You/Trip,Rock,4.3,5.4
+1912,The Planes,A Life,Rock,5.4,5.5
+1913,The Bomb Busters,Paranoia,Rock,6,6.5
+1914,the silence industry,anthem,Rock,5.3,6.3
+1915,The Monitors,Nervous Breakdown,Rock,6.3,6.5
+1916,The Monitors,The Station,Rock,5.4,6.3
+1917,Fred and Toody,Let It Rain,Rock,4.1,4.6
+1918,Spirit Duplicator,On,Rock,3.4,4.6
+1919,The Dead Mantra,A Bomb,Rock,4.5,5.4
+1920,Black Bones,Rock N Roll,Rock,5.7,6.4
+1921,No Class,Let Down,Rock,4.4,6.5
+1922,A Banda de Joseph Tourton,#3,Rock,5.6,5.8
+1923,Young Love,Love On The Run,Rock,6.4,6.2
+1924,Young Love,Street,Rock,5.3,5.7
+1925,You Me Tree,Lights,Rock,4.9,4.5
+1926,Flamin' Groovies,Shake Some Action,Rock,5.2,6.1
+1927,The Party Faithful,This Is Love,Rock,5.6,4.6
+1928,The Gotobeds,Affection,Rock,3.7,5.6
+1929,Room For A Ghost,Burn,Rock,5.1,6.7
+1930,The Beets,Flower Girl,Rock,4.6,4
+1931,The Beets,The Devil,Rock,4.7,5.5
+1932,Six Star General,Cold,Rock,4.8,6
+1933,The Men,Lazarus,Rock,5.2,7
+1934,Riding Alone For Thousands Of Miles,satellite,Rock,5.8,3.8
+1935,Riding Alone For Thousands Of Miles,love song,Rock,4.7,4.4
+1936,Riding Alone For Thousands Of Miles,lullaby,Rock,2.9,3
+1937,The Valleys,2,Rock,4.3,3.9
+1938,The Whines,Vacation,Rock,5.6,7
+1939,The Whines,It's Raining,Rock,4.4,3.2
+1940,The Dalai Lama Rama Fa Fa Fa,Sun,Rock,5.1,5.6
+1941,The Koolaid Electric Company,Home,Rock,5.2,4.4
+1942,Dan Alfresco & Savage,Today,Rock,6.4,6.8
+1943,Toy Sugar,The Answer,Rock,4.2,4.4
+1944,Waylon Thornton and the Heavy Hands,I Need Love,Rock,6.1,5.1
+1945,The Classic Cluster,Again,Rock,6,6.1
+1946,The Asound,Open Eyes,Rock,4,6
+1947,The Asound,Snow White,Rock,5,7.4
+1948,The Asound,Joan,Rock,4,6.7
+1949,Angels in America,II,Rock,2.2,5.1
+1950,Angels in America,I,Rock,3.8,3.4
+1951,Baby Scream,Nicole,Rock,4.6,4
+1952,The Light Beyond,State Of Mind,Rock,4.1,4.4
+1953,Another Day On Earth,It's You,Rock,5.1,4.4
+1954,The Raveonettes,Last Dance,Rock,6.7,5.7
+1955,The Woolen Men,Hammer,Rock,5.5,6.5
+1956,The Woolen Men,Boomerang,Rock,5.4,5.9
+1957,The Woolen Men,Dogs,Rock,4.8,4.8
+1958,His Electro Blue Voice,Call,Rock,4.8,5.1
+1959,Nothing People,In the City,Rock,4.7,5.8
+1960,Fast lady,Lady,Rock,4.5,6.7
+1961,The Yolks,I Do What I Do,Rock,5.9,5.3
+1962,The Set of Red Things,Babies,Rock,4.4,5
+1963,The Set of Red Things,Between,Rock,3.9,5.5
+1964,The Functional Blackouts,Another Planet,Rock,3.6,6.7
+1965,The Wire Orchestra,Track 12,Rock,3.3,3.5
+1966,The Wire Orchestra,Evolution,Rock,3.6,5
+1967,Mike Rep and the Quotas,Black Hole,Rock,4.7,6.9
+1968,Lightning Bolt,Dracula Mountain,Rock,4.6,6.18
+1969,Here Comes A Big Black Cloud!!,Vietnam,Rock,3.7,5.7
+1970,Delusions of Grandeur,Alanis Morissette,Rock,5.9,7.1
+1971,Animals & Men,I,Rock,5.5,5.5
+1972,Family Of The Year,Let's Go Down,Rock,6,5.9
+1973,The Snails,Lost at Sea,Rock,4.3,4.3
+1974,The Pink Noise,Lips #2,Rock,3.4,4.7
+1975,The Pink Noise,Glam,Rock,4.7,5.6
+1976,The Pink Noise,Toad,Rock,4.9,5.4
+1977,Pigeons & Crazy Porridgemakers,Horse,Rock,4.7,5.2
+1978,The Unfinished Sympathy,Teenage Kicks,Rock,6.5,6.5
+1979,Confusion Is Next,The River,Rock,5.5,7.2
+1980,Le Tigre,Fake French,Rock,5.5,5.4
+1981,The Ridiculous Trio,Not Right,Rock,5.1,5.8
+1982,Nine Inch Nails,The Four of Us are Dying,Rock,4.5,4.5
+1983,Nine Inch Nails,Corona Radiata,Rock,2.9,3.4
+1984,Nine Inch Nails,Lights in the Sky,Rock,3.7,2.9
+1985,Nine Inch Nails,Head Down,Rock,4.8,5.6
+1986,Nine Inch Nails,Echoplex,Rock,4,5.1
+1987,The Blood Lemons,Ghost,Rock,6.5,6.3
+1988,Fresh Body Shop,One More Reason,Rock,5.5,5.8
+1989,The Franks,My Friends,Rock,5,5.7
+1990,The Seventh Necronation,The Hollow,Rock,4.2,4.1
+1991,The Home Phonema,Plastic Plastic,Rock,5,6
+1992,Louis Lingg and The Bombs,Conspiracy,Rock,4.9,6.8
+1993,The Metamatics,InstruMental,Rock,3.5,7
+1994,Bombay Laughing Club,You Want It All,Rock,3.8,3.5
+1995,The Pink Noise,The Tower,Rock,4.7,4.7
+1996,The Matt Kurz One, BEAT 'EM,Rock,3.9,5.9
+1997,Ariel Pink's Haunted Graffiti,For Kate I Wait,Rock,5.3,3.9
+1998,Fresh Body Shop,My Artificial Sun,Rock,6.4,6.2
+1999,The Gotobeds,New Dress,Rock,4.6,5.4
+2000,Fresh Body Shop,Never End Up Like This,Rock,5.8,6
+2001,Creepoid,Old Tree,Rock,3.2,6.6
+2002,Amar Lal,Spring Day 1,Singer/Songwriter,6.4,5.2
+2003,Joel Helander,Excessive Resistance to Change,Classical,5.4,4.6
+2004,Aimee Norwich,Flying,World/Folk,5,4.8
+2005,Ava Luna,Waterduct,Rock,3.8,5.2
+2006,Clara Berry and Wooldog,Air Traffic,Singer/Songwriter,5,3.2
+2007,Dreamers of the Ghetto,Heavy Love,Pop,3.4,4.4
+2008,Invisible Familiars,Disturbing Wildlife,Singer/Songwriter,5.6,3.6
+2009,Joel Helander,Definition,Classical,5.2,4.2
+2010,Karim Douaidy,Yatora,World/Folk,6,4.8
+2011,Lushlife,Toynbee Suite,Rap,4.2,5
+2012,Matthew Entwistle,Impressions of Saturn,Classical,3.17,5.17
+2013,Matthew Entwistle,The Arch,Classical,5.4,5.6
+2014,Meaxic,You Listen,Rock,3,6.6
+2015,NYU,Bester Jungling,Classical,6.6,5.4
+2016,Music Delta,Chinese Jiang Nan,World/Folk,7.2,5.6
+2017,Music Delta,Funk Jazz,Jazz,6.67,6.5
+2018,Music Delta,Modal Jazz,Jazz,6.5,6.33
+2019,Phoenix,The Broken Pledge - Chicago Reel,World/Folk,6.8,6.8
+2020,Phoenix,The Collier's Daughter,World/Folk,6.8,5.8
+2021,Port St Willow,Stay Even,Singer/Songwriter,4.2,4.4
+2022,NYU,Mignon (Kennst du das Land) Op.92a Mvt.1,Classical,3.8,4.4
+2023,Strand of Oaks,Spacestation,Pop,5.6,3
+2024,Tabla Breakbeat Science,Captain Sky,Electronic/Fusion,6.4,4.4
+2025,Tabla Breakbeat Science,Rock Steady,Electronic/Fusion,6,4.8
+2026,Tabla Breakbeat Science,Scorpio,Electronic/Fusion,5.6,4
+2027,The Districts,Vermont,Rock,5.8,5.4
+2028,The Scarlet Brand,Les Fleurs Du Mal,Rock,3.4,6.2
+2029,A Classic Education,Night Owl,Singer/Songwriter,4.17,4
+2030,In Faded Glory,990,rock,4.2,6.2
+2031,No,Go,n/a,4.6,3.4
+2032,Kryptic Mood,Song For Jade,pop,5.2,4.4
+2033,Hunt Club,Uranium,rock,3.17,6.83
+2034,Jacques COUTURIER,Hey! beauty,pop,6.2,4.6
+2035,Die Partysahnen,Mit dem Unibalett im Ulmer Monster tanzen,rock,3.4,4.6
+2036,Feel-ipson,Feel-ipson,pop,3.83,4.67
+2037,engeo,Dreamworld,pop,6.4,4.4
+2038,Fabrice Collette,rouge et blues,blues,4,3.8
+2039,FOOL DADAZ FIRE,Le Blues du Fantome,pop,5.4,4.6
+2040,Ralph Buckley,FUCK THE WAR,acoustic,3.6,7
+2041,Steven Dunston,Little White Church,pop,4.4,3
+2042,Ogg Vorbis,Classical Delay,groove,4.8,4.6
+2043,Matti Paalanen,Summer,jazz,5.6,4.4
+2044,Manuzik,Habanera,world,6.4,5.2
+2045,Behrang Shegarfkar,Jazzy Mode,jazz,4.8,3.2
+2046,PELdeNOZ,O Pindo,jazz,5.5,5.17
+2047,AdHoc,La note en cage,jazz,6.2,5
+2048,Maneros productions,Travelling in balochistan - late night highway,rock,6.2,3.6
+2049,Steve.e!,Lonely Fool,electronic,4.4,3.8
+2050,BeatRaider,Homecoming,hiphop,4.4,3.6
+2051,elbrujo,a fleur de peau,rap,3.2,4.6
+2052,Juice lee,Les 3 singes,rap,3.2,5.2
+2053,ADC LEVEL,Neon,electronic,3.8,3.8
+2054,Tom La Meche,Interlude,jazz,5.4,3.6
+2055,Goo Goo Cluster,Vide grenier,reggae,5,5.2
+2056,Ruediger Kramer,happy child singing,jazz,5,4.6
+2057,La Verue,Au Feu,rock,3.17,6.83
+2058,La Verue,Inside Views,rock,3.8,5.8
