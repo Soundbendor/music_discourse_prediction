@@ -1,0 +1,768 @@
+song_id,artist_name,song_name,Genre,valence,arousal
+1,2 Chainz,Good Drank,,0.575,0.4
+4,21 Savage,X Bitch (feat. Future),,0.2875,0.2625
+5,21 Savage,No Heart,,0.2,0.15
+6,21 Savage,Red Opps,,0.35,0.5125
+7,5 Seconds Of Summer,Girls Talk Boys,,0.725,0.7
+8,6LACK,PRBLMS,,0.225,0.3875
+9,A Boogie Wit Da Hoodie,Timeless,,0.2875,0.45
+10,A Boogie Wit Da Hoodie,Drowning,,0.425,0.4375
+12,A Tribe Called Quest,We The People....,,0.575,0.6875
+13,AJR,Weak,,0.5875,0.825
+14,Adam Wakefield,I’m Sorry,,0.575,0.5625
+15,Adam Wakefield,Lonesome Broken and Blue (The Voice Performance),,0.6625,0.6125
+16,Adam Wakefield,When I Call Your Name (The Voice Performance),,0.575,0.5375
+17,Adele,Hello,,0.675,0.825
+18,Adele,Send My Love (To Your New Lover),,0.8375,0.8
+19,Adele,Water Under The Bridge,,0.75,0.7625
+20,Al Jarreau,We're In This Love Together,,0.6375,0.55
+21,Alan Walker,Faded,,0.775,0.8625
+23,Alessia Cara,How Far I'll Go(Alessia Cara Version),,0.675,0.625
+25,Alessia Cara,Scars To Your Beautiful,,0.784090909,0.761363636
+26,Alessia Cara,Wild Things(NuKid Remix),,0.7625,0.825
+28,Alex Da Kid,Not Easy,,0.575,0.4875
+29,Alisan Porter,Down That Road (The Voice Performance),,0.675,0.7
+30,Alisan Porter,Somewhere (The Voice Performance),,0.5375,0.6125
+31,Amine,Caroline,,0.4375,0.625
+32,Andra Day,Rise Up,,0.3875,0.575
+33,Andy Grammer,Fresh Eyes,,0.75,0.6375
+34,Andy Williams,It's the Most Wonderful Time of the Year,,0.8375,0.6875
+35,Anna Kendrick,True Colors,,0.625,0.3375
+37,Anne-Marie,Alarm,,0.75,0.8
+38,Anne-Marie,Ciao Adios,,0.8375,0.8875
+39,Ansel Elgort,Thief,,0.590909091,0.875
+40,Ariana Grande,Beauty and the Beast,,0.6625,0.375
+42,Ariana Grande,Dangerous Woman,,0.6,0.7625
+43,Ariana Grande,One Last Time,,0.7875,0.8625
+44,Artists Of Then,Forever Country,,0.675,0.6875
+46,Ayo & Teo,Rolex,,0.575,0.8375
+47,Baby Bash,Suga Suga,,0.4625,0.4
+48,Band Aid 20,Do They Know It's Christmas?,,0.8375,0.725
+49,Bastille,Good Grief,,0.7125,0.7875
+50,Beastie Boys,Fight For Your Right,,0.5875,0.8375
+51,Bebe Rexha,I Got You,,0.7625,0.825
+52,Belly,Might Not,,0.4625,0.5875
+54,Ben Rector,Brand New,,0.775,0.875
+55,Big Sean,No Favors,,0.4,0.625
+56,Big Sean,Blessings,,0.275,0.4125
+57,Big Sean,Bounce Back,,0.3625,0.525
+58,Big Sean,Halfway Off the Balcony,,0.25,0.2625
+59,Big Sean,Jump Out the Window,,0.6,0.6
+60,Big Sean,Light,,0.409090909,0.420454545
+61,Big Sean,Moves,,0.275,0.375
+63,Big Sean,Owe Me,,0.4625,0.375
+65,Billboard Masters,Sweatshirt - Tribute to Jacob Sartorius,,0.75,0.5875
+66,Billy Currington,It Don't Hurt Like It Used To,,0.7625,0.8625
+67,Bishop Briggs,River,,0.5875,0.8
+68,Blackbear,Do Re mi,,0.575,0.65
+69,Blake Shelton,A Guy With a Girl,,0.775,0.7125
+70,Blake Shelton,Came Here to Forget,,0.525,0.575
+71,Blake Shelton,Every Time I Hear That Song,,0.5875,0.7625
+72,Blake Shelton,Go Ahead and Break My Heart,,0.6875,0.75
+73,Blake Shelton,She's Got a Way With Words,,0.6875,0.5375
+74,Blink 182,Bored To Death,,0.775,0.8875
+75,Blink-182,Rabbit Hole,,0.7375,0.9625
+76,Bob Marley,Is This Love (Extended Mix),,0.65,0.6375
+78,韩国群星,Jingle Bell Rock,,0.659090909,0.5
+79,Bon Jovi,Livin' On A Prayer,,0.625,0.925
+80,Brad Paisley,Without a Fight,,0.7625,0.725
+81,Brad Paisley,Today,,0.7,0.6125
+83,Brantley Gilbert,The Weekend,,0.725,0.775
+84,²¼Â×´ï.Àî(Brenda Lee),Rockin' Around The Christmas Tree (Re-Recorded Version),,0.8,0.5
+86,Brett Eldredge,Somethin' I'm Good At,,0.725,0.7
+87,Brett Eldredge,Wanna Be That Song,,0.6,0.6625
+88,Brett Young,In Case You Didn't Know,,0.5875,0.625
+89,Brett Young,Sleep Without You,,0.75,0.6875
+90,Britney Spears,Make Me...,,0.4875,0.65
+91,Britney Spears,Slumber Party,,0.7375,0.8625
+92,Britney Spears,Make Me...,,0.575,0.65
+93,Various Artists,Broadway+For+Orlando,,0.65,0.6125
+94,Brooklyn and Bailey,Dance Like Me,,0.8,0.7625
+96,Bruno Mars,24K Magic,,0.825,0.875
+97,Bruno Mars,Perm,,0.75,0.85
+98,Bruno Mars,That's What I Like,,0.65,0.7375
+99,Bruno Mars,Versace On The Floor,,0.6875,0.6875
+100,Bryson Tiller,Don't,,0.3,0.175
+102,Burl Ives,A Holly Jolly Christmas,,0.825,0.7375
+103,CL,LIFTED,,0.775,0.5875
+104,Calum Scott,Dancing On My Own(Ben Dooks Remix),,0.825,0.8375
+105,Calum Scott,Dancing on My Own,,0.3875,0.275
+106,Calvin Harris,Slide,,0.675,0.7
+107,Calvin Harris,Rollin,,0.6125,0.6
+108,Calvin Harris,This Is What You Came For,,0.8625,0.8625
+109,Calvin Harris,Heatstroke,,0.7875,0.8
+113,Camila Cabello,Crying In The Club,,0.7125,0.75
+114,Camila Cabello,I Have Questions,,0.7375,0.7375
+115,Carlos Vives,La Bicicleta,,0.8,0.8
+116,Carrie Underwood,Church Bells,,0.7625,0.9
+117,Carrie Underwood,Dirty Laundry,,0.7,0.85
+119,Céline Dion,How Does A Moment Last Forever,,0.6625,0.4875
+120,Chance The Rapper,No Problem,,0.7625,0.7625
+123,Charles Kelley,The Only One Who Gets Me,,0.4875,0.3125
+124,Charli XCX,After The Afterparty,,0.8375,0.9
+126,Charlie Puth,We Don't Talk Anymore,,0.7,0.7
+127,Charlie Puth,Attention,,0.825,0.8125
+128,Charlie Puth,One Call Away,,0.6,0.5125
+132,Chase Rice,Everybody We Know Does,,0.7125,0.85
+133,Cheat Codes,No Promises,,0.7375,0.775
+134,Cheat Codes,Let Me Hold You (Turn Me On),,0.7125,0.8
+135,Childish Gambino,Me and your Mama,,0.4,0.7375
+136,Childish Gambino,Redbone,,0.525,0.625
+137,Chris Blue,Money On You,,0.7,0.7625
+138,Chris Blue,Take Me To the King,,0.5875,0.6625
+139,Chris Brown,Party,,0.775,0.7125
+140,Chris Brown,Back To Sleep,,0.65,0.5625
+141,Chris Brown,chris brown - grass ain't greener,,0.65,0.5375
+142,Chris Brown,01 Privacy,,0.625,0.6
+143,Chris Janson,Holdin' Her,,0.625,0.5625
+144,Chris Lane,Fix,,0.825,0.8625
+145,Chris Lane,For Her,,0.75,0.7625
+146,¿ËÀïË¹ÀûÑÇ(Chris Rea),Driving Home For Christmas (2003),,0.7375,0.6625
+147,Chris Stapleton,Broken Halos,,0.65,0.55
+148,Chris Stapleton,Either Way,,0.5,0.4
+149,Chris Stapleton,Fire Away,,0.2625,0.3875
+150,Chris Stapleton,Parachute,,0.725,0.7375
+151,Chris Stapleton,Tennessee Whiskey,,0.6125,0.325
+152,Chris Young,Think of You (Duet with Cassadee Pope),,0.725,0.825
+153,Chris Young,Sober Saturday Night (feat. Vince Gill),,0.65,0.675
+156,Christina Aguilera,Change,,0.55,0.6625
+157,Christine and the Queens,Tilted,,0.681818182,0.534090909
+158,Chuck Berry,Johnny B. Goode,,0.7875,0.725
+159,Clean Bandit,Tears (feat. Louisa Johnson),,0.675,0.875
+160,Sean Paul,Rockabye (feat. Sean Paul & Anne-Marie),,0.8125,0.825
+161,Clean Bandit,Symphony,,0.7125,0.8625
+162,Sean Paul,Rockabye (feat. Sean Paul & Anne-Marie),,0.7375,0.875
+165,Coldplay,Hymn For The Weekend,,0.675,0.7375
+166,Coldplay,Hypnotised,,0.575,0.625
+167,Cole Swindell,Flatliner (feat. Dierks Bentley),,0.775,0.8875
+168,Cole Swindell,Middle of a Memory,,0.625,0.7125
+169,Cole Swindell,You Should Be Here,,0.6,0.675
+170,Corinne Bailey Rae,The Scientist,,0.6,0.3
+171,Craig David,Ain't Giving Up,,0.8125,0.85
+172,D.R.A.M.,BROCCOLI,,0.625,0.6375
+174,DJ Drama,Wishing,,0.534090909,0.477272727
+175,Future,Too Much Sauce,,0.45,0.475
+176,DJ Khaled,Shining,,0.65,0.7125
+177,DJ Khaled,For Free,,0.5375,0.55
+179,DJ Khaled,I Got the Keys,,0.3125,0.7375
+180,DJ Khaled,I'm the One,,0.6875,0.575
+181,DJ Khaled,Do You Mind,,0.625,0.4875
+184,DJ Khaled,Holy Key,,0.6375,0.825
+185,DJ Khaled,I Got the Keys,,0.475,0.6625
+186,DJ Khaled,Shining,,0.7125,0.825
+187,DJ Luke Nasty,OTW (Remix),,0.675,0.7
+188,DJ Slim K,Key to the Streets(Chopped Not Slopped),,0.4,0.3125
+189,DJ Snake,Middle(4B Remix),,0.6375,0.6875
+191,DJ Snake,Let Me Love You,,0.825,0.7625
+192,DJ Snake,Turn Down for What,,0.5375,0.9375
+196,DJ Suede The Remix God,Cash Me Outside (#CashmeOutside),,0.3625,0.4375
+197,Various Artists,DNCE - Cake By The Ocean (From ＂Grease Live!＂ Music From The Television Event),,0.4375,0.3375
+198,DNCE,Toothbrush,,0.75,0.863636364
+199,Daddy Yankee,Shaky Shaky,,0.6875,0.7875
+200,Dae Dae,"Wat U Mean (Aye, Aye, Aye)",,0.5625,0.7
+201,Dan + Shay,From the Ground Up,,0.6875,0.625
+202,Dan + Shay,How Not To,,0.7625,0.85
+203,Dan + Shay,When I Pray For You,,0.6875,0.775
+204,Dan Stevens,Evermore,,0.5875,0.7375
+207,David Guetta,Titanium (Feat. Sia),,0.7375,0.85
+209,David Nail,Night's On Fire,,0.775,0.6875
+210,Daya,Hide Away,,0.725,0.8125
+211,Daya,"Sit Still, Look Pretty",,0.65,0.65
+212,Demi Lovato,Body Say,,0.6,0.6625
+213,Desiigner,Panda (#PANDATO Version),,0.3625,0.5625
+215,Desiigner,Tiimmy Turner,,0.5125,0.525
+216,Dierks Bentley,Different for Girls,,0.6625,0.65
+217,Dierks Bentley,Black,,0.575,0.6125
+219,Dierks Bentley,Drunk On A Plane,,0.75,0.8375
+220,Dierks Bentley,Somewhere on a Beach,,0.675,0.6875
+221,Disciples,On My Mind,,0.7,0.8125
+222,Disturbed,The Sound Of Silence,,0.35,0.6625
+224,Drake,Sneakin',,0.5,0.5875
+225,Drake,Get It Together,,0.525,0.4125
+227,Drake,Jumpman,,0.425,0.475
+228,Drake,KMT,,0.425,0.55
+229,Drake,No Long Talk,,0.4,0.45
+230,Drake,Glow,,0.7375,0.3625
+231,Drake,With You,,0.55,0.5375
+232,Drake,Faithful,,0.475,0.4125
+233,Drake,Controlla,,0.4875,0.4
+234,Drake,Portland,,0.4375,0.3875
+235,Drake,Too Good,,0.7,0.45
+236,Drake,4422,,0.3,0.3125
+237,Drake,Pop Style,,0.3125,0.525
+238,Drake,One Dance,,0.5625,0.6375
+239,Drake,Ice Melts,,0.6875,0.625
+241,Drake,9,,0.5625,0.525
+242,Drake,Blem,,0.6125,0.625
+244,Drake,Childs Play,,0.4125,0.2875
+249,Drake,Fake Love,,0.45,0.5375
+251,Drake,Feel No Ways,,0.465909091,0.431818182
+252,Drake,Fire & Desire,,0.3625,0.1375
+253,Drake,Free Smoke,,0.525,0.6125
+257,Drake,Gyalchester,,0.3125,0.4125
+258,Drake,Hype,,0.475,0.675
+260,Drake,Jorja Interlude,,0.3,0.4625
+263,Drake,Keep The Family Close,,0.35,0.4125
+265,Drake,Madiba Riddim,,0.675,0.5125
+267,Drake,Nothings Into Somethings,,0.35,0.275
+269,Drake,Passionfruit,,0.6375,0.5875
+273,Drake,Redemption,,0.3625,0.3375
+275,Drake,Since Way Back,,0.4125,0.3375
+276,Drake,Skepta Interlude,,0.5125,0.65
+277,Drake,Sneakin’,,0.3875,0.2
+279,Drake,Summer Sixteen,,0.4625,0.3625
+280,Drake,Teenage Fever,,0.525,0.325
+282,Drake,"Two Birds, One Stone",,0.525,0.5375
+283,Drake,U With Me?,,0.5375,0.575
+284,Drake,Views,,0.4875,0.4625
+285,Drake,Weston Road Flows,,0.525,0.5125
+287,Dreezy,Body,,0.6875,0.5
+292,Dua Lipa,Blow Your Mind (Mwah),,0.8625,0.95
+293,Dustin Lynch,Mind Reader,,0.6375,0.6375
+294,Dustin Lynch,Seein' Red,,0.55,0.7
+295,Dustin Lynch,Small Town Boy,,0.75,0.725
+296,Dwayne Johnson,You're Welcome,,0.8,0.8125
+297,Dylan Scott,My Girl,,0.7,0.675
+298,Ed Sheeran,Castle on the Hill,,0.7375,0.725
+299,Ed Sheeran,How Would You Feel (Paean),,0.65,0.25
+300,Ed Sheeran,06-ed_sheeran-photograph,,0.7625,0.55
+301,Ed Sheeran,Shape of You,,0.7875,0.825
+302,Ed Sheeran,Thinking Out Loud,,0.575,0.5
+303,Electric Light Orchestra,Mr. Blue Sky (Album Version),,0.6125,0.7375
+304,Elle King,America's Sweetheart,,0.7375,0.9
+305,Ellie Goulding,Still Falling For You,,0.75,0.9375
+306,Elton John,Step Into Christmas,,0.875,0.775
+307,Emeli Sandé,Hurts,,0.575,0.9
+308,Eminem,Love The Way You Lie,,0.85,0.8125
+309,Eminem,Infinite,,0.3875,0.35
+310,Emma Watson,Something There,,0.675,0.4
+312,Enrique Iglesias,DUELE EL CORAZON,,0.7875,0.8375
+313,Eric Church,Kill a Word,,0.6625,0.5375
+314,Eric Church,Record Year,,0.65,0.5625
+315,Evanescence,Bring Me To Life,,0.65,0.85
+316,Ewan McGregor,Be Our Guest,,0.8625,0.8875
+317,Ewan McGregor,Be Our Guest,,0.8625,0.925
+318,Emily Warren,Capsize,,0.825,0.725
+319,Faith Hill,Keep Your Eyes On Me,,0.5,0.7375
+321,Fat Joe,All the Way Up,,0.4875,0.6875
+323,Fergie,Life Goes On,,0.725,0.8625
+324,Fergie,M.I.L.F. $,,0.55,0.8875
+325,Fetty Wap,Wake Up,,0.6125,0.4875
+326,Fifth Harmony,All In My Head (Flex),,0.7,0.6875
+327,Fifth Harmony,Work From Home,,0.7375,0.7625
+329,Fifth Harmony,That's My Girl,,0.7875,0.9375
+331,Fitz,HandClap,,0.8,0.85
+332,Fleetwood Mac,The Chain,,0.725,0.7625
+333,Flo Rida,Cake,,0.775,0.7875
+334,Flo Rida,My House,,0.5625,0.625
+336,Florida Georgia Line,"God, Your Mama, And Me",,0.725,0.75
+337,Florida Georgia Line,May We All,,0.8125,0.675
+338,Florida Georgia Line,Confession,,0.7125,0.825
+339,Florida Georgia Line,H.O.L.Y,,0.7875,0.725
+341,Florida Georgia Line,Smooth,,0.8,0.85
+342,Flume,Never Be Like You,,0.6875,0.75
+343,Flume,Say It,,0.55,0.65
+347,Frank Ocean,Chanel,,0.3375,0.1875
+348,Frank Ocean,Ivy,,0.3,0.4625
+349,Frank Ocean,Nights,,0.3375,0.275
+350,Frank Ocean,Nikes,,0.375,0.2625
+351,Frank Ocean,Pink + White,,0.55,0.275
+353,Frankie Ballard,It All Started with a Beer,,0.5875,0.525
+354,French Montana,No Shopping,,0.5125,0.35
+355,French Montana,Lockjaw,,0.325,0.45
+356,French Montana,Unforgettable,,0.5625,0.475
+358,Future Pigeon,Wicked Version,,0.6875,0.3875
+360,Future,Selfish,,0.55,0.5875
+361,Future,Comin Out Strong,,0.55,0.6125
+362,Future,Low Life (feat. The Weeknd),,0.4625,0.4
+364,Future,Draco,,0.4,0.375
+366,Future,Mask Off,,0.2875,0.2625
+367,Future,New Level,,0.3125,0.6125
+368,Future,Rent Money,,0.575,0.6
+370,Future,Super Trapper,,0.25,0.4
+372,Future,Zoom,,0.175,0.825
+373,Bebe Rexha,"Me, Myself & I",,0.725,0.85
+375,G-Eazy,Good Life,,0.775,0.7375
+376,G-Eazy,Some Kind Of Drug,,0.6625,0.6
+379,Galantis,Love On Me,,0.9125,0.9375
+381,Galantis,No Money,,0.8,0.9375
+382,Gavin DeGraw,She Sets The City On Fire,,0.863636364,0.886363636
+383,George Michael,Careless Whisper,,0.4125,0.5
+385,George Michael,Freedom! '90(Remastered),,0.75,0.825
+386,Ghost Town DJ's,My Boo,,0.5875,0.5625
+388,Gnash,home,,0.7125,0.575
+389,Gnash,I Hate U I Love U,,0.3625,0.225
+391,Godsmack,Come Together,,0.6,0.85
+393,Gorillaz,Saturnz Barz,,0.4625,0.5375
+394,Grace,You Don't Own Me,,0.675,0.75
+395,Grace,You Don't Own Me,,0.675,0.7125
+396,Granger Smith,If the Boot Fits,,0.7125,0.65
+397,Gucci Mane,Both,,0.3375,0.45
+398,Kanye West,P**** Print (feat. Kanye West),,0.4375,0.4375
+399,Drake,Back On Road,,0.45,0.6125
+401,Gucci Mane,Make Love,,0.25,0.35
+402,Gwen Stefani,Hollaback Girl,,0.6875,0.85
+403,HAIM,Want You Back,,0.8125,0.7625
+405,Hailee Steinfeld,Most Girls,,0.7125,0.7375
+407,Halsey,Eyes Closed,,0.5625,0.7875
+408,Halsey,Not Afraid Anymore,,0.6125,0.9125
+409,Halsey,Not Afraid Anymore,,0.6625,0.9125
+410,Halsey,Now Or Never,,0.45,0.7
+411,Hannah Huston,Every Breath You Take (The Voice Performance),,0.6375,0.175
+412,Hannah Huston,I Call the Shots (The Voice Performance),,0.4375,0.5
+413,Harry Styles,Sign of the Times,,0.675,0.575
+414,Harry Styles,Sweet Creature,,0.545454545,0.579545455
+415,Hey Violet,Guys My Age(Stripped),,0.522727273,0.477272727
+417,High Valley,Make You Mine,,0.775,0.8625
+418,Hillsong Worship,13 What a Beautiful Name (Acoustic),,0.375,0.425
+419,Hunter Plake,Higher Love,,0.225,0.0875
+420,Iggy Azalea,Mo Bounce,,0.55,0.775
+421,Iggy Azalea,Team(Young Bombs Remix),,0.725,0.85
+423,Imagine Dragons,Believer,,0.65,0.8875
+424,Imagine Dragons,Not Today,,0.65,0.55
+425,Imagine Dragons,Radioactive,,0.8125,0.95
+426,Imagine Dragons,Thunder,,0.7125,0.825
+427,Imagine Dragons,Whatever It Takes,,0.7,0.775
+428,J Hus,Did You See,,0.5625,0.4875
+429,J. Cole,4 Your Eyez Only,,0.4,0.225
+431,J. Cole,Deja Vu,,0.6375,0.525
+432,J. Cole,False Prophets,,0.4,0.375
+433,J. Cole,Foldin Clothes,,0.5,0.3625
+434,J. Cole,For Whom the Bell Tolls,,0.3875,0.5125
+435,J. Cole,Immortal,,0.35,0.275
+436,J. Cole,Neighbors,,0.35,0.25
+437,J. Cole,"She's Mine, Pt. 1",,0.375,0.1875
+438,J. Cole,"She's Mine, Pt. 2",,0.325,0.3375
+439,J. Cole,Ville Mentality,,0.2625,0.225
+440,J. Cole,everbody dies,,0.2875,0.3
+441,JP Cooper,September Song,,0.6875,0.675
+442,Jacob Sartorius,Hit or Miss - Jacob Sartorius,,0.6125,0.7125
+443,Jake Owen,American Country Love Song,,0.675,0.7
+444,Jake Owen,If He Ain't Gonna Love You,,0.7625,0.7375
+445,James Arthur,Safe Inside,,0.4625,0.5875
+446,James Arthur,Say You Won't Let Go,,0.4875,0.425
+447,James Bay,Let It Go,,0.6,0.5875
+448,Jason Aldean,A Little More Summertime,,0.7375,0.775
+449,Jason Aldean,Any Ol' Barstool,,0.7375,0.7
+450,Jason Aldean,Lights Come On,,0.7625,0.75
+451,Jason Derulo,If It Ain't Love,,0.8375,0.9
+452,Jax Jones,You Don't Know Me,,0.7375,0.65
+454,Jennifer Lopez,Love Make the World Go Round,,0.8125,0.8375
+455,Jennifer Lopez,Ain't Your Mama,,0.7375,0.875
+456,Jennifer Nettles,Unlove You,,0.525,0.7
+457,Jeremih,oui,,0.7875,0.6625
+458,Jesse Larson,Woman,,0.7375,0.75
+460,John Legend,Love Me Now,,0.7,0.8
+461,John Mayer,Changing,,0.6375,0.375
+462,John Mayer,Love On The Weekend,,0.65,0.4125
+463,John Mayer,Moving On and Getting Over,,0.5625,0.3
+465,Johnny Cash,Ain't No Grave (Album Version),,0.425,0.3375
+466,Jon Bellion,All Time Low (explicit),,0.7375,0.65
+468,Jon Pardi,Dirt On My Boots,,0.7875,0.7625
+469,Jon Pardi,Head Over Boots,,0.7125,0.7125
+470,JP Cooper,Perfect Strangers,,0.85,0.7625
+471,Jonas Blue,By Your Side,,0.7875,0.875
+472,Jonas Blue,Mama,,0.6625,0.6125
+476,José Feliciano,Feliz Navidad,,0.8625,0.7
+477,Josh Ritter,Homecoming,,0.7125,0.575
+478,Josh Turner,Hometown Girl,,0.675,0.65
+479,Joy Villa,Get Your Freedom,,0.3875,0.225
+480,Joy Villa,I Make the Static,,0.6375,0.7875
+481,Joy Villa,The Darkness,,0.6125,0.6875
+482,Joy Villa,Vagabonds,,0.568181818,0.556818182
+483,Juicy J,Ain't Nothing,,0.5125,0.575
+484,Julia Michaels,Issues,,0.625,0.675
+485,Justin Bieber,. Company,,0.7,0.7125
+486,Justin Bieber,. Love Yourself,,0.575,0.375
+487,Justin Bieber,. Sorry,,0.775,0.8
+488,Justin Moore,You Look Like I Need A Drink,,0.6,0.6625
+489,Justin Timberlake,justin timberlake - can't stop the feeling! (original song from dreamworks animation’s “trolls”),,0.795454545,0.909090909
+490,KLOE,Liability,,0.6875,0.825
+491,Kaleo,Way Down We Go,,0.4375,0.575
+492,Kane Brown,What Ifs,,0.7875,0.9
+493,Kane Brown,Ain't No Stopping Us Now,,0.75,0.7375
+494,Kanye West,01 Champions,,0.4625,0.8
+495,Kanye West,Kanye West Ft. Rihanna - Famous (New Version) (CDQ),,0.475,0.8375
+496,Kanye West,Fade,,0.5375,0.6625
+499,Katy Perry,Bon Appétit,,0.825,0.8625
+500,Katy Perry,Swish Swish,,0.425,0.7
+501,Katy Perry,Chained To The Rhythm,,0.8125,0.8375
+503,Katy Perry,Katy Perry - Rise (CDQ),,0.488636364,0.613636364
+504,Kehlani,Kehlani - CRZY,,0.675,0.675
+505,Kehlani,Distraction,,0.6125,0.65
+506,Kehlani,Gangsta,,0.375,0.275
+507,Keith Urban,8,,0.6625,0.8
+508,Keith Urban,7,,0.5375,0.3625
+510,Keith Urban,Wasted Time,,0.825,0.7125
+511,Michelle Obama,"Michelle Obama,Kelly Clarkson,Missy Elliott - This Is For My Girls",,0.7375,0.6875
+512,Kelly Clarkson,Piece By Piece (Idol Version),,0.425,0.3125
+514,Kelsea Ballerini,Peter Pan,,0.75,0.85
+515,Kelsea Ballerini,Yeah Boy,,0.7875,0.6125
+516,Kendrick Lamar,LOYALTY.,,0.4625,0.4
+517,Kendrick Lamar,XXX.,,0.425,0.2625
+518,Kendrick Lamar,LOVE.,,0.5125,0.425
+519,Kendrick Lamar,BLOOD.,,0.2625,0.35
+520,Kendrick Lamar,DNA.,,0.15,0.6625
+521,Kendrick Lamar,DUCKWORTH.,,0.375,0.5125
+522,Kendrick Lamar,ELEMENT.,,0.4625,0.5375
+523,Kendrick Lamar,FEAR.,,0.3375,0.3375
+524,Kendrick Lamar,FEEL.,,0.275,0.5125
+525,Kendrick Lamar,GOD.,,0.275,0.2375
+526,Kendrick Lamar,HUMBLE.,,0.525,0.4625
+530,Kendrick Lamar,LUST.,,0.340909091,0.295454545
+531,Kendrick Lamar,PRIDE.,,0.3,0.225
+532,Kendrick Lamar,The Heart Part 4,,0.3375,0.5375
+534,Kendrick Lamar,YAH.,,0.2875,0.1625
+535,Kenny Chesney,Setting the World On Fire,,0.7875,0.7625
+536,Kenny Chesney,Bar at the End of the World,,0.825,0.7875
+537,Kenny Chesney,Noise,,0.7125,0.7625
+539,Kent Jones,Don't Mind,,0.65,0.6125
+540,Keyshia Cole,You,,0.3875,0.5125
+541,Khalid,Location,,0.35,0.275
+542,KiD Ink,Promise,,0.6125,0.7125
+544,Kid Rock,Picture,,0.625,0.45
+546,Kideko,Crank It (Woah!)(Radio Edit),,0.575,0.7875
+548,Kiiara,Gold,,0.55,0.45
+549,Kodak Black,09 Conscience (feat. Future),,0.3125,0.4375
+550,Kodak Black,Everything 1K,,0.375,0.4375
+551,Kodak Black,Tunnel Vision,,0.375,0.2875
+552,Kungs,This Girl (Kungs Vs. Cookin' On 3 Burners),,0.8125,0.85
+554,Kygo,First Time,,0.65,0.6625
+555,Kygo,It Ain't Me,,0.6875,0.7625
+558,Kyle,iSpy,,0.5125,0.55
+560,LCD Soundsystem,call the police,,0.5125,0.6625
+561,La La Land Cast,Another Day of Sun,,0.8875,0.825
+562,Lady Antebellum,You Look Good,,0.6875,0.7375
+563,群星쀀,Telephone (Feat. Beyonc?,,0.6875,0.7375
+564,Lady GaGa,Just Dance(Richard Vission Remix),,0.475,0.9
+565,Lady Gaga,A-Yo,,0.6375,0.725
+566,Lady GaGa,Alejandro,,0.725,0.775
+567,Lady GaGa,Applause,,0.825,0.875
+568,Lady GaGa,Bad Romance,,0.825,0.975
+569,Lady Gaga,Born This Way,,0.65,0.7
+570,Lady Gaga,Million Reasons,,0.5375,0.7375
+571,Lady GaGa,Paparazzi,,0.725,0.6625
+572,Lady Gaga,Perfect Illusion,,0.525,0.7375
+573,Lady GaGa,Poker Face,,0.7625,0.7625
+574,Lady Gaga,Lady Gaga - The Cure,,0.775,0.7875
+575,Pure Music,The Edge Of Glory (Lady Gaga Tribute) - Instrumental,,0.7875,0.825
+576,Lady GaGa,You And I,,0.7125,0.7125
+577,Laith Al-Saadi,Morning Light (The Voice Performance),,0.575,0.6375
+578,Lana Del Rey,Lust for Life,,0.625,0.4625
+579,Lana Del Rey,Love,,0.225,0.2625
+580,Lauren Alaina,Road Less Traveled,,0.7875,0.85
+582,Lauren Duski,Lauren_Duski_-_Ghost_In_This_House_-_Studio_Version_-_The_Voice_12,,0.5,0.4125
+583,Lauren Duski,The Dance,,0.5,0.5125
+584,Lee Brice,Boy,,0.4625,0.375
+585,Lee Brice,That Don't Sound Like You,,0.4625,0.525
+587,Leonard Cohen,Hallelujah((Album Version),,0.6,0.3875
+588,Liam Payne,Strip That Down,,0.775,0.7
+589,Lil Uzi Vert,03 Money Longer,,0.4875,0.55
+590,Lil Uzi Vert,XO TOUR Llif3,,0.3625,0.4625
+591,Lil Uzi Vert,05 You Was Right,,0.35,0.25
+592,Lil Wayne,Sucker For Pain,,0.4125,0.4125
+594,Lil Yachty,Peek A Boo,,0.4375,0.5125
+595,Lil Yachty,One Night (Extended),,0.4,0.3875
+597,Linkin Park,Heavy,,0.7,0.8
+598,Linkin Park,Battle Symphony,,0.8125,0.85
+599,Little Big Town,Better Man,,0.55,0.55
+600,Little Big Town,Girl Crush,,0.65,0.4125
+601,Little Big Town,One of Those Days,,0.7,0.6875
+602,Little Big Town,When Someone Stops Loving You,,0.5375,0.6125
+603,Little Mix,No More Sad Songs,,0.7125,0.8125
+605,Little Mix,Shout Out to My Ex,,0.875,0.9375
+606,Little Mix,Touch,,0.8,0.875
+607,Locash,I Know Somebody,,0.6375,0.7125
+608,Logan Paul,Help Me Help You,,0.5625,0.6375
+609,Logic,"Logic,Alessia Cara,Khalid - 1-800-273-8255",,0.5125,0.4375
+611,Logic,Everybody,,0.475,0.675
+612,Logic,Flexicution,,0.375,0.4625
+613,Looking Glass,BRANDY,,0.6875,0.5875
+614,Lord Huron,The Night We Met,,0.4875,0.2875
+615,Lorde,Green Light,,0.675,0.7375
+616,Louisa Johnson,So Good,,0.7875,0.8625
+617,Luis Fonsi,Despacito,,0.8125,0.8875
+621,Lukas Graham,7 Years,,0.55,0.3625
+622,Lukas Graham,Mama Said,,0.675,0.8125
+623,Luke Bryan,Country Girl (Shake It For Me),,0.775,0.85
+624,Luke Bryan,Fast,,0.55,0.575
+625,Luke Bryan,"Huntin', Fishin' and Lovin' Every Day",,0.65,0.75
+626,Luke Bryan,Move,,0.775,0.9375
+627,Luke Combs,Hurricane,,0.675,0.6125
+628,Luke Combs,One Number Away,,0.625,0.6125
+629,Lupe Fiasco,Jump,,0.5625,0.7125
+630,Lynyrd Skynyrd,Sweet Home Alabama,,0.775,0.65
+631,Machine Gun Kelly,Bad Things,,0.5625,0.55
+632,Machine Gun Kelly,At My Best,,0.6875,0.8625
+634,MadeinTYO,Uber Everywhere,,0.2375,0.225
+635,Maggie Lindemann,Pretty Girl,,0.825,0.6375
+636,Magic!,Red Dress,,0.75,0.7625
+637,Major Lazer,Cold Water (feat. Justin Bieber & MØ),,0.65,0.775
+638,Major Lazer,Light It Up (Remix),,0.775,0.775
+639,Major Lazer,Run Up,,0.6875,0.775
+643,Maluma,Felices los 4,,0.5875,0.55
+644,Marc E. Bassy,You & Me,,0.7625,0.7375
+645,Marc E. Bassy,You & Me,,0.6125,0.6
+646,Maren Morris,80s Mercedes,,0.7875,0.8625
+647,Maren Morris,I Could Use a Love Song,,0.6125,0.5625
+648,Maren Morris,My Church,,0.7,0.6875
+649,Maren Morris,Once,,0.3125,0.4375
+650,Mariah Carey,I Don't,,0.5375,0.6375
+651,Mariah Carey,All I Want For Christmas Is You(Original Version),,0.775,0.825
+652,Marian Hill,Down,,0.675,0.55
+653,Various Artists©,Return Of The Mack,,0.6625,0.575
+654,Mark Ronson,Uptown Funk,,0.875,0.8875
+656,Maroon 5,Cold,,0.4125,0.4875
+657,Maroon 5,Don't Wanna Know,,0.5125,0.6
+659,Maroon 5,She Will Be Loved,,0.375,0.3875
+660,Marshmello,Alone (Original Mix),,0.825,0.8375
+661,Bebe Rexha,In The Name Of Love,,0.55,0.6375
+662,Martin Garrix,Scared To Be Lonely,,0.525,0.675
+665,Martin Jensen,Solo Dance,,0.75,0.75
+666,Martin Solveig,Places,,0.7,0.675
+668,Matoma,False Alarm,,0.65,0.725
+670,Matt Terry,When Christmas Comes Around,,0.425,0.35
+671,Meek Mill,Litty (feat. Tory Lanez),,0.4125,0.675
+672,Meek Mill,Blessed Up,,0.4625,0.55
+673,Meek Mill,Blue Notes,,0.2,0.5125
+674,Nicki Minaj,Froze (feat. Lil Uzi Vert & Nicki Minaj),,0.25,0.3875
+675,Meek Mill,Offended (feat. Young Thug & 21 Savage),,0.3,0.3125
+676,Meek Mill,On The Regular,,0.475,0.55
+677,Meek Mill,The Difference (feat. Quavo),,0.3625,0.5625
+678,Meghan Trainor,Mom,,0.8625,0.7875
+679,Various Artists,Me Too (Live At Macy's 4th of July),,0.6,0.7
+681,Meghan Trainor,NO,,0.7,0.8
+682,MercyME,Even If,,0.6125,0.775
+683,Michael Bublé,It's Beginning To Look A Lot Like Christmas,,0.7375,0.2375
+684,Michael Kiwanuka,Cold Little Heart,,0.45,0.375
+685,Michael Ray,Think A Little Less,,0.7375,0.625
+686,Midland,Drinkin' Problem,,0.725,0.6
+688,Migos,Bad and Boujee,,0.4625,0.4625
+689,Migos,Kelly Price,,0.35,0.425
+692,Migos,Call Casting,,0.5125,0.5
+693,Migos,Culture,,0.4,0.6
+694,Migos,Get Right Witcha,,0.3375,0.3875
+697,Migos,T-Shirt,,0.4875,0.7
+698,Migos,What the Price,,0.2625,0.3625
+699,Mike Perry,The Ocean,,0.775,0.7125
+700,Mike Posner,I Took a Pill In Ibiza,,0.475,0.35
+703,Mike Will Made-It,Nothing Is Promised,,0.545454545,0.545454545
+704,Miley Cyrus,Malibu,,0.7,0.625
+705,Miranda Lambert,Tin Man,,0.4375,0.1875
+706,Miranda Lambert,Vice,,0.6125,0.4
+707,Missy Elliott,I'm Better,,0.3,0.3125
+708,Missy Elliott,Get Ur Freak On,,0.5875,0.6625
+710,MØ,Final Song,,0.775,0.7875
+711,NEIKED,Sexual,,0.675,0.525
+713,Nevada,The Mack,,0.7375,0.6875
+715,New Edition,Can You Stand the Rain,,0.525,0.325
+716,New Tribute Kings,Starboy(Originally Performed ByThe Weeknd Feat. Daft Punk),,0.525,0.5
+717,Niall Horan,Slow Hands,,0.6875,0.5375
+718,Niall Horan,This Town,,0.5875,0.5125
+719,Nick Jonas,Bom Bidi Bom,,0.5625,0.525
+720,Nick Jonas,Close,,0.6375,0.7375
+722,Nick Jonas,Bacon,,0.65,0.575
+726,Nick Jonas,Jealous,,0.7125,0.7375
+727,Nicki Minaj,No Frauds,,0.475,0.55
+728,Nicki Minaj,Changed It,,0.275,0.4375
+729,Nicki Minaj,Black Barbies,,0.4,0.525
+730,Nicki Minaj,Regret In Your Tears,,0.575,0.55
+731,Nicky Jam,El Amante,,0.7,0.6875
+732,Nicky Jam,Hasta el Amanecer,,0.6125,0.6375
+733,Noah Cyrus,Make Me (Cry),,0.6,0.5
+734,Noah Cyrus,I'm Stuck,,0.825,0.8375
+736,O.T. Genasis,Cut It (feat. Young Dolph),,0.4125,0.4875
+738,Old Dominion,No Such Thing as a Broken Heart,,0.7125,0.5875
+739,Old Dominion,Snapback,,0.6875,0.6875
+740,Old Dominion,Song for Another Time,,0.75,0.795454545
+741,Olivia O'Brien,Hate U Love U,,0.425,0.475
+742,Olly Murs,Grow Up,,0.725,0.725
+743,Olly Murs,You Don't Know Love,,0.725,0.85
+744,OneRepublic,Kids,,0.725,0.8125
+745,OneRepublic,OneRepublic - Wherever I Go (CDQ) (HipHopStoners.com),,0.6125,0.75
+746,Opetaia Foa'i,We Know The Way,,0.7875,0.6625
+747,P!NK,Just Like Fire,,0.775,0.8
+748,PARTYNEXTDOOR,Come and See Me,,0.4625,0.3625
+749,PARTYNEXTDOOR,Not Nice,,0.4875,0.525
+750,PLAYBOI CARTI,Magnolia,,0.2625,0.4
+751,PLAYBOI CARTI,Woke Up Like This,,0.525,0.5875
+752,Panic! At The Disco,Bohemian Rhapsody,,0.7875,0.8375
+753,Panic! At The Disco,Death Of A Bachelor,,0.625,0.7625
+754,Paramore,Hard Times,,0.8,0.65
+755,Paul McCartney,Wonderful Christmastime [Edited Version],,0.625,0.5125
+757,Pentatonix,"Mary, Did You Know?",,0.375,0.6625
+758,Piko-Taro,Pen Pineapple Apple Pen,,0.625,0.8375
+759,Piko-Taro,Pen Pineapple Apple Pen,,0.8375,0.7375
+760,Pitbull,Messin' Around,,0.7375,0.7875
+761,Pitbull,Greenlight,,0.7875,0.775
+763,Plain White T's,Hey There Delilah (Bonus),,0.55,0.3875
+765,Portugal. The Man,Feel It Still,,0.7625,0.8
+767,Post Malone,Congratulations,,0.5125,0.475
+769,Post Malone,Go Flex,,0.475,0.525
+770,Prince,1999 (LP Version),,0.6125,0.5625
+771,Prince,I Would Die 4 U,,0.5625,0.425
+772,Prince,Kiss (LP Version),,0.6125,0.8375
+773,Prince,Let's Go Crazy (LP Version),,0.65,0.75
+774,Prince,Little Red Corvette,,0.75,0.6375
+775,Prince,Purple Rain (LP Version),,0.475,0.3375
+776,Prince,Raspberry Beret,,0.5125,0.6375
+777,Prince,When Doves Cry (LP Version),,0.475,0.525
+778,Rachel Platten,Fight Song,,0.8125,0.9125
+779,Radiohead,Creep,,0.4125,0.75
+780,Rae Sremmurd,Black Beatles,,0.4375,0.5125
+783,Rae Sremmurd,Look Alive,,0.45,0.475
+784,Rae Sremmurd,Swang,,0.35,0.45
+786,Rag'N'Bone Man,Human,,0.45,0.725
+788,Rag'N'Bone Man,Skin,,0.525,0.6125
+789,Ramin Djawadi,Light of the Seven,,0.125,0.35
+790,Rascal Flatts,I Like The Sound Of That,,0.725,0.6875
+791,Rascal Flatts,Yours If You Want It,,0.7125,0.7875
+792,Reba McEntire,Back to God,,0.625,0.85
+793,Red Hot Chili Peppers,Dark Necessities,,0.6375,0.7125
+794,Red Hot Chili Peppers,We Turn Red,,0.575,0.575
+796,Rick Ross,Trap Trap Trap,,0.375,0.6
+797,Rihanna,"Rihanna,Lost Kings - Work (Lost Kings Remix)",,0.775,0.6375
+798,Rihanna,Needed Me,,0.6,0.7375
+799,Rihanna,Sledgehammer,,0.5375,0.7625
+801,Rob $tone,Chill Bill,,0.2875,0.3375
+803,Robbie Williams,Love My Life,,0.75,0.6875
+804,David Guetta,Shed A Light,,0.65,0.675
+806,Romeo Santos,Héroe Favorito,,0.725,0.6125
+807,Russ,Losin Control,,0.3625,0.3375
+808,Russ,What They Want,,0.25,0.325
+809,Ruth B,Lost Boy,,0.65,0.1875
+810,Ryan Gosling,City Of Stars,,0.65,0.4125
+812,Sabrina Carpenter,Thumbs,,0.6875,0.8
+813,Sage the Gemini,Now and Later,,0.675,0.675
+814,Sam Hunt,Body Like A Back Road,,0.7375,0.7125
+815,Sam Hunt,Drinkin' Too Much (8pm),,0.3125,0.2875
+816,Sam Hunt,Make You Miss Me(Acoustic Mixtape),,0.425,0.3
+818,Schoolboy Q,THat Part,,0.1375,0.275
+820,Scotty McCreery,Five More Minutes,,0.6,0.6625
+821,Sean Paul,No Lie,,0.75,0.7875
+823,Selena Gomez,Bad Liar,,0.6625,0.675
+824,Selena Gomez,Kill Em With Kindness,,0.825,0.8625
+825,Shaggy,It Wasn't Me,,0.8375,0.5375
+827,Shakin' Stevens,Merry Christmas Everyone,,0.825,0.6
+828,Shakira,Chantaje,,0.6,0.65
+829,Shakira,Hips Don't Lie (2006 FIFA World Cup Mix),,0.8125,0.8
+830,Shakira,Me Enamoré,,0.6,0.775
+831,Shakira,Try Everything,,0.9125,0.8375
+832,Shawn Mendes,Mercy,,0.625,0.85
+833,Shawn Mendes,"Stitches(From ""Dance Camp"" Original Motion Picture Soundtrack)",,0.7,0.8
+834,Shawn Mendes,There's Nothing Holdin' Me Back,,0.8125,0.8875
+835,Shawn Mendes,Treat You Better,,0.6125,0.6625
+836,Sia,The Greatest,,0.7875,0.8875
+837,Sia,Cheap Thrills,,0.725,0.7375
+839,Sia,California Dreamin',,0.625,0.75
+842,Sia,Helium,,0.35,0.6
+844,Sigma,Find Me,,0.75,0.7875
+846,Skrillex,Purple Lamborghini,,0.5375,0.925
+847,Various Artists,Merry Xmas Everybody,,0.7625,0.5125
+848,Snakehips,Don't Leave,,0.5125,0.7125
+850,Snoop Dogg,Kush Ups,,0.6125,0.775
+851,Solange,Don't Touch My Hair,,0.4125,0.4625
+852,Solange,Cranes in the Sky,,0.45,0.4875
+853,Starley,Call On Me,,0.625,0.65
+854,Starley,Call on Me,,0.7875,0.8375
+855,Steve Aoki,Just Hold On,,0.775,0.875
+857,Stormzy,Big For Your Boots,,0.2125,0.675
+858,Sturgill Simpson,All Around You,,0.6125,0.625
+859,Sundance Head,At Last,,0.725,0.5875
+860,Sundance Head,Darlin' Don't Go,,0.6375,0.675
+861,Take That,Giants,,0.7625,0.7625
+862,Taron Egerton,I'm Still Standing,,0.85,0.8875
+863,Taylor Ray Holbrook,Southern Land—Taylor Ray Holbrook & Ryan Upchurch,,0.625,0.575
+864,Tee Grizzley,First Day Out,,0.409090909,0.488636364
+865,The Chainsmokers,Something Just Like This,,0.7875,0.8875
+868,The Chainsmokers,Closer,,0.625,0.7
+869,The Chainsmokers,All We Know,,0.5125,0.45
+870,The Chainsmokers,Roses,,0.5625,0.65
+871,The Chainsmokers,Setting Fires,,0.65,0.75
+876,The Chainsmokers,Paris,,0.775,0.775
+879,The Chainsmokers,The One,,0.6375,0.4875
+880,The Dave Clark Five,Glad All Over,,0.5375,0.675
+881,The Game,All Eyez (Feat. Jeremih),,0.6,0.5875
+882,The Killers,Mr. Brightside,,0.6,0.85
+883,Wyclef Jean,Kiss The Sky (feat. Wyclef Jean),,0.725,0.8625
+884,The Lumineers,Ophelia,,0.7625,0.7125
+885,The Notorious BIG,Hypnotize,,0.4875,0.425
+886,The Pogues,Fairytale Of New York,,0.725,0.525
+888,The Revivalists,02 Wish I Knew You,,0.675,0.675
+889,The Strumbellas,Spirits,,0.75,0.8375
+890,The Vamps,All Night,,0.7875,0.7875
+892,The Weeknd,I Feel It Coming,,0.65,0.6625
+894,The Weeknd,All I Know,,0.375,0.375
+895,The Weeknd,Sidewalks,,0.5125,0.6375
+896,The Weeknd,A Lonely Night,,0.636363636,0.761363636
+897,The Weeknd,Acquainted,,0.5625,0.3875
+900,The Weeknd,Die For You,,0.5375,0.65
+903,The Weeknd,Love To Lay,,0.6,0.7625
+904,The Weeknd,Nothing Without You,,0.5625,0.7
+905,The Weeknd,Ordinary Life,,0.575,0.475
+906,The Weeknd,Party Monster,,0.4375,0.325
+907,The Weeknd,Reminder,,0.5625,0.5
+908,The Weeknd,Rockin',,0.6625,0.75
+909,The Weeknd,Secrets,,0.6625,0.825
+911,The Weeknd,Six Feet Under,,0.3875,0.525
+913,The Weeknd,Stargirl Interlude,,0.275,0.35
+915,The White Stripes,Seven Nation Army,,0.575,0.6875
+916,The xx,On Hold,,0.3375,0.2125
+917,Thomas Rhett,"Thomas Rhett,Maren Morris - Craving You",,0.6625,0.7375
+918,Thomas Rhett,Die A Happy Man,,0.6375,0.4
+919,Thomas Rhett,Star Of The Show,,0.7375,0.6
+921,Thomas Rhett,Vacation,,0.5625,0.475
+922,Various Artists,Sunshine (Radio Edit),,0.7375,0.7625
+924,Tim Mcgraw,Speak to a Girl,,0.65,0.6125
+925,Tim Mcgraw,How I'll Always Be,,0.6125,0.5875
+926,Tim Mcgraw,Humble and Kind,,0.4875,0.25
+927,Tinashe,Tinashé - Superlove,,0.65,0.5625
+928,Tinie Tempah,Text from Your Ex,,0.825,0.8375
+929,Tom Zanetti,You Want Me,,0.3375,0.6
+931,Tory Lanez,LUV,,0.5,0.4375
+932,Tove Lo,Cool Girl,,0.6625,0.7
+933,Train,Play That Song,,0.7375,0.8125
+934,Travis Scott,Beibs in the Trap,,0.3875,0.4875
+935,Travis Scott,Goosebumps,,0.386363636,0.511363636
+936,Trey Songz,Nobody Else But You,,0.45,0.4125
+937,Troye Sivan,WILD,,0.5875,0.6
+938,Troye Sivan,YOUTH,,0.75,0.725
+939,Tucker Beathard,Rock On,,0.6625,0.725
+940,Twenty One Pilots,Heathens,,0.5,0.625
+941,Twenty One Pilots,Cancer,,0.3,0.125
+943,Twenty One Pilots,Ride,,0.4875,0.625
+945,Twenty One Pilots,02 - Stressed Out,,0.575,0.675
+946,Tyga,Feel Me,,0.4,0.425
+948,Usher,No Limit [dirty],,0.4,0.4875
+950,Usher,Yeah,,0.6875,0.7
+951,Various Artists,Hands,,0.75,0.625
+952,Lil Wayne,Running Back (feat. Lil Wayne),,0.4875,0.525
+953,Wale,My PYT,,0.55,0.3375
+957,Wiz Khalifa,Pull Up (feat. Lil Uzi Vert),,0.3375,0.525
+958,Wizzard,I Wish It Could Be Christmas Everyday,,0.8625,0.825
+959,Various Artists,X Ambassadors - Unsteady (Erich Lee Gravity Remix),,0.45,0.8
+962,XXXTENTACION,Look At Me!,,0.2,0.6375
+964,YFN Lucci,Everyday We Lit,,0.6,0.5375
+965,YG,Why You Always Hatin?,,0.5375,0.5
+966,Yo Gotti,Law,,0.45,0.575
+967,Yo Gotti,Law,,0.5125,0.675
+968,Young Greatness,Moolah,,0.4,0.4875
+969,Young M.a.,YOUNG MA - OOOUUU (intro),,0.175,0.5125
+970,Travis Scott,Pick Up the Phone,,0.4875,0.7
+971,Young Thug,Gang Up,,0.55,0.5875
+973,ZAYN,PILLOWTALK REMIX,,0.6,0.575
+974,ZAYN,Still Got Time,,0.5875,0.625
+978,Zac Brown Band,Castaway,,0.725,0.6875
+979,Zac Brown Band,My Old Man,,0.5125,0.3625
+980,Zac Brown Band,Roots,,0.725,0.6375
+981,MNEK,Never Forget You,,0.6,0.8
+983,Zara Larsson,Ain't My Fault,,0.5,0.775
+984,Zara Larsson,I Would Like,,0.7375,0.825
+985,Zara Larsson,Lush Life,,0.7,0.75
+989,Zay Hilfigerrr,Juju On That Beat (TZ Anthem),,0.3125,0.575
+992,Zayion McCall,JuJu On Dat Beat,,0.3625,0.4625
+993,Zedd,Stay,,0.7625,0.8625
+996,offaiah,Trouble,,0.5625,0.875
+997,방탄소년단,A Supplementary Story : You Never Walk Alone,,0.6625,0.7125
+999,방탄소년단,Outro : Wings,,0.775,0.875
+1000,방탄소년단,Spring Day,,0.575,0.6625

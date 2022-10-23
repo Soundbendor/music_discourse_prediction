@@ -1,0 +1,1609 @@
+song_id,artist_name,song_name,Genre,valence,arousal
+1,Ben Webster,Chelsea Bridge,,0.15131875,-0.335959375
+2,Leadbelly,Goodnight Irene,,0.049584375,-0.261853125
+3,Ray Charles,How Long Blues,,0.11059375,-0.2660375
+4,The Kinks,Two Sisters,,0.026140625,0.149390625
+5,Adam Ant,Goody Two Shoes,,0.53096875,0.544234375
+6,Sam the Sham & the Pharaohs,Wooly Bully,,0.413565625,0.5519375
+7,Elvis Presley,Viva Las Vegas,,0.4211,0.483128125
+8,Frank Sinatra,April in Paris,,0.073178125,-0.510665625
+9,ABBA,Take a Chance on Me,,0.441253125,0.523778125
+10,John Coltrane,Cousin Mary,,0.297725,0.361746875
+11,Nico,Chelsea Girls,,-0.3600875,-0.32401875
+12,Pussy Galore,Dick Johnson,,-0.2081625,0.575321875
+13,Red Hot Chili Peppers,Give It Away,,0.011248387,0.536174194
+14,Louis Armstrong,Heebie Jeebies,,0.444516667,0.357346667
+15,Roberta Flack,The First Time Ever I Saw Your Face,,-0.211066667,-0.36216
+16,The Dead Milkmen,Punk Rock Girl,,0.244262069,0.417813793
+17,Duke Ellington,After All,,-0.02614,-0.48002
+18,The Moody Blues,Tuesday Afternoon (Forever Afternoon),,0.30284,0.21475
+19,Little Jimmy Dickens,May the Bird of Paradise Fly up Your Nose,,0.290823333,0.428216667
+20,MC5,High School,,0.358775862,0.51092069
+21,The Allman Brothers Band,Ramblin'' Man,,0.354517241,0.415489655
+22,Bobby Bare,500 Miles Away from Home,,-0.213693103,-0.220451724
+23,Kevin Ayers,Stranger in Blue Suede Shoes,,-0.142351724,0.453658621
+24,The American Analog Set,Magnificent Seventies,,-0.05573,-0.204753333
+25,James Taylor,Carolina in My Mind,,0.195296296,-0.096996296
+26,Soft Cell,Tainted Love,,-0.080992593,0.209333333
+27,Adam Ant,Desperate But Not Serious,,-0.247937037,0.232566667
+28,Neil Young,Harvest Moon,,0.087755556,-0.200874074
+29,Tori Amos,Me and a Gun,,-0.348396296,-0.47532963
+30,Sylvia,Nobody,,0.197659259,0.201381481
+31,Cocteau Twins,Heaven or Las Vegas,,0.263133333,0.335448148
+32,P.M. Dawn,Set Adrift on Memory Bliss,,0.239377778,0.175744444
+33,Lefty Frizzell,Look What Thoughts Will Do,,0.194459259,-0.280896296
+34,Mojave 3,Love Songs on the Radio,,0.03887037,-0.455003704
+35,Bob Dylan,Forever Young,,0.109311111,0.068237037
+36,Kiss,Rock and Roll All Nite,,-0.01162963,0.561237037
+37,"Miles Davis Quintet, Miles Davis",Footprints,,0.022874074,-0.145625926
+38,Judas Priest,Living After Midnight,,0.071766667,0.605448148
+39,Public Enemy,Bring the Noise,,-0.019325926,0.540433333
+40,The Rolling Stones,You Can''t Always Get What You Want,,0.347488889,-0.214459259
+41,Big Star,Thirteen,,0.124544444,-0.197988889
+42,Sister Wynona Carr,I''m a Pilgrim Traveler,,-0.237777778,-0.253748148
+43,Morrissey,Everyday Is Like Sunday,,-0.073181481,0.164881481
+44,Urge Overkill,Sister Havana,,0.157955556,0.367981481
+45,The Clash,London Calling,,-0.085274074,0.476725926
+46,The Jesus and Mary Chain,Taste of Cindy,,-0.298092593,-0.482544444
+47,Red House Painters,Down Colorful Hill,,-0.222707407,-0.3876
+48,The Carpenters,Rainy Days and Mondays,,0.0803,-0.206774074
+49,T. Rex,20th Century Boy,,0.393033333,0.593237037
+50,The Beach Boys,Surfer Girl,,0.260225926,-0.396103704
+51,The Lemonheads,It''s a Shame About Ray,,0.091477778,-0.013066667
+52,Frank Sinatra,The House I Live In,,0.222014815,-0.201240741
+53,The Who,Won''t Get Fooled Again,,0.425137037,0.471174074
+54,Brinsley Schwarz,Nervous on the Road (But Can''t Stay at Home),,0.307733333,0.394003704
+55,The Go-Go''s,We Got the Beat,,0.496862963,0.646174074
+56,Rod Stewart,Reason to Believe,,0.022355556,-0.1259
+57,Barry Manilow,Looks Like We Made It,,0.207462963,-0.289740741
+58,Aqua,Barbie Girl,,0.529981481,0.6609
+59,The Jam,''A'' Bomb in Wardour Street,,0.164840741,0.521985185
+60,The Everly Brothers,Love Hurts,,-0.079907407,-0.486177778
+61,Stevie Wonder,My Cherie Amour,,0.259216129,0.094077419
+62,Boy George,The Crying Game,,-0.107296774,-0.187719355
+63,Asleep at the Wheel,Choo Choo Ch''Boogie,,0.412993333,0.249133333
+64,The Flying Burrito Brothers,Wild Horses,,-0.32519,-0.228276667
+65,Jeff Buckley,Last Goodbye,,-0.18729,0.032836667
+66,Willie Nelson,Blue Eyes Crying in the Rain,,-0.289746667,-0.46997
+67,Five for Fighting,Superman (It''s Not Easy),,-0.056813333,-0.15528
+68,John Denver,Sunshine on My Shoulders,,0.2584,-0.328996667
+69,The Beach Boys,Don''t Worry Baby,,0.17253,0.173276667
+70,Lou Reed,Perfect Day,,-0.111896667,-0.487003333
+71,The Shirelles,Will You Love Me Tomorrow,,0.20867,0.243116667
+72,Quiet Riot,Bang Your Head (Metal Health),,-0.399116667,0.46448
+73,Ornette Coleman,Free Jazz,,0.214558621,0.32142069
+74,Archie Shepp,Hambone,,0.079113793,0.218544828
+75,The Beach Boys,Caroline No,,-0.318451724,-0.306210345
+76,The Bangles,Walk Like an Egyptian,,0.251793103,0.607996552
+77,Loretta Lynn,Coal Miner''s Daughter,,0.05487931,-0.032544828
+78,The Small Faces,Lazy Sunday,,0.012624138,0.405593103
+79,Lisa Germano,Geek the Girl,,-0.292334483,-0.406503448
+80,Bobby Darin,Splish Splash,,0.513182759,0.575058621
+81,Bruce Springsteen,Darkness on the Edge of Town,,-0.030613793,0.087044828
+82,Gene,For the Dead,,-0.117262069,0.224351724
+83,Little Feat,Sailin'' Shoes,,-0.28627931,-0.396989655
+84,Sam Cooke,Touch the Hem of His Garment,,0.162658621,0.205075862
+85,Z.Z. Hill,Someone Else Is Steppin'' In,,0.219119231,0.383023077
+86,Dr. Dre,Let Me Ride,,-0.300473077,0.345626923
+87,R.E.M.,Fall on Me,,-0.180323077,-0.027161538
+88,Fats Domino,The Fat Man,,0.141223077,0.252053846
+89,Miles Davis,Don''t Blame Me,,0.271969231,-0.202680769
+90,Buzzcocks,Everybody''s Happy Nowadays,,0.248788462,0.440703846
+91,Johnny Ace,Pledging My Love,,0.269284615,-0.377388462
+92,Bikini Kill,Suck My Left One,,-0.392992308,0.453707692
+93,Scott Walker,Montague Terrace (In Blue),,0.175392308,-0.083103846
+94,The Beach Boys,In My Room,,0.202230769,-0.275946154
+95,Frank Sinatra,The Christmas Song,,0.358219231,-0.443261538
+96,Liz Phair,Fuck and Run,,-0.029415385,0.098419231
+97,The McCoys,Hang on Sloopy,,0.457319231,0.380261538
+98,The Beatles,Revolution 9,,-0.303065385,-0.159407692
+99,Neil Young,Down by the River,,0.005896154,-0.091830769
+100,The Buckinghams,Kind of a Drag,,0.068423077,0.148915385
+101,The Kinks,You Really Got Me,,0.355388462,0.520584615
+102,Nine Inch Nails,Wish,,-0.397903846,0.556519231
+103,Lisa Loeb,Stay,,0.001461538,0.083288462
+104,Frank Sinatra,The Lady Is a Tramp,,0.357073077,0.240807692
+105,Cypress Hill,How I Could Just Kill a Man,,-0.361742308,0.541065385
+106,Black Oak Arkansas,Jim Dandy,,0.457219231,0.528423077
+107,Fred Astaire,Puttin'' on the Ritz,,0.470396154,0.06435
+108,John Sebastian,Welcome Back,,0.434115385,-0.001765385
+109,Madness,House of Fun,,0.2672,0.443823077
+110,Miles Davis,Tutu,,0.227642308,0.091196154
+111,Sparks,Cool Places,,0.356180769,0.413976923
+112,Men at Work,Down Under,,0.342430769,0.209553846
+113,Paul McCartney,Mull of Kintyre,,0.093423077,-0.159665385
+114,"Bobby ""Blue"" Bland""",Cry Cry Cry,,-0.351276923,-0.156873077
+115,David Bowie,Rebel Rebel,,0.190576923,0.362019231
+116,Neil Young,Cowgirl in the Sand,,-0.242173077,-0.381411538
+117,Dick Dale,Misirlou,,0.19185,0.563119231
+118,Tindersticks,Here,,-0.258380769,-0.448192308
+119,Wanda Jackson,Riot in Cell Block #9,,-0.157473077,0.491838462
+120,Kool Moe Dee,How Ya Like Me Now,,0.008430769,0.460811538
+121,Connie Francis,Where the Boys Are,,0.154957692,-0.235180769
+122,Frank Sinatra,Stardust,,0.332442308,-0.374353846
+123,Hank Snow,I''m Movin'' On,,0.313184615,0.179730769
+124,Ministry,Jesus Built My Hotrod,,-0.131065385,0.629842308
+125,George Jones,He Stopped Loving Her Today,,-0.223142308,-0.501984615
+126,American Music Club,The Thorn in My Side Is Gone,,-0.192511538,-0.571007692
+127,Charles Wright,Express Yourself,,0.385623077,0.3428
+128,The Rascals,Groovin'',,0.345084615,-0.066896154
+129,Wilco,A Shot in the Arm,,0.1745,0.376823077
+130,The Guess Who,No Sugar Tonight/New Mother Nature,,0.291576923,0.487707692
+131,The Prodigy,Firestarter,,-0.107703846,0.644507692
+132,T. Rex,Bang a Gong (Get It On),,0.370723077,0.262680769
+133,The Rolling Stones,Gimme Shelter,,0.1516,0.207488
+134,Ian Dury,Sex & Drugs & Rock & Roll,,0.196836,0.05526
+135,Jerry Lee Lewis,Middle Age Crazy,,-0.180764,-0.320144
+136,Destiny''s Child,Say My Name,,0.232232,0.523396
+137,Laura Lee,Wedlock Is a Padlock,,0.37244,0.394528
+138,"Johnny ""Guitar"" Watson""",Gangster of Love,,0.16956,0.270448
+139,The Flamin'' Groovies,Slow Death,,0.245632,0.374944
+140,Julie London,Cry Me a River,,-0.206696,-0.486444
+141,John Denver,Rocky Mountain High,,0.285564,-0.011536
+142,Cab Calloway,Everybody Eats When They Come to My House,,0.48658,0.080944
+143,Charley Patton,A Spoonful Blues,,-0.025524,-0.174416
+144,Joni Mitchell,Amelia,,0.015776,-0.261972
+145,Albert Ayler,Spirits Rejoice,,0.146584,-0.371856
+146,Atari Teenage Riot,Deutschland (Has Gotta Die!),,-0.33822,0.689256
+147,Eric Dolphy,Miss Ann,,0.213572,0.036848
+148,Aretha Franklin,Think,,0.465936,0.523136
+149,"Lee ""Scratch"" Perry""",Roast Fish and Cornbread,,0.107832,-0.258716
+150,The Who,I Can See for Miles,,0.097856,0.271556
+151,Bow Wow Wow,I Want Candy,,0.447948,0.575628
+152,David Ackles,American Gothic,,-0.370776,-0.210504
+153,Metallica,Master of Puppets,,-0.148808,0.573312
+154,Johnny Cash,Get Rhythm,,0.134788,0.264388
+155,Elmore James,The Sky Is Crying,,-0.17098,-0.158972
+156,Ray Stevens,The Streak,,0.356608,0.341196
+157,Paul Weller,Sunflower,,-0.113152,0.322096
+158,Frank Sinatra,If I Had You,,0.368808,-0.244336
+159,Van Morrison,Into the Mystic,,0.236956,0.133744
+160,Redman,Blow Your Mind,,0.064312,0.330972
+161,R.E.M.,Losing My Religion,,0.069504,0.45582
+162,Warren Zevon,"""Poor",,0.139216,0.3727
+163,Elmore James,Dust My Broom,,-0.019616,0.198424
+164,Public Enemy,Fight the Power,,0.066456,0.41094
+165,Rod Stewart,Mandolin Wind,,0.257688,-0.106592
+166,Phil Ochs,I Ain''t Marching Anymore,,-0.119956,0.095268
+167,Ike Quebec,Blue and Sentimental,,0.14586,-0.549076
+168,The Andrews Sisters,Ac-Cent-Tchu-Ate the Positive,,0.46254,0.012548
+169,Tom Waits,Ol'' 55,,-0.080244,-0.33466
+170,Rahsaan Roland Kirk,The Inflated Tear,,-0.260856,-0.174752
+171,Ray Charles,Blues Is My Middle Name,,-0.231944,-0.299396
+172,Ivy,The Best Thing,,0.193032,0.401264
+173,Monty Python,Always Look on the Bright Side of Life,,0.511772,0.1391
+174,Emmylou Harris,Boulder to Birmingham,,-0.1903,-0.352648
+175,Art Blakey,A Night in Tunisia,,0.324012,0.4423
+176,Queen,Crazy Little Thing Called Love,,0.429828,0.338448
+177,Chappaquiddick Skyline,Leave Me Alone,,-0.045692,0.127036
+178,Ricky Martin,Livin'' la Vida Loca,,0.481308,0.642588
+179,Mudhoney,Sweet Young Thing Ain''t Sweet No More,,-0.551388,0.471324
+180,Pink Floyd,See Emily Play,,0.314904,0.202884
+181,Digable Planets,Rebirth of Slick (Cool Like Dat),,0.147216,0.2899
+182,LaVern Baker,See See Rider,,0.343056,0.451448
+183,The Beatles,Tomorrow Never Knows,,-0.17116,0.162416
+184,Cheap Trick,I Want You to Want Me,,0.256172,0.346396
+185,Jerry Lee Lewis,Great Balls of Fire,,0.581176,0.581664
+186,Al Green,Let''s Stay Together,,0.30602,-0.056568
+187,MC5,Ramblin'' Rose,,0.122072,0.652468
+188,Green Day,Basket Case,,0.08368,0.590888
+189,Primus,My Name Is Mud,,-0.294984,0.280604
+190,Air Supply,All Out of Love,,-0.120832,-0.185792
+191,Pet Shop Boys,Where the Streets Have No Name (I Can''t Take My Eyes off You),,0.55256,0.588852
+192,David Bowie,Fashion,,0.003276,0.417424
+193,Bob Dylan,With God on Our Side,,-0.121648,-0.247576
+194,Bob Dylan,Lay Lady Lay,,0.109504,-0.15784
+195,Sidney Bechet,Wild Cat Blues,,0.541148,0.451252
+196,Marvin Gaye,Inner City Blues (Make Me Wanna Holler),,0.153316,-0.173192
+197,Belle & Sebastian,Lazy Line Painter Jane,,0.145016,0.238652
+198,Rammstein,Du Hast,,-0.323176,0.452884
+199,The Ramones,Cretin Hop,,0.206348,0.622012
+200,Burt Bacharach,Walk on By,,0.097852,-0.152856
+201,Peter," Paul & Mary""",,-0.150428,-0.323248
+202,Tommy Roe,Dizzy,,0.17786,0.162888
+203,Tom Petty,American Girl,,0.292304,0.376408
+204,Bad Company,Feel Like Makin'' Love,,0.284436,0.03112
+205,Robert Johnson,Come on in My Kitchen,,-0.295644,-0.426824
+206,Air Supply,Making Love Out of Nothing at All,,0.184296,0.18466
+207,The Band,Rag Mama Rag,,0.360248,0.45914
+208,Bobby Fuller,I Fought the Law,,0.167112,0.433476
+209,The Lemonheads,My Drug Buddy,,-0.27988,-0.365864
+210,Freddy Fender,Before the Next Teardrop Falls,,-0.00822,-0.207564
+211,Elvis Costello,Veronica,,0.31128,0.373712
+212,Herman''s Hermits,Mrs. Brown You''ve Got a Lovely Daughter,,0.123032,0.265312
+213,The Pernice Brothers,Overcome by Happiness,,-0.243944,-0.373496
+214,Johnny Adams,Reconsider Me,,0.215696,0.009192
+215,Sam & Dave,"""Hold on",,0.451672,0.438992
+216,Kruder & Dorfmeister,High Noon,,-0.066512,-0.373792
+217,Madness,Madness,,0.282108,0.11656
+218,Manic Street Preachers,She Is Suffering,,-0.269924,0.14424
+219,Foreigner,Waiting for a Girl Like You,,-0.127012,-0.248944
+220,Rod Stewart,Maggie May,,0.079824,0.36394
+221,Beastie Boys,Hey Ladies,,-0.039964,0.573728
+222,Roy Ayers,Everybody Loves the Sunshine,,0.3185,-0.154532
+223,Helmet,Unsung,,-0.36546,0.608492
+224,Cyndi Lauper,She Bop,,-0.020712,0.42962
+225,Nick Lowe,I Knew the Bride (When She Used to Rock & Roll),,0.3247,0.404064
+226,Willie Nelson,Night Life,,-0.176352,-0.522604
+227,Marcos Valle,Crickets Sing for Anamaria,,0.266844,0.075564
+228,The Cult,Love Removal Machine,,-0.167136,0.68962
+229,David Bowie,Hang Onto Yourself,,0.106007692,0.601207692
+230,Bob Dylan,Hurricane,,0.015953846,0.373834615
+231,Junior Wells,Hoodoo Man Blues,,-0.212403846,-0.1872
+232,Leonard Cohen,Everybody Knows,,-0.392946154,-0.295865385
+233,Johnny Cash,Delia''s Gone,,-0.342776923,-0.290234615
+234,Tone-Loc,Wild Thing,,0.230730769,0.440469231
+235,Gram Parsons,Hickory Wind,,-0.056884615,-0.379469231
+236,Lou Reed,Street Hassle,,0.336246154,-0.109623077
+237,The Avalanches,Since I Left You,,0.372942308,0.292965385
+238,Big Star,The Ballad of el Goodo,,0.123303846,0.013169231
+239,Frank Sinatra,This Love of Mine,,0.035596154,-0.427976923
+240,Willie Nelson,A Uncloudy Day,,0.516503846,0.598296154
+241,Paul Revere & the Raiders,Just Like Me,,0.02224,0.6565
+242,Louis Armstrong,Struttin'' With Some Barbecue,,0.524046667,-0.02084
+243,Poison,Talk Dirty to Me,,0.4584,0.616726667
+244,Albert King,Born Under a Bad Sign,,-0.14144,0.187406667
+245,The Stooges,T.V. Eye,,-0.006926667,0.613026667
+246,U2,I Will Follow,,0.233006667,0.5334
+247,The Rolling Stones,No Expectations,,-0.397166667,-0.35446
+248,American Music Club,Johnny Mathis'' Feet,,-0.559413333,-0.17966
+249,The Cyrkle,Red Rubber Ball,,-0.107853333,0.23576
+250,Hank Williams,Move It on Over,,0.33478,0.051993333
+251,4hero,Universal Love,,0.33926,0.037266667
+252,The Who,Sparks,,0.00378,0.602813333
+253,New Order,Blue Monday,,0.282293333,0.60692
+254,Debbie Gibson,Shake Your Love,,0.408273333,0.33392
+255,Charlie Rich,Life''s Little Ups and Downs,,-0.181386667,-0.30582
+256,Nancy Sinatra,These Boots Are Made for Walkin'',,-0.034446667,0.288973333
+257,Public Enemy,Don''t Believe the Hype,,-0.13016,0.42984
+258,Ministry,Stigmata,,-0.079266667,0.50952
+259,Harry Nilsson,Nobody Cares About the Railroads Anymore,,0.30892,0.1053
+260,Elton John,Madman Across the Water,,-0.06404,-0.049906667
+261,Van Morrison,Moondance,,0.273586667,0.269086667
+262,Marvin Gaye,I Heard It Through the Grapevine,,-0.13166,0.314213333
+263,Barenaked Ladies,Jane,,0.002726667,0.197253333
+264,Tim Buckley,Dolphins,,-0.2411,-0.29548
+265,Albert Ayler,Holy Ghost,,-0.06344,0.52194
+266,Charlie Parker,A Night in Tunisia,,0.462086667,0.508546667
+267,Aretha Franklin,I Never Loved a Man (The Way I Love You),,0.167526667,0.332013333
+268,The Rolling Stones,Fool to Cry,,-0.199566667,-0.243346667
+269,Heaven 17,(We Don''t Need This) Fascist Groove Thang,,0.1368,0.4207
+270,Radiohead,Fake Plastic Trees,,-0.219013333,-0.217453333
+271,Throwing Muses,Hate My Way,,-0.224393333,0.435526667
+272,Deee-Lite,Groove Is in the Heart,,0.542206667,0.610873333
+273,My Bloody Valentine,To Here Knows When,,-0.19216,-0.159206667
+274,Al Green,I''m Still in Love With You,,0.48456,-0.125526667
+275,The Idle Race,Imposters of Life''s Magazine,,-0.005073333,0.465946667
+276,The Smiths,The Boy With the Thorn in His Side,,-0.010206667,0.126693333
+277,Billy Joel,Just the Way You Are,,0.465386667,-0.352673333
+278,Limp Bizkit,Rollin'' (Air Raid Vehicle),,-0.052893333,0.697653333
+279,Freddie & the Dreamers,Do the Freddie,,0.4948,0.51586
+280,Violent Femmes,Kiss Off,,0.171566667,0.29928
+281,Frank Sinatra,Moonlight in Vermont,,0.273966667,-0.55794
+282,Todd Rundgren,Hello It''s Me,,0.285533333,-0.019933333
+283,Esquivel,Mucha Muchacha,,0.581153333,0.513993333
+284,Bobby Byrd,I Know You Got Soul,,0.468586667,0.555066667
+285,Red Hot Chili Peppers,True Men Don''t Kill Coyotes,,-0.1189,0.372133333
+286,"Cream, Eric Clapton",White Room,,-0.12596,0.357373333
+287,Neil Diamond,"""Cherry",,0.429133333,0.30872
+288,Billie Holiday,God Bless the Child,,0.102886667,-0.549546667
+289,Simon & Garfunkel,The Only Living Boy in New York,,0.131786667,0.089506667
+290,Dionne Warwick,I''ll Never Fall in Love Again,,0.004126667,0.114793333
+291,Van Morrison,Madame George,,-0.06164,-0.321533333
+292,Humble Pie,30 Days in the Hole,,0.328733333,0.471653333
+293,The White Stripes,Hotel Yorba,,0.368853333,0.33536
+294,XTC,Making Plans for Nigel,,0.0273,0.256426667
+295,Body Count,Body Count,,-0.534066667,0.3817
+296,The Lovin'' Spoonful,Summer in the City,,0.479026667,0.404533333
+297,Bettie Serveert,Tom Boy,,0.163013333,0.002506667
+298,The Doors,Ship of Fools,,0.183106667,0.221633333
+299,Alicia Keys,Fallin'',,0.104953333,0.07436
+300,Bruce Springsteen,Born to Run,,0.46886,0.42558
+301,Oasis,Wonderwall,,0.22874,0.2095
+302,Bryan Adams,Run to You,,0.199793333,0.31432
+303,Elvis Presley,Good Rockin'' Tonight,,0.250266667,0.248793333
+304,Randy Newman,Political Science,,-0.26124,-0.48546
+305,Amy Grant,Baby Baby,,0.61494,0.39942
+306,The Undertones,Get Over You,,0.01234,0.533373333
+307,The Easybeats,Friday on My Mind,,0.016653333,0.423793333
+308,The Blues Brothers,Soul Man,,0.616753333,0.528913333
+309,The Beach Boys,I Get Around,,0.70412,0.6148
+310,"Bobby ""Blue"" Bland""",Stormy Monday Blues,,-0.180346667,-0.613546667
+311,Bob Dylan,To Ramona,,-0.294546667,-0.36688
+312,Roxy Music,More Than This,,0.11884,-0.08928
+313,Jeff Beck,Beck''s Bolero,,0.008146667,0.349586667
+314,The Beatles,Only a Northern Song,,0.053753333,-0.019713333
+315,Dr. Octagon,Blue Flowers,,-0.056133333,0.2342
+316,Minor Threat,Out of Step,,-0.214726667,0.49298
+317,The Boo Radleys,I Hang Suspended,,0.171933333,0.536133333
+318,Roger Miller,Dang Me,,-0.035953333,0.123353333
+319,Laurie Anderson,O Superman (For Massenet),,-0.125653333,-0.179346667
+320,Crowded House,Now We''re Getting Somewhere,,0.31406,0.346006667
+321,The Band,The Weight,,0.17704,-0.02324
+322,The Lemonheads,Alison''s Starting to Happen,,0.190233333,0.422706667
+323,Brick,Dazz,,0.344286667,0.284466667
+324,James Taylor,How Sweet It Is (To Be Loved by You),,0.56624,0.212426667
+325,Joe Ely,Fingernails,,0.53874,0.558633333
+326,Neil Diamond,"""Girl",,0.09504,0.08796
+327,Eddie Cochran,Skinny Jim,,0.37232,0.460266667
+328,Devo,Girl U Want,,0.269373333,0.440553333
+329,They Might Be Giants,Don''t Let''s Start,,-0.008666667,0.39762
+330,The Beau Brummels,Just a Little,,-0.301933333,-0.121486667
+331,Esquerita,Rockin'' the Joint,,0.24818,0.392613333
+332,Patsy Cline,She''s Got You,,-0.21058,-0.346066667
+333,Heart,Crazy on You,,0.292826667,0.47806
+334,R.E.M.,Man on the Moon,,0.047913333,-0.317426667
+335,India.Arie,Video,,0.309566667,-0.06444
+336,Slade,Cum on Feel the Noize,,0.188266667,0.491633333
+337,Peter Sellers,Any Old Iron,,0.149173333,0.230133333
+338,The Go-Go''s,Head over Heels,,0.195826667,0.422293333
+339,The Meters,Cissy Strut,,0.3803,0.084873333
+340,The Animals,Don''t Let Me Be Misunderstood,,0.19642,0.473726667
+341,The Band,King Harvest (Has Surely Come),,0.00584,0.14524
+342,The Beach Boys,God Only Knows,,0.302973333,0.089613333
+343,Janet Jackson,What Have You Done for Me Lately,,0.031453333,0.391066667
+344,A Tribe Called Quest,Scenario,,0.091606667,0.450726667
+345,Warren Zevon,"""Lawyers",,0.01562,0.231766667
+346,Charles Mingus,Goodbye Pork Pie Hat,,-0.128446667,-0.570233333
+347,George Clinton,Atomic Dog,,0.18198,0.427593333
+348,Sidney Bechet,When the Saints Go Marching In,,0.552546667,0.494813333
+349,The Stooges,I Wanna Be Your Dog,,-0.077126667,0.21672
+350,Def Leppard,Pour Some Sugar on Me,,0.344113333,0.442546667
+351,Iggy Pop,Lust for Life,,0.326166667,0.516913333
+352,Nana Mouskouri,Love Me Tender,,0.43838,-0.27506
+353,Otis Redding,These Arms of Mine,,0.14114,-0.265026667
+354,The Jam,That''s Entertainment,,-0.129546667,0.063086667
+355,Frank Sinatra,You Go to My Head,,0.37054,-0.52112
+356,Curtis Mayfield,People Get Ready,,0.18982,-0.30666
+357,Glen Campbell,Guess I''m Dumb,,-0.094893333,-0.13694
+358,Elliott Smith,Miss Misery,,-0.110986667,-0.634906667
+359,The Auteurs,Junk Shop Clothes,,-0.374873333,-0.454826667
+360,Muddy Waters,I''m Ready,,0.511766667,0.31622
+361,Travis Tritt,Ten Feet Tall and Bulletproof,,0.3103,0.20352
+362,"Elvis Costello, The Dirty Dozen Brass Band",Veronica,,0.271486667,0.299553333
+363,Aerosmith,Mama Kin,,0.315893333,0.499533333
+364,Willie Nelson,Always on My Mind,,-0.233953333,-0.194553333
+365,The Adverts,Gary Gilmore''s Eyes,,0.038566667,0.482846667
+366,Slayer,South of Heaven,,-0.545733333,0.679273333
+367,New Edition,Candy Girl,,0.48926,0.56474
+368,Chuck Berry,You Never Can Tell,,0.563926667,0.549093333
+369,The Band,The Unfaithful Servant,,-0.181566667,-0.255893333
+370,Billy Bragg,Greetings to the New Brunette,,-0.119793333,0.07596
+371,"John Lennon, The Beatles",No Reply,,-0.047413333,0.076093333
+372,Bruce Springsteen,Atlantic City,,-0.174706667,0.02618
+373,Gin Blossoms,Til I Hear It from You,,0.04324,0.158326667
+374,Mott the Hoople,Death May Be Your Santa Claus,,0.09294,0.34858
+375,Bob Dylan,Desolation Row,,-0.214933333,-0.430373333
+376,Carole King,No Easy Way Down,,-0.3243,-0.4054
+377,Mott the Hoople,Rock and Roll Queen,,0.27256,0.369106667
+378,They Might Be Giants,Purple Toupee,,0.246953333,0.423226667
+379,Willie Nelson,Funny How Time Slips Away,,-0.26974,-0.462826667
+380,Swervedriver,Duel,,-0.087026667,0.339773333
+381,Todd Rundgren,Zen Archer,,-0.07442,0.078026667
+382,Louis Jordan,Choo Choo Ch''Boogie,,0.508153333,0.343353333
+383,Unwound,MK Ultra,,-0.6162,-0.195606667
+384,The Flatlanders,Dallas,,-0.023126667,-0.08012
+385,Stereolab,Lo Boob Oscillator,,0.401106667,0.233926667
+386,The Turtles,You Showed Me,,0.074206667,-0.152646667
+387,King Oliver,King Porter Stomp,,0.442666667,0.233166667
+388,Billie Holiday,"""Lover",,-0.272546667,-0.298246667
+389,The Stooges,L.A. Blues,,-0.585,0.28354
+390,Eddie & the Hot Rods,Do Anything You Wanna Do,,0.097033333,0.431386667
+391,Fred Astaire,A Fine Romance,,0.552866667,0.124666667
+392,The Zombies,Beechwood Park,,-0.02164,-0.34392
+393,The Beach Boys,Surfin'' U.S.A.,,0.666053333,0.63196
+394,The Move,Flowers in the Rain,,0.387333333,0.34776
+395,Dead Kennedys,Holiday in Cambodia,,-0.20924,0.58176
+396,Cat Stevens,The First Cut Is the Deepest,,-0.040593333,0.070146667
+397,Johnny Burnette,The Train Kept A Rollin'',,0.307773333,0.598633333
+398,Paul Mauriat,Love Is Blue,,0.486073333,0.115086667
+399,Paul McCartney,Another Day,,0.19202,-0.021646667
+400,Johnny Cash,Cry Cry Cry,,-0.386993333,0.079393333
+401,The Ramones,Sheena Is a Punk Rocker,,0.30562,0.455506667
+402,Jackson Browne,Late for the Sky,,-0.255953333,-0.506206667
+403,Alex de Grassi,Charlotte,,0.176146667,-0.522906667
+404,Thelonious Monk,"""Well",,0.183693333,0.00628
+405,The Cars,Just What I Needed,,0.165533333,0.394306667
+406,Yo La Tengo,"""Barnaby",,-0.28796,-0.281473333
+407,Gram Parsons,Return of the Grievous Angel,,0.130606667,-0.159153333
+408,Loop,Arc-Lite,,0.133413333,0.552033333
+409,Pussy Galore,New Breed,,-0.06088,0.36676
+410,Bo Diddley,I''m a Man,,0.03294,0.165066667
+411,Bessie Smith,Gimme a Pigfoot (And a Bottle of Beer),,-0.082613333,0.060573333
+412,The Archies,"""Sugar",,0.68338,0.429413333
+413,Moe Bandy,Just Good Ol'' Boys,,-0.09762,0.091533333
+414,Ben Folds,Rockin'' the Suburbs,,0.26214,0.30568
+415,The Saints,(I''m) Stranded,,-0.13014,0.401206667
+416,Bee Gees,Stayin'' Alive,,0.57508,0.667173333
+417,The Everly Brothers,Problems,,-0.151946667,-0.170113333
+418,Frank Sinatra,Violets for Your Furs,,0.14382,-0.667213333
+419,Chic,Good Times,,0.601646667,0.52322
+420,Essential Logic,Aerosol Burns,,-0.222353333,0.69802
+421,Eagles,Peaceful Easy Feeling,,0.399193333,-0.146166667
+422,Simon & Garfunkel,The Dangling Conversation,,-0.093806667,-0.387213333
+423,Kris Kristofferson,Loving Her Was Easier (Than Anything I''ll Ever Do Again),,0.132533333,-0.353053333
+424,Bee Gees,Night Fever,,0.58522,0.601413333
+425,Warrant,Cherry Pie,,0.337133333,0.676373333
+426,The Beatles,Baby''s in Black,,-0.327153333,-0.07232
+427,Dimitri from Paris,Sacre Francais,,0.488653333,0.59696
+428,Harry Nilsson,Coconut,,0.421666667,-0.138446667
+429,Slim Harpo,I''m a King Bee,,-0.00928,-0.25904
+430,R.E.M.,Driver 8,,0.073693333,0.27256
+431,Merle Haggard,Are the Good Times Really Over (I Wish a Buck Was Still Silver),,-0.48926,-0.528753333
+432,Blind Faith,Can''t Find My Way Home,,-0.0445,-0.112
+433,MC5,Kick Out the Jams,,0.088013333,0.57752
+434,Mission of Burma,Academy Fight Song,,0.092253333,0.403073333
+435,Ian Dury,Wake Up and Make Love With Me,,0.166493333,0.05078
+436,David Bowie,Golden Years,,0.32562,0.314566667
+437,The B-52''s,Love Shack,,0.68326,0.71272
+438,DJ Jazzy Jeff & the Fresh Prince,Girls Ain''t Nothing But Trouble,,0.073926667,0.421473333
+439,Sade,By Your Side,,-0.156066667,-0.37366
+440,The Rolling Stones,Get off of My Cloud,,0.33846,0.6071
+441,PJ Harvey,50ft Queenie,,-0.188913333,0.557326667
+442,Bachman-Turner Overdrive,Takin'' Care of Business,,0.498213333,0.597166667
+443,Patsy Cline,Crazy,,-0.3715,-0.431326667
+444,Duke Ellington,"""Take the ""A"" Train""",,0.46514,0.190173333
+445,Cat Power,Cross Bones Style,,-0.1362,-0.380126667
+446,Jacques Brel,La Chanson de Jacky,,0.197666667,0.48896
+447,Mary Lou Lord,Lights Are Changing,,0.056833333,-0.068406667
+448,Albert Ayler,Bells,,0.111313333,0.100826667
+449,Ride,Leave Them All Behind,,-0.100246667,0.208893333
+450,The Beatles,I Am the Walrus,,0.164533333,0.133093333
+451,The Go-Betweens,Spring Rain,,0.082126667,0.231313333
+452,Ray Conniff,''S Wonderful,,0.479486667,0.526666667
+453,Shirley Bassey,Goldfinger,,-0.398873333,0.191913333
+454,Rupert Holmes,Escape (The Pi��Colada Song)ble,,0.47176,0.264906667
+455,Richard Thompson,1952 Vincent Black Lightning,,0.245426667,-0.12722
+456,Dinosaur Jr.,Start Choppin,,-0.390746667,-0.055906667
+457,Jeri Southern,Smoke Gets in Your Eyes,,-0.100933333,-0.284733333
+458,George Jones,White Lightning,,0.373906667,0.56658
+459,Metallica,Seek & Destroy,,-0.260833333,0.71302
+460,Bachman-Turner Overdrive,You Ain''t Seen Nothing Yet,,0.564393333,0.62162
+461,The Small Faces,Itchycoo Park,,0.33142,-0.063013333
+462,The Soft Boys,I Wanna Destroy You,,-0.284266667,0.326166667
+463,Violent Femmes,Blister in the Sun,,0.163133333,0.644453333
+464,Patti Smith,Piss Factory,,-0.222226667,0.177826667
+465,The Stylistics,You Make Me Feel Brand New,,0.477446667,-0.272373333
+466,Kirsty MacColl,A New England,,0.251613333,0.28954
+467,Neil Young,Old Man,,0.178626667,-0.196293333
+468,Burt Bacharach,(There''s) Always Something There to Remind Me,,0.28932,0.355493333
+469,David Bowie,"""John",,0.12598,0.367293333
+470,Hoagy Carmichael,Georgia on My Mind,,0.216386667,-0.491366667
+471,Primal Scream,Kowalski,,-0.139446667,0.491406667
+472,Bob Dylan,Masters of War,,-0.180133333,0.13602
+473,Jackie Brenston,Rocket 88,,0.496366667,0.310813333
+474,Peter Murphy,Cuts You Up,,-0.020386667,0.27576
+475,Danny Kaye,Bloop Bleep,,0.24576,-0.011333333
+476,The Dukes of Stratosphear,The Mole from the Ministry,,-0.034613333,-0.07992
+477,Nick Lowe,Cruel to Be Kind,,0.21826,0.360686667
+478,Donovan,Wear Your Love Like Heaven,,0.182913333,-0.186073333
+479,The Zombies,Time of the Season,,0.404586667,0.031766667
+480,The Monks,I Hate You,,-0.403593333,0.208373333
+481,Davy Graham,Angi,,0.072353333,-0.165706667
+482,Slim & Slam,The Flat Foot Floogie,,0.342766667,0.166186667
+483,Belle & Sebastian,The Boy With the Arab Strap,,0.519846667,0.30926
+484,"The Doors, Robby Krieger",Strange Days,,-0.135513333,0.128553333
+485,Antonio Carlos Jobim,Agua de Beber,,0.009326667,-0.185866667
+486,Nick Drake,Time Has Told Me,,-0.3863,-0.447446667
+487,Buck Owens,I''ve Got a Tiger by the Tail,,-0.113846667,0.1568
+488,Os Mutantes,Bat Macumba,,0.009506667,0.39008
+489,David Bowie,Space Oddity,,-0.253726667,-0.118486667
+490,The Smiths,"""William",,0.084033333,0.179953333
+491,Bob Mould,Poison Years,,-0.204586667,0.344093333
+492,Morrissey,Suedehead,,0.093873333,0.258233333
+493,The Beatles,Eleanor Rigby,,-0.228946667,0.257846667
+494,Crowded House,Better Be Home Soon,,-0.161833333,0.125593333
+495,White Zombie,Thunder Kiss ''65,,-0.013026667,0.575406667
+496,Charlie Daniels,The Devil Went Down to Georgia,,0.397566667,0.643733333
+497,Barenaked Ladies,"""If I Had $1",,0.474546667,0.20006
+498,The Fall,Totally Wired,,-0.05268,0.405913333
+499,Kenny Rogers,Through the Years,,0.250186667,-0.064266667
+500,Belle & Sebastian,Judy and the Dream of Horses,,0.110566667,0.0596
+501,Madness,Our House,,0.611746667,0.687466667
+502,Richard Thompson,I Feel So Good,,0.1576,0.36188
+503,The Temptations,My Girl,,0.699666667,0.383793333
+504,MC5,Looking at You,,0.224,0.57244
+505,Dean Martin,Everybody Loves Somebody,,0.510533333,-0.013786667
+506,The Zombies,She''s Not There,,0.056993333,0.126406667
+507,Sly & the Family Stone,I Want to Take You Higher,,0.276793333,0.4864
+508,Simon & Garfunkel,I Am a Rock,,-0.260053333,-0.465646667
+509,Seals & Crofts,We May Never Pass This Way (Again),,0.332846667,-0.027433333
+510,The La''s,There She Goes,,0.413113333,0.178793333
+511,Beck,Devils Haircut,,-0.20554,0.180513333
+512,John Coltrane,Giant Steps,,0.352826667,0.573486667
+513,The Replacements,Bastards of Young,,-0.16498,0.31708
+514,The Shangri-Las,I Can Never Go Home Anymore,,-0.21498,-0.482513333
+515,PJ Harvey,Sheela-Na-Gig,,-0.245346667,0.444606667
+516,The Damned,Neat Neat Neat,,-0.11926,0.60464
+517,Love,Alone Again Or,,-0.098453333,-0.06122
+518,Queen,Killer Queen,,0.432613333,0.499033333
+519,Right Said Fred,I''m Too Sexy,,0.457086667,0.60278
+520,Eddie Cochran,Somethin'' Else,,0.262733333,0.5076
+521,Cibo Matto,Know Your Chicken,,0.101246667,0.16686
+522,The Rascals,Love Is a Beautiful Thing,,0.36944,0.205053333
+523,Lindsey Buckingham,Trouble,,0.043033333,-0.258653333
+524,The Impressions,I''m So Proud,,0.383013333,-0.425893333
+525,OutKast,Ms. Jackson,,-0.061773333,0.4151
+526,Rufus Wainwright,Cigarettes and Chocolate Milk,,-0.160946667,-0.362573333
+527,Charles Mingus,Better Get Hit in Yo'' Soul,,0.196353333,0.372133333
+528,Roger Miller,Chug-A-Lug,,0.273913333,-0.057513333
+529,The Rolling Stones,It''s Only Rock ''N Roll (But I Like It),,0.474006667,0.542926667
+530,Bill Withers,Lean on Me,,0.32908,-0.318406667
+531,Wire,I Am the Fly,,-0.211026667,0.078206667
+532,Blossom Dearie,Give Him the Ooh-La-La,,0.29886,0.099393333
+533,Peggy Lee,Black Coffee,,-0.10836,-0.412393333
+534,XTC,Senses Working Overtime,,0.12378,0.217293333
+535,Kris Kristofferson,Come Sundown,,-0.374046667,-0.386233333
+536,Grandaddy,The Crystal Lake,,-0.140346667,0.293213333
+537,After the Fire,Der Kommissar,,0.258826667,0.528253333
+538,Bananarama,Robert de Niro''s Waiting,,0.27168,0.331546667
+539,Bob Dylan,Jokerman,,0.01298,-0.239373333
+540,Waylon Jennings,Amanda,,-0.042726667,-0.470053333
+541,Peter Gabriel,Games Without Frontiers,,-0.13848,0.046093333
+542,Lulu,To Sir with Love,,0.329886667,-0.09732
+543,1910 Fruitgum Company,Indian Giver,,-0.094766667,0.276726667
+544,Ernie K-Doe,Mother-In-Law,,-0.023466667,0.090446667
+545,Brooks & Dunn,Boot Scootin'' Boogie,,0.61524,0.56254
+546,Frank Sinatra,I Only Have Eyes for You,,0.29604,-0.424493333
+547,Heavenly,C Is the Heavenly Option,,0.246773333,0.371206667
+548,Frank Sinatra,Over the Rainbow,,0.564913333,-0.40672
+549,The Velvet Underground,White Light/White Heat,,0.039773333,0.2322
+550,Bee Gees,More Than a Woman,,0.42102,0.334253333
+551,Bob Dylan,Blowin'' in the Wind,,-0.279946667,-0.271373333
+552,Badfinger,Baby Blue,,-0.031006667,0.228613333
+553,Simon & Garfunkel,The 59th Street Bridge Song (Feelin'' Groovy),,0.68418,-0.493186667
+554,ABC,How to Be a Millionaire,,0.17396,0.36608
+555,Kate Bush,This Woman''s Work,,-0.39986,-0.308166667
+556,Creed,My Own Prison,,-0.6105,0.290053333
+557,The Velvet Underground,I''m Waiting for the Man,,-0.067966667,0.204433333
+558,Cyndi Lauper,Girls Just Want to Have Fun,,0.680133333,0.604306667
+559,Sam & Dave,Soul Man,,0.626493333,0.594453333
+560,Descendents,I Don''t Want to Grow Up,,-0.523266667,0.76308
+561,Harry Nilsson,Ten Little Indians,,-0.078966667,0.13754
+562,The Chi-Lites,Oh Girl,,-0.40308,-0.417826667
+563,Little Richard,The Girl Can''t Help It,,0.389493333,0.51712
+564,Meat Loaf,Paradise by the Dashboard Light,,0.350753333,0.458853333
+565,Britney Spears,Oops! ... I Did It Again,,0.138446667,0.311166667
+566,Conway Twitty,I''d Love to Lay You Down,,0.124206667,-0.000193333
+567,The Misfits,Attitude,,-0.344886667,0.5793
+568,Mose Allison,Ever Since the World Ended,,0.194233333,0.085273333
+569,The Waterboys,The Whole of the Moon,,0.101273333,0.30776
+570,Nick Lowe,Marie Provost,,0.16236,0.283013333
+571,10,"000 Maniacs""",,0.047046667,0.067013333
+572,The Barbarians,Are You a Boy or Are You a Girl,,0.339793333,0.220853333
+573,Rodney Crowell,I Couldn''t Leave You If I Tried,,0.01212,0.027233333
+574,The Cramps,Human Fly,,-0.453686667,0.25254
+575,Ted Nugent,Motor City Madhouse,,0.012913333,0.33896
+576,Oasis,Champagne Supernova,,0.1666,0.09814
+577,The Who,Summertime Blues,,0.1168,0.457526667
+578,Ringo Starr,It Don''t Come Easy,,0.23376,0.321906667
+579,Dion,Ruby Baby,,0.43338,0.307373333
+580,Fela Kuti,Zombie,,0.30266,0.30052
+581,Phil Collins,I Wish It Would Rain Down,,0.01962,-0.03488
+582,Girls Against Boys,Kill the Sexplayer,,-0.2258,0.356453333
+583,Gipsy Kings,Un Amor,,0.034713333,0.031026667
+584,Louis Jordan,Let the Good Times Roll,,0.36744,-0.062886667
+585,Dionne Warwick,I Just Don''t Know What to Do With Myself,,-0.357946667,-0.260026667
+586,Squeeze,Is That Love,,0.018573333,0.082326667
+587,Burl Ives,Lavender Blue (Dilly Dilly),,0.140626667,-0.441553333
+588,Johnny Cash,Daddy Sang Bass,,0.43852,0.271753333
+589,The Turtles,I''m Chief Kamanawanalea (We''re the Royal Macadamia Nuts),,0.344286667,0.435606667
+590,John Coltrane,My Favorite Things,,0.189946667,-0.314606667
+591,The Kinks,Juke Box Music,,0.285113333,0.258213333
+592,The Hollies,Bus Stop,,0.036146667,0.37636
+593,Billy Bragg,The Milkman of Human Kindness,,-0.10068,0.03208
+594,Cheap Trick,California Man,,0.430153333,0.5893
+595,Tom Waits,Downtown Train,,-0.491233333,-0.4074
+596,The Kinks,Sunny Afternoon,,-0.404433333,-0.18188
+597,John Lee Hooker,Hobo Blues,,-0.165426667,0.005146667
+598,Free,All Right Now,,0.63858,0.563646667
+599,Shania Twain,Man! I Feel Like a Woman!,,0.659313333,0.60726
+600,Faces,Sweet Lady Mary,,-0.040033333,-0.2767
+601,Terry Callier,Satin Doll,,0.172206667,-0.435993333
+602,Bread,Baby I''m-A Want You,,0.494273333,-0.13522
+603,Paula Abdul,Forever Your Girl,,0.597026667,0.599433333
+604,The Rolling Stones,Paint It Black,,-0.197666667,0.4538
+605,Hound Dog Taylor,Give Me Back My Wig,,0.282306667,0.339913333
+606,Roy Orbison,It''s Over,,-0.280953333,-0.330426667
+607,The Stone Roses,I Wanna Be Adored,,0.0207,-0.002186667
+608,Sweet,Ballroom Blitz,,0.456746667,0.768673333
+609,Pantera,Cowboys From Hell,,-0.37604,0.710386667
+610,Phil Collins,Against All Odds (Take a Look at Me Now),,-0.043833333,-0.271026667
+611,Crowded House,Don''t Dream It''s Over,,0.235493333,0.098133333
+612,The Doors,People Are Strange,,-0.218413333,0.145553333
+613,Biz Markie,Vapors,,0.198093333,0.209393333
+614,Mott the Hoople,I Wish I Was Your Mother,,-0.168066667,0.112753333
+615,Jimmy Eat World,Bleed American,,-0.084126667,0.556173333
+616,Manfred Mann,Do Wah Diddy Diddy,,0.623,0.441053333
+617,Bob Dylan,Knockin'' on Heaven''s Door,,-0.102953333,-0.348293333
+618,Pharoah Sanders,Creator Has a Master Plan,,-0.246433333,0.37226
+619,Ace of Base,Don''t Turn Around,,0.173593333,0.36782
+620,Roberta Flack,Killing Me Softly With His Song,,0.008566667,-0.41086
+621,Elvis Costello,God Give Me Strength,,-0.43612,-0.66208
+622,Jimmy Smith,Back at the Chicken Shack,,0.22314,-0.456046667
+623,The Beatles,Strawberry Fields Forever,,0.098566667,-0.19196
+624,Dr. Hook,Cover of the Rolling Stone,,0.476606667,0.336293333
+625,Digital Underground,The Humpty Dance,,0.470553333,0.504146667
+626,Metallica,Fade to Black,,0.015826667,0.0515
+627,Barenaked Ladies,Be My Yoko Ono,,0.409093333,0.432873333
+628,Marshall Crenshaw,Cynical Girl,,0.27172,0.181973333
+629,The Byrds,Turn! Turn! Turn! (To Everything There Is a Season),,0.464573333,-0.096806667
+630,B.B. King,Every Day I Have the Blues,,-0.189986667,0.4652
+631,Rufus Wainwright,Beauty Mark,,0.033273333,-0.09354
+632,Van Halen,Ain''t Talkin'' ''Bout Love,,0.06614,0.599506667
+633,Buddy Guy,"""Damn Right",,-0.1824,0.153046667
+634,Tricky,Overcome,,-0.09288,-0.26548
+635,Warren Zevon,Werewolves of London,,0.258146667,0.179493333
+636,James Brown,Cold Sweat,,0.33178,0.404686667
+637,Jane Wiedlin,Blue Kiss,,0.254306667,0.168266667
+638,Mott the Hoople,"""Ballad of Mott the Hoople (26th March 1972",,-0.15824,-0.26074
+639,Bob Dylan,From a Buick 6,,0.180046667,0.401713333
+640,Spice Girls,Wannabe,,0.510853333,0.748746667
+641,Heidi Berry,Up in the Air,,-0.06778,-0.625166667
+642,Neneh Cherry,Buffalo Stance,,0.545873333,0.699066667
+643,Leonard Cohen,Bird on a Wire,,-0.251493333,-0.680126667
+644,Peggy Lee,I Don''t Know Enough About You,,0.345873333,-0.443713333
+645,Hanson,MMMBop,,0.446133333,0.633706667
+646,Frank Sinatra,Embraceable You,,0.371,-0.731266667
+647,Anthrax,Got the Time,,-0.29218,0.751433333
+648,Bobby McFerrin,"""Don''t Worry",,0.89662,-0.046173333
+649,Faith No More,Epic,,-0.023413333,0.6108
+650,Black Grape,Reverend Black Grape,,0.2205,0.421706667
+651,Eddie Cochran,C''mon Everybody,,0.540093333,0.45274
+652,Wanda Jackson,Hot Dog! That Made Him Mad,,0.284106667,0.179926667
+653,The Zeros,Don''t Push Me Around,,-0.263446667,0.415973333
+654,R.E.M.,"What''s the Frequency, Kenneth_",,0.22858,0.2231
+655,Luther Vandross,Here and Now,,0.562173333,-0.182633333
+656,The Rutles,Cheese and Onions,,-0.118866667,-0.332166667
+657,David Bowie,Changes,,-0.198366667,-0.310453333
+658,They Might Be Giants,Ana Ng,,0.02196,0.340706667
+659,Joe South,Hush,,0.38802,0.547393333
+660,John Coltrane,Naima,,-0.099293333,-0.675393333
+661,Patsy Cline,Walkin'' After Midnight,,-0.224926667,-0.282826667
+662,Bob Dylan,Girl from the North Country,,-0.070906667,-0.178313333
+663,"Gladys Knight &amp; the Pips, Gladys Knight",Every Beat of My Heart,,0.20682,-0.16026
+664,Spiritualized,Lay Back in the Sun,,0.33122,0.112266667
+665,Violent Femmes,Gone Daddy Gone,,-0.413146667,0.215193333
+666,Tricky,Black Steel,,-0.280993333,0.120953333
+667,Public Enemy,Black Steel in the Hour of Chaos,,-0.371513333,0.3764
+668,"Bruce Springsteen; the E Street Band, Bruce Springsteen",American Skin (41 Shots),,-0.511086667,-0.309766667
+669,Joy Division,Isolation,,0.014013333,0.14206
+670,Mose Allison,Your Mind Is on Vacation,,-0.009346667,-0.240906667
+671,Rick Astley,Never Gonna Give You Up,,0.582433333,0.608746667
+672,Babes in Toyland,Bruise Violet,,-0.473473333,0.58338
+673,Fats Waller,Your Feet''s Too Big,,0.13834,0.09496
+674,The Everly Brothers,Let It Be Me,,0.173333333,-0.328533333
+675,Willie Nelson,On the Sunny Side of the Street,,0.455313333,-0.222333333
+676,Stereolab,Cybele''s Reverie,,0.19386,0.224733333
+677,Cameo,Word Up!,,0.360513333,0.5282
+678,Cab Calloway,Minnie the Moocher,,-0.10108,0.02874
+679,Gloria Estefan,Anything for You,,-0.251886667,-0.35518
+680,The Flying Burrito Brothers,Break My Mind,,0.10246,0.455686667
+681,"Mick Jagger, The Rolling Stones",Emotional Rescue,,-0.185353333,0.351373333
+682,The Beach Boys,''Til I Die,,-0.068593333,-0.032446667
+683,Them,Gloria,,0.364113333,0.62074
+684,Rage Against the Machine,Killing in the Name,,-0.349633333,0.637693333
+685,DJ Jazzy Jeff & the Fresh Prince,Parents Just Don''t Understand,,0.193886667,0.475246667
+686,Pixies,Velouria,,0.022326667,0.266806667
+687,Red Hot Chili Peppers,Higher Ground,,0.44428,0.593113333
+688,Miles Davis,Boplicity,,0.351853333,-0.198366667
+689,Marvin Gaye,What''s Going On,,0.323913333,-0.078006667
+690,The Verve,The Drugs Don''t Work,,-0.333886667,-0.410193333
+691,Louis Jordan,Ain''t Nobody Here But Us Chickens,,0.497446667,0.165013333
+692,Spanky & Our Gang,Sunday Mornin'',,0.147826667,-0.191133333
+693,Van Halen,Panama,,0.367386667,0.664833333
+694,Kenny Rogers,Islands in the Stream,,0.497066667,-0.050106667
+695,Billy Paul,Me and Mrs. Jones,,0.2779,-0.300713333
+696,The Romantics,What I Like About You,,0.626366667,0.710126667
+697,Del Shannon,Runaway,,-0.155853333,0.2829
+698,Caravan,In the Land of Grey and Pink,,-0.05072,-0.24194
+699,RuPaul,Supermodel (You Better Work),,0.450173333,0.529173333
+700,Tim Buckley,Song to the Siren,,-0.23338,-0.445206667
+701,Adrian Belew,Men in Helicopters,,0.030733333,0.363826667
+702,The Beautiful South,Hit Parade,,-0.175833333,-0.331086667
+703,Don Williams,Tulsa Time,,0.15914,0.127
+704,Bee Gees,How Can You Mend a Broken Heart_,,-0.366313333,-0.160993333
+705,Violent Femmes,Add It Up,,0.03842,0.428993333
+706,The Dixie Cups,Chapel of Love,,0.535713333,0.331713333
+707,The Who,My Generation,,0.361946667,0.590246667
+708,Hasil Adkins,She Said,,0.216813333,0.449773333
+709,The Ramones,Judy Is a Punk,,0.2851,0.569086667
+710,Petula Clark,Downtown,,0.40474,-0.11384
+711,Rob Base,It Takes Two,,0.58364,0.81446
+712,Brinsley Schwarz,Home in My Hand,,0.404833333,0.575773333
+713,The Rolling Stones,As Tears Go By,,-0.15262,-0.316766667
+714,Nirvana,Smells Like Teen Spirit,,-0.4494,0.240853333
+715,Simon & Garfunkel,The Sound of Silence,,-0.162346667,0.00982
+716,The Stooges,Raw Power,,-0.24546,0.450333333
+717,Rufus Thomas,Do the Funky Chicken,,0.55266,0.59074
+718,Melvins,Gluey Porch Treatments,,-0.39554,0.517226667
+719,Bruce Springsteen,Glory Days,,0.425493333,0.621553333
+720,Joni Mitchell,Raised on Robbery,,0.551033333,0.569153333
+721,Glen Campbell,Wichita Lineman,,-0.033973333,-0.335593333
+722,Frank Sinatra,Angel Eyes,,-0.073686667,-0.500226667
+723,The Monkees,(Theme From) The Monkees,,0.564653333,0.494393333
+724,Bob Dylan,Like a Rolling Stone,,-0.239986667,0.238413333
+725,LL Cool J,Mama Said Knock You Out,,-0.30738,0.52344
+726,Barenaked Ladies,Brian Wilson,,-0.061386667,0.178406667
+727,Ash,Girl from Mars,,0.249253333,0.43134
+728,Lambert," Hendricks & Ross""",,0.09866,0.183966667
+729,Petula Clark,Don''t Sleep in the Subway,,0.0356,0.125966667
+730,Black Sabbath,Iron Man,,-0.12848,0.504373333
+731,Therapy?,Screamager,,-0.330473333,0.5316
+732,Al Green,Here I Am (Come and Take Me),,0.013693333,-0.28114
+733,Jackson Browne,Somebody''s Baby,,0.317913333,0.2352
+734,The Byrds,Hickory Wind,,-0.22536,-0.361853333
+735,Belly,Feed the Tree,,0.15904,0.37434
+736,"Bruce Springsteen; the E Street Band, Bruce Springsteen",The River,,-0.176766667,-0.4548
+737,Louis Jordan,Saturday Night Fish Fry,,0.369906667,0.393526667
+738,Patsy Cline,I Fall to Pieces,,-0.356746667,-0.313086667
+739,Dean Martin,You''re Nobody ''Til Somebody Loves You,,0.23668,-0.073833333
+740,Digital Underground,Doowutchyalike,,0.348813333,0.4821
+741,Spoon,Metal School,,-0.098426667,0.401073333
+742,Grand Funk Railroad,We''re an American Band,,0.45258,0.5821
+743,Bruce Springsteen,My Hometown,,0.10262,-0.28416
+744,Tito Puente,Hot Timbales,,0.03662,0.661586667
+745,James Brown,Papa''s Got a Brand New Bag,,0.575533333,0.591693333
+746,Willie Nelson,Blue Skies,,-0.010733333,-0.497966667
+747,Ice Cube,Check Yo Self,,-0.02798,0.573933333
+748,Bettie Serveert,Palomine,,-0.044933333,-0.210993333
+749,The Beach Boys,Girl Don''t Tell Me,,0.217026667,0.080346667
+750,The Buggles,Video Killed the Radio Star,,0.256373333,0.5039
+751,Pink Floyd,Arnold Layne,,0.066606667,0.01628
+752,Frank Sinatra,Strangers in the Night,,0.267566667,-0.43318
+753,At the Drive-In,Quarantined,,-0.258153333,0.197086667
+754,Creedence Clearwater Revival,Down on the Corner,,0.514593333,0.395726667
+755,Talking Heads,Life During Wartime,,0.129413333,0.580906667
+756,Frank Sinatra,Come Rain or Come Shine,,0.26892,-0.623013333
+757,The Rolling Stones,Play with Fire,,-0.28988,-0.086393333
+758,Bruce Springsteen,Open All Night,,0.133793333,0.214826667
+759,Fleetwood Mac,Rhiannon,,-0.065513333,0.135133333
+760,Steely Dan,Black Cow,,0.083653333,-0.069706667
+761,Jethro Tull,Aqualung,,-0.04312,0.262846667
+762,Clifford Brown,Joy Spring,,0.300986667,-0.075586667
+763,Mott the Hoople,All the Way from Memphis,,0.18478,0.459626667
+764,Wanda Jackson,Let''s Have a Party,,0.515593333,0.541906667
+765,Sagittarius,My World Fell Down,,-0.24686,0.018033333
+766,The Everly Brothers,Crying in the Rain,,-0.341693333,-0.125853333
+767,Clarence Carter,Slip Away,,0.215966667,0.199153333
+768,Tommy Keene,Places That Are Gone,,0.216173333,0.282306667
+769,The Moog Cookbook,More Than a Feeling,,0.457166667,0.587006667
+770,The Main Ingredient,Everybody Plays the Fool,,0.26002,0.23798
+771,Joni Mitchell,"""Both Sides",,-0.030386667,-0.40266
+772,The Velvet Underground,Pale Blue Eyes,,-0.070846667,-0.555426667
+773,Bad Manners,Lip up Fatty,,0.50456,0.66356
+774,Frank Sinatra,Put Your Dreams Away (For Another Day),,0.336146667,-0.36696
+775,Half Japanese,Miracles Happen Every Day,,0.247546667,0.030613333
+776,John Lennon,Mother,,-0.18858,-0.41304
+777,The Divine Comedy,Becoming More Like Alfie,,0.015066667,0.24186
+778,Dolly Parton,9 to 5,,0.237126667,0.51134
+779,Roxy Music,Dance Away,,-0.00746,0.030066667
+780,"Gladys Knight; the Pips, Gladys Knight",Neither One of Us (Wants to Be the First to Say Goodbye),,-0.24856,-0.449606667
+781,Metallica,One,,0.15836,-0.075726667
+782,Wilson Pickett,Land of 1000 Dances,,0.646906667,0.69172
+783,The Rolling Stones,Midnight Rambler,,0.245726667,0.289833333
+784,The Dickies,Banana Splits (The Tra La La Song),,0.463186667,0.5771
+785,Plastic Bertrand,Ca Plane Pour Moi,,0.359686667,0.377353333
+786,Badfinger,No Matter What,,0.436633333,0.206433333
+787,The Yardbirds,I''m a Man,,0.377706667,0.418753333
+788,Ash,Kung Fu,,0.19672,0.453066667
+789,Teresa Brewer,Music! Music! Music!,,0.458126667,0.413
+790,The Rolling Stones,Mother''s Little Helper,,-0.032986667,0.323466667
+791,George Morgan,Room Full of Roses,,-0.20652,-0.470206667
+792,Cracker,Teen Angst (What the World Needs Now),,0.026173333,0.287646667
+793,Bread,Make It With You,,-0.005453333,-0.308193333
+794,The Trashmen,Surfin'' Bird,,0.464506667,0.5682
+795,Gun Club,For the Love of Ivy,,-0.30484,0.461786667
+796,John Lennon,Jealous Guy,,-0.27468,-0.355053333
+797,The B-52''s,Rock Lobster,,0.23668,0.31962
+798,Elvis Presley,Blue Suede Shoes,,0.171246667,0.510073333
+799,A Tribe Called Quest,I Left My Wallet in El Segundo,,0.051406667,0.16178
+800,Madness,One Step Beyond,,0.254133333,0.544973333
+801,Madness,Baggy Trousers,,0.09012,0.480386667
+802,Rick Nelson,Waitin'' in School,,0.314513333,0.239293333
+803,Thin Lizzy,The Boys Are Back in Town,,0.510506667,0.610953333
+804,The Mamas & the Papas,Creeque Alley,,0.253393333,0.07524
+805,Mazzy Star,Fade Into You,,-0.049746667,-0.21068
+806,Frank Sinatra,One for My Baby (And One More for the Road),,0.031946667,-0.285706667
+807,Sammy Hagar,I Can''t Drive 55,,0.153586667,0.628186667
+808,Willie Nelson,Pretty Paper,,-0.142286667,-0.358553333
+809,The Smiths,This Charming Man,,0.134293333,0.456226667
+810,America,Sister Golden Hair,,0.435413333,0.256166667
+811,Gordon Lightfoot,Sundown,,0.106213333,-0.076833333
+812,Lefty Frizzell,Always Late (With Your Kisses),,-0.265913333,-0.389646667
+813,Tim Hardin,Misty Roses,,-0.108393333,-0.31008
+814,The Monkees,Daydream Believer,,0.519366667,0.554893333
+815,The Beautiful South,Old Red Eyes Is Back,,-0.3317,-0.148186667
+816,Randy Newman,I Think It''s Going to Rain Today,,-0.46158,-0.653066667
+817,Belle & Sebastian,The Stars of Track and Field,,0.13306,-0.365586667
+818,The Andrews Sisters,Don''t Sit Under the Apple Tree (With Anyone Else But Me),,0.4086,0.45182
+819,The Stooges,Loose,,-0.138613333,0.470146667
+820,Eric Dolphy,Iron Man,,0.296253333,0.338033333
+821,The Kinks,David Watts,,0.27164,0.355993333
+822,Syd Barrett,Baby Lemonade,,0.16804,-0.280433333
+823,Big Joe Turner,"""Shake",,0.346333333,0.278213333
+824,Pearl Jam,Daughter,,-0.173586667,0.294953333
+825,Nirvana,All Apologies,,-0.137426667,0.042433333
+826,Major Lance,The Monkey Time,,0.525393333,0.340893333
+827,Nazareth,Hair of the Dog,,-0.102733333,0.575426667
+828,Bob Dylan,It Ain''t Me Babe,,-0.249,-0.21708
+829,Foreigner,Double Vision,,-0.003193333,0.43324
+830,Derek & the Dominos,Anyday,,-0.486866667,0.219373333
+831,The Who,Amazing Journey,,0.15764,0.521413333
+832,David Bowie,Moonage Daydream,,-0.184053333,0.633733333
+833,The Rolling Stones,Start Me Up,,-0.087733333,0.64126
+834,MC5,I Can Only Give You Everything,,-0.08198,0.621633333
+835,Simon & Garfunkel,Homeward Bound,,-0.02138,-0.43476
+836,*NSYNC,Bye Bye Bye,,-0.196433333,0.433233333
+837,Eminem,The Way I Am,,-0.73456,0.456433333
+838,Public Enemy,911 Is a Joke,,-0.252806667,0.38782
+839,Hoyt Axton,Della and the Dealer,,0.031133333,0.309586667
+840,Stiff Little Fingers,Alternative Ulster,,0.113213333,0.692213333
+841,Sparks,I Predict,,-0.173053333,0.3042
+842,Johnnie Ray,Cry,,-0.28378,-0.405186667
+843,The Dukes of Stratosphear,Vanishing Girl,,0.08536,0.22444
+844,Siouxsie and the Banshees,Hong Kong Garden,,0.11232,0.346413333
+845,Anthrax,Bring the Noise,,-0.073273333,0.610873333
+846,Roy Wood,Songs of Praise,,0.4493,0.270226667
+847,Waylon Jennings,Only Daddy That''ll Walk the Line,,0.494806667,0.2177
+848,X,We''re Desperate,,-0.110613333,0.489033333
+849,The Stone Roses,I Am the Resurrection,,0.140986667,0.26498
+850,Harry Nilsson,Me and My Arrow,,0.113366667,-0.20006
+851,Black Sabbath,Sweet Leaf,,-0.26618,0.469853333
+852,Television,See No Evil,,0.055773333,0.472606667
+853,Del tha Funkee Homosapien,Mistadobalina,,0.213633333,0.426066667
+854,Johnny Paycheck,Take This Job and Shove It,,-0.06144,0.05246
+855,Derek & the Dominos,Layla,,0.05114,0.554093333
+856,Poison,Unskinny Bop,,0.39312,0.505333333
+857,Dexys Midnight Runners,Come on Eileen,,0.46872,0.369193333
+858,Big Star,September Gurls,,0.177853333,0.0448
+859,Sonny Rollins,Cutie,,0.463253333,-0.3673
+860,Gene Clark,Tried So Hard,,-0.120606667,-0.215006667
+861,The Misfits,Last Caress,,0.167726667,0.380866667
+862,Percy Sledge,When a Man Loves a Woman,,0.404433333,-0.0967
+863,Take That,Back for Good,,0.107,-0.143606667
+864,Pulp,Babies,,0.16202,-0.077326667
+865,Queen,Bohemian Rhapsody,,0.05938,-0.105273333
+866,The Smiths,Hand in Glove,,0.01896,0.283133333
+867,Camper Van Beethoven,Take the Skinheads Bowling,,0.228066667,0.318466667
+868,Poco,Just for Me and You,,0.37412,0.17666
+869,The Coasters,Searchin'',,0.27664,0.510793333
+870,Pere Ubu,Final Solution,,-0.104733333,0.386846667
+871,Echo & the Bunnymen,The Killing Moon,,-0.00586,0.183093333
+872,Cowboy Junkies,Misguided Angel,,-0.259413333,-0.52178
+873,Joan Baez,Diamonds & Rust,,-0.1571,-0.49082
+874,Michael Jackson,Don''t Stop ''Til You Get Enough,,0.609633333,0.62416
+875,Link Wray,Rumble,,-0.103746667,-0.143473333
+876,James Carr,The Dark End of the Street,,-0.1454,-0.416646667
+877,Journey,Don''t Stop Believin'',,0.527006667,0.303393333
+878,The Creation,Making Time,,0.195213333,0.455953333
+879,U2,I Still Haven''t Found What I''m Looking For,,0.269353333,-0.139573333
+880,Oingo Boingo,Dead Man''s Party,,0.281653333,0.516026667
+881,The dB''s,Love Is for Lovers,,0.195606667,0.15222
+882,Scud Mountain Boys,In a Ditch,,-0.187586667,-0.446786667
+883,Bob Dylan,Just Like Tom Thumb''s Blues,,-0.008473333,-0.252813333
+884,Ween,Piss up a Rope,,-0.22936,0.266766667
+885,Cypress Hill,Insane in the Brain,,0.122346667,0.463433333
+886,The Delfonics,La-La (Means I Love You),,0.539753333,-0.425446667
+887,The Strokes,Last Nite,,0.178066667,0.475326667
+888,Elton John,Goodbye Yellow Brick Road,,0.265066667,-0.209733333
+889,The Association,Windy,,0.50838,0.372713333
+890,Black Sabbath,War Pigs,,-0.313313333,0.16252
+891,Belle & Sebastian,The Fox in the Snow,,-0.08254,-0.393233333
+892,Blondie,X Offender,,0.05672,0.372613333
+893,U2,Where the Streets Have No Name,,0.473793333,-0.128213333
+894,Air,Kelly Watch the Stars,,0.210706667,-0.025826667
+895,Big Star,When My Baby''s Beside Me,,0.417266667,0.423086667
+896,Army of Lovers,Crucified,,-0.121246667,0.2328
+897,Captain Beefheart,Abba Zaba,,-0.041806667,0.014193333
+898,The Stone Roses,Waterfall,,0.307166667,-0.078626667
+899,Method Man,Bring the Pain,,-0.26358,0.069186667
+900,The Clash,White Riot,,0.05872,0.391913333
+901,The Fall,Big New Prinz,,-0.265446667,0.196126667
+902,The Five Stairsteps,O-o-h Child,,0.579973333,0.08776
+903,Art Blakey,Moanin'',,0.276186667,0.085453333
+904,Glenn Miller,In the Mood,,0.36186,0.219146667
+905,Marvin Gaye,What''s Happening Brother,,-0.026913333,-0.124606667
+906,Bomb the Bass,Bug Powder Dust,,-0.048046667,-0.30324
+907,Fleetwood Mac,Jumping at Shadows,,-0.36278,-0.468266667
+908,Bob Dylan,Subterranean Homesick Blues,,0.08174,0.271566667
+909,Stevie Wonder,You Are the Sunshine of My Life,,0.30794,-0.1888
+910,Led Zeppelin,Heartbreaker,,0.15578,0.225613333
+911,Jackie Wilson,(Your Love Keeps Lifting Me) Higher and Higher,,0.59016,0.548926667
+912,Bob Dylan,Million Dollar Bash,,-0.164966667,-0.342866667
+913,The Orb,Little Fluffy Clouds,,0.20068,0.16754
+914,Miles Davis,Sanctuary,,-0.248126667,-0.614353333
+915,Unrest,Breather X.O.X.O.,,-0.4156,-0.332393333
+916,Desi Arnaz,Babalu,,0.308313333,0.327253333
+917,Richard Thompson,Shoot Out the Lights,,-0.163313333,-0.281413333
+918,Little Richard,Lucille,,0.19192,0.751206667
+919,Mitch Ryder,Jenny Take a Ride!,,0.467293333,0.6507
+920,Pixies,Debaser,,-0.053793333,0.603993333
+921,Bad Company,Can''t Get Enough,,0.447506667,0.263526667
+922,Big Brother & the Holding Company,Piece of My Heart,,0.016453333,0.630106667
+923,Blue Cheer,Summertime Blues,,-0.104093333,0.563253333
+924,Fear,I Don''t Care About You,,-0.39458,0.61014
+925,Billy Joel,This Night,,-0.104626667,-0.00866
+926,Genesis,I Know What I Like (In Your Wardrobe),,0.011813333,0.05346
+927,Dizzy Gillespie,Salt Peanuts,,0.034593333,0.226946667
+928,The Monkees,I''m a Believer,,0.375,0.359873333
+929,Tom Lehrer,Poisoning Pigeons in the Park,,0.260433333,0.317246667
+930,Ween,Freedom of ''76,,0.289,-0.32264
+931,Louis Armstrong,Potato Head Blues,,0.308986667,0.24606
+932,The Cowsills,"""The Rain",,0.412253333,0.056633333
+933,Ronnie Milsap,She Keeps the Home Fires Burning,,0.311173333,-0.193626667
+934,The Velvet Underground,I Heard Her Call My Name,,-0.013713333,0.149193333
+935,George Jones,She Thinks I Still Care,,-0.1853,-0.44504
+936,Blur,Girls & Boys,,0.08268,0.245913333
+937,Leonard Cohen,"""So Long",,-0.137573333,-0.418786667
+938,Minor Threat,In My Eyes,,-0.585093333,0.647333333
+939,Bronski Beat,Smalltown Boy,,0.036166667,0.140113333
+940,Howlin'' Wolf,Smokestack Lightning,,-0.094773333,0.15562
+941,Jethro Tull,Bungle in the Jungle,,0.272366667,0.30182
+942,Bob Dylan,Maggie''s Farm,,-0.1494,0.185133333
+943,Blondie,Heart of Glass,,0.513846667,0.40294
+944,Jewel,I''m Sensitive,,-0.203226667,-0.327873333
+945,George Jones,A Picture of Me (Without You),,-0.410266667,-0.541293333
+946,They Might Be Giants,Birdhouse in Your Soul,,0.343366667,0.20972
+947,The Velvet Underground,Venus in Furs,,-0.453333333,-0.113306667
+948,The Ink Spots,Don''t Get Around Much Anymore,,-0.038353333,-0.473126667
+949,Muddy Waters,I Just Want to Make Love to You,,0.1356,0.252653333
+950,The Archies,Bang Shang-A-Lang,,0.513933333,0.320306667
+951,Primus,Tommy the Cat,,-0.232873333,0.300593333
+952,Bad Brains,Pay to Cum,,0.06654,0.620193333
+953,Talking Heads,Swamp,,-0.07986,-0.076033333
+954,The Chemical Brothers,Block Rockin'' Beats,,0.1999,0.42956
+955,U2,Sunday Bloody Sunday,,-0.09096,0.366526667
+956,Ravi Shankar,Raga Jog,,0.213966667,-0.388306667
+957,The Mamas & the Papas,California Dreamin'',,0.0761,0.028566667
+958,Elton John,Daniel,,0.107566667,-0.073753333
+959,Falco,Rock Me Amadeus,,0.32652,0.49662
+960,Paul Anka,Put Your Head on My Shoulder,,0.503546667,-0.284806667
+961,Ice Cube,Steady Mobbin'',,-0.1759,0.44926
+962,Beck,Where It''s At,,0.30738,-0.18314
+963,The Crests,Sixteen Candles,,0.37864,-0.339866667
+964,Throwing Muses,Counting Backwards,,-0.09382,0.108513333
+965,XTC,Dear God,,-0.202006667,-0.090073333
+966,Johnny Cash,Long Black Veil,,-0.24988,-0.382713333
+967,Liza Minnelli,"""Theme from New York",,0.370673333,0.50464
+968,Roy Brown,Good Rockin'' Tonight,,0.388133333,0.131353333
+969,Cheap Trick,Surrender,,0.407586667,0.49116
+970,Bootsy Collins,Bootzilla,,0.214833333,0.235333333
+971,Spike Jones,Der Fuehrer''s Face,,0.259746667,0.232046667
+972,Ornette Coleman,Congeniality,,0.52038,0.17302
+973,Buffalo Springfield,Expecting to Fly,,-0.348673333,-0.471433333
+974,Rosanne Cash,Seven Year Ache,,-0.01444,0.282766667
+975,Bob Dylan,I''ll Be Your Baby Tonight,,0.210153333,-0.270353333
+976,The Spencer Davis Group,I''m a Man,,0.240313333,0.54342
+977,Beth Orton,Stolen Car,,-0.1268,0.02722
+978,X,The World''s a Mess,,0.165233333,0.570233333
+979,Percy Faith,"""Theme from ""A Summer Place""""",,0.392626667,-0.22618
+980,Badfinger,Suitcase,,-0.000226667,0.1832
+981,Throbbing Gristle,20 Jazz Funk Greats,,-0.226366667,-0.339013333
+982,Jim Croce,Time in a Bottle,,-0.14262,-0.20394
+983,The Prodigy,Smack My Bitch Up,,0.189593333,0.86444
+984,Eric Matthews,My Morning Parade,,0.121593333,-0.14736
+985,Spanky & Our Gang,Sunday Will Never Be the Same,,0.07878,0.006046667
+986,The Kinks,The Village Green Preservation Society,,0.277926667,0.065146667
+987,Blur,Country House,,0.164293333,0.144946667
+988,Alice in Chains,Man in the Box,,-0.144646667,0.357413333
+989,Bob Dylan,Highlands,,0.018546667,-0.49764
+990,Aphex Twin,Xtal,,0.287246667,-0.30414
+991,Buffalo Tom,Taillights Fade,,-0.339353333,0.144673333
+992,Sam Butera,French Poodle,,0.583793333,-0.03988
+993,Snoop Dogg,Who Am I (What''s My Name)?,,0.06086,0.477213333
+994,The Exciters,Tell Him,,0.405813333,0.41768
+995,OutKast,"""So Fresh",,0.186086667,0.305166667
+996,Johnny Cash,Hey Porter,,0.185986667,0.141926667
+997,Antonio Carlos Jobim,Desafinado,,-0.4213,-0.6361
+998,The Cramps,The Crusher,,0.002526667,0.448266667
+999,The Kinks,Come Dancing,,0.27538,0.3642
+1000,The Bangles,Eternal Flame,,0.075186667,-0.127333333
+1001,Jewel Akens,The Birds and the Bees,,0.322166667,0.070153333
+1002,Paul McCartney,Silly Love Songs,,0.153566667,-0.177193333
+1003,The Doobie Brothers,Rockin'' Down the Highway,,0.33624,0.381553333
+1004,Britney Spears,...Baby One More Time,,0.17,0.377713333
+1005,Blur,Song 2,,0.316946667,0.72284
+1006,Jan & Dean,Surf City,,0.64894,0.455966667
+1007,Joan Jett,Bad Reputation,,0.229326667,0.7213
+1008,David Bowie,Starman,,0.135026667,-0.046526667
+1009,R.E.M.,Orange Crush,,0.01502,0.329593333
+1010,Beastie Boys,So What''cha Want,,-0.044866667,0.53252
+1011,Bob Dylan,If Not for You,,0.253493333,-0.14308
+1012,Dave Berry,The Crying Game,,-0.458793333,-0.453213333
+1013,Rick Springfield,Jessie''s Girl,,0.222126667,0.501593333
+1014,The Fall,Hit the North,,-0.007406667,0.166193333
+1015,Fatboy Slim,The Rockafeller Skank,,0.682846667,0.671566667
+1016,Primal Scream,MBV Arkestra (If They Move Kill ''Em),,-0.202646667,0.143926667
+1017,The Soft Boys,Underwater Moonlight,,-0.140053333,0.093673333
+1018,Miles Davis,My Funny Valentine,,-0.235633333,-0.401366667
+1019,The Andrews Sisters,Boogie Woogie Bugle Boy,,0.639366667,0.327466667
+1020,The Capris,There''s a Moon Out Tonight,,0.450413333,0.049293333
+1021,The Beatles,Things We Said Today,,0.18548,-0.15176
+1022,Rod Stewart,(I Know) I''m Losing You,,-0.144026667,0.34236
+1023,James Brown,Say It Loud (I''m Black and I''m Proud),,0.35678,0.53114
+1024,Lou Reed,Romeo Had Juliette,,0.025206667,0.013626667
+1025,Pet Shop Boys,Opportunities (Let''s Make Lots of Money),,-0.03982,0.001993333
+1026,Kim Fowley,Animal Man,,0.29256,0.564593333
+1027,Robert Johnson,Hellhound on My Trail,,-0.404553333,-0.40852
+1028,Newcleus,Jam on Revenge (The Wikki-Wikki Song),,0.310766667,0.2384
+1029,Rickie Lee Jones,Chuck E.''s in Love,,0.5519,0.06322
+1030,Def Leppard,Photograph,,0.37074,0.619693333
+1031,Badly Drawn Boy,Everybody''s Stalking,,-0.00292,-0.184786667
+1032,Dusty Springfield,Wishin'' and Hopin'',,0.60656,0.023213333
+1033,The Runaways,Cherry Bomb,,0.13692,0.576053333
+1034,Nirvana,Dive,,-0.353793333,0.27714
+1035,Curtis Mayfield,It''s All Right,,0.651033333,-0.0904
+1036,Wilson Pickett,Mustang Sally,,0.240626667,0.285973333
+1037,Bob Dylan,Highway 61 Revisited,,0.008386667,0.293793333
+1038,Ray Charles,Night Time Is the Right Time,,0.26448,-0.173966667
+1039,Iron Maiden,Run to the Hills,,-0.382933333,0.726653333
+1040,Madonna,Holiday,,0.628786667,0.385593333
+1041,Sweet,Little Willy,,0.191813333,0.306053333
+1042,Miles Davis,Summertime,,0.090773333,-0.55008
+1043,Was (Not Was),Walk the Dinosaur,,0.33028,0.4879
+1044,Koko Taylor,Wang Dang Doodle,,0.1907,0.113453333
+1045,The Box Tops,Cry Like a Baby,,0.065053333,0.09538
+1046,Miles Davis,Miles Ahead,,0.136686667,-0.30174
+1047,Nick Gilder,Hot Child in the City,,0.308746667,0.26846
+1048,The Byrds,All I Really Want to Do,,0.269793333,-0.026046667
+1049,The Manhattan Transfer,Boy from New York City,,0.45628,0.389753333
+1050,Sonic Youth,Expressway to Yr. Skull,,-0.33346,-0.28856
+1051,Supergrass,Caught by the Fuzz,,-0.220473333,0.56884
+1052,Bob Dylan,Shelter from the Storm,,0.081533333,-0.20366
+1053,R. Carlos Nakai,Canyon Reverie,,0.15286,-0.52588
+1054,The Cardigans,Lovefool,,0.291893333,0.342753333
+1055,Poison,Nothin'' but a Good Time,,0.362813333,0.61412
+1056,Daft Punk,Da Funk,,0.01356,0.487253333
+1057,Duke Ellington,East St. Louis Toodle-Oo,,0.159886667,0.0072
+1058,The Who,"""A Quick One",,0.016113333,0.12232
+1059,Burt Bacharach,(They Long to Be) Close to You,,0.399753333,-0.246933333
+1060,Gil Scott-Heron,Johannesburg,,0.2156,0.199926667
+1061,The Flying Burrito Brothers,Farther Along,,-0.0502,-0.26252
+1062,''Til Tuesday,Voices Carry,,0.054153333,0.100713333
+1063,Billy Idol,Rebel Yell,,-0.112606667,0.468306667
+1064,Pet Shop Boys,Rent,,0.034886667,0.149993333
+1065,The Who,Eminence Front,,0.078926667,0.081906667
+1066,Led Zeppelin,Communication Breakdown,,0.144906667,0.615913333
+1067,"Elvis Costello, Elvis Costello; the Attractions",Beyond Belief,,-0.1921,-0.112253333
+1068,The Housemartins,Happy Hour,,0.361313333,0.44238
+1069,They Might Be Giants,(She Was A) Hotel Detective,,0.047346667,0.19244
+1070,Neko Case,Bowling Green,,0.145693333,0.066906667
+1071,Happy Mondays,Kinky Afro,,-0.14586,0.0466
+1072,Elvis Costello,Alison,,-0.251386667,-0.4052
+1073,Neil Young,Sedan Delivery,,-0.230246667,0.048946667
+1074,Van Morrison,Tupelo Honey,,0.13908,-0.26282
+1075,Stereo Total,Beautycase,,0.08586,0.21056
+1076,The Kinks,Don''t Forget to Dance,,-0.30362,-0.411326667
+1077,Simon & Garfunkel,Mrs. Robinson,,0.355173333,0.34042
+1078,Rufus Thomas,Walking the Dog,,0.34058,0.19348
+1079,The Rascals,A Beautiful Morning,,0.296286667,0.069566667
+1080,Guns N'' Roses,Paradise City,,0.3945,0.663073333
+1081,Jewel,You Were Meant for Me,,-0.24048,-0.1557
+1082,Fred Neil,The Dolphins,,-0.262626667,-0.280986667
+1083,Hasil Adkins,No More Hot Dogs,,0.092646667,0.487293333
+1084,Green River,Swallow My Pride,,-0.12238,0.46974
+1085,Faith No More,A Small Victory,,0.0962,0.119293333
+1086,U2,Pride (In the Name of Love),,0.37864,0.501506667
+1087,The Rolling Stones,Little Red Rooster,,-0.157873333,-0.475553333
+1088,Dean Martin,Ain''t That a Kick in the Head,,0.62508,0.307793333
+1089,The Time,777-9311,,0.151433333,0.255293333
+1090,Cocteau Twins,Iceblink Luck,,0.058853333,0.08116
+1091,Freedy Johnston,This Perfect World,,-0.365153333,-0.427106667
+1092,Carmen McRae,Comes Love,,-0.019406667,-0.11246
+1093,Bay City Rollers,Saturday Night,,0.49758,0.396093333
+1094,Bush,Everything Zen,,-0.07648,0.529926667
+1095,The Doors,Celebration of the Lizard,,-0.47768,-0.327006667
+1096,The Germs,Forming,,-0.44112,0.216566667
+1097,Sarah Vaughan,Misty,,0.16472,-0.383906667
+1098,John Cale,Child''s Christmas in Wales,,0.268946667,-0.000326667
+1099,David Bowie,Suffragette City,,0.250253333,0.602673333
+1100,PJ Harvey,Rid of Me,,-0.233413333,-0.226073333
+1101,Tom Waits,Jockey Full of Bourbon,,-0.278093333,-0.158833333
+1102,Aerosmith,Back in the Saddle,,0.06504,0.570293333
+1103,The Searchers,Needles and Pins,,0.082546667,0.143213333
+1104,Blondie,Rapture,,0.174466667,0.363433333
+1105,The Auteurs,Show Girl,,0.15112,-0.13538
+1106,Eddie & the Hot Rods,Teenage Depression,,0.288466667,0.6372
+1107,Supergrass,Mansize Rooster,,0.088173333,0.63786
+1108,Blue Cheer,Out of Focus,,-0.025706667,0.31036
+1109,Eagles,Take It to the Limit,,0.02546,-0.299993333
+1110,Black Sabbath,Black Sabbath,,-0.105046667,0.63752
+1111,Big Maybelle,One Monkey Don''t Stop No Show,,0.243613333,-0.105973333
+1112,Bob Dylan,Not Dark Yet,,-0.24032,-0.340806667
+1113,Janis Joplin,Piece of My Heart,,0.18348,0.445006667
+1114,Felt,Primitive Painters,,0.147973333,0.024546667
+1115,Pantera,Cemetery Gates,,-0.323406667,-0.121953333
+1116,Atari Teenage Riot,Start the Riot,,-0.167306667,0.44822
+1117,Stevie Wonder,Isn''t She Lovely,,0.57092,0.321233333
+1118,Loudon Wainwright III,Dead Skunk,,-0.05516,0.23722
+1119,Mojo Nixon,Elvis Is Everywhere,,0.20454,0.42132
+1120,Squeeze,Up the Junction,,0.048153333,0.280793333
+1121,"David Bowie, Rick Wakeman",Space Oddity,,-0.126493333,-0.313953333
+1122,Sam Cooke,A Change Is Gonna Come,,-0.057913333,-0.183106667
+1123,New Order,True Faith,,-0.03274,0.346926667
+1124,Tommy James & the Shondells,Mony Mony,,0.44002,0.620173333
+1125,Alice in Chains,Got Me Wrong,,-0.239933333,0.11244
+1126,R.E.M.,Imitation of Life,,-0.135146667,-0.28298
+1127,TLC,No Scrubs,,0.094953333,0.366066667
+1128,Frank Sinatra,These Foolish Things,,0.130213333,-0.554993333
+1129,Paul Carrack,Don''t Shed a Tear,,0.317453333,0.2862
+1130,The Rutles,I Must Be in Love,,0.460526667,0.258386667
+1131,The Pogues,If I Should Fall from Grace With God,,0.195273333,0.346753333
+1132,Faces,Had Me a Real Good Time,,0.118833333,0.290506667
+1133,Toni Basil,Mickey,,0.35126,0.487573333
+1134,Frank Sinatra,Try a Little Tenderness,,-0.119726667,-0.511226667
+1135,Hank Ballard,Finger Poppin'' Time,,0.4121,0.2674
+1136,Nirvana,Heart Shaped Box,,-0.29398,0.167666667
+1137,Art Blakey,Free for All,,0.146253333,0.23222
+1138,The Beatles,It''s All Too Much,,0.166646667,0.201113333
+1139,Julie Andrews,My Favorite Things,,0.594586667,0.19388
+1140,Helmet,In the Meantime,,-0.520533333,0.495186667
+1141,Barry Manilow,Mandy,,0.045366667,-0.19556
+1142,The Everly Brothers,All I Have to Do Is Dream,,0.376713333,-0.244846667
+1143,Lyle Lovett,Here I Am,,0.276386667,0.082593333
+1144,Hank Williams,Honky Tonkin'',,0.182946667,0.102933333
+1145,Saint Etienne,Join Our Club,,0.335746667,0.415953333
+1146,The Temptations,Just My Imagination (Running Away With Me),,0.284326667,-0.42322
+1147,Little Feat,Fat Man in the Bathtub,,0.23092,0.24586
+1148,Digital Underground,Underwater Rimes,,0.2025,0.030753333
+1149,The Barracudas,Summer Fun,,0.329193333,0.570733333
+1150,Bob Marley,"""No Woman",,0.0147,-0.330106667
+1151,Hank Ballard,"""Let''s Go",,0.424906667,0.313913333
+1152,Frank Sinatra,When Your Lover Has Gone,,-0.126613333,-0.393873333
+1153,The Kinks,Waterloo Sunset,,0.17114,-0.03782
+1154,Chuck Berry,Rock & Roll Music,,0.61016,0.546326667
+1155,Gene,"""Be My Light",,-0.14352,0.03236
+1156,Buddy Rich,Groovin'' Hard,,0.433593333,0.249013333
+1157,Frank Sinatra,Too Marvelous for Words,,0.517126667,0.081813333
+1158,Billy Joel,New York State of Mind,,-0.05966,-0.48212
+1159,Lauryn Hill,Doo Wop (That Thing),,0.02296,0.454453333
+1160,Buddy Holly,"""Oh",,0.60314,0.496473333
+1161,Syd Barrett,Octopus,,-0.00668,0.07216
+1162,Ray Charles,Sitting on Top of the World,,-0.054073333,-0.614953333
+1163,The Rascals,Good Lovin'',,0.724333333,0.714093333
+1164,Roger Miller,Kansas City Star,,0.139573333,-0.17196
+1165,Kate Bush,Wuthering Heights,,0.25941875,0.1489375
+1166,Billy Joel,The Longest Time,,0.5259,0.22345625
+1167,Joy Division,Transmission,,-0.1325,0.02290625
+1168,Mission of Burma,That''s When I Reach for My Revolver,,-0.09113125,0.2197375
+1169,The Replacements,Can''t Hardly Wait,,0.33715,0.294475
+1170,The Isley Brothers,Twist and Shout,,0.6701375,0.59495625
+1171,The Clash,The Call Up,,-0.094925,0.0830125
+1172,George Jones,Why Baby Why,,-0.2397375,0.06313125
+1173,The Band,The Night They Drove Old Dixie Down,,-0.30935,-0.27974375
+1174,Big Country,In a Big Country,,0.2151375,0.20995625
+1175,The Beautiful South,Song for Whoever,,0.17280625,-0.52274375
+1176,Ashford & Simpson,Solid,,0.354025,0.0967375
+1177,Lynyrd Skynyrd,Gimme Three Steps,,0.1655,0.318326667
+1178,Joe Williams,Goin'' to Chicago,,-0.197933333,-0.17376
+1179,Gram Parsons,In My Hour of Darkness,,-0.127526667,-0.110513333
+1180,The Beatles,Penny Lane,,0.394146667,0.313526667
+1181,The Divine Comedy,Something for the Weekend,,0.09562,0.293573333
+1182,The Smiths,Heaven Knows I''m Miserable Now,,-0.031193333,0.288466667
+1183,The Doors,Break on Through (To the Other Side),,0.26268,0.685146667
+1184,The Jackson 5,ABC,,0.60302,0.622226667
+1185,10cc,The Wall Street Shuffle,,0.1117,0.2435
+1186,The Rolling Stones,2000 Light Years from Home,,-0.134206667,-0.050333333
+1187,Blur,To the End,,-0.253673333,-0.271266667
+1188,Yo La Tengo,My Little Corner of the World,,0.007806667,-0.264073333
+1189,The Neville Brothers,Tell It Like It Is,,-0.171266667,-0.360913333
+1190,LaVern Baker,Jim Dandy,,0.468493333,0.508086667
+1191,Danzig,Mother,,-0.247046667,0.607226667
+1192,Boogie Down Productions,Bridge Is Over,,0.094086667,0.352666667
+1193,Aretha Franklin,Respect,,0.61916,0.642946667
+1194,The Rentals,Friends of P.,,0.108946667,0.211073333
+1195,Smokey Robinson,The Tracks of My Tears,,0.035373333,-0.10414
+1196,Bon Jovi,Bad Medicine,,-0.04568,0.569
+1197,The Jam,Town Called Malice,,0.199186667,0.471193333
+1198,Phil Collins,A Groovy Kind of Love,,0.264826667,-0.42672
+1199,New Vaudeville Band,Winchester Cathedral,,0.600206667,0.078133333
+1200,Frank Sinatra,Time After Time,,0.234566667,-0.592346667
+1201,Dean Martin,Memories Are Made of This,,0.292026667,-0.1886
+1202,Traffic,Dear Mr. Fantasy,,0.062993333,0.1086
+1203,Bobby Darin,"""Hello",,0.477853333,0.37048
+1204,Hank Williams,Jambalaya (On the Bayou),,0.145153333,-0.339966667
+1205,James Taylor,You''ve Got a Friend,,0.340013333,-0.46718
+1206,Blur,Pop Scene,,-0.103053333,0.68122
+1207,Pixies,Tame,,-0.26036,0.553386667
+1208,Prince,Let''s Go Crazy,,0.549226667,0.596966667
+1209,The Police,Can''t Stand Losing You,,-0.117,0.106386667
+1210,Billie Holiday,Lover Man,,-0.212006667,-0.556433333
+1211,Dolly Parton,Here You Come Again,,0.064773333,0.045446667
+1212,Little Richard,Good Golly Miss Molly,,0.643273333,0.6785
+1213,Cilla Black,Alfie,,0.300566667,0.048893333
+1214,Utopia,Feet Don''t Fail Me Now,,0.162186667,0.412713333
+1215,Wynonie Harris,Good Rockin'' Tonight,,0.46612,0.270266667
+1216,The Rolling Stones,Angie,,-0.097113333,-0.162713333
+1217,Matthew Sweet,I''ve Been Waiting,,0.311793333,0.21028
+1218,Gram Parsons,Still Feeling Blue,,0.070986667,0.340413333
+1219,Miles Davis,In Your Own Sweet Way,,0.14126,-0.534013333
+1220,Frank Sinatra,Nancy (With the Laughing Face),,0.05494,-0.498153333
+1221,Billy Ray Cyrus,Achy Breaky Heart,,0.002626667,0.4179
+1222,Johnny Mathis,Wonderful! Wonderful!,,0.269986667,-0.255806667
+1223,Coldplay,Yellow,,0.289926667,0.178693333
+1224,Craig Mack,Flava in Ya Ear,,0.060273333,0.061766667
+1225,The Cure,Killing an Arab,,-0.07632,0.207713333
+1226,Burt Bacharach,Pacific Coast Highway,,0.410726667,0.201033333
+1227,Chairmen of the Board,Give Me Just a Little More Time,,0.3039,0.614193333
+1228,Low,Over the Ocean,,-0.27904,-0.49728
+1229,Al Stewart,Year of the Cat,,0.242113333,0.075213333
+1230,Tenacious D,Explosivo,,0.060706667,0.79846
+1231,Paula Cole,I Don''t Want to Wait,,0.0689,-0.093986667
+1232,Glen Campbell,Gentle on My Mind,,0.15978,0.01218
+1233,Mudhoney,In ''N'' Out of Grace,,-0.009453333,0.666873333
+1234,Talking Heads,Psycho Killer,,-0.14224,0.281333333
+1235,Pet Shop Boys,Being Boring,,0.085573333,-0.16468
+1236,Live,Lightning Crashes,,-0.37014,-0.2862
+1237,Buzzcocks,Orgasm Addict,,0.086166667,0.514193333
+1238,The Animals,We Gotta Get Out of This Place,,0.00912,0.137146667
+1239,Brian Eno,Baby''s on Fire,,0.128033333,0.39252
+1240,The Kinks,Victoria,,0.338893333,0.35338
+1241,Gerry Mulligan,Line for Lyons,,0.324813333,-0.127726667
+1242,Bread,If,,-0.081253333,-0.431646667
+1243,Nick Drake,At the Chime of a City Clock,,-0.01374,-0.36014
+1244,Willie Nelson,All of Me,,-0.196226667,-0.32964
+1245,Mose Allison,Parchman Farm,,0.22118,0.060686667
+1246,Public Enemy,Welcome to the Terrordome,,-0.124293333,0.586433333
+1247,Big Star,You Can''t Have Me,,-0.087366667,0.181026667
+1248,Dusty Springfield,I Only Want to Be With You,,0.5063,0.532553333
+1249,Gregory Isaacs,All I Have Is Love,,0.3562,-0.09336
+1250,Lene Lovich,Lucky Number,,0.1202,0.483173333
+1251,The Dead Milkmen,Bitchin'' Camaro,,-0.102613333,-0.30088
+1252,Billie Holiday,Fine and Mellow,,-0.030306667,-0.453386667
+1253,The Marvelettes,Beechwood 4-5789,,0.365266667,0.45942
+1254,Nancy Sinatra,Some Velvet Morning,,0.014706667,-0.40852
+1255,The Sundays,Here''s Where the Story Ends,,0.19848,0.122153333
+1256,Joe Cocker,With a Little Help from My Friends,,0.241706667,0.32042
+1257,James Brown,Night Train,,0.35304,0.338953333
+1258,Smokey Robinson,Ooo Baby Baby,,-0.056793333,-0.331153333
+1259,Randy Newman,Sail Away,,-0.052526667,-0.178013333
+1260,The Kinks,Picture Book,,0.28714,0.36182
+1261,Eddy Arnold,What''s He Doing in My World,,-0.36828,-0.20416
+1262,Harry Nilsson,I Guess the Lord Must Be in New York City,,0.32486,0.039986667
+1263,The Innocence Mission,Bright as Yellow,,-0.28088,-0.010113333
+1264,Malcolm McLaren,Buffalo Gals,,0.289766667,0.392526667
+1265,The Kingsmen,"""Louie",,0.558933333,0.573606667
+1266,Beastie Boys,Fight for Your Right,,-0.025853333,0.669906667
+1267,Yo La Tengo,Autumn Sweater,,0.194946667,-0.035933333
+1268,Graham Parker,Local Girls,,0.064753333,0.429913333
+1269,Destiny''s Child,Survivor,,0.51746,0.639573333
+1270,The Doors,Riders on the Storm,,0.056006667,-0.265853333
+1271,Roy Orbison,Only the Lonely,,-0.329846667,-0.06816
+1272,Pete Townshend,Slit Skirts,,-0.00622,0.31056
+1273,Spike Jones,William Tell Overture,,0.082993333,0.5985
+1274,The Fall,15 Ways (To Leave Your Man),,0.02388,0.23076
+1275,Echo & the Bunnymen,Bring on the Dancing Horses,,-0.090226667,0.149233333
+1276,Lenny Kravitz,Are You Gonna Go My Way,,0.072646667,0.433586667
+1277,Aerosmith,Walk This Way,,0.4602,0.615993333
+1278,Kid Rock,Cowboy,,0.2727,0.36338
+1279,Nick Lowe,Cracking Up,,-0.133793333,0.084333333
+1280,Frank Sinatra,I''ve Got a Crush on You,,0.280493333,-0.536113333
+1281,Hoagy Carmichael,Stardust,,0.12588,-0.36284
+1282,Neil Sedaka,Calendar Girl,,0.469153333,0.36244
+1283,Chuck Berry,No Particular Place to Go,,0.475833333,0.264406667
+1284,Guns N'' Roses,Mr. Brownstone,,0.145406667,0.602793333
+1285,The Proclaimers,I''m Gonna Be (500 Miles),,0.557326667,0.487313333
+1286,Billy Joel,Tell Her About It,,0.5895,0.55006
+1287,The Rolling Stones,Live with Me,,0.207373333,0.437266667
+1288,The Orb,Blue Room,,0.154806667,-0.01138
+1289,Bee Gees,Too Much Heaven,,0.379266667,-0.166066667
+1290,George Jones,A Good Year for the Roses,,-0.484986667,-0.479026667
+1291,Jackie McLean,Frankenstein,,-0.04346,0.132093333
+1292,Johnny Cash,I Still Miss Someone,,-0.3705,-0.394946667
+1293,Supertramp,Bloody Well Right,,0.403966667,0.094953333
+1294,Love,My Little Red Book,,-0.04806,0.286293333
+1295,Young MC,Bust a Move,,0.315786667,0.567666667
+1296,John Prine,Sam Stone,,-0.29578,-0.48796
+1297,Marc Almond,The Stars We Are,,0.25278,0.21916
+1298,Brownsville Station,Smokin'' in the Boy''s Room,,0.238626667,0.415893333
+1299,Bob Dylan,Everything Is Broken,,-0.206966667,0.17202
+1300,Jeff Buckley,Grace,,-0.195166667,-0.019153333
+1301,Suede,The Wild Ones,,0.12338,0.065613333
+1302,Brian Eno,Burning Airlines Give You So Much More,,0.158886667,0.128166667
+1303,R.E.M.,Nightswimming,,-0.184373333,-0.165506667
+1304,The Monkees,Last Train to Clarksville,,0.1301,0.509653333
+1305,Billy Joel,Say Goodbye to Hollywood,,-0.166033333,0.20636
+1306,Alabama,The Closer You Get,,0.318066667,0.06968
+1307,The Association,Cherish,,-0.0867,0.18836
+1308,Basement Jaxx,Jump N'' Shout,,0.107206667,0.586633333
+1309,The Beach Boys,California Girls,,0.5835,0.15782
+1310,Eddie Cochran,Summertime Blues,,0.150573333,0.44628
+1311,Liz Phair,Supernova,,0.160513333,0.114393333
+1312,David Houston,My Elusive Dreams,,-0.221113333,-0.418046667
+1313,Led Zeppelin,Whole Lotta Love,,0.330666667,0.512353333
+1314,Faces,Stay With Me,,0.129926667,0.373453333
+1315,Donald Fagen,I.G.Y.,,0.269913333,-0.315073333
+1316,Harry Nilsson,1941,,0.25964,-0.027306667
+1317,Jo Stafford,You Belong to Me,,-0.267666667,-0.51242
+1318,Kathy Mattea,Eighteen Wheels and a Dozen Roses,,0.3479,0.022073333
+1319,Steely Dan,Deacon Blues,,0.131926667,-0.183606667
+1320,Fats Waller,Ain''t Misbehavin'',,0.365306667,-0.496833333
+1321,Madonna,Express Yourself,,0.447,0.65692
+1322,Devo,Whip It,,0.552546667,0.7076
+1323,Nirvana,In Bloom,,-0.285866667,0.266293333
+1324,Jacques Brel,Amsterdam,,-0.393773333,-0.46
+1325,Busta Rhymes,Put Your Hands Where My Eyes Could See,,0.04752,0.372986667
+1326,Talking Heads,Once in a Lifetime,,0.17454,0.184013333
+1327,Prince,Raspberry Beret,,0.302313333,0.394226667
+1328,Barclay James Harvest,Mocking Bird,,-0.142433333,-0.253073333
+1329,Public Enemy,Rebel Without a Pause,,0.024586667,0.574366667
+1330,Bob Dylan,Just Like a Woman,,-0.040373333,-0.41544
+1331,Joe Walsh,Rocky Mountain Way,,0.2561,0.272566667
+1332,The Exploited,Exploited Barmy Army,,-0.15654,0.56904
+1333,The Clash,I''m So Bored with the U.S.A.,,0.28316,0.54846
+1334,The Boo Radleys,Wake Up Boo!,,0.287153333,0.402686667
+1335,Eric Clapton,Layla,,0.284413333,0.491973333
+1336,The Flaming Lips,She Don''t Use Jelly,,0.09006,0.03944
+1337,Fats Waller,The Joint Is Jumpin'',,0.253906667,0.320353333
+1338,Edd Byrnes,"""Kookie",,0.30032,0.187106667
+1339,Spike Jones,All I Want for Christmas Is My Two Front Teeth,,0.092093333,-0.260773333
+1340,The Supremes,Baby Love,,0.339293333,0.422493333
+1341,Deep Purple,Highway Star,,0.365606667,0.54308
+1342,Randy Newman,Short People,,0.087393333,-0.184013333
+1343,Frank Sinatra,As Time Goes By,,0.25806,-0.523833333
+1344,Korn,Freak on a Leash,,-0.50906,0.265306667
+1345,John Lennon,Cold Turkey,,-0.228426667,0.255313333
+1346,Fontella Bass,Rescue Me,,0.185693333,0.530313333
+1347,The Wallflowers,Three Marlenas,,0.141066667,-0.250113333
+1348,Low,Sunflower,,-0.09258,-0.387653333
+1349,John Zorn,Godard,,-0.277433333,-0.092753333
+1350,Irma Thomas,It''s Raining,,-0.063613333,-0.345346667
+1351,Badfinger,Without You,,-0.433413333,-0.117246667
+1352,Kyuss,Thumb,,-0.512666667,0.571673333
+1353,Boston,More Than a Feeling,,0.586413333,0.69638
+1354,Burt Bacharach,Trains and Boats and Planes,,-0.228513333,-0.501786667
+1355,The Lovin'' Spoonful,Daydream,,0.54496,0.125126667
+1356,The Vapors,Turning Japanese,,0.460593333,0.841106667
+1357,Gang of Four,At Home He''s a Tourist,,0.127886667,0.59376
+1358,The Housemartins,Caravan of Love,,0.425766667,-0.31178
+1359,Belle & Sebastian,Like Dylan in the Movies,,0.36412,0.239153333
+1360,Nat King Cole,Mona Lisa,,-0.146906667,-0.480493333
+1361,Albert Collins,Frosty,,0.36984,0.344693333
+1362,Jay-Z,Big Pimpin'',,-0.475766667,0.39046
+1363,The B-52''s,Planet Claire,,0.226086667,0.35108
+1364,Billy Joel,Pressure,,0.085833333,0.311893333
+1365,The Modern Jazz Quartet,Django,,0.489886667,-0.062126667
+1366,Louis Jordan,Five Guys Named Moe,,0.46382,0.41826
+1367,Grant Lee Buffalo,Fuzzy,,-0.432113333,-0.472173333
+1368,Simple Minds,Don''t You (Forget About Me),,0.283866667,0.155833333
+1369,Sonic Youth,Teen Age Riot,,0.1874,0.258866667
+1370,My Bloody Valentine,Feed Me With Your Kiss,,-0.216753333,0.351426667
+1371,The Rolling Stones,Let''s Spend the Night Together,,0.43618,0.331766667
+1372,Magazine,Shot by Both Sides,,-0.202886667,0.248553333
+1373,Tori Amos,Cornflake Girl,,0.110986667,0.00102
+1374,Happy Mondays,Step On,,-0.001046667,-0.02876
+1375,Wilbert Harrison,Kansas City,,0.347273333,0.163246667
+1376,The Kinks,Where Have All the Good Times Gone,,0.050206667,0.102666667
+1377,Johnny Cash,Sunday Morning Coming Down,,-0.008013333,-0.2014
+1378,Fiona Apple,Criminal,,0.235266667,-0.023506667
+1379,The Levellers,One Way,,0.292273333,0.283433333
+1380,T. Rex,Ride a White Swan,,0.277826667,0.197213333
+1381,Bob Dylan,My Back Pages,,-0.23028,-0.2457
+1382,Pixies,Bone Machine,,-0.0236,0.504246667
+1383,Nick Drake,Pink Moon,,0.124033333,-0.297793333
+1384,Suede,Beautiful Ones,,0.03006,0.50626
+1385,The Velvet Underground,Heroin,,-0.113646667,-0.36212
+1386,Michael Jackson,Bad,,0.428313333,0.629566667
+1387,The Damned,Machine Gun Etiquette,,-0.22964,0.570486667
+1388,Pat Benatar,Hit Me With Your Best Shot,,0.47698,0.651973333
+1389,Edwyn Collins,A Girl Like You,,0.039153333,0.102993333
+1390,Pere Ubu,The Modern Dance,,0.049726667,0.319793333
+1391,Chad & Jeremy,A Summer Song,,0.22682,-0.376213333
+1392,The Pogues,Fairytale of New York,,-0.213686667,-0.452586667
+1393,Buck Owens,Act Naturally,,0.29452,0.186326667
+1394,David Bowie,Oh! You Pretty Things,,0.193746667,0.1499
+1395,Little Richard,Rip It Up,,0.59236,0.600553333
+1396,Black Flag,Rise Above,,-0.441833333,0.700966667
+1397,Super Furry Animals,God! Show Me Magic,,0.118793333,0.515046667
+1398,Jimmy Rushing,Sent for You Yesterday (And Here You Come Today),,0.324726667,-0.262906667
+1399,Steve Winwood,Roll With It,,0.526493333,0.420486667
+1400,Slick Rick,Children''s Story,,0.17238,0.404226667
+1401,Nat King Cole,Sweet Lorraine,,0.249526667,-0.550753333
+1402,Sade,Smooth Operator,,0.228226667,-0.1139
+1403,Martin Denny,Quiet Village,,0.199386667,0.040713333
+1404,Patsy Cline,Sweet Dreams,,-0.406193333,-0.338773333
+1405,Beck,Loser,,-0.12364,0.407773333
+1406,A Tribe Called Quest,Bonita Applebum,,0.363693333,-0.1124
+1407,Alice Cooper,No More Mr. Nice Guy,,-0.11862,0.609006667
+1408,The Who,Magic Bus,,0.403026667,0.346286667
+1409,Lil Johnson,Get ''Em from the Peanut Man (The New Hot Nuts),,0.325793333,0.095946667
+1410,Frankie Ford,Sea Cruise,,0.634426667,0.637806667
+1411,Tony Williams,Emergency,,-0.259113333,0.47114
+1412,The Kinks,Days,,0.169053333,0.055866667
+1413,Guns N'' Roses,Night Rain,,-0.260013333,0.63318
+1414,The Who,Baba O''Riley,,0.429633333,0.505226667
+1415,10cc,The Things We Do for Love,,0.400546667,-0.164566667
+1416,Radiohead,Karma Police,,-0.222286667,-0.135833333
+1417,Mudhoney,You Got It (Keep It Outta My Face),,-0.30924,0.614966667
+1418,Cheb Mami,Meli Meli,,0.327326667,0.34664
+1419,Nina Simone,Mississippi Goddam,,-0.010546667,0.28158
+1420,Willie Nelson,Help Me Make It Through the Night,,-0.382126667,-0.32164
+1421,Foo Fighters,This Is a Call,,0.21982,0.536413333
+1422,Screamin'' Jay Hawkins,I Put a Spell on You,,-0.33996,0.31552
+1423,Eddie Floyd,Knock on Wood,,0.305613333,0.170006667
+1424,Massive Attack,Karmacoma,,-0.210606667,-0.34094
+1425,Ramones,Do You Remember Rock ''N'' Roll Radio_,,0.4923,0.5564
+1426,Homer & Jethro,The Battle of Kookamonga,,0.23338,0.23318
+1427,Paul Davis,I Go Crazy,,-0.046433333,-0.531366667
+1428,Edwin Starr,War,,-0.21826,0.607466667
+1429,Radiohead,High and Dry,,-0.099433333,-0.14386
+1430,Onyx,Slam,,-0.140813333,0.398726667
+1431,Procol Harum,A Whiter Shade of Pale,,0.036113333,-0.197853333
+1432,Bratmobile,The Real Janelle,,0.172226667,0.48668
+1433,Sam & Dave,I Thank You,,0.33294,0.35848
+1434,Gram Parsons,How Much I''ve Lied,,-0.388633333,-0.286246667
+1435,The Monkees,(I''m Not Your) Steppin'' Stone,,0.031033333,0.47766
+1436,Cassandra Wilson,Time After Time,,-0.00502,-0.46918
+1437,Bow Wow Wow,"""C30",,0.05502,0.60526
+1438,U2,Sweetest Thing,,-0.13948,-0.09582
+1439,Radiohead,Creep,,-0.401166667,0.058586667
+1440,Enya,Orinoco Flow,,0.45652,-0.158053333
+1441,R.E.M.,Drive,,-0.231086667,-0.090746667
+1442,Death,Open Casket,,-0.601186667,0.299606667
+1443,Carole King,So Far Away,,-0.230226667,-0.022746667
+1444,Tenpole Tudor,Wunderbar,,0.461446667,0.388553333
+1445,Joe Jackson,Got the Time,,0.29802,0.552246667
+1446,Joe Tex,S.Y.S.L.J.F.M. (The Letter Song),,0.389553333,0.349513333
+1447,Biz Markie,Just a Friend,,0.188746667,0.55686
+1448,Iris DeMent,Our Town,,0.169666667,-0.147413333
+1449,The Rolling Stones,19th Nervous Breakdown,,0.280973333,0.34904
+1450,XTC,The Ballad of Peter Pumpkinhead,,0.353046667,0.014553333
+1451,Gerry Mulligan,In a Mellow Tone,,0.385946667,-0.08798
+1452,The B-52''s,Private Idaho,,0.151333333,0.305833333
+1453,Limp Bizkit,Nookie,,-0.417786667,0.457566667
+1454,Nirvana,Aneurysm,,-0.067773333,0.515566667
+1455,Fleetwood Mac,Landslide,,-0.159526667,-0.172793333
+1456,Paul McCartney,Jet,,0.124373333,0.124706667
+1457,Frank Sinatra,It Was a Very Good Year,,0.0837,-0.4969
+1458,George Harrison,All Things Must Pass,,-0.266313333,-0.153013333
+1459,Django Reinhardt,I Got Rhythm,,0.458586667,0.384326667
+1460,Morrissey,I Know It''s Gonna Happen Someday,,-0.24872,-0.187086667
+1461,Led Zeppelin,The Rain Song,,-0.311706667,-0.343993333
+1462,John Prine,Angel from Montgomery,,-0.194546667,-0.212173333
+1463,Pixies,Here Comes Your Man,,0.272333333,0.36652
+1464,Miles Davis,Mr. Pastorius,,-0.00456,-0.358933333
+1465,The Troggs,Wild Thing,,0.352553333,0.467786667
+1466,Fred Neil,Everybody''s Talkin'',,0.001226667,-0.318906667
+1467,The Police,Every Breath You Take,,0.015733333,-0.147686667
+1468,My Bloody Valentine,Soon,,-0.12908,0.16676
+1469,Squeeze,Another Nail in My Heart,,0.35186,0.32486
+1470,Sugar Ray,Fly,,0.5949,0.375433333
+1471,Bourgeois Tagg,I Don''t Mind at All,,-0.1955,-0.3074
+1472,The Clash,Complete Control,,0.359813333,0.635546667
+1473,Gordon Lightfoot,The Wreck of the Edmund Fitzgerald,,-0.369773333,-0.545586667
+1474,The Sugarcubes,Birthday,,-0.199713333,-0.19396
+1475,Lee Dorsey,Ride Your Pony,,0.570106667,0.429706667
+1476,Billy Boy Arnold,I Ain''t Got You,,0.01128,0.24674
+1477,Guided by Voices,I Am a Scientist,,0.122406667,0.247026667
+1478,Ol'' Dirty Bastard,Brooklyn Zoo,,-0.296173333,0.298246667
+1479,The Coasters,Along Came Jones,,0.146753333,0.22956
+1480,Ike & Tina Turner,Proud Mary,,0.510513333,0.54394
+1481,Bob Dylan,"""Don''t Think Twice",,-0.243806667,-0.379606667
+1482,Harry Nilsson,Everybody''s Talkin'',,0.005006667,-0.16434
+1483,Otis Redding,Try a Little Tenderness,,0.102513333,-0.324186667
+1484,Bikini Kill,Rebel Girl,,-0.16766,0.55608
+1485,Don Williams,I Believe in You,,0.06414,-0.4357
+1486,Culture Club,I''ll Tumble 4 Ya,,0.444353333,0.310046667
+1487,Bob Dylan,Man in the Long Black Coat,,-0.20826,-0.496246667
+1488,Green Day,Longview,,0.261546667,0.683993333
+1489,Barenaked Ladies,One Week,,0.545606667,0.59262
+1490,Pixies,Monkey Gone to Heaven,,-0.36084,-0.10534
+1491,Meat Loaf,You Took the Words Right Out of My Mouth (Hot Summer Night),,0.271106667,0.457766667
+1492,Lindsey Buckingham,Go Insane,,-0.115253333,0.084386667
+1493,Belle & Sebastian,Seeing Other People,,0.27104,0.00814
+1494,Grandmaster Flash,White Lines (Don''t Don''t Do It),,0.28448,0.725
+1495,Derek & the Dominos,Bell Bottom Blues,,-0.292866667,-0.100253333
+1496,Hall & Oates,Say It Isn''t So,,0.115126667,0.093186667
+1497,The Real Kids,All Kindsa Girls,,0.216766667,0.57998
+1498,Swans,Raping a Slave,,-0.6678,-0.030086667
+1499,Muddy Waters,Mannish Boy,,0.352933333,0.20876
+1500,Accept,Balls to the Wall,,-0.360046667,0.43218
+1501,Ween,I Can''t Put My Finger on It,,-0.445233333,0.32258
+1502,Miles Davis,I Fall in Love Too Easily,,-0.029506667,-0.371946667
+1503,Bruce Springsteen,Promised Land,,-0.01218,0.08306
+1504,Harpers Bizarre,The 59th Street Bridge Song (Feelin'' Groovy),,0.58992,0.055593333
+1505,Altered Images,Happy Birthday,,0.42248,0.50226
+1506,Kid Rock,I Am the Bullgod,,-0.293866667,0.486666667
+1507,Tony Burrows,Beach Baby,,0.523833333,0.206326667
+1508,The Jam,Start!,,0.198826667,0.282646667
+1509,White Zombie,More Human Than Human,,-0.09084,0.660653333
+1510,Thelonious Monk,In Walked Bud,,0.485893333,0.122453333
+1511,Miles Davis,Spanish Key,,0.225713333,0.151133333
+1512,Fishbone,Party at Ground Zero,,0.351673333,0.235433333
+1513,Chicago,If You Leave Me Now,,-0.175493333,-0.459813333
+1514,Weezer,Buddy Holly,,0.40748,0.540073333
+1515,Lefty Frizzell,"""Saginaw",,-0.229366667,-0.09534
+1516,Eddie Cochran,Twenty Flight Rock,,0.388133333,0.555793333
+1517,Pet Shop Boys,Suburbia,,0.24742,0.152433333
+1518,Bobby Bare,The All American Boy,,0.03856,0.299653333
+1519,Rod Stewart,Handbags & Gladrags,,-0.218146667,-0.0968
+1520,Weezer,The Good Life,,-0.201466667,0.400326667
+1521,Uncle Tupelo,Chickamauga,,-0.290793333,0.29706
+1522,They Might Be Giants,They''ll Need a Crane,,0.228233333,0.20342
+1523,Frank Sinatra,Fools Rush In,,0.0137,-0.575813333
+1524,Seals & Crofts,Summer Breeze,,0.544993333,-0.144926667
+1525,The Ramones,Rockaway Beach,,0.43614,0.480526667
+1526,Gipsy Kings,Bamboleo,,0.33258,0.544933333
+1527,Pere Ubu,30 Seconds Over Tokyo,,-0.353633333,0.164233333
+1528,Monty Python,Lumberjack Song,,0.318413333,0.281646667
+1529,Faces,You''re So Rude,,0.212486667,0.07054
+1530,The Everly Brothers,Claudette,,0.47068,0.275506667
+1531,The Moody Blues,Nights in White Satin,,0.309706667,-0.161213333
+1532,Shirley & Lee,Let the Good Times Roll,,0.28092,0.206953333
+1533,Fatboy Slim,Praise You,,0.387166667,0.514333333
+1534,The Specials,Nite Klub,,0.25978,0.470953333
+1535,The Tubes,White Punks on Dope,,-0.101393333,0.19344
+1536,Pavement,Summer Babe,,-0.243806667,-0.13222
+1537,The Turtles,Happy Together,,0.408193333,0.225826667
+1538,The Jesus and Mary Chain,Blues from a Gun,,-0.225973333,0.398306667
+1539,Mary Lou Lord,Subway,,-0.197226667,-0.38822
+1540,PJ Harvey,Man-Size,,-0.39188,0.35416
+1541,Frank Sinatra,How Deep Is the Ocean,,0.39538,-0.345506667
+1542,Donna Summer,Love to Love You Baby,,0.310946667,0.067093333
+1543,Carole King,It''s Too Late,,-0.060153333,-0.16094
+1544,The Coasters,Little Egypt,,0.196666667,0.20354
+1545,Spike Jones,Cocktails for Two,,0.265,0.300373333
+1546,David Bowie,The Bewlay Brothers,,-0.07602,-0.157926667
+1547,Bruce Channel,Hey! Baby,,0.510953333,0.364193333
+1548,John Coltrane,Lush Life,,0.54348,-0.421053333
+1549,John Lennon,Working Class Hero,,-0.40756,-0.398406667
+1550,Phil Collins,Sussudio,,0.46612,0.6865
+1551,Howlin'' Wolf,Evil,,0.100973333,0.29726
+1552,Andrew Gold,Thank You for Being a Friend,,0.560173333,0.217946667
+1553,This Mortal Coil,You and Your Sister,,-0.133646667,-0.45946
+1554,Radiohead,Lucky,,-0.408973333,-0.435593333
+1555,The Soft Boys,Positive Vibrations,,0.391266667,0.518773333
+1556,Brian Eno,1-Jan,,-0.066033333,-0.739233333
+1557,Jimi Hendrix,Purple Haze,,0.22986,0.53212
+1558,Ray Charles,She''s on the Ball,,0.423086667,-0.213606667
+1559,Moby Grape,Hey Grandma,,0.25418,0.44042
+1560,Big Audio Dynamite,The Globe,,0.44132,0.363453333
+1561,Carole King,(You Make Me Feel Like) A Natural Woman,,0.36778,-0.006866667
+1562,Harry Chapin,Taxi,,-0.12492,-0.144286667
+1563,The Jayhawks,Waiting for the Sun,,-0.169786667,0.163846667
+1564,Little Feat,Hate to Lose Your Lovin'',,0.261013333,0.47572
+1565,Sam Phillips,Baby I Can''t Please You,,-0.25752,0.170346667
+1566,The Strokes,Hard to Explain,,-0.20354,0.327706667
+1567,Little Feat,Willin'',,0.05676,-0.116986667
+1568,Los Dandy''s,Como un Duende,,-0.14764,-0.055153333
+1569,The Rolling Stones,Heart of Stone,,-0.418733333,-0.079533333
+1570,Canned Heat,Going Up the Country,,0.28188,0.363406667
+1571,James Brown,Super Bad,,0.49242,0.679146667
+1572,Creedence Clearwater Revival,Fortunate Son,,-0.010346667,0.61508
+1573,The Flying Burrito Brothers,Lazy Days,,0.486453333,0.54218
+1574,Dizzy Gillespie,Groovin'' High,,0.382266667,0.38836
+1575,The Clash,Garageland,,-0.097726667,0.3523
+1576,Sandie Shaw,(There''s) Always Something There to Remind Me,,0.459566667,0.327393333
+1577,New Order,Bizarre Love Triangle,,0.388473333,0.467033333
+1578,Wreckless Eric,Whole Wide World,,0.060053333,0.029826667
+1579,Moby,Natural Blues,,-0.24424,0.191593333
+1580,Gilbert O''Sullivan,Alone Again (Naturally),,-0.539393333,-0.257753333
+1581,Lee Dorsey,Working in the Coal Mine,,0.13346,0.331166667
+1582,The Replacements,Here Comes a Regular,,-0.476126667,-0.32168
+1583,The Boo Radleys,It''s Lulu,,0.24216,0.46458
+1584,The Band,Across the Great Divide,,0.109046667,-0.054913333
+1585,Frank Sinatra,The Christmas Waltz,,0.455706667,-0.47468
+1586,Ol'' Dirty Bastard,Shimmy Shimmy Ya,,-0.279713333,0.090753333
+1587,Hot Chocolate,You Sexy Thing,,0.525453333,0.485686667
+1588,Dee Clark,Hey Little Girl,,0.449026667,0.390966667
+1589,R.E.M.,Everybody Hurts,,0.005873333,-0.4911
+1590,Gang of Four,To Hell With Poverty!,,-0.075466667,0.572273333
+1591,Bruce Springsteen,State Trooper,,-0.364766667,-0.184566667
+1592,Kenny Rogers,Lady,,-0.05076,-0.501106667
+1593,Albert Ayler,The Truth Is Marching In,,0.17146,0.404653333
+1594,The Jam,In the City,,0.169286667,0.579493333
+1595,The Animals,The House of the Rising Sun,,-0.131413333,0.184806667
+1596,Mudhoney,Touch Me I''m Sick,,-0.47842,0.410653333
+1597,Dead Boys,Sonic Reducer,,-0.03012,0.565826667
+1598,Paul McCartney,Band on the Run,,0.176673333,-0.107746667
+1599,Ella Fitzgerald,Black Coffee,,-0.244466667,-0.36388
+1600,Jimi Hendrix,Fire,,0.449966667,0.53044
+1601,Portishead,Sour Times,,-0.244373333,-0.086746667
+1602,Bob Dylan,Mr. Tambourine Man,,-0.241673333,-0.22228
+1603,Bob Marley,Is This Love,,-0.044746667,-0.24424
+1604,Vince Guaraldi,Linus and Lucy,,0.549913333,0.455526667
+1605,Bob Dylan,Tangled Up in Blue,,0.166086667,0.17618
+1606,Peter Sellers,A Hard Day''s Night,,-0.08546,-0.527913333
+1607,Bob Dylan,"It''s All over Now, Baby Blue",,-0.278773333,-0.330333333
+1608,Belle & Sebastian,It Could Have Been a Brilliant Career,,-0.22288,-0.114393333
