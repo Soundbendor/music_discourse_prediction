@@ -8,9 +8,6 @@ class Comment:
     body: str 
     reply_count: int
     lang: str
-    # TODO - extract this to platform specific data contracts where it is necesscary 
-    # reddit(?), youtube(?)
-    #  lang_p: float
 
 
 @dataclass
@@ -23,9 +20,6 @@ class Submission:
     id: str
     score: int
     n_comments: int
-    # TODO - Extract subreddit to reddit specific data contract
-    subreddit: str
-    comments: List[Comment] = field(default_factory=list)
 
 
 @dataclass
@@ -37,4 +31,3 @@ class SearchResult:
     valence: float
     arousal: float
     submissions: List[Submission] = field(default_factory=list)
-
