@@ -18,17 +18,25 @@ from pymongo import MongoClient
 # song_id, valence, arousal, song_name, artist_name
 # if your dataset does not match these column headers, please rename them as needed.
 
+# Definitions:
+# Post: Some social media entity which is related to a Song.
+# Can include:
+#   Submissions:
+#       - Reddit Submission
+#       - YouTube Video
+#   Comment
+#       - Reddit
+#       - YouTube
+#       - Twitter
 
 def main():
     args = parseargs()
     bot = args.bot_type()
     db_client = MongoClient()['mdp']
-    songs = db_client['songs'].find()
+    songs = db_client['songs'].find({'Dataset': args.dataset.lower()})
+    
     for song in songs:
-        print(song)
-    #  songs.update_many({}, )
-
-        
+        song.update({"$addToSet": {"Submission": bot.process_submissions(db_client, song)}})
 
 
 #  def dispatch_queries(miner: CommentMiner, df, path: str, ds_name: str):
@@ -66,7 +74,7 @@ def minertype(istr: str):
 
 def parseargs() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="A data inject tool for the music semantic discourse dataset.")
-    parser.add_argument('--dataset', dest='dataset', type=str, required=False,
+    parser.add_argument('--dataset', dest='dataset', type=str, required=True,
                         help='The name of the dataset to query songs from. Uses all songs by default.')
     parser.add_argument('-t', '--type', dest='bot_type', required=True, type=minertype, 
                         help='Specify which platform to query <reddit, youtube, twitter.')

@@ -5,6 +5,7 @@ from typing import List, Iterator
 from langdetect import detect_langs
 from langdetect.lang_detect_exception import LangDetectException
 from langdetect.language import Language
+import pymongo
 
 from data_mining.jsonbuilder import Submission
 
@@ -28,5 +29,5 @@ class CommentMiner:
         pass
 
     @abstractmethod
-    def process_submissions(self, s_result) -> Submission:
+    def process_submissions(self, db: pymongo.database.Database, song: dict) -> Submission:
         pass
