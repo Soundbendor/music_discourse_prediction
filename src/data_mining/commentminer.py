@@ -18,8 +18,8 @@ class CommentMiner:
         except LangDetectException:
             return Language("?", 1.00)
 
-    def query(self, song_name: str, artist_name: str) -> List[Submission]:
-        return list(map(self.process_submissions, self.get_submissions(song_name, artist_name)))
+#      def query(self, song_name: str, artist_name: str) -> List[Submission]:
+        #  return list(map(self.process_submissions, self.get_submissions(song_name, artist_name)))
 
     def _build_query(self, song_name: str, artist_name: str) -> str:
         return '"{}" "{}"'.format(artist_name.replace('"', ''), song_name.replace('"', ''))
