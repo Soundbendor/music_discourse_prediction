@@ -36,11 +36,27 @@ def default_load(path: str, ds_name: str, label_type: str="Dimensional (Valence,
     return df
 
 
+def process_deezer_subset(subset: str, path: str, label_type: str) -> pd.DataFrame:
+    df = pd.DataFrame(pd.read_csv(f"{path}_{subset}.csv"))
+    df['Dataset'] = "deezer"
+    df['label_type'] = label_type
+    df['subset'] = subset
+    return(df)
+
+
+def deezer_load(path: str, ds_name: str, label_type: str="Dimensional (Valence, Arousal)", dropcols: Union[None, List]=None) -> pd.DataFrame:
+    deezer_apply = functools.partial(process_deezer_subset, path=path.split('_')[0], label_type=label_type)
+    df = pd.concat(list(map(deezer_apply, ['test', 'train', 'validation']))) 
+    print("DEBUG")
+    print(df)
+    return df
+
+
 loaders = {
         'amg1608': functools.partial(default_load, dropcols=['Genre']),
         'deam': default_load,
         'pmemo': functools.partial(default_load, dropcols=['Genre']),
-        'deezer': default_load
+        'deezer': deezer_load
         }
 
 
@@ -53,7 +69,6 @@ def parseargs() -> argparse.Namespace:
 def insert_songs(path: str, collection: pymongo.collection.Collection) -> None:
     ds_name = os.path.basename(path).split('.')[0].lower()
     try:
-        print(ds_name.split('_')[0])
         df = loaders[ds_name.split('_')[0]](path=path, ds_name=ds_name)
         collection.insert_many(df.to_dict('records'))
     except KeyError:
@@ -66,7 +81,7 @@ def main() -> None:
     db = client['mdp']
     songs = db['songs']
     args = parseargs()
-    print( [args.input+x for x in  os.listdir(args.input)])
+    #  print( [args.input+x for x in  os.listdir(args.input)])
     if os.path.isdir(args.input):
         any(map(functools.partial(insert_songs, collection=songs), [args.input+x for x in  os.listdir(args.input)]))
     else:

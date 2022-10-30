@@ -1,12 +1,13 @@
-import itertools
 # WARN - May not be compatible with future versions. See PEP 649 https://peps.python.org/pep-0649/
 from __future__ import annotations
 from dataclasses import dataclass
+
+import itertools
 # Maintained for backwards-compatability, technically not required
 from typing import List, Union
 
 
-from src.data_mining.jsonbuilder import Comment 
+from data_mining.jsonbuilder import Comment 
 
 # See https://developer.twitter.com/en/docs/twitter-api/data-dictionary/object-model/place
 

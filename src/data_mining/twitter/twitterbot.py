@@ -11,21 +11,21 @@ from data_mining.commentminer import CommentMiner
 from data_mining.jsonbuilder import Submission, Comment
 from typing import Iterator
 
-from src.data_mining.twitter.twitterbuilder import TwitterComment
+from .twitterbuilder import TwitterComment
 
-class TwitterBot(CommentMiner):
+class TwitterBot():
 
-    def __init__(self, f_key: str, search_depth: int = 10) -> None:
-        self.api = self.auth_handler()
+    def __init__(self, search_depth: int = 10) -> None:
+        self.client = self.auth_handler()
         self.twitter_epoch = datetime(2006, 3, 26)
 
     def auth_handler(self) -> tweepy.Client:
         load_dotenv()
         return tweepy.Client(bearer_token=os.getenv('TWITTER_BEARER_TOKEN'),
-                             consumer_key=os.getenv('TWITTER_CLIENT_ID'),
-                             consumer_secret=os.getenv('TWITTER_CLIENT_SECRET'),
-                             access_token=os.getenv('TWITTER_ACCESS_ID'),
-                             access_token_secret=os.getenv('TWITTER_ACCESS_SECRET'),
+                             consumer_key=os.getenv('TWITTER_API_KEY'),
+                             consumer_secret=os.getenv('TWITTER_API_KEY_SECRET'),
+                             access_token=os.getenv('TWITTER_ACCESS_TOKEN'),
+                             access_token_secret=os.getenv('TWITTER_ACCESS_TOKEN_SECRET'),
                              wait_on_rate_limit=True)
 
     def get_submissions(self, song_name: str, artist_name: str) -> Iterator[tweepy.Tweet]:
@@ -91,12 +91,12 @@ class TwitterBot(CommentMiner):
         return TwitterComment(
             id=str(tweet.id),
             body=tweet.text,
-            lang=tweet.lang
+            lang=tweet.lang,
             reply_count=tweet.public_metrics['reply_count'],
             score=tweet.public_metrics['like_count'],
             cashtags=[x['tag'] for x in tweet.entities.cashtags],
             hashtags=[x['tag'] for x in tweet.entities.hashtags],
             mentions=[x['username'] for x in tweet.entities.mentions],
             urls={k:v for k,v in tweet.entities.urls.items() if k in ['url', 'title', 'description', 'display_url']},
-            context_annotations=itertools.chain([TwitterContextEntity(id=x.id, name=x.name, description=x.description) for k, v in tweet.context_annotations.items() if k == 'entitiy'][])
+            #  context_annotations=itertools.chain([TwitterContextEntity(id=x.id, name=x.name, description=x.description) for k, v in tweet.context_annotations.items() if k == 'entitiy'][])
         )
