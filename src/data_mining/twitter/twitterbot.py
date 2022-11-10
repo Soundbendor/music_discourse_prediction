@@ -40,25 +40,50 @@ class TwitterBot(CommentMiner):
     # Add type information (source(twitter, etc.), date retrieved/updated) as field
     # Append submission, comment, reply object IDs to return list
     # All references will be stored in Submissions in the Songs collection
+    def persist(self, func, retries = 3) -> List:
+        conn = 0
+        while conn < retries:
+            try:
+                y = func()
+                break
+            except requests.exceptions.ConnectionError:
+                sleep(5)
+                print(f"Connection error! Retry #{retries}")
+                retries += 1
+                if retries >= 3:
+                    exit()
+        return y
+
 
     # Expects that source documeng had "artist_name" and "song_name" fields.
     def process_submissions(self, db: pymongo.database.Database, song: dict) -> List[bson.objectid.ObjectId]:
-        tl_tweets = self.get_submissions(song['artist_name'], song['song_name'])
-        tweets = [self.get_comments(tweet) for tweet in tl_tweets]
+        tl_tweets = self.persist(lambda: self.get_submissions(song['artist_name'], song['song_name']))
+        #  tweets = [self.get_comments(tweet) for tweet in tl_tweets]
         insert_response = db['posts'].insert_many(map(lambda x: x.data, tl_tweets))
         tl_ids = insert_response.inserted_ids
+
         db['posts'].update_many({'_id': {'$in': tl_ids}},
                                 {'$set': {
                                     'artist_name': song['artist_name'],
                                     'song_name': song['song_name'],
                                     'dataset': song['Dataset'], },
+                                    'source': 'Twitter'
                                  '$rename': {
                                     'text': 'body',
                                     'public_metrics.like_count': 'score',
                                     'public_metrics.reply_count': 'n_replies'
                                      }
                                  })
-        
+ 
+        for tweet in tl_tweets:
+            replies = self.persist(lambda: self.get_comments(tweet))
+            reply_insert_response = db['posts'].insert_many(map(lambda x: x.data, replies))
+            # append into database
+            # update all fields  
+            # append into master ID list
+            # change fields with some depth parameter and a field for in_reply_to which references top-level ID
+            
+       # Should return a list of all top-level tweet IDs and all reply IDs for assignment to Song.
 
 
     def get_submissions(self, song_name: str, artist_name: str) -> List:
@@ -68,7 +93,7 @@ class TwitterBot(CommentMiner):
         tweets = self.client.search_all_tweets(query=self._build_query(song_name, artist_name),
                                           sort_order='relevancy',
                                           # TODO - determine optimial max results for retrieval
-                                          max_results=10,
+                                          max_results=100,
                                           start_time=self.twitter_epoch,
                                           expansions='referenced_tweets.id,author_id,in_reply_to_user_id,geo.place_id',
                                           tweet_fields='entities,geo,lang,public_metrics,conversation_id,created_at,context_annotations,author_id,text',
@@ -77,12 +102,10 @@ class TwitterBot(CommentMiner):
         # TODO: Check Twitter status code here
         # https://developer.twitter.com/en/support/twitter-api/error-troubleshooting
         print(tweets.errors)
-        if tweets.errors['response_code'] != 200:
+        if tweets.errors:
             print(f"\n\nError: {tweets.errors}")
-        # Concat includes and tweet data to preserve username and referenced tweet IDs
-        tweets = list(map(lambda x: dict(x.data, **x.includes), tweets))
-        if tweets:
-            return tweets
+        if tweets.data:
+            return tweets.data
         return []
 
 
@@ -90,12 +113,13 @@ class TwitterBot(CommentMiner):
         sleep(3)
         # TODO - change the logic here to maintain conversation structure by graph search.
         comments = self.client.search_all_tweets(query=f"conversation_id:{p_tweet.conversation_id}",
-                                              since_id=self.twitter_epoch,
-                                              max_results=100,
-                                              expansions='referenced_tweets.id,author_id,in_reply_to_user_id,geo.place_id',
-                                              tweet_fields='entities,geo,lang,public_metrics,conversation_id,created_at,context_annotations,author_id,text',
-                                              place_fields='country_code,name,geo,full_name,place_type',
-                                              user_fields='username,location')
+                                            start_time=self.twitter_epoch,
+                                            sort_order='relevancy',
+                                            max_results=100,
+                                            expansions='referenced_tweets.id,author_id,in_reply_to_user_id,geo.place_id',
+                                            tweet_fields='entities,geo,lang,public_metrics,conversation_id,created_at,context_annotations,author_id,text',
+                                            place_fields='country_code,name,geo,full_name,place_type',
+                                            user_fields='username,location')
         if comments:
             return comments
         return []
