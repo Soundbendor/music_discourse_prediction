@@ -1,17 +1,11 @@
 import argparse
-import dataclasses
-import os
-import json
 import pandas as pd
 
-from .jsonbuilder import SearchResult
-from .commentminer import CommentMiner
+from datetime import datetime
 from .reddit.redditbot import RedditBot
 from .youtube.youtubebot import YoutubeBot
 from .lyrics.geniusbot import GeniusBot
 from .twitter.twitterbot import TwitterBot
-from datetime import datetime
-from tqdm import tqdm
 from pymongo import MongoClient
 
 # We assume all input datasets have a standardized input API
@@ -33,10 +27,12 @@ def main():
     args = parseargs()
     bot = args.bot_type()
     db_client = MongoClient()['mdp']
-    songs = db_client['songs'].find({'Dataset': args.dataset.lower()})
+    songs = db_client['songs'].find({ 'Dataset': args.dataset.lower(), '$or': [ {'last_modified': {'$lt': args.timestamp }}, {'last_modified': {'$exists': False}}] } )
     
     for song in songs:
-        song.update({"$addToSet": {"Submission": bot.process_submissions(db_client, song)}})
+        song.update({"$addToSet": {"Submission": bot.process_submissions(db_client, song)}, "$set": {"last_modified": datetime.utcnow()} })
+
+    # After search and insert complete, update last modified time.
 
 
 #  def dispatch_queries(miner: CommentMiner, df, path: str, ds_name: str):
@@ -78,4 +74,6 @@ def parseargs() -> argparse.Namespace:
                         help='The name of the dataset to query songs from. Uses all songs by default.')
     parser.add_argument('-t', '--type', dest='bot_type', required=True, type=minertype, 
                         help='Specify which platform to query <reddit, youtube, twitter.')
+    parser.add_argument('--timestamp', dest='timestamp', required=True, type=lambda x: datetime.strptime(x, "%Y-%m-%d %H:%M:%S"), 
+                        help="Fetch all songs with a last modified time less than this given UTC timestamp.")
     return parser.parse_args()

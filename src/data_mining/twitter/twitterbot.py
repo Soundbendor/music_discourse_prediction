@@ -56,34 +56,51 @@ class TwitterBot(CommentMiner):
 
 
     # Expects that source documeng had "artist_name" and "song_name" fields.
+    # Should return a list of all top-level tweet IDs and all reply IDs for assignment to Song.
     def process_submissions(self, db: pymongo.database.Database, song: dict) -> List[bson.objectid.ObjectId]:
         tl_tweets = self.persist(lambda: self.get_submissions(song['artist_name'], song['song_name']))
-        #  tweets = [self.get_comments(tweet) for tweet in tl_tweets]
         insert_response = db['posts'].insert_many(map(lambda x: x.data, tl_tweets))
         tl_ids = insert_response.inserted_ids
-
+        # accumulator list
+        tweet_ids = tl_ids
         db['posts'].update_many({'_id': {'$in': tl_ids}},
                                 {'$set': {
                                     'artist_name': song['artist_name'],
                                     'song_name': song['song_name'],
-                                    'dataset': song['Dataset'], },
-                                    'source': 'Twitter'
-                                 '$rename': {
+                                    'dataset': song['Dataset'], 
+                                    'source': 'Twitter',
+                                    'depth': 0 },
+                                '$rename': {
                                     'text': 'body',
                                     'public_metrics.like_count': 'score',
                                     'public_metrics.reply_count': 'n_replies'
                                      }
                                  })
  
-        for tweet in tl_tweets:
+        for i, tweet in enumerate(tl_tweets):
             replies = self.persist(lambda: self.get_comments(tweet))
-            reply_insert_response = db['posts'].insert_many(map(lambda x: x.data, replies))
-            # append into database
-            # update all fields  
-            # append into master ID list
-            # change fields with some depth parameter and a field for in_reply_to which references top-level ID
-            
-       # Should return a list of all top-level tweet IDs and all reply IDs for assignment to Song.
+            print(replies)
+            if replies:
+                reply_insert_response = db['posts'].insert_many(map(lambda x: x.data, replies))
+                reply_ids = reply_insert_response.inserted_ids
+
+                db['posts'].update_many({'_id': {'$in': reply_ids}},
+                                        {'$set': {
+                                            'artist_name': song['artist_name'],
+                                            'song_name': song['song_name'],
+                                            'dataset': song['Dataset'], 
+                                            'source': 'Twitter',
+                                            'depth': 1,
+                                            'replies_to': tl_ids[i] },
+                                         '$rename': {
+                                            'text': 'body',
+                                            'public_metrics.like_count': 'score',
+                                            'public_metrics.reply_count': 'n_replies'
+                                             }
+                                         })
+                tweet_ids += reply_ids
+        return tweet_ids
+     
 
 
     def get_submissions(self, song_name: str, artist_name: str) -> List:
@@ -112,7 +129,7 @@ class TwitterBot(CommentMiner):
     def get_comments(self, p_tweet: tweepy.Tweet) -> List:
         sleep(3)
         # TODO - change the logic here to maintain conversation structure by graph search.
-        comments = self.client.search_all_tweets(query=f"conversation_id:{p_tweet.conversation_id}",
+        tweets = self.client.search_all_tweets(query=f"conversation_id:{p_tweet.conversation_id}",
                                             start_time=self.twitter_epoch,
                                             sort_order='relevancy',
                                             max_results=100,
@@ -120,6 +137,10 @@ class TwitterBot(CommentMiner):
                                             tweet_fields='entities,geo,lang,public_metrics,conversation_id,created_at,context_annotations,author_id,text',
                                             place_fields='country_code,name,geo,full_name,place_type',
                                             user_fields='username,location')
-        if comments:
-            return comments
+        print(tweets.errors)
+        if tweets.errors:
+            print(f"\n\nError: {tweets.errors}")
+        if tweets.data:
+            return tweets.data
         return []
+
