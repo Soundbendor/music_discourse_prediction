@@ -27,32 +27,16 @@ def main():
     args = parseargs()
     bot = args.bot_type()
     db_client = MongoClient()['mdp']
-    songs = db_client['songs'].find({ 'Dataset': args.dataset.lower(), '$or': [ {'last_modified': {'$lt': args.timestamp }}, {'last_modified': {'$exists': False}}] } )
+    # this should probably be lt, not gt, in the future? set to gt for initial load.
+    songs = db_client['songs'].find({ 'Dataset': args.dataset.lower(), '$or': [ {'last_modified': {'$gt': args.timestamp }}, {'last_modified': {'$exists': False}}] }, no_cursor_timeout=True)
     
+    # cache the cursor to avoid timeout (the timeout parameter is fake)
+    songs = [document for document in songs]
     for song in songs:
-        song.update({"$addToSet": {"Submission": bot.process_submissions(db_client, song)}, "$set": {"last_modified": datetime.utcnow()} })
+        print(f"Starting query for song {song['song_name']}")
+        db_client['songs'].update_one({'_id': song['_id']}, {"$addToSet": {"Submission": bot.process_submissions(db_client, song)}})
+        db_client['songs'].update_one({'_id': song['_id']}, {"$set": {"last_modified": datetime.utcnow()}})
 
-    # After search and insert complete, update last modified time.
-
-
-#  def dispatch_queries(miner: CommentMiner, df, path: str, ds_name: str):
-    #  os.makedirs(os.path.dirname(path), exist_ok=True)
-    #  print(f"Beginning mining comments from {miner.__class__.__name__}...")
-    #
-    #  for idx, row in tqdm(df.iterrows(), total=len(df)):
-    #      dtime = datetime.now().strftime('%d-%m-%Y-%H-%M-%S')
-    #      fname = f"{path}{miner.__class__.__name__}_{dtime}_{row['song_id']}.json"
-    #      with open(fname, 'w') as out:
-    #          json.dump(dataclasses.asdict(SearchResult(
-    #              song_name=row['song_name'],
-    #              artist_name=row['artist_name'],
-    #              query_index=idx,
-    #              dataset=ds_name,
-    #              valence=row['valence'],
-    #              arousal=row['arousal'],
-    #              submissions=miner.query(row['song_name'], row['artist_name']))),
-    #              out, indent=4, ensure_ascii=False)
-#
 
 def minertype(istr: str):
     istr = istr.strip().lower()

@@ -42,7 +42,7 @@ class TwitterBot(CommentMiner):
     # All references will be stored in Submissions in the Songs collection
     def persist(self, func, retries = 3) -> List:
         conn = 0
-        while conn < retries:
+        while conn <= retries:
             try:
                 y = func()
                 break
@@ -50,57 +50,69 @@ class TwitterBot(CommentMiner):
                 sleep(5)
                 print(f"Connection error! Retry #{retries}")
                 retries += 1
-                if retries >= 3:
+                if conn >= 3:
                     exit()
         return y
+
+
+    def make_transaction(self, func, data): 
+        if data:
+            return func(data)
+        return None
 
 
     # Expects that source documeng had "artist_name" and "song_name" fields.
     # Should return a list of all top-level tweet IDs and all reply IDs for assignment to Song.
     def process_submissions(self, db: pymongo.database.Database, song: dict) -> List[bson.objectid.ObjectId]:
         tl_tweets = self.persist(lambda: self.get_submissions(song['artist_name'], song['song_name']))
-        insert_response = db['posts'].insert_many(map(lambda x: x.data, tl_tweets))
-        tl_ids = insert_response.inserted_ids
-        # accumulator list
-        tweet_ids = tl_ids
-        db['posts'].update_many({'_id': {'$in': tl_ids}},
-                                {'$set': {
-                                    'artist_name': song['artist_name'],
-                                    'song_name': song['song_name'],
-                                    'dataset': song['Dataset'], 
-                                    'source': 'Twitter',
-                                    'depth': 0 },
-                                '$rename': {
-                                    'text': 'body',
-                                    'public_metrics.like_count': 'score',
-                                    'public_metrics.reply_count': 'n_replies'
-                                     }
-                                 })
- 
-        for i, tweet in enumerate(tl_tweets):
-            replies = self.persist(lambda: self.get_comments(tweet))
-            print(replies)
-            if replies:
-                reply_insert_response = db['posts'].insert_many(map(lambda x: x.data, replies))
-                reply_ids = reply_insert_response.inserted_ids
-
-                db['posts'].update_many({'_id': {'$in': reply_ids}},
-                                        {'$set': {
-                                            'artist_name': song['artist_name'],
-                                            'song_name': song['song_name'],
-                                            'dataset': song['Dataset'], 
-                                            'source': 'Twitter',
-                                            'depth': 1,
-                                            'replies_to': tl_ids[i] },
-                                         '$rename': {
-                                            'text': 'body',
-                                            'public_metrics.like_count': 'score',
-                                            'public_metrics.reply_count': 'n_replies'
-                                             }
-                                         })
-                tweet_ids += reply_ids
-        return tweet_ids
+        insert_response = self.make_transaction(db['posts'].insert_many, list(map(lambda x: x.data, tl_tweets)))
+        # insert_response = db['posts'].insert_many(map(lambda x: x.data, tl_tweets))
+        if insert_response:
+            tl_ids = insert_response.inserted_ids
+            # accumulator list
+            tweet_ids = tl_ids
+            db['posts'].update_many({'_id': {'$in': tl_ids}},
+                                    {'$set': {
+                                        'artist_name': song['artist_name'],
+                                        'song_name': song['song_name'],
+                                        'dataset': song['Dataset'], 
+                                        'source': 'Twitter',
+                                        'depth': 0 },
+                                    '$rename': {
+                                        'text': 'body',
+                                        'public_metrics.like_count': 'score',
+                                        'public_metrics.reply_count': 'n_replies'
+                                         }
+                                     })
      
+            for i, tweet in enumerate(tl_tweets):
+                replies = self.persist(lambda: self.get_comments(tweet))
+                print(replies)
+                if replies:
+                    reply_insert_response = db['posts'].insert_many(map(lambda x: x.data, replies))
+                    reply_ids = reply_insert_response.inserted_ids
+
+                    db['posts'].update_many({'_id': {'$in': reply_ids}},
+                                            {'$set': {
+                                                'artist_name': song['artist_name'],
+                                                'song_name': song['song_name'],
+                                                'dataset': song['Dataset'], 
+                                                'source': 'Twitter',
+                                                'depth': 1,
+                                                'replies_to': tl_ids[i] },
+                                             '$rename': {
+                                                'text': 'body',
+                                                'public_metrics.like_count': 'score',
+                                                'public_metrics.reply_count': 'n_replies'
+                                                 }
+                                             })
+                    # Update the top level post with a list of reply IDs. 
+                    db['posts'].update_one({'_id': tl_ids[i]},
+                                            {'$set': {'replies': reply_ids}}
+                                            )
+                    tweet_ids += reply_ids
+            return tweet_ids
+        return [] 
 
 
     def get_submissions(self, song_name: str, artist_name: str) -> List:
@@ -127,8 +139,8 @@ class TwitterBot(CommentMiner):
 
 
     def get_comments(self, p_tweet: tweepy.Tweet) -> List:
-        sleep(3)
         # TODO - change the logic here to maintain conversation structure by graph search.
+        sleep(3)
         tweets = self.client.search_all_tweets(query=f"conversation_id:{p_tweet.conversation_id}",
                                             start_time=self.twitter_epoch,
                                             sort_order='relevancy',
