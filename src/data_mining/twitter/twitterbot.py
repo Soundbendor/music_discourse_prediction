@@ -89,28 +89,30 @@ class TwitterBot(CommentMiner):
                 replies = self.persist(lambda: self.get_comments(tweet))
                 print(replies)
                 if replies:
-                    reply_insert_response = db['posts'].insert_many(map(lambda x: x.data, replies))
-                    reply_ids = reply_insert_response.inserted_ids
+                    reply_insert_response = self.make_transaction(db['posts'].insert_many, list(map(lambda x: x.data, replies)))
+                    #  reply_insert_response = db['posts'].insert_many(map(lambda x: x.data, replies))
+                    if reply_insert_response:
+                        reply_ids = reply_insert_response.inserted_ids
 
-                    db['posts'].update_many({'_id': {'$in': reply_ids}},
-                                            {'$set': {
-                                                'artist_name': song['artist_name'],
-                                                'song_name': song['song_name'],
-                                                'dataset': song['Dataset'], 
-                                                'source': 'Twitter',
-                                                'depth': 1,
-                                                'replies_to': tl_ids[i] },
-                                             '$rename': {
-                                                'text': 'body',
-                                                'public_metrics.like_count': 'score',
-                                                'public_metrics.reply_count': 'n_replies'
-                                                 }
-                                             })
-                    # Update the top level post with a list of reply IDs. 
-                    db['posts'].update_one({'_id': tl_ids[i]},
-                                            {'$set': {'replies': reply_ids}}
-                                            )
-                    tweet_ids += reply_ids
+                        db['posts'].update_many({'_id': {'$in': reply_ids}},
+                                                {'$set': {
+                                                    'artist_name': song['artist_name'],
+                                                    'song_name': song['song_name'],
+                                                    'dataset': song['Dataset'], 
+                                                    'source': 'Twitter',
+                                                    'depth': 1,
+                                                    'replies_to': tl_ids[i] },
+                                                 '$rename': {
+                                                    'text': 'body',
+                                                    'public_metrics.like_count': 'score',
+                                                    'public_metrics.reply_count': 'n_replies'
+                                                     }
+                                                 })
+                        # Update the top level post with a list of reply IDs. 
+                        db['posts'].update_one({'_id': tl_ids[i]},
+                                                {'$set': {'replies': reply_ids}}
+                                                )
+                        tweet_ids += reply_ids
             return tweet_ids
         return [] 
 
