@@ -8,6 +8,7 @@ from data_mining.jsonbuilder import Submission, Comment
 from data_mining.commentminer import CommentMiner
 
 
+# Todo: integrate to MongoDB
 class RedditBot(CommentMiner):
     def __init__(self, f_key: str, search_depth: int = 10) -> None:
         load_dotenv()
