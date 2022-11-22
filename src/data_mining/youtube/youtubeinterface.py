@@ -1,7 +1,7 @@
 import time
 
 from itertools import chain
-from typing import Dict, List,  Union
+from typing import Dict, List, Union
 from dataclasses import dataclass
 
 import google_auth_oauthlib.flow
@@ -9,16 +9,11 @@ import googleapiclient.discovery
 import googleapiclient.errors
 
 scopes = ["https://www.googleapis.com/auth/youtube.force-ssl"]
-api_service_name = 'youtube'
-api_version = 'v3'
+api_service_name = "youtube"
+api_version = "v3"
 
-@dataclass
-class YoutubeSearchResult:
-    snippet: dict
-    video: dict
 
 class YoutubeInterface:
-
     def __init__(self, key: str):
         self.api = self._process_api_key(key)
 
@@ -39,56 +34,80 @@ class YoutubeInterface:
                     time.sleep(3600)
                 else:
                     print(e.status_code)
-                    raise(e)
-        raise(Exception("Retries failed."))
-    
+                    raise (e)
+        raise (Exception("Retries failed."))
+
     def _process_api_key(self, f_key: str):
-        flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(f_key, scopes)
+        flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
+            f_key, scopes
+        )
         creds = flow.run_console()
-        return googleapiclient.discovery.build(api_service_name, api_version, credentials=creds)
+        return googleapiclient.discovery.build(
+            api_service_name, api_version, credentials=creds
+        )
 
     # Returns instances of Search resources
     # https://developers.google.com/youtube/v3/docs/search/list
-    def search_by_keywords(self, query: str, limit: int) -> List[YoutubeSearchResult]:
-        return list(filter(None, map(self.get_videos, self.call_api(self._search_keyword, query, limit))))
+    def search_by_keywords(self, query: str) -> List[YoutubeSearchResult]:
+        return list(
+            filter(
+                None, map(self.get_videos, self.call_api(self._search_keyword, query))
+            )
+        )
 
     def get_videos(self, s_result: dict) -> Union[YoutubeSearchResult, None]:
         try:
-            v_id = s_result['id']['videoId']
+            v_id = s_result["id"]["videoId"]
         except KeyError:
             return None
         v_resource = self.call_api(self.get_video_by_id, v_id)
         return YoutubeSearchResult(snippet=s_result, video=v_resource)
 
-    def _search_keyword(self, query: str, limit: int) -> List[Dict]:
-        return self.api.search().list(part='snippet', maxResults = limit, q = query).execute()['items']
-
+    def _search_keyword(self, query: str) -> List[Dict]:
+        return (
+            self.api.search()
+            .list(part="snippet", maxResults=50, q=query)
+            .execute()["items"]
+        )
 
     # Returns list of CommentThread resources
-    # https://developers.google.com/youtube/v3/docs/commentThreads#resource 
+    # https://developers.google.com/youtube/v3/docs/commentThreads#resource
     def _get_comment_threads(self, video_id) -> List[Dict]:
         try:
-            return self.call_api(self.api.commentThreads().list,
-                part='snippet,replies', videoId = video_id).execute()['items']
+            return self.call_api(
+                self.api.commentThreads().list, part="snippet,replies", videoId=video_id
+            ).execute()["items"]
         except googleapiclient.errors.HttpError:
             return []
-    
+
     # Returns list of Comment resources
     # https://developers.google.com/youtube/v3/docs/comments#resource
     def get_comments(self, video_id: str) -> List[Dict]:
-        return list(chain.from_iterable(map(self._flatten_threads, self._get_comment_threads(video_id))))
+        return list(
+            chain.from_iterable(
+                map(self._flatten_threads, self._get_comment_threads(video_id))
+            )
+        )
 
+    # TODO: Don't flatten, apply nesting flag in database field
     def _flatten_threads(self, thread: dict) -> List[Dict]:
-        if int(thread['snippet']['totalReplyCount']) < 1:
-            return [thread['snippet']['topLevelComment']]
+        if int(thread["snippet"]["totalReplyCount"]) < 1:
+            return [thread["snippet"]["topLevelComment"]]
         try:
-            thread['replies']['comments'].insert(0, thread['snippet']['topLevelComment'])
-            return thread['replies']['comments']
+            thread["replies"]["comments"].insert(
+                0, thread["snippet"]["topLevelComment"]
+            )
+            return thread["replies"]["comments"]
         except KeyError:
-            return [thread['snippet']['topLevelComment']]
-            
+            return [thread["snippet"]["topLevelComment"]]
 
     # returns list of Video resources
     # https://developers.google.com/youtube/v3/docs/videos/list#resource
+    # WARN: Why are we only getting the first element of the results list here?
+    # TODO: pass me multiple video IDs to optimize our query limitations
     def get_video_by_id(self, video_id) -> Dict:
-        return self.api.videos().list(part='snippet,contentDetails,statistics', id=video_id).execute()['items'][0]
+        return (
+            self.api.videos()
+            .list(part="snippet,contentDetails,statistics,topicDetails", id=video_id)
+            .execute()["items"][0]
+        )
