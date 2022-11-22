@@ -1,33 +1,50 @@
-import configparser
+import requests
 
-from abc import ABC, abstractmethod
-from typing import List, Iterator
+from abc import abstractmethod
+from typing import List, Callable, Union
+from time import sleep
 from langdetect import detect_langs
 from langdetect.lang_detect_exception import LangDetectException
 from langdetect.language import Language
-import pymongo
-
-from data_mining.jsonbuilder import Submission
+from pymongo.database import Database
+from pymongo.results import InsertManyResult
+from bson.objectid import ObjectId
 
 
 class CommentMiner:
-
     def l_detect(self, txt: str):
         try:
             return detect_langs(txt)[0]
         except LangDetectException:
             return Language("?", 1.00)
 
-#      def query(self, song_name: str, artist_name: str) -> List[Submission]:
-        #  return list(map(self.process_submissions, self.get_submissions(song_name, artist_name)))
-
     def _build_query(self, song_name: str, artist_name: str) -> str:
-        return '"{}" "{}"'.format(artist_name.replace('"', ''), song_name.replace('"', ''))
+        return '"{}" "{}"'.format(
+            artist_name.replace('"', ""), song_name.replace('"', "")
+        )
+
+    def make_transaction(
+        self, func: Callable[[List], InsertManyResult], data: List
+    ) -> Union[InsertManyResult, None]:
+        if data:
+            return func(data)
+        return None
+
+    def persist(self, func: Callable[[], List], retries: int = 3) -> List:
+        conn = 0
+        while conn <= retries:
+            try:
+                return func()
+            except requests.exceptions.ConnectionError:
+                sleep(5)
+                print(f"Connection error! Retry #{conn}")
+                retries += 1
+        exit()
 
     @abstractmethod
-    def get_submissions(self, song_name: str, artist_name: str) -> Iterator:
+    def _get_submissions(self, song_name: str, artist_name: str) -> List:
         pass
 
     @abstractmethod
-    def process_submissions(self, db: pymongo.database.Database, song: dict) -> Submission:
+    def process_submissions(self, db: Database, song: dict) -> List[ObjectId]:
         pass
