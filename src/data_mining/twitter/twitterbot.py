@@ -1,13 +1,12 @@
-import requests
 import tweepy
 import os
-import pymongo
-import bson
 
 from time import sleep
 from datetime import datetime
 from dotenv import load_dotenv
-
+from pymongo.database import Database
+from pymongo.results import InsertManyResult
+from bson.objectid import ObjectId
 from data_mining.commentminer import CommentMiner
 from typing import List
 
@@ -28,47 +27,13 @@ class TwitterBot(CommentMiner):
             wait_on_rate_limit=True,
         )
 
-    # Requirements
-    # (yt, reddit) Pull list of top level submissions
-    # Get all top level comments
-    # Graph search all replies
-    # Use depth key to track conversation structure
-    # Enforce fixed fields across sources
-    # insert all of these fields into their respective collections (Submissions, Comments)
-    # Add type information (source(twitter, etc.), date retrieved/updated) as field
-    # Append submission, comment, reply object IDs to return list
-    # All references will be stored in Submissions in the Songs collection
-    def persist(self, func, retries=3) -> List:
-        conn = 0
-        while conn <= retries:
-            try:
-                y = func()
-                break
-            except requests.exceptions.ConnectionError:
-                sleep(5)
-                print(f"Connection error! Retry #{conn}")
-                retries += 1
-                if conn >= 3:
-                    exit()
-        return y
-
-    def make_transaction(self, func, data):
-        if data:
-            return func(data)
-        return None
-
-    # Expects that source documeng had "artist_name" and "song_name" fields.
-    # Should return a list of all top-level tweet IDs and all reply IDs for assignment to Song.
-    def process_submissions(
-        self, db: pymongo.database.Database, song: dict
-    ) -> List[bson.objectid.ObjectId]:
+    def process_submissions(self, db: Database, song: dict) -> List[ObjectId]:
         tl_tweets = self.persist(
-            lambda: self.get_submissions(song["artist_name"], song["song_name"])
+            lambda: self._get_submissions(song["artist_name"], song["song_name"])
         )
         insert_response = self.make_transaction(
             db["posts"].insert_many, list(map(lambda x: x.data, tl_tweets))
         )
-        # insert_response = db['posts'].insert_many(map(lambda x: x.data, tl_tweets))
         if insert_response:
             tl_ids = insert_response.inserted_ids
             # accumulator list
@@ -92,7 +57,7 @@ class TwitterBot(CommentMiner):
             )
 
             for i, tweet in enumerate(tl_tweets):
-                replies = self.persist(lambda: self.get_comments(tweet))
+                replies = self.persist(lambda: self._get_comments(tweet))
                 print(replies)
                 if replies:
                     reply_insert_response = self.make_transaction(
@@ -128,7 +93,7 @@ class TwitterBot(CommentMiner):
             return tweet_ids
         return []
 
-    def get_submissions(self, song_name: str, artist_name: str) -> List:
+    def _get_submissions(self, song_name: str, artist_name: str) -> List:
         # returns a list of top-level tweets mentioning the artist/track title
         # 300 tweet/15 min limit per app. 1 app per academic license. 3 second delay.
         sleep(3)
@@ -152,7 +117,7 @@ class TwitterBot(CommentMiner):
             return tweets.data
         return []
 
-    def get_comments(self, p_tweet: tweepy.Tweet) -> List:
+    def _get_comments(self, p_tweet: tweepy.Tweet) -> List:
         # TODO - change the logic here to maintain conversation structure by graph search.
         sleep(3)
         tweets = self.client.search_all_tweets(

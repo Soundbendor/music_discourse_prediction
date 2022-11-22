@@ -17,7 +17,6 @@ class YoutubeBot(CommentMiner):
         self.yt_client = YoutubeInterface(key)
         self.search_depth = search_depth
 
-    # i am making an edit
     def get_submissions(
         self, song_name: str, artist_name: str
     ) -> List[YoutubeSearchResult]:
