@@ -1,14 +1,18 @@
 import requests
+import tweepy
+import praw
 
 from abc import abstractmethod
-from typing import List, Callable, Union
+from typing import List, Callable, TypeVar
 from time import sleep
 from langdetect import detect_langs
 from langdetect.lang_detect_exception import LangDetectException
 from langdetect.language import Language
 from pymongo.database import Database
-from pymongo.results import InsertManyResult
 from bson.objectid import ObjectId
+from googleapiclient.discovery import Resource as YoutubeResource
+
+Client = TypeVar("Client", tweepy.Client, praw.Reddit, YoutubeResource)
 
 
 class CommentMiner:
@@ -22,13 +26,6 @@ class CommentMiner:
         return '"{}" "{}"'.format(
             artist_name.replace('"', ""), song_name.replace('"', "")
         )
-
-    def make_transaction(
-        self, func: Callable[[List], InsertManyResult], data: List
-    ) -> Union[InsertManyResult, None]:
-        if data:
-            return func(data)
-        return None
 
     def persist(self, func: Callable[[], List], retries: int = 3) -> List:
         conn = 0
@@ -46,5 +43,9 @@ class CommentMiner:
         pass
 
     @abstractmethod
-    def process_submissions(self, db: Database, song: dict) -> List[ObjectId]:
+    def fetch_comments(self, db: Database, song: dict) -> List[ObjectId]:
+        pass
+
+    @abstractmethod
+    def _authenticate(self) -> Client:
         pass
