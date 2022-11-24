@@ -21,7 +21,7 @@ from database.driver import Driver
 
 def main():
     args = parseargs()
-    bot = args.bot_type()
+    bot = args.bot_type(args.config)
     driver = Driver("mdp")
     songs = driver.get_dataset(args.dataset.lower(), args.timestamp)
 
@@ -69,5 +69,13 @@ def parseargs() -> argparse.Namespace:
         required=True,
         type=lambda x: datetime.strptime(x, "%Y-%m-%d %H:%M:%S"),
         help="Fetch all songs with a last modified time less than this given UTC timestamp.",
+    )
+    parser.add_argument(
+        "--config",
+        dest="config",
+        required=True,
+        default="",
+        type=str,
+        help="Config file for bot",
     )
     return parser.parse_args()

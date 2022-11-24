@@ -1,5 +1,6 @@
-import itertools
 import time
+import os
+from google.oauth2.credentials import Credentials
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
@@ -21,17 +22,19 @@ ERR = (HttpError,)
 
 
 class YoutubeBot(CommentMiner):
-
-    # We don't need to invoke process_api_key here,
-    # since Gauth is set up to handle the auth key automatically with a filename.
     def __init__(self, key: str) -> None:
         self.yt_client = self._authenticate(key)
 
     def _authenticate(self, f_key: str) -> Resource:
-        flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-            f_key, SCOPES
-        )
-        creds = flow.run_console()
+        if os.path.exists("yt_token.json"):
+            creds = Credentials("yt_token.json")
+        else:
+            flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
+                f_key, SCOPES
+            )
+            creds = flow.run_local_server(port=0)
+            with open("yt_token.json", "w") as token:
+                token.write(creds.to_json())
         return googleapiclient.discovery.build(
             API_SERVICE_NAME, API_VERSION, credentials=creds
         )
@@ -39,7 +42,8 @@ class YoutubeBot(CommentMiner):
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
 
         videos = self._get_submissions(song["artist_name"], song["song_name"])
-        comments = chain.from_iterable(map(self._get_comments, videos))
+        comments = list(chain.from_iterable(map(self._get_comments, videos)))
+        print(comments)
 
         #  s_lang = self.l_detect(
         #      f"{s_result.snippet['snippet']['title']} {s_result.snippet['snippet']['description']}"
