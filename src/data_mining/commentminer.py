@@ -17,6 +17,9 @@ Error = Union[requests.exceptions.ConnectionError, HttpError]
 
 
 class CommentMiner:
+    def __init__(self, config: str) -> None:
+        pass
+
     def l_detect(self, txt: str):
         try:
             return detect_langs(txt)[0]

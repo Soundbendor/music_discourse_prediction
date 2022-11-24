@@ -15,7 +15,7 @@ ERR = (requests.exceptions.ConnectionError,)
 
 
 class TwitterBot(CommentMiner):
-    def __init__(self) -> None:
+    def __init__(self, _: str) -> None:
         self.client = self._authenticate()
         self.twitter_epoch = datetime(2006, 3, 26)
 
