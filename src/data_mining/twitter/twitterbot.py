@@ -1,4 +1,5 @@
 import tweepy
+import requests
 import os
 
 from time import sleep
@@ -10,13 +11,15 @@ from data_mining.commentminer import CommentMiner
 from database.driver import Driver
 from typing import List
 
+ERR = (requests.exceptions.ConnectionError,)
+
 
 class TwitterBot(CommentMiner):
     def __init__(self) -> None:
-        self.client = self.auth_handler()
+        self.client = self._authenticate()
         self.twitter_epoch = datetime(2006, 3, 26)
 
-    def auth_handler(self) -> tweepy.Client:
+    def authenticate(self) -> tweepy.Client:
         load_dotenv()
         return tweepy.Client(
             bearer_token=os.getenv("TWITTER_BEARER_TOKEN"),
@@ -28,8 +31,8 @@ class TwitterBot(CommentMiner):
         )
 
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
-        tl_tweets = self.persist(
-            lambda: self._get_submissions(song["artist_name"], song["song_name"])
+        tl_tweets = self._persist(
+            lambda: self._get_submissions(song["artist_name"], song["song_name"]), ERR
         )
 
         tl_tweet_ids = db.insert_posts(
@@ -52,7 +55,7 @@ class TwitterBot(CommentMiner):
         tweet_ids = tl_tweet_ids
 
         for i, tweet in tqdm(enumerate(tl_tweets)):
-            replies = self.persist(lambda: self._get_comments(tweet))
+            replies = self._persist(lambda: self._get_comments(tweet), ERR)
             reply_ids = db.insert_posts(
                 list(map(lambda x: x.data, replies)),
                 {
@@ -116,3 +119,7 @@ class TwitterBot(CommentMiner):
         if tweets.data:
             return tweets.data
         return []
+
+    def _handler(self, e: Exception) -> None:
+        print("Twitter: Connection Error! Reconnecting in 5...")
+        sleep(5)
