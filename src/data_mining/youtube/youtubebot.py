@@ -5,20 +5,18 @@ import google_auth_oauthlib.flow
 import googleapiclient.discovery
 import googleapiclient.errors
 
-from time import sleep
 from googleapiclient.errors import HttpError
 from itertools import chain
 from bson.objectid import ObjectId
 from googleapiclient.discovery import Resource
-from data_mining.commentminer import CommentMiner, Error
-from typing import Callable, Dict, List, cast
+from data_mining.commentminer import CommentMiner
+from typing import Callable, Dict, List
 from database.driver import Driver
 
 BASE_URL = "http://youtu.be/"
 SCOPES = ["https://www.googleapis.com/auth/youtube.force-ssl"]
 API_SERVICE_NAME = "youtube"
 API_VERSION = "v3"
-ERR = (HttpError,)
 
 
 class YoutubeBot(CommentMiner):
@@ -27,7 +25,7 @@ class YoutubeBot(CommentMiner):
 
     def _authenticate(self, f_key: str) -> Resource:
         if os.path.exists("yt_token.json"):
-            creds = Credentials("yt_token.json")
+            creds = Credentials.from_authorized_user_file("yt_token.json", SCOPES)
         else:
             flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
                 f_key, SCOPES
@@ -43,31 +41,25 @@ class YoutubeBot(CommentMiner):
 
         videos = self._get_submissions(song["artist_name"], song["song_name"])
         comments = list(chain.from_iterable(map(self._get_comments, videos)))
-        print(comments)
-
-        #  s_lang = self.l_detect(
-        #      f"{s_result.snippet['snippet']['title']} {s_result.snippet['snippet']['description']}"
-        #  )
-        #  s_lang = self.l_detect()
-        #  return Submission(
-        #      title=s_result.snippet["snippet"]["title"],
-        #      body=s_result.snippet["snippet"]["description"],
-        #      lang=s_lang.lang,
-        #      lang_p=s_lang.prob,
-        #      url=BASE_URL + s_result.snippet["id"]["videoId"],
-        #      id=s_result.snippet["id"]["videoId"],
-        #      score=self._get_video_score(s_result.video),
-        #      n_comments=self._get_comment_count(s_result.video),
-        #      subreddit=s_result.video["snippet"]["channelTitle"],
-        #      comments=list(
-        #          map(
-        #              self.process_comments,
-        #              self.yt_client.get_comments(s_result.snippet["id"]["videoId"]),
-        #          )
-        #      ),
-
-    #
-    #  )
+        return db.insert_posts(
+            comments,
+            {
+                "artist_name": song["artist_name"],
+                "song_name": song["song_name"],
+                "dataset": song["Dataset"],
+                "source": "Youtube",
+            },
+            {
+                "snippet.textOriginal": "body",
+                "snippet.likeCount": "score",
+            },
+            {
+                "body": "$$this.snippet.textOriginal",
+                "id": "$$this.id",
+                "snippet": "$$this.snippet",
+                "score": "$$this.snippet.likeCount",
+            },
+        )
 
     # Returns a list of Video objects
     def _get_submissions(self, song_name: str, artist_name: str) -> List[dict]:
@@ -79,13 +71,11 @@ class YoutubeBot(CommentMiner):
                         self._persist(
                             lambda: self._search_keyword(
                                 self._build_query(song_name, artist_name)
-                            ),
-                            ERR,
+                            )
                         ),
                     )
                 )
-            ),
-            ERR,
+            )
         )
 
     # Returns instances of Search resources
@@ -109,56 +99,43 @@ class YoutubeBot(CommentMiner):
 
     def _get_comment_threads(self, video: dict) -> List[dict]:
         return self._persist(
-            lambda: self.yt_client.commentThreads().list(  # type: ignore
-                part="snippet,replies", videoId=video["id"]
-            ),
-            ERR,
-        ).execute()["items"]
-
-    def _get_comments(self, video: dict) -> List[Dict]:
-        return list(
-            chain.from_iterable(
-                map(self._flatten_threads, self._get_comment_threads(video))
-            )
+            lambda: self.yt_client.commentThreads()  # type: ignore
+            .list(part="snippet,replies", videoId=video["id"])
+            .execute()["items"],
         )
 
-        #  c_lang = self.l_detect(comment["snippet"]["textOriginal"])
-
-    #          return Comment(
-    #      id=comment["id"],
-    #      score=int(comment["snippet"]["likeCount"]),
-    #      body=comment["snippet"]["textOriginal"],
-    #      replies=0,
-    #      lang=c_lang.lang,
-    #      lang_p=c_lang.prob,
-    #  )
-    #
-    def _update_reply_depth(self, comment: dict) -> dict:
-        comment["snippet"]["depth"] = 1
+    def _update_replies(self, cthread: dict) -> dict:
+        comment = cthread["snippet"]["topLevelComment"]
+        comment["n_replies"] = cthread["snippet"]["totalReplyCount"]
+        try:
+            comment["replies"] = cthread["replies"]["comments"]
+        except KeyError:
+            comment["replies"] = []
         return comment
 
-    def _flatten_threads(self, thread: dict) -> List[Dict]:
-        thread["snippet"]["topLevelComment"]["depth"] = 0
-        try:
-            replies = list(map(self._update_reply_depth, thread["replies"]["comments"]))
-            replies.insert(0, thread["snippet"]["topLevelComment"])
-            return thread["replies"]["comments"]
-        except KeyError:
-            return [thread["snippet"]["topLevelComment"]]
+    def _get_comments(self, video: dict) -> List[Dict]:
+        # Convert CommentThread resource to Comment resource with nested Comment list
+        return list(map(self._update_replies, self._get_comment_threads(video)))
 
-    def _handler(self, e: Error) -> None:
-        if type(e) == HttpError:
-            # At this point we have confirmed the execption is an HttpError.
-            # Provide inference to the type checker
-            e = cast(HttpError, e)
-            if e.status_code == 403:
-                print(e)
-                print("Entering 24hr sleep loop")
-                time.sleep(86400)
-            elif e.status_code == 500:
-                print("500 - Internal Server Error \n")
-                print("Sleeping for 1 hour\n")
-                time.sleep(3600)
-            else:
-                print(e.status_code)
-                raise (e)
+    def _persist(self, func: Callable[[], List[dict]], retries: int = 3):
+        for _ in range(0, retries):
+            try:
+                return func()
+            except HttpError as e:
+                if e.status_code == 403:
+                    if e.error_details[0]["reason"] == "commentsDisabled":  # type: ignore
+                        return []
+                    else:
+                        print(e)
+                        print("Entering 24hr sleep loop")
+                        time.sleep(86400)
+                        continue
+                elif e.status_code == 500:
+                    print("500 - Internal Server Error \n")
+                    print("Sleeping for 1 hour\n")
+                    time.sleep(3600)
+                    continue
+                else:
+                    print(e.status_code)
+                    raise (e)
+        exit()

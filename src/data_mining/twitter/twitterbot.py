@@ -5,13 +5,10 @@ import os
 from time import sleep
 from datetime import datetime
 from dotenv import load_dotenv
-from tqdm import tqdm
 from bson.objectid import ObjectId
 from data_mining.commentminer import CommentMiner
 from database.driver import Driver
-from typing import List
-
-ERR = (requests.exceptions.ConnectionError,)
+from typing import List, Callable
 
 
 class TwitterBot(CommentMiner):
@@ -31,18 +28,17 @@ class TwitterBot(CommentMiner):
         )
 
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
-        tl_tweets = self._persist(
-            lambda: self._get_submissions(song["artist_name"], song["song_name"]), ERR
+        tweets = self._persist(
+            lambda: self._get_submissions(song["artist_name"], song["song_name"])
         )
 
-        tl_tweet_ids = db.insert_posts(
-            list(map(lambda x: x.data, tl_tweets)),
+        return db.insert_posts(
+            tweets,
             {
                 "artist_name": song["artist_name"],
                 "song_name": song["song_name"],
                 "dataset": song["Dataset"],
                 "source": "Twitter",
-                "depth": 0,
             },
             {
                 "text": "body",
@@ -51,34 +47,7 @@ class TwitterBot(CommentMiner):
             },
         )
 
-        # Accumulator list
-        tweet_ids = tl_tweet_ids
-
-        for i, tweet in tqdm(enumerate(tl_tweets)):
-            replies = self._persist(lambda: self._get_comments(tweet), ERR)
-            reply_ids = db.insert_posts(
-                list(map(lambda x: x.data, replies)),
-                {
-                    "artist_name": song["artist_name"],
-                    "song_name": song["song_name"],
-                    "dataset": song["Dataset"],
-                    "source": "Twitter",
-                    "depth": 1,
-                    "replies_to": tl_tweet_ids[i],
-                },
-                {
-                    "text": "body",
-                    "public_metrics.like_count": "score",
-                    "public_metrics.reply_count": "n_replies",
-                },
-            )
-
-            db.update_replies(tl_tweet_ids[i], reply_ids)
-            tweet_ids += reply_ids
-        return tweet_ids
-
     def _get_submissions(self, song_name: str, artist_name: str) -> List:
-        # returns a list of top-level tweets mentioning the artist/track title
         # 300 tweet/15 min limit per app. 1 app per academic license. 3 second delay.
         sleep(3)
         tweets: tweepy.Response = self.client.search_all_tweets(
@@ -92,16 +61,18 @@ class TwitterBot(CommentMiner):
             user_fields="username,location",
         )  # type: ignore
 
-        # TODO: Check Twitter status code here
         # https://developer.twitter.com/en/support/twitter-api/error-troubleshooting
         if tweets.errors:
             print(f"\n\nError: {tweets.errors}")
         if tweets.data:
-            return tweets.data
+            return list(map(self._insert_replies, tweets.data))
         return []
 
+    def _insert_replies(self, tweet: tweepy.Tweet) -> tweepy.Tweet:
+        tweet.data["replies"] = self._get_comments(tweet)
+        return tweet.data
+
     def _get_comments(self, p_tweet: tweepy.Tweet) -> List:
-        # TODO - change the logic here to maintain conversation structure by graph search.
         sleep(3)
         tweets: tweepy.Response = self.client.search_all_tweets(
             query=f"conversation_id:{p_tweet.conversation_id}",
@@ -117,9 +88,14 @@ class TwitterBot(CommentMiner):
         if tweets.errors:
             print(f"\n\nError: {tweets.errors}")
         if tweets.data:
-            return tweets.data
+            return list(map(lambda x: x.data, tweets))
         return []
 
-    def _handler(self, e: Exception) -> None:
-        print("Twitter: Connection Error! Reconnecting in 5...")
-        sleep(5)
+    def _persist(self, func: Callable[[], List], retries: int = 3):
+        for _ in range(0, retries):
+            try:
+                return func()
+            except requests.exceptions.ConnectionError:
+                print("Twitter: Connection Error! Reconnecting in 5...")
+                sleep(5)
+        raise RuntimeError("Exceeded maximum retries")
