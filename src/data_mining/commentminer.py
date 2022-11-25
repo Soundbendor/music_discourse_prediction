@@ -1,19 +1,16 @@
 import tweepy
-import requests
 import praw
 
 from abc import abstractmethod
-from typing import List, Callable, TypeVar, Union
+from typing import List, Callable, TypeVar
 from langdetect import detect_langs
 from langdetect.lang_detect_exception import LangDetectException
 from langdetect.language import Language
 from bson.objectid import ObjectId
-from googleapiclient.errors import HttpError
 from database.driver import Driver
 from googleapiclient.discovery import Resource as YoutubeResource
 
 Client = TypeVar("Client", tweepy.Client, praw.Reddit, YoutubeResource)
-Error = Union[requests.exceptions.ConnectionError, HttpError]
 
 
 class CommentMiner:
@@ -31,14 +28,9 @@ class CommentMiner:
             artist_name.replace('"', ""), song_name.replace('"', "")
         )
 
+    @abstractmethod
     def _persist(self, func: Callable, exceptions: tuple, retries: int = 3):
-        for i in range(0, retries):
-            try:
-                return func()
-            #  except requests.exceptions.ConnectionError:
-            except exceptions as e:
-                self._handler(e)
-        exit()
+        pass
 
     @abstractmethod
     def _get_submissions(self, song_name: str, artist_name: str) -> List:
@@ -50,8 +42,4 @@ class CommentMiner:
 
     @abstractmethod
     def _authenticate(self) -> Client:
-        pass
-
-    @abstractmethod
-    def _handler(self, e: Error) -> None:
         pass

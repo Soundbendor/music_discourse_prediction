@@ -45,13 +45,13 @@ class Driver:
             return func(data)
         return None
 
-    # Insert the results from a CommentMiner's API calls into the Posts collection
+    # Insert the result from a CommentMiner's API calls into the Posts collection
     # Updates the resulting reponse dict to coerce fields accordint to custom mapping
     # Accepts a mapping of fields to rename, a dataset name, and a list of posts
     # Returns a list of Post IDs
     # TODO: Is dict appropriate type for posts list
     def insert_posts(
-        self, posts: List[dict], metadata: dict, mapping: dict
+        self, posts: List[dict], metadata: dict, mapping: dict, array_mapping: dict
     ) -> List[ObjectId]:
         insert_response = self._make_transaction(
             self.client["posts"].insert_many, posts
@@ -60,6 +60,18 @@ class Driver:
             self.client["posts"].update_many(
                 {"_id": {"$in": insert_response.inserted_ids}},
                 {"$set": metadata, "$rename": mapping},
+            )
+            self.client["posts"].update_many(
+                {"_id": {"$in": insert_response.inserted_ids}},
+                [
+                    {
+                        "$set": {
+                            "replies": {
+                                "$map": {"input": "$replies", "in": array_mapping}
+                            }
+                        }
+                    }
+                ],
             )
             return insert_response.inserted_ids
         return []
