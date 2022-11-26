@@ -69,7 +69,6 @@ class RedditBot(CommentMiner):
     def _parse_comment(self, comment: Comment) -> dict:
         c = self._get_attributes(comment)
         c["replies"] = self._replace_comments(comment.replies)
-        print(c["replies"])
         c["submission"] = comment._submission.id
         c["subreddit"] = comment.subreddit.name
         try:
