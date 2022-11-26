@@ -16,7 +16,7 @@ class TwitterBot(CommentMiner):
         self.client = self._authenticate()
         self.twitter_epoch = datetime(2006, 3, 26)
 
-    def authenticate(self) -> tweepy.Client:
+    def _authenticate(self) -> tweepy.Client:
         load_dotenv()
         return tweepy.Client(
             bearer_token=os.getenv("TWITTER_BEARER_TOKEN"),
@@ -29,7 +29,7 @@ class TwitterBot(CommentMiner):
 
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
         tweets = self._persist(
-            lambda: self._get_submissions(song["artist_name"], song["song_name"])
+            lambda: self._get_submissions(song["song_name"], song["artist_name"])
         )
 
         return db.insert_posts(
@@ -44,6 +44,20 @@ class TwitterBot(CommentMiner):
                 "text": "body",
                 "public_metrics.like_count": "score",
                 "public_metrics.reply_count": "n_replies",
+            },
+            {
+                "body": "$$this.text",
+                "score": "$$this.public_metrics.like_count",
+                "n_replies": "$$this.public_metrics.reply_count",
+                "entities": "$$this.entities",
+                "public_metrics": "$$this.public_metrics",
+                "created_at": "$$this.created_at",
+                "edit_history_tweet_ids": "$$this.edit_history_tweet_ids",
+                "author_id": "$$this.author_id",
+                "id": "$$this.id",
+                "context_annotations": "$$this.context_annotations",
+                "lang": "$$this.lang",
+                "conversation_id": "$$this.conversation_id",
             },
         )
 
@@ -88,7 +102,7 @@ class TwitterBot(CommentMiner):
         if tweets.errors:
             print(f"\n\nError: {tweets.errors}")
         if tweets.data:
-            return list(map(lambda x: x.data, tweets))
+            return list(map(lambda x: x.data, tweets.data))
         return []
 
     def _persist(self, func: Callable[[], List], retries: int = 3):

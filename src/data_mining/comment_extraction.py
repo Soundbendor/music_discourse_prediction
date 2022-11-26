@@ -73,7 +73,7 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument(
         "--config",
         dest="config",
-        required=True,
+        required=False,
         default="",
         type=str,
         help="Config file for bot",
