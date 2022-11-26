@@ -39,7 +39,7 @@ class YoutubeBot(CommentMiner):
 
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
 
-        videos = self._get_submissions(song["artist_name"], song["song_name"])
+        videos = self._get_submissions(song["song_name"], song["artist_name"])
         comments = list(chain.from_iterable(map(self._get_comments, videos)))
         return db.insert_posts(
             comments,

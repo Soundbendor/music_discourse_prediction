@@ -1,62 +1,83 @@
 import praw
 import os
-# dumb workaround for intellisense bug in vscode
-from praw import models as praw_models
+
 from dotenv import load_dotenv
-from typing import Iterator, List
-from data_mining.jsonbuilder import Submission, Comment
+from itertools import chain
+from praw.models.reddit.comment import CommentForest
+from praw.reddit import Comment, Submission
+from database.driver import Driver
+from bson.objectid import ObjectId
+from typing import List
 from data_mining.commentminer import CommentMiner
 
+SITE_NAME = "bot1"
 
-# Todo: integrate to MongoDB
+
 class RedditBot(CommentMiner):
-    def __init__(self, f_key: str, search_depth: int = 10) -> None:
+    def __init__(self, _: str) -> None:
         load_dotenv()
-        self.site_name = 'bot1'
-        self.reddit = praw.Reddit(self.site_name,
-                                  client_id=os.getenv('REDDIT_CLIENT_ID'),
-                                  client_secret=os.getenv('REDDIT_CLIENT_SECRET'))
-        self.search_depth = search_depth
+        self.reddit = self._authenticate()
 
-    def process_submissions(self, submission: praw_models.Submission) -> Submission:
-        s_lang = self.l_detect(f"{submission.title} {submission.selftext}")
-        return Submission(
-            title=submission.title,
-            body=submission.selftext,
-            lang=s_lang.lang,
-            lang_p=s_lang.prob,
-            url=submission.url,
-            id=submission.id,
-            score=submission.score,
-            n_comments=submission.num_comments,
-            subreddit=submission.subreddit.display_name,
-            comments=list(map(self.process_comments,
-                          self.get_comments(submission)))
+    def _authenticate(self) -> praw.Reddit:
+        return praw.Reddit(
+            SITE_NAME,
+            client_id=os.getenv("REDDIT_CLIENT_ID"),
+            client_secret=os.getenv("REDDIT_CLIENT_SECRET"),
+            user_agent="Music Discourse Scraper - Oregon State University EECS",
         )
 
-    def process_comments(self, comment: praw_models.Comment) -> Comment:
-        c_lang = self.l_detect(comment.body)
-        return Comment(
-            id=comment.id,
-            # Should this just be upvotes (t0 match youtube/twitter APIs)
-            # put downvotes as a reddit data contract specific field?
-            score=comment.score,
-            body=comment.body,
-            replies=len(comment.replies),
-            lang=c_lang.lang,
-            lang_p=c_lang.prob
+    def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
+        submissions = self._get_submissions(song["song_name"], song["artist_name"])
+        # WARN - We are ignoring information about the Submission itself (including submission text)
+        # to preserve schema structure
+        comments = list(chain.from_iterable(map(self._get_comments, submissions)))
+        return db.insert_posts(
+            comments,
+            {
+                "artist_name": song["artist_name"],
+                "song_name": song["song_name"],
+                "dataset": song["Dataset"],
+                "source": "Reddit",
+            },
+            # mongodb gets fussy when we try to pass an empty rename body
+            {"subreddit_name_prefixed": "subreddit_name"},
+            {k: f"$$this.{k}" for k, v in comments[0].items()},
         )
 
-    def get_submissions(self, song_name: str, artist_name: str) -> Iterator[praw_models.Submission]:
-        subreddit = self.reddit.subreddit("all")
-
-        return subreddit.search(self.build_query(song_name, artist_name),
-                                'top', 'lucene', "all", limit=self.search_depth)
+    def _get_submissions(self, song_name: str, artist_name: str) -> List[Submission]:
+        return self.reddit.subreddit("all").search(
+            self.build_query(song_name, artist_name), "top", "lucene", "all", limit=100
+        )
 
     def build_query(self, song_name: str, artist_name: str) -> str:
-        return f"title:\"{artist_name}\" \"{song_name} \""
+        return f'title:"{artist_name}" "{song_name} "'
 
-    def get_comments(self, post: praw_models.Submission) -> List[praw_models.Comment]:
-        post.comments.replace_more(limit=0)
-        # WARN - type ignore because of apparant bug in praw stubs for pylance?
-        return list(post.comments)  # type: ignore
+    def _replace_comments(self, c: CommentForest) -> List[dict]:
+        _ = c.replace_more(0)
+        return list(map(self._get_attributes, list(c)))
+
+    def _get_attributes(self, c: Comment) -> dict:
+        return {
+            k: v
+            for k, v in dict(vars(c)).items()
+            if not callable(v)
+            and not k.startswith("_")
+            and k != "author"
+            and k != "subreddit"
+        }
+
+    def _parse_comment(self, comment: Comment) -> dict:
+        c = self._get_attributes(comment)
+        c["replies"] = self._replace_comments(comment.replies)
+        print(c["replies"])
+        c["submission"] = comment._submission.id
+        c["subreddit"] = comment.subreddit.name
+        try:
+            c["author"] = comment.author.name
+        except AttributeError:
+            c["author"] = ""
+        return c
+
+    # WARN - need to wrap in a persist call, as replace_more requires multiple api requests
+    def _get_comments(self, post: Submission) -> List[dict]:
+        return list(map(self._parse_comment, post.comments))  # type: ignore
