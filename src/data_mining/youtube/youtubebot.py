@@ -135,6 +135,9 @@ class YoutubeBot(CommentMiner):
                     print("Sleeping for 1 hour\n")
                     time.sleep(3600)
                     continue
+                elif e.status_code == 400:
+                    if e.error_details[0]["reason"] == "missingRequiredParameter":  # type: ignore
+                        return []
                 else:
                     print(e.status_code)
                     raise (e)
