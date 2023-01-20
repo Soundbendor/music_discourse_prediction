@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from dotenv import load_dotenv
+
 # from feature_engineering.song_loader import get_song_df
 from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 from scipy.stats import pearsonr
@@ -15,6 +16,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 from database.driver import Driver
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
+
 # from prediction.visualization.visualizations import circumplex_model
 from .model_assembler import create_model
 
@@ -90,7 +92,7 @@ def get_songs(args: argparse.Namespace):
 
 def main():
     db_con = Driver("mdp")
-    db_con.get_discourse()
+    db_con.get_discourse(ds_name="amg1608")
 
     load_dotenv()
     # load neptune callback for keras
