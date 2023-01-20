@@ -1,8 +1,11 @@
-import pymongo
+import itertools
 from datetime import datetime
 from typing import Callable, List, Union
-from pymongo.results import InsertManyResult
+
+import pandas as pd
+import pymongo
 from bson.objectid import ObjectId
+from pymongo.results import InsertManyResult
 
 
 class Driver:
@@ -25,11 +28,21 @@ class Driver:
         )
         return [document for document in songs]
 
+    # TEST: Pass an empty string to query should have same effect as "all"?
+    def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
+        songs = self.client["songs"].find(self._make_dataset_filter(ds_name))
+        ids = itertools.chain(map(lambda x: x["submissions"], songs))
+        print(ids)
+
+    # In the case of an empty dataset name string, we want all songs from all datasets.
+    def _make_dataset_filter(self, ds_name: str) -> dict:
+        if ds_name:
+            return {"Dataset": ds_name}
+        return {}
+
     # Inserts the comment IDs returned from a CommentMiner instance into that song's db entry
     def update_song(self, song: dict, ids: List[ObjectId]) -> None:
-        self.client["songs"].update_one(
-            {"_id": song["_id"]}, {"$addToSet": {"Submission": ids}}
-        )
+        self.client["songs"].update_one({"_id": song["_id"]}, {"$addToSet": {"Submission": ids}})
         self.client["songs"].update_one(
             {"_id": song["_id"]}, {"$set": {"last_modified": datetime.utcnow()}}
         )  # type: ignore
@@ -38,9 +51,7 @@ class Driver:
         self.client["posts"].update_one({"_id": id}, {"$set": {"replies": reply_ids}})
 
     # Protects database from update_many calls with empty data lists.
-    def _make_transaction(
-        self, func: Callable[[List], InsertManyResult], data: List
-    ) -> Union[InsertManyResult, None]:
+    def _make_transaction(self, func: Callable[[List], InsertManyResult], data: List) -> Union[InsertManyResult, None]:
         if data:
             return func(data)
         return None
@@ -50,12 +61,8 @@ class Driver:
     # Accepts a mapping of fields to rename, a dataset name, and a list of posts
     # Returns a list of Post IDs
     # TODO: Is dict appropriate type for posts list
-    def insert_posts(
-        self, posts: List[dict], metadata: dict, mapping: dict, array_mapping: dict
-    ) -> List[ObjectId]:
-        insert_response = self._make_transaction(
-            self.client["posts"].insert_many, posts
-        )
+    def insert_posts(self, posts: List[dict], metadata: dict, mapping: dict, array_mapping: dict) -> List[ObjectId]:
+        insert_response = self._make_transaction(self.client["posts"].insert_many, posts)
         if insert_response:
             self.client["posts"].update_many(
                 {"_id": {"$in": insert_response.inserted_ids}},
@@ -63,15 +70,7 @@ class Driver:
             )
             self.client["posts"].update_many(
                 {"_id": {"$in": insert_response.inserted_ids}},
-                [
-                    {
-                        "$set": {
-                            "replies": {
-                                "$map": {"input": "$replies", "in": array_mapping}
-                            }
-                        }
-                    }
-                ],
+                [{"$set": {"replies": {"$map": {"input": "$replies", "in": array_mapping}}}}],
             )
             return insert_response.inserted_ids
         return []
