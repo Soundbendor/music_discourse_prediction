@@ -33,9 +33,11 @@ class Driver:
         ids = list(itertools.chain.from_iterable(itertools.chain.from_iterable(map(lambda x: x["Submission"], songs))))
         posts = [x for x in self.client["posts"].find({"_id": {"$in": ids}, **self._make_source_filter(source_type)})]
         replies = list(itertools.chain.from_iterable(map(lambda x: x["replies"], posts)))
-        print(len(posts))
-        print(len(replies))
-        print(replies)
+        # print(len(posts))
+        # print(len(replies))
+        # print(replies)
+        df = pd.DataFrame.from_records(posts)
+        print(df)
         # print(ids)
 
     # In the case of an empty dataset name string, we want all songs from all datasets.
