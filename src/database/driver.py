@@ -31,7 +31,7 @@ class Driver:
     def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
         songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
         ids = list(itertools.chain.from_iterable(itertools.chain.from_iterable(map(lambda x: x["Submission"], songs))))
-        posts = [x for x in self.client["posts"].find({"_id": {"$in": ids}})]
+        posts = [x for x in self.client["posts"].find({"_id": {"$in": ids}, **self._make_source_filter(source_type)})]
         replies = list(itertools.chain.from_iterable(map(lambda x: x["replies"], posts)))
         print(len(posts))
         print(len(replies))
@@ -42,6 +42,11 @@ class Driver:
     def _make_dataset_filter(self, ds_name: str) -> dict:
         if ds_name:
             return {"Dataset": ds_name}
+        return {}
+
+    def _make_source_filter(self, source_type: str) -> dict:
+        if source_type:
+            return {"source": source_type}
         return {}
 
     # Inserts the comment IDs returned from a CommentMiner instance into that song's db entry
