@@ -92,7 +92,7 @@ def get_songs(args: argparse.Namespace):
 
 def main():
     db_con = Driver("mdp")
-    db_con.get_discourse(ds_name="amg1608")
+    db_con.get_discourse(ds_name="amg1608", source_type="Reddit")
 
     load_dotenv()
     # load neptune callback for keras
