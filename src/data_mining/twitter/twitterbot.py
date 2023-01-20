@@ -9,6 +9,7 @@ from bson.objectid import ObjectId
 from data_mining.commentminer import CommentMiner
 from database.driver import Driver
 from typing import List, Callable
+from tweepy.errors import TwitterServerError
 
 
 class TwitterBot(CommentMiner):
@@ -28,9 +29,7 @@ class TwitterBot(CommentMiner):
         )
 
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
-        tweets = self._persist(
-            lambda: self._get_submissions(song["song_name"], song["artist_name"])
-        )
+        tweets = self._persist(lambda: self._get_submissions(song["song_name"], song["artist_name"]))
 
         return db.insert_posts(
             tweets,
@@ -112,4 +111,8 @@ class TwitterBot(CommentMiner):
             except requests.exceptions.ConnectionError:
                 print("Twitter: Connection Error! Reconnecting in 5...")
                 sleep(5)
+            except TwitterServerError:
+                print("Twitter: Connection Error! Reconnecting in 600...")
+                sleep(5)
+                continue
         raise RuntimeError("Exceeded maximum retries")

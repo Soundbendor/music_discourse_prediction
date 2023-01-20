@@ -28,11 +28,15 @@ class Driver:
         )
         return [document for document in songs]
 
-    # TEST: Pass an empty string to query should have same effect as "all"?
     def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
-        songs = self.client["songs"].find(self._make_dataset_filter(ds_name))
-        ids = itertools.chain(map(lambda x: x["submissions"], songs))
-        print(ids)
+        songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
+        ids = list(itertools.chain.from_iterable(itertools.chain.from_iterable(map(lambda x: x["Submission"], songs))))
+        posts = [x for x in self.client["posts"].find({"_id": {"$in": ids}})]
+        replies = list(itertools.chain.from_iterable(map(lambda x: x["replies"], posts)))
+        print(len(posts))
+        print(len(replies))
+        print(replies)
+        # print(ids)
 
     # In the case of an empty dataset name string, we want all songs from all datasets.
     def _make_dataset_filter(self, ds_name: str) -> dict:
