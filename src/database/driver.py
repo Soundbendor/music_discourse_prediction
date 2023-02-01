@@ -37,6 +37,7 @@ class Driver:
         # print(len(replies))
         # print(replies)
         df = pd.DataFrame.from_records(posts)
+        df = df[["_id", "song_name", "artist_name", "body"]]
         print(df)
         # print(ids)
 
