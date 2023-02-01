@@ -9,8 +9,9 @@ from langdetect.language import Language
 from bson.objectid import ObjectId
 from database.driver import Driver
 from googleapiclient.discovery import Resource as YoutubeResource
+from soundcloud import SoundCloud
 
-Client = TypeVar("Client", tweepy.Client, praw.Reddit, YoutubeResource)
+Client = TypeVar("Client", SoundCloud, tweepy.Client, praw.Reddit, YoutubeResource)
 
 
 class CommentMiner:
@@ -24,9 +25,7 @@ class CommentMiner:
             return Language("?", 1.00)
 
     def _build_query(self, song_name: str, artist_name: str) -> str:
-        return '"{}" "{}"'.format(
-            artist_name.replace('"', ""), song_name.replace('"', "")
-        )
+        return '"{}" "{}"'.format(artist_name.replace('"', ""), song_name.replace('"', ""))
 
     @abstractmethod
     def _persist(self, func: Callable, exceptions: tuple, retries: int = 3):
