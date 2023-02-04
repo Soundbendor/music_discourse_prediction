@@ -1,11 +1,13 @@
 import argparse
-
 from datetime import datetime
-from .reddit.redditbot import RedditBot
-from .youtube.youtubebot import YoutubeBot
-from .lyrics.geniusbot import GeniusBot
-from .twitter.twitterbot import TwitterBot
+
 from database.driver import Driver
+
+from .lyrics.geniusbot import GeniusBot
+from .reddit.redditbot import RedditBot
+from .soundcloud.soundcloudbot import SoundCloudBot
+from .twitter.twitterbot import TwitterBot
+from .youtube.youtubebot import YoutubeBot
 
 # Definitions:
 # Post: Some social media entity which is related to a Song.
@@ -37,6 +39,7 @@ def minertype(istr: str):
         "youtube": YoutubeBot,
         "lyrics": GeniusBot,
         "twitter": TwitterBot,
+        "soundcloud": SoundCloudBot,
     }
     try:
         return choices[istr]
@@ -45,9 +48,7 @@ def minertype(istr: str):
 
 
 def parseargs() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="A data inject tool for the music semantic discourse dataset."
-    )
+    parser = argparse.ArgumentParser(description="A data inject tool for the music semantic discourse dataset.")
     parser.add_argument(
         "--dataset",
         dest="dataset",

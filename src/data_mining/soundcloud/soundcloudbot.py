@@ -1,11 +1,14 @@
-from data_mining.commentminer import CommentMiner
-import requests
-from database.driver import Driver
-from bson.objectid import ObjectId
-from bs4 import BeautifulSoup
-from soundcloud import SoundCloud
-from typing import Callable, List
 import re
+from itertools import chain
+from typing import Callable, List
+
+import requests
+from bs4 import BeautifulSoup
+from bson.objectid import ObjectId
+from soundcloud import SoundCloud, Track
+
+from data_mining.commentminer import CommentMiner
+from database.driver import Driver
 
 SOUNDCLOUD_BASE_URL = "https://soundcloud.com"
 
@@ -15,7 +18,7 @@ class AuthenticationException(Exception):
 
 
 class SoundCloudBot(CommentMiner):
-    def __init__(self):
+    def __init__(self, _: str):
         self.client = self._authenticate()
 
     def _authenticate(self) -> SoundCloud:
@@ -32,8 +35,33 @@ class SoundCloudBot(CommentMiner):
     def _persist(self, func: Callable, exceptions: tuple, retries: int = 3):
         pass
 
-    def _get_submissions(self, song_name: str, artist_name: str) -> List:
-        pass
+    def _get_submissions(self, song_name: str, artist_name: str) -> List[dict]:
+        return list(map(dict, self.client.search_tracks(self._build_query(song_name, artist_name))))
 
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
-        self.client.search_tracks(self._build_query(song["song_name"], song["artist_name"]))
+        tracks = self._get_submissions(song["song_name"], song["artist_name"])
+        comments = list(chain.from_iterable(map(self._get_comments, tracks)))
+        # For every track from List[Track]
+
+        # Get all comments from tracks
+
+        # Map track as dict
+
+        # Map comment as dict
+
+        # Return Track with a list of Comments
+
+        return db.insert_posts(
+            comments,
+            {
+                "artist_name": song["artist_name"],
+                "song_name": song["song_name"],
+                "dataset": song["Dataset"],
+                "source": "Soundcloud",
+            },
+            {"body": "body"},
+            {k: f"$$this.{k}" for k, _ in comments[0].items()},
+        )
+
+    def _get_comments(self, track: Track) -> List[dict]:
+        return list(map(dict, self.client.get_track_comments(track.id)))
