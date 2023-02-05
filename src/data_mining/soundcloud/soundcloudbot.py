@@ -1,4 +1,5 @@
 import re
+from dataclasses import asdict
 from itertools import chain
 from typing import Callable, List
 
@@ -35,22 +36,12 @@ class SoundCloudBot(CommentMiner):
     def _persist(self, func: Callable, exceptions: tuple, retries: int = 3):
         pass
 
-    def _get_submissions(self, song_name: str, artist_name: str) -> List[dict]:
-        return list(map(dict, self.client.search_tracks(self._build_query(song_name, artist_name))))
+    def _get_submissions(self, song_name: str, artist_name: str) -> List[Track]:
+        return list(self.client.search_tracks(self._build_query(song_name, artist_name)))
 
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
         tracks = self._get_submissions(song["song_name"], song["artist_name"])
         comments = list(chain.from_iterable(map(self._get_comments, tracks)))
-        # For every track from List[Track]
-
-        # Get all comments from tracks
-
-        # Map track as dict
-
-        # Map comment as dict
-
-        # Return Track with a list of Comments
-
         return db.insert_posts(
             comments,
             {
@@ -59,9 +50,10 @@ class SoundCloudBot(CommentMiner):
                 "dataset": song["Dataset"],
                 "source": "Soundcloud",
             },
-            {"body": "body"},
-            {k: f"$$this.{k}" for k, _ in comments[0].items()},
+            {"kind": "type"},
+            # There are no reply comments.
+            {"kind": "type"},
         )
 
     def _get_comments(self, track: Track) -> List[dict]:
-        return list(map(dict, self.client.get_track_comments(track.id)))
+        return [asdict(x) for x in self.client.get_track_comments(track.id)]
