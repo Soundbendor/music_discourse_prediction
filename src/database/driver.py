@@ -5,6 +5,7 @@ from typing import Callable, List, Union
 import pandas as pd
 import pymongo
 from bson.objectid import ObjectId
+from more_itertools import chunked
 from pymongo.results import InsertManyResult
 
 
@@ -31,7 +32,21 @@ class Driver:
     def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
         songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
         ids = list(itertools.chain.from_iterable(itertools.chain.from_iterable(map(lambda x: x["Submission"], songs))))
-        posts = [x for x in self.client["posts"].find({"_id": {"$in": ids}, **self._make_source_filter(source_type)})]
+
+        posts = list(
+            itertools.chain.from_iterable(
+                [
+                    [
+                        x
+                        for x in self.client["posts"].find(
+                            {"_id": {"$in": id_sub}, **self._make_source_filter(source_type)}
+                        )
+                    ]
+                    for id_sub in chunked(ids, 10)
+                ]
+            )
+        )
+        # posts = [x for x in self.client["posts"].find({"_id": {"$in": ids}, **self._make_source_filter(source_type)})]
         replies = list(itertools.chain.from_iterable(map(lambda x: x["replies"], posts)))
         # print(len(posts))
         # print(len(replies))
