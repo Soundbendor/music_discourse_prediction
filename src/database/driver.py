@@ -1,11 +1,11 @@
 import itertools
+from more_itertools import chunked
 from datetime import datetime
 from typing import Callable, List, Union
 
 import pandas as pd
 import pymongo
 from bson.objectid import ObjectId
-from more_itertools import chunked
 from pymongo.results import InsertManyResult
 
 
@@ -21,13 +21,20 @@ class Driver:
             {
                 "Dataset": ds_name,
                 "$or": [
-                    {"last_modified": {"$gt": timestamp}},
+                    {"last_modified": {"$lt": timestamp}},
                     {"last_modified": {"$exists": False}},
                 ],
             },
             no_cursor_timeout=True,
         )
         return [document for document in songs]
+
+    def _update_reply(self, reply: dict, doc: dict) -> dict:
+        doc.update(reply)
+        return doc
+
+    def _make_replies(self, replies: List, doc: dict) -> List[dict]:
+        return [self._update_reply(reply, doc.copy()) for reply in replies]
 
     def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
         songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
@@ -46,15 +53,19 @@ class Driver:
                 ]
             )
         )
-        # posts = [x for x in self.client["posts"].find({"_id": {"$in": ids}, **self._make_source_filter(source_type)})]
-        replies = list(itertools.chain.from_iterable(map(lambda x: x["replies"], posts)))
-        # print(len(posts))
-        # print(len(replies))
-        # print(replies)
-        df = pd.DataFrame.from_records(posts)
+        replies = list(itertools.chain.from_iterable(map(lambda x: self._make_replies(x["replies"], x), posts)))
+        print(replies)
+        df = pd.DataFrame.from_records(posts + replies)
         df = df[["_id", "song_name", "artist_name", "body"]]
         print(df)
         # print(ids)
+
+    def new_get_dataset(self, ds_name: str, src_name: str) -> List[dict]:
+        retrieved_songs = self.client["posts"].find({"dataset": ds_name, "source": src_name}).distinct("song_name")
+        retrieved_songs = [doc for doc in retrieved_songs]
+        new_songs = self.client["songs"].find({"Dataset": ds_name, "song_name": {"$nin": retrieved_songs}})
+        # print(len([doc for doc in new_songs]))
+        return [doc for doc in new_songs]
 
     # In the case of an empty dataset name string, we want all songs from all datasets.
     def _make_dataset_filter(self, ds_name: str) -> dict:
