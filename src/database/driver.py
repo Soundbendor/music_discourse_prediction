@@ -52,7 +52,8 @@ class Driver:
         posts = list(itertools.chain.from_iterable(map(lambda x: self._process_song(x, source_type), tqdm(songs))))
         replies = list(itertools.chain.from_iterable(map(lambda x: self._make_replies(x["replies"], x), tqdm(posts))))
         df = pd.DataFrame.from_records(posts + replies)
-        df = df[["_id", "song_name", "artist_name", "body", "valence", "arousal"]]
+        # TODO - Return score as well
+        df = df[["_id", "song_name", "artist_name", "body", "score", "valence", "arousal"]]
         print(df)
         return df
 
