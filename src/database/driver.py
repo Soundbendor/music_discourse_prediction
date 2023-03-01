@@ -1,4 +1,5 @@
 import itertools
+from tqdm import tqdm
 from more_itertools import chunked
 from datetime import datetime
 from typing import Callable, List, Union
@@ -30,35 +31,30 @@ class Driver:
         return [document for document in songs]
 
     def _update_reply(self, reply: dict, doc: dict) -> dict:
+        # print(doc)
         doc.update(reply)
         return doc
 
     def _make_replies(self, replies: List, doc: dict) -> List[dict]:
         return [self._update_reply(reply, doc.copy()) for reply in replies]
 
-    def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
-        songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
-        ids = list(itertools.chain.from_iterable(itertools.chain.from_iterable(map(lambda x: x["Submission"], songs))))
-
-        posts = list(
-            itertools.chain.from_iterable(
-                [
-                    [
-                        x
-                        for x in self.client["posts"].find(
-                            {"_id": {"$in": id_sub}, **self._make_source_filter(source_type)}
-                        )
-                    ]
-                    for id_sub in chunked(ids, 10)
-                ]
-            )
+    def _process_song(self, song: dict, source_type: str) -> List[dict]:
+        ids = list(itertools.chain.from_iterable(song["Submission"]))
+        submissions = list(
+            [x for x in self.client["posts"].find({"_id": {"$in": ids}, **self._make_source_filter(source_type)})]
         )
-        replies = list(itertools.chain.from_iterable(map(lambda x: self._make_replies(x["replies"], x), posts)))
-        print(replies)
+        return list(map(lambda x: x | song, submissions))
+
+    def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
+        print("Getting discourse...")
+        songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
+        print("Fetching comments...")
+        posts = list(itertools.chain.from_iterable(map(lambda x: self._process_song(x, source_type), tqdm(songs))))
+        replies = list(itertools.chain.from_iterable(map(lambda x: self._make_replies(x["replies"], x), tqdm(posts))))
         df = pd.DataFrame.from_records(posts + replies)
-        df = df[["_id", "song_name", "artist_name", "body"]]
+        df = df[["_id", "song_name", "artist_name", "body", "valence", "arousal"]]
         print(df)
-        # print(ids)
+        return df
 
     def new_get_dataset(self, ds_name: str, src_name: str) -> List[dict]:
         retrieved_songs = self.client["posts"].find({"dataset": ds_name, "source": src_name}).distinct("song_name")
