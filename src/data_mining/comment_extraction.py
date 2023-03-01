@@ -25,7 +25,8 @@ def main():
     args = parseargs()
     bot = args.bot_type(args.config)
     driver = Driver("mdp")
-    songs = driver.get_dataset(args.dataset.lower(), args.timestamp)
+    # songs = driver.get_dataset(args.dataset.lower(), args.timestamp)
+    songs = driver.new_get_dataset(src_name=args.source, ds_name=args.dataset.lower())
 
     for song in songs:
         print(f"Starting query for song {song['song_name']}")
@@ -79,4 +80,5 @@ def parseargs() -> argparse.Namespace:
         type=str,
         help="Config file for bot",
     )
+    parser.add_argument("-s", "--source", dest="source", required=True, type=str)
     return parser.parse_args()
