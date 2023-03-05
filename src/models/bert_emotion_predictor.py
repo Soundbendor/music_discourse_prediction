@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from dotenv import load_dotenv
+import functools
 
 # from feature_engineering.song_loader import get_song_df
 from neptune.new.integrations.tensorflow_keras import NeptuneCallback
@@ -36,8 +37,8 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument(
         "--source",
         required=True,
-        type=str,
-        dest="sm_type",
+        nargs="+",
+        dest="sources",
         help="Which type of social media input is being delivered.\n\
             Valid options are [Twitter, Youtube, Reddit, Lyrics].",
     )
@@ -56,7 +57,7 @@ def parseargs() -> argparse.Namespace:
         "--num_epoch", type=int, default=50, dest="num_epoch", help="Number of epochs to train the model with"
     )
     parser.add_argument("--model_name", type=str, default="distilbert-base-cased", dest="model_name")
-    parser.add_argument("--intersection_type", type=str, default="NA", dest="intersection_type")
+    parser.add_argument("--intersection", type=bool, default=False, dest="intersection")
     return parser.parse_args()
 
 
@@ -71,30 +72,32 @@ def get_num_gpus() -> int:
     return len(tf.config.list_physical_devices("GPU"))
 
 
+# Need support "save to disk" option
+# Handle intersection types, sometimes we only want songs that appear in all 3 datasets
+
+
 def get_songs(args: argparse.Namespace):
-    if args.intersection_type == "intersect":
-        reddit = get_song_df(f"{args.input}/reddit").dropna(how="any", subset=["body"])
-        twitter = get_song_df(f"{args.input}/twitter").dropna(how="any", subset=["body"])
-        if args.dataset == "deezer":
-            df = pd.concat([reddit, twitter])
-            return df[
-                (df["query_index"].isin(twitter["query_index"])) & (df["query_index"].isin(reddit["query_index"]))
-            ]
-        youtube = get_song_df(f"{args.input}/youtube").dropna(how="any", subset=["body"])
-        df = pd.concat([reddit, twitter, youtube])
-        return df[
-            (df["query_index"].isin(twitter["query_index"]))
-            & (df["query_index"].isin(reddit["query_index"]))
-            & (df["query_index"].isin(youtube["query_index"]))
-        ]
-    return get_song_df(args.input)
+    # If input csv is provided, load it and return it.
+    if args.input:
+        return pd.read_csv(args.input)
+    db_con = Driver("mdp")
+
+    df = pd.concat([db_con.get_discourse(ds_name=args.dataset, source_type=x) for x in args.sources], axis=0)
+
+    if args.intersection:
+        print(df["source"])
+        return df.groupby("_id").filter(lambda group: all([group["source"].eq(x).any() for x in args.sources]))
+    return df
 
 
 def main():
-    db_con = Driver("mdp")
-    db_con.get_discourse(ds_name="amg1608", source_type="Reddit")
+    args = parseargs()
+    df = get_songs(args)
+    print(df)
 
+    # Load API tokens from .env
     load_dotenv()
+
     # load neptune callback for keras
     neptune_runtime = neptune.init(project=os.getenv("NEPTUNE_PROJECT_ID"), api_token=os.getenv("NEPTUNE_API_TOKEN"))
     callbacks = [
@@ -137,6 +140,7 @@ def main():
         print(f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
         print(f"Pearson's Correlation (comment level) - Arousal: {arr_corr}")
 
+        # TODO - sm_type is now a list, handle this case gracefully with a join
         aggregate_predictions(ds.X_test, ds.y_test, y_pred, neptune_runtime, f"{args.sm_type}_{args.dataset}")
 
 
