@@ -50,19 +50,22 @@ class Driver:
         songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
         print("Fetching comments...")
         posts = list(itertools.chain.from_iterable(map(lambda x: self._process_song(x, source_type), tqdm(songs))))
+        print("Fetching replies...")
         replies = list(itertools.chain.from_iterable(map(lambda x: self._make_replies(x["replies"], x), tqdm(posts))))
         df = pd.DataFrame.from_records(posts + replies)
-        # TODO - Return score as well
         df = df[["_id", "song_name", "artist_name", "body", "score", "valence", "arousal"]]
         print(df)
-        return df
+        # df.to_csv("nathan_deezer.csv")
+        df["source"] = source_type
+        return df  # type: ignore
 
     def new_get_dataset(self, ds_name: str, src_name: str) -> List[dict]:
         retrieved_songs = self.client["posts"].find({"dataset": ds_name, "source": src_name}).distinct("song_name")
         retrieved_songs = [doc for doc in retrieved_songs]
         new_songs = self.client["songs"].find({"Dataset": ds_name, "song_name": {"$nin": retrieved_songs}})
-        # print(len([doc for doc in new_songs]))
-        return [doc for doc in new_songs]
+        dd = [doc for doc in new_songs]
+        print(len(dd))
+        return dd
 
     # In the case of an empty dataset name string, we want all songs from all datasets.
     def _make_dataset_filter(self, ds_name: str) -> dict:
@@ -72,7 +75,7 @@ class Driver:
 
     def _make_source_filter(self, source_type: str) -> dict:
         if source_type:
-            return {"source": source_type}
+            return {"source": source_type, "score": {"$gt": 5}}
         return {}
 
     # Inserts the comment IDs returned from a CommentMiner instance into that song's db entry

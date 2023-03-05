@@ -27,15 +27,11 @@ class YoutubeBot(CommentMiner):
         if os.path.exists("yt_token.json"):
             creds = Credentials.from_authorized_user_file("yt_token.json", SCOPES)
         else:
-            flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-                f_key, SCOPES
-            )
+            flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(f_key, SCOPES)
             creds = flow.run_local_server(port=0)
             with open("yt_token.json", "w") as token:
                 token.write(creds.to_json())
-        return googleapiclient.discovery.build(
-            API_SERVICE_NAME, API_VERSION, credentials=creds
-        )
+        return googleapiclient.discovery.build(API_SERVICE_NAME, API_VERSION, credentials=creds)
 
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
 
@@ -61,6 +57,11 @@ class YoutubeBot(CommentMiner):
             },
         )
 
+    def _build_query(self, song_name: str, artist_name: str) -> str:
+        return '"{}" "{}"'.format(
+            artist_name.replace('"', "").replace("_", ""), song_name.replace('"', "").replace("_", "")
+        )
+
     # Returns a list of Video objects
     def _get_submissions(self, song_name: str, artist_name: str) -> List[dict]:
         return self._persist(
@@ -68,11 +69,7 @@ class YoutubeBot(CommentMiner):
                 list(
                     map(
                         lambda x: x["id"]["videoId"],
-                        self._persist(
-                            lambda: self._search_keyword(
-                                self._build_query(song_name, artist_name)
-                            )
-                        ),
+                        self._persist(lambda: self._search_keyword(self._build_query(song_name, artist_name))),
                     )
                 )
             )
@@ -138,7 +135,13 @@ class YoutubeBot(CommentMiner):
                 elif e.status_code == 400:
                     if e.error_details[0]["reason"] == "missingRequiredParameter":  # type: ignore
                         return []
+                    else:
+                        print(e.status_code)
+                        print(func)
+                        # raise e
+                        return []
                 else:
                     print(e.status_code)
                     raise (e)
+        print("Exiting without handling!")
         exit()
