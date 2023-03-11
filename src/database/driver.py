@@ -1,11 +1,12 @@
 import itertools
+from tqdm import tqdm
+from more_itertools import chunked
 from datetime import datetime
 from typing import Callable, List, Union
 
 import pandas as pd
 import pymongo
 from bson.objectid import ObjectId
-from more_itertools import chunked
 from pymongo.results import InsertManyResult
 
 
@@ -21,7 +22,7 @@ class Driver:
             {
                 "Dataset": ds_name,
                 "$or": [
-                    {"last_modified": {"$gt": timestamp}},
+                    {"last_modified": {"$lt": timestamp}},
                     {"last_modified": {"$exists": False}},
                 ],
             },
@@ -29,32 +30,42 @@ class Driver:
         )
         return [document for document in songs]
 
-    def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
-        songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
-        ids = list(itertools.chain.from_iterable(itertools.chain.from_iterable(map(lambda x: x["Submission"], songs))))
+    def _update_reply(self, reply: dict, doc: dict) -> dict:
+        # print(doc)
+        doc.update(reply)
+        return doc
 
-        posts = list(
-            itertools.chain.from_iterable(
-                [
-                    [
-                        x
-                        for x in self.client["posts"].find(
-                            {"_id": {"$in": id_sub}, **self._make_source_filter(source_type)}
-                        )
-                    ]
-                    for id_sub in chunked(ids, 10)
-                ]
-            )
+    def _make_replies(self, replies: List, doc: dict) -> List[dict]:
+        return [self._update_reply(reply, doc.copy()) for reply in replies]
+
+    def _process_song(self, song: dict, source_type: str) -> List[dict]:
+        ids = list(itertools.chain.from_iterable(song["Submission"]))
+        submissions = list(
+            [x for x in self.client["posts"].find({"_id": {"$in": ids}, **self._make_source_filter(source_type)})]
         )
-        # posts = [x for x in self.client["posts"].find({"_id": {"$in": ids}, **self._make_source_filter(source_type)})]
-        replies = list(itertools.chain.from_iterable(map(lambda x: x["replies"], posts)))
-        # print(len(posts))
-        # print(len(replies))
-        # print(replies)
-        df = pd.DataFrame.from_records(posts)
-        df = df[["_id", "song_name", "artist_name", "body"]]
+        return list(map(lambda x: x | song, submissions))
+
+    def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
+        print("Getting discourse...")
+        songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
+        print("Fetching comments...")
+        posts = list(itertools.chain.from_iterable(map(lambda x: self._process_song(x, source_type), tqdm(songs))))
+        print("Fetching replies...")
+        replies = list(itertools.chain.from_iterable(map(lambda x: self._make_replies(x["replies"], x), tqdm(posts))))
+        df = pd.DataFrame.from_records(posts + replies)
+        df = df[["_id", "song_name", "artist_name", "body", "score", "valence", "arousal"]]
         print(df)
-        # print(ids)
+        # df.to_csv("nathan_deezer.csv")
+        df["source"] = source_type
+        return df  # type: ignore
+
+    def new_get_dataset(self, ds_name: str, src_name: str) -> List[dict]:
+        retrieved_songs = self.client["posts"].find({"dataset": ds_name, "source": src_name}).distinct("song_name")
+        retrieved_songs = [doc for doc in retrieved_songs]
+        new_songs = self.client["songs"].find({"Dataset": ds_name, "song_name": {"$nin": retrieved_songs}})
+        dd = [doc for doc in new_songs]
+        print(len(dd))
+        return dd
 
     # In the case of an empty dataset name string, we want all songs from all datasets.
     def _make_dataset_filter(self, ds_name: str) -> dict:
@@ -64,7 +75,7 @@ class Driver:
 
     def _make_source_filter(self, source_type: str) -> dict:
         if source_type:
-            return {"source": source_type}
+            return {"source": source_type, "score": {"$gt": 5}}
         return {}
 
     # Inserts the comment IDs returned from a CommentMiner instance into that song's db entry
