@@ -21,11 +21,10 @@ def create_model(model_name: str) -> tf.keras.Model:
     output = db_seq(input_ids, input_masks_ids).last_hidden_state[:, 0, :]
     # output = tf.keras.layers.Dense(768, activation='relu')(output)
     output = tf.keras.layers.Dense(MAX_SEQ_LEN, activation="relu")(output)
-    output = tf.keras.layers.Dense(2, activation="relu")(output)
+    output = tf.keras.layers.Dense(2, activation="linear")(output)
 
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs=output)
     opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
 
     model.compile(optimizer=opt, loss="mse", metrics=[tf.keras.metrics.RootMeanSquaredError()])
-    # model.get_layer(index=2).trainable = False
     return model
