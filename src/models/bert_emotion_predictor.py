@@ -94,7 +94,7 @@ def main():
 
     ds = DiscourseDataSet(song_df, t_prop=0.15)
 
-    with tf.distribute.MirroredStrategy().scope():
+    with tf.distribute.MultiWorkerMirroredStrategy().scope():
         model = create_model(args.model_name)
         print(model.summary())
 
