@@ -22,7 +22,6 @@ from .discourse_dataset import DiscourseDataSet, generate_embeddings
 from .model_assembler import create_model
 
 SEQ_LEN = 128
-BATCH_SIZE = 64
 
 
 def parseargs() -> argparse.Namespace:
@@ -48,10 +47,11 @@ def parseargs() -> argparse.Namespace:
     )
 
     parser.add_argument(
-        "--num_epoch", type=int, default=5, dest="num_epoch", help="Number of epochs to train the model with"
+        "--epochs", type=int, default=5, dest="num_epoch", help="Number of epochs to train the model with"
     )
     parser.add_argument("--model_name", type=str, default="distilbert-base-cased", dest="model_name")
     parser.add_argument("--intersection", type=bool, default=False, dest="intersection")
+    parser.add_argument("--batch_size", type=int, default=16, dest="batch_size", required=True)
     return parser.parse_args()
 
 
@@ -102,7 +102,7 @@ def main():
             x=generate_embeddings(ds.X_train, SEQ_LEN, args.model_name),
             y=ds.y_train,
             verbose=1,
-            batch_size=(BATCH_SIZE),
+            batch_size=(args.batch_size),
             validation_data=(generate_embeddings(ds.X_val, SEQ_LEN, args.model_name), ds.y_val),
             callbacks=callbacks,
             epochs=args.num_epoch,
@@ -111,7 +111,7 @@ def main():
         print("\n\nTesting...")
         y_pred = model.predict(
             x=generate_embeddings(ds.X_test, SEQ_LEN, args.model_name),
-            batch_size=(BATCH_SIZE),
+            batch_size=(args.batch_size),
             verbose=1,
             callbacks=callbacks,
         )
