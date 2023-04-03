@@ -1,6 +1,7 @@
 import tensorflow as tf
 
-from transformers.utils.dummy_tf_objects import TFAutoModel
+from transformers import TFAutoModel
+from transformers import AutoConfig
 
 
 NUM_LABEL = 2
@@ -9,8 +10,9 @@ MAX_SEQ_LEN = 128
 
 def create_model(model_name: str) -> tf.keras.Model:
     # config = DistilBertConfig(num_labels=NUM_LABEL)
+    config = AutoConfig.from_pretrained(model_name)
     print(model_name)
-    db_seq = TFAutoModel.from_pretrained(model_name)
+    db_seq = TFAutoModel.from_config(config)
     print(db_seq)
 
     input_ids = tf.keras.layers.Input(shape=(MAX_SEQ_LEN,), name="input_token", dtype="int32")
