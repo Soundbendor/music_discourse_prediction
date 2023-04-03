@@ -105,6 +105,8 @@ class DiscourseDataSet:
         return y_train, y_val, y_test
 
     def _get_labels(self, x: pd.DataFrame) -> pd.DataFrame:
+        print(x)
+        print(type(x))
         return x[["valence", "arousal"]]  # type: ignore
 
     def _to_float32(self, x: np.ndarray) -> np.ndarray:
