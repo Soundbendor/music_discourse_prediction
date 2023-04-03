@@ -1,4 +1,5 @@
 import argparse
+from datetiem import datetime
 import os
 
 import matplotlib.pyplot as plt
@@ -86,8 +87,10 @@ def main():
 
     # load neptune callback for keras
     neptune_runtime = neptune.init(project=os.getenv("NEPTUNE_PROJECT_ID"), api_token=os.getenv("NEPTUNE_API_TOKEN"))
+    log_dir = f"logs/fits/{datetime.now().strftime('%Y%m%d-%H%M%S')}"
     callbacks = [
         NeptuneCallback(run=neptune_runtime, base_namespace="metrics"),
+        tf.keras.callbacks.TensorBoard(log_dir=log_dir),
     ]
 
     # PREPROCESSING PIPELINE GOES HERE
