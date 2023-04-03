@@ -26,8 +26,6 @@ def create_model(model_name: str) -> tf.keras.Model:
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs=output)
     opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
 
-    model.compile(
-        optimizer=opt, loss="mse", metrics=[tf.keras.metrics.RootMeanSquaredError(), correlation_coefficient_loss]
-    )
+    model.compile(optimizer=opt, loss="mse", metrics=[tf.keras.metrics.RootMeanSquaredError()])
     # model.get_layer(index=2).trainable = False
     return model
