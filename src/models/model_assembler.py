@@ -9,6 +9,7 @@ MAX_SEQ_LEN = 128
 
 def create_model(model_name: str) -> tf.keras.Model:
     # config = DistilBertConfig(num_labels=NUM_LABEL)
+    print(model_name)
     db_seq = TFAutoModel.from_pretrained(model_name)
     print(db_seq)
 
