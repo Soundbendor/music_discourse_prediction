@@ -32,7 +32,8 @@ def parseargs() -> argparse.Namespace:
         "--input_dir",
         dest="input",
         type=str,
-        help="Path to the directory storing the JSON files for social media data.",
+        required=False,
+        help="Optional. Path to the directory storing the JSON files for social media data.",
     )
     parser.add_argument(
         "--source",
@@ -54,18 +55,11 @@ def parseargs() -> argparse.Namespace:
         help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.",
     )
     parser.add_argument(
-        "--num_epoch", type=int, default=50, dest="num_epoch", help="Number of epochs to train the model with"
+        "--num_epoch", type=int, default=5, dest="num_epoch", help="Number of epochs to train the model with"
     )
     parser.add_argument("--model_name", type=str, default="distilbert-base-cased", dest="model_name")
     parser.add_argument("--intersection", type=bool, default=False, dest="intersection")
     return parser.parse_args()
-
-
-def load_weights(model: tf.keras.Model, path: str):
-    try:
-        model.load_weights(path)
-    except Exception:
-        print("Model checkpoint invalid. Opening new model.")
 
 
 def get_num_gpus() -> int:
@@ -81,7 +75,6 @@ def get_songs(args: argparse.Namespace):
     if args.input:
         return pd.read_csv(args.input)
     db_con = Driver("mdp")
-
     df = pd.concat([db_con.get_discourse(ds_name=args.dataset, source_type=x) for x in args.sources], axis=0)
 
     if args.intersection:
@@ -92,8 +85,8 @@ def get_songs(args: argparse.Namespace):
 
 def main():
     args = parseargs()
-    df = get_songs(args)
-    print(df)
+    song_df = get_songs(args)
+    print(song_df)
 
     # Load API tokens from .env
     load_dotenv()
@@ -102,25 +95,21 @@ def main():
     neptune_runtime = neptune.init(project=os.getenv("NEPTUNE_PROJECT_ID"), api_token=os.getenv("NEPTUNE_API_TOKEN"))
     callbacks = [
         NeptuneCallback(run=neptune_runtime, base_namespace="metrics"),
-        ModelCheckpoint(args.model, monitor="loss", save_weights_only=True, verbose=1, save_best_only=True, mode="min"),
     ]
 
-    # Load our data from JSONs and randomize the dataset
-    # We shuffle here because tensorflow does not currently support dataset shuffling
-    song_df = get_songs(args)
+    # PREPROCESSING PIPELINE GOES HERE
 
     ds = DiscourseDataSet(song_df, t_prop=0.15)
 
     with tf.distribute.MultiWorkerMirroredStrategy().scope():
         model = create_model(args.model_name)
-        load_weights(model, args.model)
         print(model.summary())
 
         model.fit(
             x=generate_embeddings(ds.X_train, SEQ_LEN, args.model_name),
             y=ds.y_train,
             verbose=1,
-            batch_size=(BATCH_SIZE * get_num_gpus()),
+            batch_size=(BATCH_SIZE),
             validation_data=(generate_embeddings(ds.X_val, SEQ_LEN, args.model_name), ds.y_val),
             callbacks=callbacks,
             epochs=args.num_epoch,
@@ -129,7 +118,7 @@ def main():
         print("\n\nTesting...")
         y_pred = model.predict(
             x=generate_embeddings(ds.X_test, SEQ_LEN, args.model_name),
-            batch_size=(BATCH_SIZE * get_num_gpus()),
+            batch_size=(BATCH_SIZE),
             verbose=1,
             callbacks=callbacks,
         )

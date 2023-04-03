@@ -34,7 +34,6 @@ class YoutubeBot(CommentMiner):
         return googleapiclient.discovery.build(API_SERVICE_NAME, API_VERSION, credentials=creds)
 
     def fetch_comments(self, db: Driver, song: dict) -> List[ObjectId]:
-
         videos = self._get_submissions(song["song_name"], song["artist_name"])
         comments = list(chain.from_iterable(map(self._get_comments, videos)))
         return db.insert_posts(
@@ -127,11 +126,13 @@ class YoutubeBot(CommentMiner):
                         print("Entering 24hr sleep loop")
                         time.sleep(86400)
                         continue
+
                 elif e.status_code == 500:
                     print("500 - Internal Server Error \n")
                     print("Sleeping for 1 hour\n")
                     time.sleep(3600)
                     continue
+
                 elif e.status_code == 400:
                     if e.error_details[0]["reason"] == "missingRequiredParameter":  # type: ignore
                         return []
