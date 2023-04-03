@@ -5,7 +5,7 @@ import numpy as np
 import re
 
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
-from transformers import DistilBertTokenizerFast, RobertaTokenizerFast, XLNetTokenizerFast
+from transformers import DistilBertTokenizerFast, RobertaTokenizerFast, XLNetTokenizerFast, AutoTokenizer
 
 RAND_SEED = 128
 
@@ -24,31 +24,10 @@ def _tokenize(comments: pd.Series, tokenizer, seq_len: int) -> transformers.Batc
 
 
 def generate_embeddings(df: pd.DataFrame, seq_len: int, model: str) -> dict:
-    tokenizers = {
-        "distilbert-base-uncased": DistilBertTokenizerFast.from_pretrained(
-            "distilbert-base-uncased",
-            do_lower_case=True,
-            add_special_tokens=True,
-            max_length=seq_len,
-            padding="max_length",
-            truncate=True,
-            padding_side="right",
-        ),
-        "roberta-base": RobertaTokenizerFast.from_pretrained(
-            "roberta-base",
-            do_lower_case=True,
-            add_special_tokens=True,
-            max_length=seq_len,
-            padding="max_length",
-            truncate=True,
-            padding_side="right",
-        ),
-        "xlnet-base-cased": XLNetTokenizerFast.from_pretrained(
-            "xlnet-base-cased", max_length=seq_len, padding="max_length", truncate=True, padding_side="right"
-        ),
-    }
+    tokenizer = AutoTokenizer.from_pretrained(
+        model, add_special_tokens=True, max_length=seq_len, padding="max_length", truncate=True, padding_side="right"
+    )
 
-    tokenizer = tokenizers[model]
     encodings = _tokenize(df["body"], tokenizer, seq_len)
     return {"input_token": encodings["input_ids"], "masked_token": encodings["attention_mask"]}
 

@@ -46,14 +46,7 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument(
         "--dataset", type=str, dest="dataset", required=True, help="Name of the dataset which the comments represent"
     )
-    parser.add_argument(
-        "-m",
-        "--model",
-        type=str,
-        dest="model",
-        required=True,
-        help="Path to saved model state, if model doesn't exist at path, creates a new checkpoint.",
-    )
+
     parser.add_argument(
         "--num_epoch", type=int, default=5, dest="num_epoch", help="Number of epochs to train the model with"
     )
