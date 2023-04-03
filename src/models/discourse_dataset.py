@@ -101,12 +101,10 @@ class DiscourseDataSet:
         scaler = StandardScaler()
         y_train = scaler.fit_transform(self._get_labels(y_train))
         y_val = scaler.transform(self._get_labels(y_val))
-        y_test = scaler.transform(self._get_labels(y_train))
+        y_test = scaler.transform(self._get_labels(y_test))
         return y_train, y_val, y_test
 
     def _get_labels(self, x: pd.DataFrame) -> pd.DataFrame:
-        print(x)
-        print(type(x))
         return x[["valence", "arousal"]]  # type: ignore
 
     def _to_float32(self, x: np.ndarray) -> np.ndarray:
