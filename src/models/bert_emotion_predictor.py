@@ -1,6 +1,7 @@
 import argparse
-from datetime import datetime
 import os
+from datetime import datetime
+from typing import List
 
 import matplotlib.pyplot as plt
 import neptune.new as neptune
@@ -8,20 +9,16 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from dotenv import load_dotenv
-import functools
-
-# from feature_engineering.song_loader import get_song_df
 from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 from scipy.stats import pearsonr
-from tensorflow.keras.callbacks import ModelCheckpoint
 
 from database.driver import Driver
+from src.visualization.visualizations import circumplex_model
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
-
-# from prediction.visualization.visualizations import circumplex_model
 from .model_assembler import create_model
 
+# TODO - Identify
 SEQ_LEN = 128
 
 
@@ -96,7 +93,19 @@ def main():
     # PREPROCESSING PIPELINE GOES HERE
 
     ds = DiscourseDataSet(song_df, t_prop=0.15)
+    y_pred = run_experiment(ds, args, callbacks)
 
+    valence_corr = pearsonr(ds.y_test[:, 0], y_pred[:, 0])
+    arr_corr = pearsonr(ds.y_test[:, 1], y_pred[:, 1])
+
+    print(f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
+    print(f"Pearson's Correlation (comment level) - Arousal: {arr_corr}")
+
+    # TODO - sm_type is now a list, handle this case gracefully with a join
+    aggregate_predictions(ds.X_test, ds.y_test, y_pred, neptune_runtime, f"{' '.join(args.sources)}_{args.dataset}")
+
+
+def run_experiment(ds: DiscourseDataSet, args: argparse.Namespace, callbacks: List) -> np.ndarray:
     with tf.distribute.MultiWorkerMirroredStrategy().scope():
         model = create_model(args.model_name)
         print(model.summary())
@@ -118,15 +127,7 @@ def main():
             verbose=1,
             callbacks=callbacks,
         )
-
-        valence_corr = pearsonr(ds.y_test[:, 0], y_pred[:, 0])
-        arr_corr = pearsonr(ds.y_test[:, 1], y_pred[:, 1])
-
-        print(f"Pearson's Correlation (comment level) - Valence: {valence_corr}")
-        print(f"Pearson's Correlation (comment level) - Arousal: {arr_corr}")
-
-        # TODO - sm_type is now a list, handle this case gracefully with a join
-        aggregate_predictions(ds.X_test, ds.y_test, y_pred, neptune_runtime, f"{' '.join(args.sources)}_{args.dataset}")
+        return y_pred
 
 
 def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run: neptune.Run, fname: str):
@@ -151,10 +152,11 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run:
     scatterplot(results, "valence", "val_pred", "valence_scatter", "Valence", run)
     scatterplot(results, "arousal", "aro_pred", "arousal_scatter", "Arousal", run)
 
-    # circumplex_model(
-    #     results, f"{fname} - Predicted", fname=f"{fname}_predicted.png", val_key="val_pred", aro_key="aro_pred"
-    # )
-    # circumplex_model(results, f"{fname} - Actual", fname=f"{fname}_actual.png", val_key="valence", aro_key="arousal")
+    # TODO - Update this parameter list or backport vis.py
+    circumplex_model(
+        results, f"{fname} - Predicted", fname=f"{fname}_predicted.png", val_key="val_pred", aro_key="aro_pred"
+    )
+    circumplex_model(results, f"{fname} - Actual", fname=f"{fname}_actual.png", val_key="valence", aro_key="arousal")
 
 
 def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str, run: neptune.Run) -> None:
