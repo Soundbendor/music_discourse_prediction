@@ -1,13 +1,13 @@
 import itertools
-from tqdm import tqdm
-from more_itertools import chunked
 from datetime import datetime
 from typing import Callable, List, Union
 
 import pandas as pd
 import pymongo
 from bson.objectid import ObjectId
+from more_itertools import chunked
 from pymongo.results import InsertManyResult
+from tqdm import tqdm
 
 
 class Driver:
@@ -45,7 +45,7 @@ class Driver:
         )
         return list(map(lambda x: x | song, submissions))
 
-    def get_discourse(self, ds_name: str = "", source_type: str = "") -> pd.DataFrame:
+    def get_discourse(self, ds_name: Union[str, List[str], None] = "", source_type: str = "") -> pd.DataFrame:
         print("Getting discourse...")
         songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
         print("Fetching comments...")
@@ -68,9 +68,11 @@ class Driver:
         return dd
 
     # In the case of an empty dataset name string, we want all songs from all datasets.
-    def _make_dataset_filter(self, ds_name: str) -> dict:
-        if ds_name:
+    def _make_dataset_filter(self, ds_name: Union[str, List[str], None]) -> dict:
+        if isinstance(ds_name, str):
             return {"Dataset": ds_name}
+        if isinstance(ds_name, List):
+            return {"Dataset": {"$in": ds_name}}
         return {}
 
     def _make_source_filter(self, source_type: str) -> dict:
