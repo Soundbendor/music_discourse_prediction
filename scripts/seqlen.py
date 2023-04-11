@@ -11,7 +11,8 @@ DATASET = ["deezer", "deam_new" "amg1608", "pmemo"]
 db_con = Driver("mdp")
 for source in ["Reddit", "Youtube", "Twitter"]:
     df = db_con.get_discourse(ds_name="amg1608", source_type=source)
-    hist = sns.histplot(data=df["body"].str.len(), kde=True)
+    df["body"].str.len().describe()
+    hist = sns.histplot(data=df["body"].str.len().clip(0, 1000), kde=True)
     hist.set(xlabel="Comment Length", ylabel="Songs")
     fig = hist.get_figure()
     fig.savefig(f"{source}_dist.png")
