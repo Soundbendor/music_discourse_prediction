@@ -13,7 +13,7 @@ from neptune.new.integrations.tensorflow_keras import NeptuneCallback
 from scipy.stats import pearsonr
 
 from database.driver import Driver
-from src.visualization.visualizations import circumplex_model
+from visualization.visualizations import circumplex_model
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
 from .model_assembler import create_model
