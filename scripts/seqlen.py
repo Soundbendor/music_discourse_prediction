@@ -14,9 +14,8 @@ DATASET = ["deam_new", "amg1608", "pmemo"]
 # Cumulative histograms
 def make_hist(src: Union[List[str], str]) -> None:
     df = db_con.get_discourse(ds_name=DATASET, source_type=src)
-    print(df["body"].apply(lambda x: wordpunct_tokenize(x)))
-    print(df["body"].str.len().describe())
-    hist = sns.histplot(data=df["body"].str.len().clip(0, 1024), kde=True)
+    print(df["body"].apply(lambda x: wordpunct_tokenize(x)).clip(0, 1024).describe())
+    hist = sns.histplot(data=df["body"].apply(lambda x: wordpunct_tokenize(x)).clip(0, 1024), kde=True)
     return hist
 
 
@@ -34,4 +33,4 @@ fig = hist.get_figure()
 fig.savefig(f"all_dist.png")
 
 
-# make_hist(SOURCES)
+make_hist(SOURCES)
