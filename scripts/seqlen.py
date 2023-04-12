@@ -2,6 +2,7 @@ from typing import List, Union
 
 import matplotlib.pyplot as plt
 import seaborn as sns
+from nltk.tokenize import wordpunct_tokenize
 
 from database.driver import Driver
 
@@ -13,6 +14,7 @@ DATASET = ["deam_new", "amg1608", "pmemo"]
 # Cumulative histograms
 def make_hist(src: Union[List[str], str]) -> None:
     df = db_con.get_discourse(ds_name=DATASET, source_type=src)
+    print(df["body"].apply(lambda x: wordpunct_tokenize(x)))
     print(df["body"].str.len().describe())
     hist = sns.histplot(data=df["body"].str.len().clip(0, 1024), kde=True)
     return hist
