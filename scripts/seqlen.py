@@ -5,7 +5,7 @@ import seaborn as sns
 from database.driver import Driver
 
 SOURCES = ["Reddit", "Youtube", "Twitter"]
-DATASET = ["deezer", "deam_new" "amg1608", "pmemo"]
+DATASET = ["deam_new" "amg1608", "pmemo"]
 # Averages for all individual sources and datasets
 
 
@@ -21,7 +21,7 @@ def make_hist(src: Union[List[str], str]) -> None:
 
 sns.color_palette("rocket", as_cmap=True)
 db_con = Driver("mdp")
-for source in sources:
+for source in SOURCES:
     make_hist(source)
 
-make_hist(sources)
+make_hist(SOURCES)
