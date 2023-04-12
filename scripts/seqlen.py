@@ -15,7 +15,9 @@ DATASET = ["deam_new", "amg1608", "pmemo"]
 def make_hist(src: Union[List[str], str]) -> None:
     df = db_con.get_discourse(ds_name=DATASET, source_type=src)
     print(df["body"].apply(lambda x: len(wordpunct_tokenize(x))).clip(0, 1024).describe())
-    hist = sns.histplot(data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))).clip(0, 1024), kde=True)
+    hist = sns.histplot(
+        data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))).clip(0, 1024), kde=True, bins=range(0, 1024, 64)
+    )
     return hist
 
 
