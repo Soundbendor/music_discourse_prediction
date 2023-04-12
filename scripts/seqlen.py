@@ -5,7 +5,7 @@ import seaborn as sns
 from database.driver import Driver
 
 SOURCES = ["Reddit", "Youtube", "Twitter"]
-DATASET = ["deam_new" "amg1608", "pmemo"]
+DATASET = ["deam_new", "amg1608", "pmemo"]
 # Averages for all individual sources and datasets
 
 
