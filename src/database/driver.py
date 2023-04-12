@@ -75,9 +75,12 @@ class Driver:
             return {"Dataset": {"$in": ds_name}}
         return {}
 
+    # TODO - Add score filtering here
     def _make_source_filter(self, source_type: str) -> dict:
-        if source_type:
-            return {"source": source_type, "score": {"$gt": 5}}
+        if isinstance(source_type, str):
+            return {"source": source_type}
+        if isinstance(source_type, List):
+            return {"source": {"$in": source_type}}
         return {}
 
     # Inserts the comment IDs returned from a CommentMiner instance into that song's db entry
