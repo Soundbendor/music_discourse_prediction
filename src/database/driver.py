@@ -38,14 +38,16 @@ class Driver:
     def _make_replies(self, replies: List, doc: dict) -> List[dict]:
         return [self._update_reply(reply, doc.copy()) for reply in replies]
 
-    def _process_song(self, song: dict, source_type: str) -> List[dict]:
+    def _process_song(self, song: dict, source_type: Union[str, List[str], None]) -> List[dict]:
         ids = list(itertools.chain.from_iterable(song["Submission"]))
         submissions = list(
             [x for x in self.client["posts"].find({"_id": {"$in": ids}, **self._make_source_filter(source_type)})]
         )
         return list(map(lambda x: x | song, submissions))
 
-    def get_discourse(self, ds_name: Union[str, List[str], None] = "", source_type: str = "") -> pd.DataFrame:
+    def get_discourse(
+        self, ds_name: Union[str, List[str], None] = "", source_type: Union[str, List[str], None] = ""
+    ) -> pd.DataFrame:
         print("Getting discourse...")
         songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
         print("Fetching comments...")
@@ -76,7 +78,7 @@ class Driver:
         return {}
 
     # TODO - Add score filtering here
-    def _make_source_filter(self, source_type: str) -> dict:
+    def _make_source_filter(self, source_type: Union[str, List[str], None]) -> dict:
         if isinstance(source_type, str):
             return {"source": source_type}
         if isinstance(source_type, List):
