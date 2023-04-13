@@ -1,16 +1,16 @@
-from typing import Tuple
-import transformers
-import pandas as pd
-import numpy as np
 import re
+from typing import Tuple
 
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
-from transformers import DistilBertTokenizerFast, RobertaTokenizerFast, XLNetTokenizerFast, AutoTokenizer
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+from transformers.models.auto.tokenization_auto import AutoTokenizer
+from transformers.tokenization_utils_base import BatchEncoding
 
 RAND_SEED = 128
 
 
-def _tokenize(comments: pd.Series, tokenizer, seq_len: int) -> transformers.BatchEncoding:
+def _tokenize(comments: pd.Series, tokenizer, seq_len: int) -> BatchEncoding:
     return tokenizer(
         list(comments),
         add_special_tokens=True,
@@ -33,17 +33,23 @@ def generate_embeddings(df: pd.DataFrame, seq_len: int, model: str) -> dict:
 
 
 class DiscourseDataSet:
-    def __init__(self, df: pd.DataFrame, t_prop: float):
-        self.df = self._clean_str(df.dropna(how="any", subset=["body"]))
+    def __init__(self, df: pd.DataFrame, t_prop: float, score_threshold: int, length_threshold: int):
+        self.df = self._clean_str(df.dropna(how="any", subset=["body"]), score_threshold, length_threshold)
         # TODO - introduce validation subset
         self.X_train, self.X_val, self.X_test, self.y_train, self.y_val, self.y_test = self._split_data(
             self.df, test_size=t_prop
         )
 
     # NOTE - ONLY cleans comment bodies. Adapt to post titles if needed.
-    def _clean_str(self, df: pd.DataFrame):
+    def _clean_str(self, df: pd.DataFrame, score_threshold: int, length_threshold: int):
         rx = re.compile(r"(?:<.*?>)|(?:http\S+)")
         df["body"] = df["body"].apply(lambda x: rx.sub("", x))
+        # Drop duplicate comments
+        df = df.drop_duplicates(subset="body")
+        # Filter by score
+        df = df.drop(df[df.score < score_threshold].index)
+        # filter by length
+        df = df.drop(df[df["body"].map(len) < length_threshold].index)
         return df
 
     def _split_data(self, df: pd.DataFrame, test_size):
@@ -64,7 +70,7 @@ class DiscourseDataSet:
             y_test,
         )
 
-    def _split_songs(self, df: pd.DataFrame, test_size: int) -> dict:
+    def _split_songs(self, df: pd.DataFrame, test_size: float) -> dict:
         ids = df["song_name"].unique()
         holdout_indices = np.random.choice(ids, size=int(len(ids) * test_size), replace=False)
         holdout_df = df.loc[df["song_name"].isin(holdout_indices)]
@@ -77,7 +83,7 @@ class DiscourseDataSet:
     def _convert_labels(
         self, y_train: pd.DataFrame, y_val: pd.DataFrame, y_test: pd.DataFrame
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-        scaler = StandardScaler()
+        scaler = MinMaxScaler()
         y_train = scaler.fit_transform(self._get_labels(y_train))
         y_val = scaler.transform(self._get_labels(y_val))
         y_test = scaler.transform(self._get_labels(y_test))
