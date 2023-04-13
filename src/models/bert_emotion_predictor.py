@@ -16,7 +16,7 @@ from database.driver import Driver
 from visualization.visualizations import circumplex_model
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
-from .model_assembler import create_classification_model, create_model
+from .model_assembler import create_model
 
 SEQ_LEN = 128
 
@@ -110,7 +110,7 @@ def main():
 
 def run_experiment(ds: DiscourseDataSet, args: argparse.Namespace, callbacks: List) -> np.ndarray:
     with tf.distribute.MultiWorkerMirroredStrategy().scope():
-        model = create_classification_model(args.model_name)
+        model = create_model(args.model_name)
         print(model.summary())
 
         model.fit(
