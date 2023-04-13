@@ -49,6 +49,8 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument("--model_name", type=str, default="distilbert-base-cased", dest="model_name")
     parser.add_argument("--intersection", type=bool, default=False, dest="intersection")
     parser.add_argument("--batch_size", type=int, default=16, dest="batch_size", required=True)
+    parser.add_argument("--length", type=int, default=32, dest="length_threshold")
+    parser.add_argument("--score", type=int, default=3, dest="score_threshold")
     return parser.parse_args()
 
 
@@ -91,7 +93,9 @@ def main():
 
     # PREPROCESSING PIPELINE GOES HERE
 
-    ds = DiscourseDataSet(song_df, t_prop=0.15)
+    ds = DiscourseDataSet(
+        song_df, t_prop=0.15, length_threshold=args.length_threshold, score_threshold=args.score_threshold
+    )
     y_pred = run_experiment(ds, args, callbacks)
 
     valence_corr = pearsonr(ds.y_test[:, 0], y_pred[:, 0])
