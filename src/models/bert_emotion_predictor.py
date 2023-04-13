@@ -18,8 +18,7 @@ from visualization.visualizations import circumplex_model
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
 from .model_assembler import create_model
 
-# TODO - Identify
-SEQ_LEN = 128
+SEQ_LEN = 64
 
 
 def parseargs() -> argparse.Namespace:
