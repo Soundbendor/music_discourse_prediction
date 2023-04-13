@@ -51,6 +51,9 @@ def create_classification_model(model_name: str) -> tf.keras.Model:
     opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
 
     # TODO - Won't work with auto models!
+    for layer in model.layers:
+        print(layer)
+
     for w in model.get_layer("tf_distil_bert_model").weights:
         w._trainable = False
 
