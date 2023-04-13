@@ -18,7 +18,7 @@ from visualization.visualizations import circumplex_model
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
 from .model_assembler import create_classification_model, create_model
 
-SEQ_LEN = 64
+SEQ_LEN = 128
 
 
 def parseargs() -> argparse.Namespace:
@@ -69,9 +69,9 @@ def get_songs(args: argparse.Namespace):
     db_con = Driver("mdp")
     df = pd.concat([db_con.get_discourse(ds_name=args.dataset, source_type=x) for x in args.sources], axis=0)
 
-    # if args.intersection:
-    #     print(df["source"])
-    #     return df.groupby("_id").filter(lambda group: all([group["source"].eq(x).any() for x in args.sources]))
+    if args.intersection:
+        print(df["source"])
+        return df.groupby("_id").filter(lambda group: all([group["source"].eq(x).any() for x in args.sources]))
     return df
 
 
