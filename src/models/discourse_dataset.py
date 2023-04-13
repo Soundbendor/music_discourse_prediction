@@ -3,7 +3,7 @@ from typing import Tuple
 
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import StandardScaler
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 from transformers.tokenization_utils_base import BatchEncoding
 
@@ -83,7 +83,7 @@ class DiscourseDataSet:
     def _convert_labels(
         self, y_train: pd.DataFrame, y_val: pd.DataFrame, y_test: pd.DataFrame
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-        scaler = MinMaxScaler()
+        scaler = StandardScaler()
         y_train = scaler.fit_transform(self._get_labels(y_train))
         y_val = scaler.transform(self._get_labels(y_val))
         y_test = scaler.transform(self._get_labels(y_test))
