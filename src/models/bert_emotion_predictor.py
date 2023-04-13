@@ -156,10 +156,8 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run:
     scatterplot(results, "arousal", "aro_pred", "arousal_scatter", "Arousal", run)
 
     # TODO - Update this parameter list or backport vis.py
-    circumplex_model(
-        results, f"{fname} - Predicted", fname=f"{fname}_predicted.png", val_key="val_pred", aro_key="aro_pred"
-    )
-    circumplex_model(results, f"{fname} - Actual", fname=f"{fname}_actual.png", val_key="valence", aro_key="arousal")
+    circumplex_model(results["val_pred"], results["aro_pred"], f"{fname} - Predicted", f"{fname}_predicted.png", run)
+    circumplex_model(results["valence"], results["arousal"], f"{fname} - Actual", f"{fname}_actual.png", run)
 
 
 def scatterplot(df: pd.DataFrame, x_key: str, y_key: str, fname: str, title: str, run: neptune.Run) -> None:
