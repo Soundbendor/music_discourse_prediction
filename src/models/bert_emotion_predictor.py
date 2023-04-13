@@ -16,7 +16,7 @@ from database.driver import Driver
 from visualization.visualizations import circumplex_model
 
 from .discourse_dataset import DiscourseDataSet, generate_embeddings
-from .model_assembler import create_model
+from .model_assembler import create_classification_model, create_model
 
 SEQ_LEN = 64
 
