@@ -110,7 +110,7 @@ def main():
 
 def run_experiment(ds: DiscourseDataSet, args: argparse.Namespace, callbacks: List) -> np.ndarray:
     with tf.distribute.MultiWorkerMirroredStrategy().scope():
-        model = create_model(args.model_name)
+        model = create_classification_model(args.model_name)
         print(model.summary())
 
         model.fit(
