@@ -3,7 +3,7 @@ from transformers import (AutoConfig, TFAutoModel,
                           TFAutoModelForSequenceClassification)
 
 NUM_LABEL = 2
-MAX_SEQ_LEN = 64
+MAX_SEQ_LEN = 128
 
 
 def create_model(model_name: str) -> tf.keras.Model:
