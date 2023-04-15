@@ -64,6 +64,8 @@ class Driver:
             )
             df = pd.DataFrame.from_records(posts + replies)
             dfs.append(df)
+            del posts
+            del replies
         df = pd.concat(dfs, axis=0)
         df = df[["_id", "song_name", "artist_name", "body", "score", "valence", "arousal"]]
         print(df)
