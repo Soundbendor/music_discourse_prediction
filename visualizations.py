@@ -9,7 +9,18 @@ import pandas as pd
 import seaborn as sns
 from matplotlib import font_manager as fm
 from sklearn.metrics import confusion_matrix
-from sklearn.preprocessing import MinMaxScaler
+
+
+def lineplot(key: str, args: argparse.Namespace, history: dict) -> None:
+    ax = sns.lineplot(y=history[key], x=range(len(history[key])), label="Train")
+    sns.lineplot(y=history[f"val_{key}"], x=range(len(history[key])), ax=ax, label="Validation")
+    ax.set_title(f"{key}: {args.model_name} on {args.dataset}")
+    ax.set_xlabel("Epochs")
+    ax.set_ylabel(key)
+    plt.legend()
+    run[title].log(ax.get_figure())
+    plt.savefig(f"{key}_{args.model_name}_{args.dataset}.png")
+    plt.clf()
 
 
 def scatterplot(y_hat: np.ndarray, y_true: np.ndarray, key: str, fname: str, title: str, run: neptune.Run) -> None:
