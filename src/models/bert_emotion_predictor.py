@@ -51,6 +51,7 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument("--batch_size", type=int, default=16, dest="batch_size", required=True)
     parser.add_argument("--length", type=int, default=32, dest="length_threshold")
     parser.add_argument("--score", type=int, default=3, dest="score_threshold")
+    parser.add_argument("--make_csv", type=bool, default=False, dest="make_csv")
     return parser.parse_args()
 
 
@@ -70,6 +71,9 @@ def get_songs(args: argparse.Namespace):
         df = df.groupby("_id").filter(lambda group: all([group["source"].eq(x).any() for x in args.sources]))
     print("Caching new dataframe...")
     df.to_csv(f"cache_{args.dataset}_{' '.join(args.sources)}")
+    if args.make_csv:
+        print("Rendered CSV! Exiting...")
+        exit()
     return df
 
 
