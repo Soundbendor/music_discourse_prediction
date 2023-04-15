@@ -50,11 +50,21 @@ class Driver:
     ) -> pd.DataFrame:
         print("Getting discourse...")
         songs = [x for x in self.client["songs"].find(self._make_dataset_filter(ds_name))]
-        print("Fetching comments...")
-        posts = list(itertools.chain.from_iterable(map(lambda x: self._process_song(x, source_type), tqdm(songs))))
-        print("Fetching replies...")
-        replies = list(itertools.chain.from_iterable(map(lambda x: self._make_replies(x["replies"], x), tqdm(posts))))
-        df = pd.DataFrame.from_records(posts + replies)
+
+        # Memory mitigation
+        songs1 = songs[: len(songs) // 2]
+        songs2 = songs[len(songs) // 2 :]
+        dfs = []
+        for songs in [songs1, songs2]:
+            print("Fetching comments...")
+            posts = list(itertools.chain.from_iterable(map(lambda x: self._process_song(x, source_type), tqdm(songs))))
+            print("Fetching replies...")
+            replies = list(
+                itertools.chain.from_iterable(map(lambda x: self._make_replies(x["replies"], x), tqdm(posts)))
+            )
+            df = pd.DataFrame.from_records(posts + replies)
+            dfs.append(df)
+        df = pd.concat(dfs, axis=0)
         df = df[["_id", "song_name", "artist_name", "body", "score", "valence", "arousal"]]
         print(df)
         # df.to_csv("nathan_deezer.csv")
