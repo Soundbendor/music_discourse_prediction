@@ -70,7 +70,7 @@ def get_songs(args: argparse.Namespace):
         print(df["source"])
         df = df.groupby("_id").filter(lambda group: all([group["source"].eq(x).any() for x in args.sources]))
     print("Caching new dataframe...")
-    df.to_csv(f"cache_{args.dataset}_{' '.join(args.sources)}")
+    df.to_csv(f"cache_{args.dataset}_{' '.join(args.sources)}.csv")
     if args.make_csv:
         print("Rendered CSV! Exiting...")
         exit()
