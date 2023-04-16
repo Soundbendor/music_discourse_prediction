@@ -94,7 +94,7 @@ class Driver:
     # TODO - Add score filtering here
     def _make_source_filter(self, source_type: Union[str, List[str], None]) -> dict:
         if isinstance(source_type, str):
-            return {"source": source_type}
+            return {"source": source_type, "score": {"$gt": 5}}
         if isinstance(source_type, List):
             return {"source": {"$in": source_type}}
         return {}
