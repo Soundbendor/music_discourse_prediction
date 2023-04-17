@@ -49,8 +49,8 @@ def parseargs() -> argparse.Namespace:
     parser.add_argument("--model_name", type=str, default="distilbert-base-cased", dest="model_name")
     parser.add_argument("--intersection", type=bool, default=False, dest="intersection")
     parser.add_argument("--batch_size", type=int, default=16, dest="batch_size", required=True)
-    parser.add_argument("--length", type=int, default=0, dest="length_threshold")
-    parser.add_argument("--score", type=int, default=0, dest="score_threshold")
+    parser.add_argument("--length", type=int, default=32, dest="length_threshold")
+    parser.add_argument("--score", type=int, default=3, dest="score_threshold")
     parser.add_argument("--make_csv", type=bool, default=False, dest="make_csv")
     return parser.parse_args()
 
