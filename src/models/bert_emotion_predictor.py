@@ -157,8 +157,24 @@ def aggregate_predictions(X: pd.DataFrame, y: np.ndarray, pred: np.ndarray, run:
     print(f"Pearson's Correlation (song level) - Valence: {valence_corr}")
     print(f"Pearson's Correlation (song level) - Arousal: {arr_corr}")
 
-    scatterplot(results, "Valence - Actual", "Valence - Predicted", "valence_scatter", "Valence", run)
-    scatterplot(results, "Arousal - Actual", "Arousal - Predicted", "arousal_scatter", "Arousal", run)
+    scatterplot(
+        results["valence"],
+        results["val_pred"],
+        "Valence - Actual",
+        "Valence - Predicted",
+        "valence_scatter",
+        "Valence",
+        run,
+    )
+    scatterplot(
+        results["arousal"],
+        results["aro_pred"],
+        "Arousal - Actual",
+        "Arousal - Predicted",
+        "arousal_scatter",
+        "Arousal",
+        run,
+    )
 
     circumplex_model(results["val_pred"], results["aro_pred"], f"{fname} - Predicted", f"{fname}_predicted.png", run)
     circumplex_model(results["valence"], results["arousal"], f"{fname} - Actual", f"{fname}_actual.png", run)

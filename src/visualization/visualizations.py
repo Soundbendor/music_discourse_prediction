@@ -12,14 +12,16 @@ from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import MinMaxScaler
 
 
-def scatterplot(y_hat: np.ndarray, y_true: np.ndarray, key: str, fname: str, title: str, run: neptune.Run) -> None:
+def scatterplot(
+    y_hat: np.ndarray, y_true: np.ndarray, xlabel: str, ylabel: str, fname: str, title: str, run: neptune.Run
+) -> None:
     fig = plt.figure()
     plt.scatter(x=y_true, y=y_hat, alpha=0.5, s=10)
     m, b = np.polyfit(y_true, y_hat, 1)
     plt.plot(y_true, m * y_true + b, "r:", alpha=0.2, linewidth=2)
     fig.suptitle(title)
-    plt.xlabel(f"{key}_true")
-    plt.ylabel(f"{key}_pred")
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
     run[title].log(fig)
     fig.savefig(fname)
     plt.clf()
