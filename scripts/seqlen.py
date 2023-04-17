@@ -28,7 +28,7 @@ for source in SOURCES:
     hist = make_hist(source)
 
 # Bad stupid code design
-# hist.set(yscale="log")
+hist.set(yscale="log")
 hist.set(xlabel="Comment Length", ylabel="Songs")
 plt.legend(labels=SOURCES)
 fig = hist.get_figure()

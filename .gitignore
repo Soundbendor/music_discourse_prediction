@@ -172,3 +172,7 @@ out/
 .neptune/*
 
 .cenv
+
+data/
+
+logs/
