@@ -99,6 +99,8 @@ def main():
         song_df, t_prop=0.15, length_threshold=args.length_threshold, score_threshold=args.score_threshold
     )
 
+    print(ds.X_train)
+
     # Cache results CSV
     y_pred, history = run_experiment(ds, args, callbacks)
     print("\n\n\nKEYS")
