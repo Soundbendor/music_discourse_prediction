@@ -100,6 +100,7 @@ def main():
     )
 
     print(ds.X_train)
+    pd.DataFrame(ds.X_train).to_csv("new_training_set.csv")
 
     # Cache results CSV
     y_pred, history = run_experiment(ds, args, callbacks)
