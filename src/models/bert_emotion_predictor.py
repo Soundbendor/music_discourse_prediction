@@ -62,7 +62,9 @@ def get_num_gpus() -> int:
 def get_songs(args: argparse.Namespace):
     # If input csv is provided, load it and return it.
     if args.input:
-        return pd.read_csv(args.input)
+        df = pd.read_csv(args.input)
+        print(len(df))
+        return df
     db_con = Driver("mdp")
     df = pd.concat([db_con.get_discourse(ds_name=args.dataset, source_type=x) for x in args.sources], axis=0)
 
