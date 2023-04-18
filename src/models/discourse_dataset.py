@@ -50,6 +50,7 @@ class DiscourseDataSet:
         df = df.drop(df[df.score < score_threshold].index)
         # filter by length
         df = df.drop(df[df["body"].map(len) < length_threshold].index)
+        print(f"Dataframe Length: {len(df)}")
         return df
 
     def _split_data(self, df: pd.DataFrame, test_size):
