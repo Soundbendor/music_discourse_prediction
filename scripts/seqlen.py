@@ -40,7 +40,7 @@ sns.color_palette("rocket", as_cmap=True)
 db_con = Driver("mdp")
 hist = None
 for ds in DATASET:
-    hist = make_word_hist(df, ds)
+    hist = make_word_hist(ds)
 
 # Bad stupid code design
 hist.set(xscale="log")
