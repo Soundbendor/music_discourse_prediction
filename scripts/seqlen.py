@@ -24,9 +24,10 @@ def make_word_hist(src: Union[List[str], str]) -> None:
     df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"])
     # Currently counts # words per comment
     # df = df.groupby(["song_name"])["body"].apply(lambda x: len(wordpunct_tokenize(x))).sum()
-    df = df.apply(lambda x: len(wordpunct_tokenize(x))).groupby(["song_name"]).sum()
+    df["body"] = df["body"].apply(lambda x: len(wordpunct_tokenize(x)))
+    df = df.groupby(["song_name"])["body"].sum()
     print(df.describe())
-    hist = sns.histplot(data=df["body"], kde=True, bins=range(0, 1025, 64))
+    hist = sns.histplot(data=df, kde=True, bins=range(0, 1025, 64))
     return hist
 
 
