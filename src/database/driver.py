@@ -37,7 +37,10 @@ class Driver:
         return doc
 
     def _make_replies(self, replies: List, doc: dict) -> List[dict]:
-        return [self._update_reply(reply, doc.copy()) for reply in replies]
+        try:
+            return [self._update_reply(reply, doc.copy()) for reply in replies]
+        except TypeError:
+            return []
 
     def _process_song(self, song: dict, source_type: Union[str, List[str], None]) -> List[dict]:
         ids = list(itertools.chain.from_iterable(song["Submission"]))
