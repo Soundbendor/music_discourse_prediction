@@ -13,14 +13,14 @@ DATASET = ["deam_new", "amg1608", "pmemo"]
 
 
 # Cumulative histograms
-def make_word_per_comment_hist(df: pd.DataFrame, src: Union[List[str], str]) -> None:
+def make_word_per_comment_hist(src: Union[List[str], str]) -> None:
     df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"])
     print(df["body"].apply(lambda x: len(wordpunct_tokenize(x))).describe())
     hist = sns.histplot(data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))), kde=True, bins=range(0, 1025, 64))
     return hist
 
 
-def make_word_hist(df: pd.DataFrame, src: Union[List[str], str]) -> None:
+def make_word_hist(src: Union[List[str], str]) -> None:
     df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"])
     # Currently counts # words per comment
     df = df.groupby(["song_name"])["body"].apply(lambda x: len(wordpunct_tokenize(x))).sum()
@@ -29,7 +29,7 @@ def make_word_hist(df: pd.DataFrame, src: Union[List[str], str]) -> None:
     return hist
 
 
-def make_comment_hist(df: pd.DataFrame, src: Union[List[str], str]) -> None:
+def make_comment_hist(src: Union[List[str], str]) -> None:
     df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"])
     print(df["body"].apply(lambda x: len(wordpunct_tokenize(x))).describe())
     hist = sns.histplot(data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))), kde=True, bins=range(0, 1025, 64))
