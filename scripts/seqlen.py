@@ -13,19 +13,16 @@ DATASET = ["deam_new", "amg1608", "pmemo"]
 
 # Cumulative histograms
 def make_word_hist(src: Union[List[str], str]) -> None:
-    df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"]
+    df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"])
     print(df["body"].apply(lambda x: len(wordpunct_tokenize(x))).describe())
-    hist = sns.histplot(
-        data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))), kde=True, bins=range(0, 1025, 64)
-    )
+    hist = sns.histplot(data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))), kde=True, bins=range(0, 1025, 64))
     return hist
 
+
 def make_comment_hist(src: Union[List[str], str]) -> None:
-    df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"]
+    df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"])
     print(df["body"].apply(lambda x: len(wordpunct_tokenize(x))).describe())
-    hist = sns.histplot(
-        data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))), kde=True, bins=range(0, 1025, 64)
-    )
+    hist = sns.histplot(data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))), kde=True, bins=range(0, 1025, 64))
     return hist
 
 
@@ -33,7 +30,7 @@ sns.color_palette("rocket", as_cmap=True)
 db_con = Driver("mdp")
 hist = None
 for ds in DATASET:
-    hist = make_word_hist(source)
+    hist = make_word_hist(ds)
 
 # Bad stupid code design
 hist.set(xscale="log")
