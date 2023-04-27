@@ -1,6 +1,7 @@
 from typing import List, Union
 
 import matplotlib.pyplot as plt
+import pandas as pd
 import seaborn as sns
 from nltk.tokenize import wordpunct_tokenize
 
@@ -12,14 +13,23 @@ DATASET = ["deam_new", "amg1608", "pmemo"]
 
 
 # Cumulative histograms
-def make_word_hist(src: Union[List[str], str]) -> None:
+def make_word_per_comment_hist(df: pd.DataFrame, src: Union[List[str], str]) -> None:
     df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"])
     print(df["body"].apply(lambda x: len(wordpunct_tokenize(x))).describe())
     hist = sns.histplot(data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))), kde=True, bins=range(0, 1025, 64))
     return hist
 
 
-def make_comment_hist(src: Union[List[str], str]) -> None:
+def make_word_hist(df: pd.DataFrame, src: Union[List[str], str]) -> None:
+    df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"])
+    # Currently counts # words per comment
+    df = df.groupby(["song_name"])["body"].apply(lambda x: len(wordpunct_tokenize(x))).sum()
+    print(df.describe())
+    hist = sns.histplot(data=df["body"], kde=True, bins=range(0, 1025, 64))
+    return hist
+
+
+def make_comment_hist(df: pd.DataFrame, src: Union[List[str], str]) -> None:
     df = db_con.get_discourse(ds_name=src, source_type=["Reddit", "Youtube"])
     print(df["body"].apply(lambda x: len(wordpunct_tokenize(x))).describe())
     hist = sns.histplot(data=df["body"].apply(lambda x: len(wordpunct_tokenize(x))), kde=True, bins=range(0, 1025, 64))
@@ -30,7 +40,7 @@ sns.color_palette("rocket", as_cmap=True)
 db_con = Driver("mdp")
 hist = None
 for ds in DATASET:
-    hist = make_word_hist(ds)
+    hist = make_word_hist(df, ds)
 
 # Bad stupid code design
 hist.set(xscale="log")
