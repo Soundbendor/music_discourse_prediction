@@ -72,7 +72,7 @@ class Driver:
         df = df[["_id", "song_name", "artist_name", "body", "score", "valence", "arousal"]]
         print(df)
         # df.to_csv("nathan_deezer.csv")
-        df["source"] = source_type
+        # df["source"] = source_type
         return df  # type: ignore
 
     def new_get_dataset(self, ds_name: str, src_name: str) -> List[dict]:
