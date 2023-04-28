@@ -85,7 +85,7 @@ class DiscourseDataSet:
     def _convert_labels(
         self, y_train: pd.DataFrame, y_val: pd.DataFrame, y_test: pd.DataFrame
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
-        scaler = StandardScaler()
+        scaler = MinMaxScaler(feature_range=(0, 1))
         y_train = scaler.fit_transform(self._get_labels(y_train))
         y_val = scaler.transform(self._get_labels(y_val))
         y_test = scaler.transform(self._get_labels(y_test))
