@@ -1,6 +1,7 @@
 from typing import List, Union
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
 from nltk.tokenize import wordpunct_tokenize
@@ -54,7 +55,7 @@ def make_hist(df: pd.DataFrame) -> None:
 
 
 def get_song_word_ratio(df: pd.DataFrame) -> pd.Series:
-    df["body"] = df["body"].astype(str).apply(lambda x: len(wordpunct_tokenize(x)))
+    df["body"] = df["body"].replace("", np.nan).dropna().astype(str).apply(lambda x: len(wordpunct_tokenize(x)))
     return df["body"]
     # return df.groupby(["song_name"])["body"].apply(lambda x: x.sum() / len(x))
 
