@@ -27,7 +27,7 @@ def make_word_hist(src: Union[List[str], str]) -> None:
     df["body"] = df["body"].astype(str).apply(lambda x: len(wordpunct_tokenize(x)))
     df = df.groupby(["song_name"])["body"].sum()
     print(df.describe())
-    hist = sns.histplot(data=df, kde=True, bins=32)
+    hist = sns.histplot(data=df, kde=True, bins=32, log_scale=True)
     return hist
 
 
@@ -46,7 +46,7 @@ for ds in DATASET:
     hist = make_word_hist(ds)
 
 # Bad stupid code design
-hist.set(xscale="log")
+# hist.set(xscale="log")
 hist.set(xlabel="# Words", ylabel="Songs")
 plt.legend(labels=["Deezer", "DEAM", "AMG1608", "PMEmo"])
 fig = hist.get_figure()
