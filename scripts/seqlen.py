@@ -46,7 +46,7 @@ def get_n_words(df: pd.DataFrame) -> pd.Series:
 
 
 def make_hist(df: pd.DataFrame) -> None:
-    return sns.histplot(data=df, kde=True, bins=32, log_scale=True)
+    return sns.histplot(data=df, x="value", hue="name", kde=True, bins=32, log_scale=True)
 
 
 sns.color_palette("rocket", as_cmap=True)
