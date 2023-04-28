@@ -8,6 +8,8 @@ MAX_SEQ_LEN = 128
 
 def create_model(model_name: str) -> tf.keras.Model:
     config = AutoConfig.from_pretrained(model_name)
+    config.dropout = 0.3
+    config.attention_dropout = 0.3
     db_seq = TFAutoModel.from_config(config)
 
     # for layer in db_seq.layers:
