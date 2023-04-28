@@ -45,6 +45,10 @@ def get_n_words(df: pd.DataFrame) -> pd.Series:
     return df.groupby(["song_name"])["body"].sum()
 
 
+def get_n_comments(df: pd.DataFrame) -> pd.Series:
+    return df.groupby(["song_name"])["body"].size()
+
+
 def make_hist(df: pd.DataFrame) -> None:
     return sns.histplot(data=df, x="value", hue="name", kde=True, bins=32, log_scale=True)
 
@@ -60,7 +64,8 @@ df = pd.concat(
             lambda x: pd.DataFrame.from_dict({"value": x[0], "name": x[1]}),
             zip(
                 map(
-                    get_n_words, [db_con.get_discourse(ds_name=ds, source_type=["Reddit", "Youtube"]) for ds in DATASET]
+                    get_n_comments,
+                    [db_con.get_discourse(ds_name=ds, source_type=["Reddit", "Youtube"]) for ds in DATASET],
                 ),
                 STAGE_NAME,
             ),
@@ -71,7 +76,7 @@ hist = make_hist(df)
 
 # Bad stupid code design
 # hist.set(xscale="log")
-hist.set(xlabel="# Words", ylabel="Songs")
+hist.set(xlabel="# Comments", ylabel="Songs")
 # plt.legend()
 fig = hist.get_figure()
-fig.savefig(f"all_dist_word.png")
+fig.savefig(f"all_dist_comment.png")
