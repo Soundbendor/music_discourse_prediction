@@ -53,7 +53,7 @@ def get_n_comments(df: pd.DataFrame) -> pd.Series:
 
 
 def make_hist(df: pd.DataFrame) -> None:
-    return sns.histplot(data=df, x="value", hue="name", kde=True, bins=32)
+    return sns.histplot(data=df, x="value", hue="name", kde=True, bins=32, log_scale=True)
 
 
 def get_song_word_ratio(df: pd.DataFrame) -> pd.Series:
