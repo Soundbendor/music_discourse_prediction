@@ -9,9 +9,11 @@ from nltk.tokenize import wordpunct_tokenize
 from database.driver import Driver
 
 SOURCES = ["Reddit", "Youtube", "Twitter"]
-DATASET = ["deezer", "deam_new", "amg1608", "pmemo"]
-STAGE_NAME = ["Deezer", "DEAM", "AMG1608", "PMEmo"]
+# DATASET = ["deezer", "deam_new", "amg1608", "pmemo"]
+# STAGE_NAME = ["Deezer", "DEAM", "AMG1608", "PMEmo"]
 # Averages for all individual sources and datasets
+DATASET = ["deam_new", "amg1608", "pmemo"]
+STAGE_NAME = ["DEAM", "AMG1608", "PMEmo"]
 
 
 # Cumulative histograms
@@ -55,7 +57,9 @@ def make_hist(df: pd.DataFrame) -> None:
 
 
 def get_song_word_ratio(df: pd.DataFrame) -> pd.Series:
-    df["body"] = df["body"].replace("", np.nan).dropna().astype(str).apply(lambda x: len(wordpunct_tokenize(x)))
+    df["body"] = (
+        df["body"].replace("", np.nan).dropna(ignore_index=True).astype(str).apply(lambda x: len(wordpunct_tokenize(x)))
+    )
     return df["body"]
     # return df.groupby(["song_name"])["body"].apply(lambda x: x.sum() / len(x))
 
