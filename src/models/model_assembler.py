@@ -8,8 +8,6 @@ MAX_SEQ_LEN = 128
 
 def create_model(model_name: str) -> tf.keras.Model:
     config = AutoConfig.from_pretrained(model_name)
-    config.dropout = 0.3
-    config.attention_dropout = 0.3
     db_seq = TFAutoModel.from_config(config)
 
     # for layer in db_seq.layers:
@@ -26,7 +24,7 @@ def create_model(model_name: str) -> tf.keras.Model:
     # output = tf.keras.layers.Dropout(0.2)(output)
     output = tf.keras.layers.Dense(MAX_SEQ_LEN)(output)
     output = tf.keras.layers.LeakyReLU(alpha=0.2)(output)
-    output = tf.keras.layers.BatchNormalization()(output)
+    # output = tf.keras.layers.BatchNormalization()(output)
     output = tf.keras.layers.Dense(2, activation="linear")(output)
 
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs=output)
