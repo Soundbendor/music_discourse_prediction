@@ -89,8 +89,7 @@ df = pd.concat(
     ),
 )
 
-print(df.isnull().sum())
-print(df)
+df = df[np.isfinite(df["distance"])]
 hist = make_hist(df)
 
 # Bad stupid code design
