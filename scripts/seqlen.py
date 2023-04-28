@@ -53,6 +53,12 @@ def make_hist(df: pd.DataFrame) -> None:
     return sns.histplot(data=df, x="value", hue="name", kde=True, bins=32, log_scale=True)
 
 
+def get_song_word_ratio(df: pd.DataFrame) -> pd.Series:
+    df["body"] = df["body"].astype(str).apply(lambda x: len(wordpunct_tokenize(x)))
+    return df["body"]
+    # return df.groupby(["song_name"])["body"].apply(lambda x: x.sum() / len(x))
+
+
 sns.color_palette("rocket", as_cmap=True)
 db_con = Driver("mdp")
 
@@ -64,7 +70,7 @@ df = pd.concat(
             lambda x: pd.DataFrame.from_dict({"value": x[0], "name": x[1]}),
             zip(
                 map(
-                    get_n_comments,
+                    get_song_word_ratio,
                     [db_con.get_discourse(ds_name=ds, source_type=["Reddit", "Youtube"]) for ds in DATASET],
                 ),
                 STAGE_NAME,
@@ -76,7 +82,7 @@ hist = make_hist(df)
 
 # Bad stupid code design
 # hist.set(xscale="log")
-hist.set(xlabel="# Comments", ylabel="Songs")
+hist.set(xlabel="# Words", ylabel="Comments")
 # plt.legend()
 fig = hist.get_figure()
-fig.savefig(f"all_dist_comment.png")
+fig.savefig(f"word_comment_ratio.png")
