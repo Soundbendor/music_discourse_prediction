@@ -72,6 +72,6 @@ hist = make_hist(df)
 # Bad stupid code design
 # hist.set(xscale="log")
 hist.set(xlabel="# Words", ylabel="Songs")
-plt.legend(labels=STAGE_NAME)
+plt.legend()
 fig = hist.get_figure()
 fig.savefig(f"all_dist_word.png")
