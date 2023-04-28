@@ -58,7 +58,12 @@ def make_hist(df: pd.DataFrame) -> None:
 
 def get_song_word_ratio(df: pd.DataFrame) -> pd.Series:
     df["body"] = (
-        df["body"].replace("", np.nan).dropna(ignore_index=True).astype(str).apply(lambda x: len(wordpunct_tokenize(x)))
+        df["body"]
+        .replace("", np.nan)
+        .dropna()
+        .reset_index(drop=True)
+        .astype(str)
+        .apply(lambda x: len(wordpunct_tokenize(x)))
     )
     return df["body"]
     # return df.groupby(["song_name"])["body"].apply(lambda x: x.sum() / len(x))
