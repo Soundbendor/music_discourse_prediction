@@ -88,6 +88,9 @@ df = pd.concat(
         )
     ),
 )
+
+print(df.isnull().sum())
+print(df)
 hist = make_hist(df)
 
 # Bad stupid code design
