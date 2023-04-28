@@ -34,7 +34,7 @@ def generate_embeddings(df: pd.DataFrame, seq_len: int, model: str) -> dict:
 
 class DiscourseDataSet:
     def __init__(self, df: pd.DataFrame, t_prop: float, score_threshold: int, length_threshold: int):
-        df["body"].replace("", np.nan, inplace=True)
+        df["body"] = df["body"].replace("^\s*$", np.nan, regex=True)
         self.df = self._clean_str(df.dropna(how="any", subset=["body"]), score_threshold, length_threshold)
         # TODO - introduce validation subset
         self.X_train, self.X_val, self.X_test, self.y_train, self.y_val, self.y_test = self._split_data(
