@@ -24,10 +24,11 @@ def create_model(model_name: str) -> tf.keras.Model:
     # output = tf.keras.layers.Dropout(0.2)(output)
     output = tf.keras.layers.Dense(MAX_SEQ_LEN)(output)
     output = tf.keras.layers.LeakyReLU(alpha=0.2)(output)
+    output = tf.keras.layers.BatchNormalization(synchronized=True)(output)
     output = tf.keras.layers.Dense(2, activation="linear")(output)
 
     model = tf.keras.Model(inputs=[input_ids, input_masks_ids], outputs=output)
-    opt = tf.keras.optimizers.Adam(learning_rate=5e-5, clipnorm=0.1)
+    opt = tf.keras.optimizers.Adam(learning_rate=5e-5)
 
     model.compile(optimizer=opt, loss="mse", metrics=[tf.keras.metrics.RootMeanSquaredError()])
     return model
