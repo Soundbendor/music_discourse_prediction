@@ -89,6 +89,8 @@ df = pd.concat(
     ),
 )
 
+df = df.replace(0, np.nan)
+df = df.dropna()
 df = df[np.isfinite(df["value"])]
 hist = make_hist(df)
 
