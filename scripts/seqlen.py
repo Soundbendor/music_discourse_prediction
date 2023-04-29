@@ -75,7 +75,7 @@ df = df[np.isfinite(df["value"])]
 hist = make_hist(df)
 
 # hist.set(xlabel="# Words", ylabel="Comments")
-hist.set_xlabel("# Words", labelsize=18)
-hist.set_ylabel("Comments", labelsize=18)
+hist.set_xlabel("# Words", fontsize=18)
+hist.set_ylabel("Comments", fontsize=18)
 fig = hist.get_figure()
 fig.savefig(f"word_comment_ratio.png")
