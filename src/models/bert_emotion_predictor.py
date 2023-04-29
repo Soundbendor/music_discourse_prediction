@@ -81,6 +81,7 @@ def main():
     args = parseargs()
     song_df = get_songs(args)
     print(song_df)
+    print(f"\n\nDEBUG - Pre-Filter Length: {len(song_df)}")
 
     # Load API tokens from .env
     load_dotenv()
