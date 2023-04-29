@@ -12,8 +12,8 @@ SOURCES = ["Reddit", "Youtube", "Twitter"]
 DATASET = ["deezer", "deam_new", "amg1608", "pmemo"]
 STAGE_NAME = ["Deezer", "DEAM", "AMG1608", "PMEmo"]
 # Averages for all individual sources and datasets
-# DATASET = ["deam_new", "amg1608", "pmemo"]
-# STAGE_NAME = ["DEAM", "AMG1608", "PMEmo"]
+DATASET = ["deam_new", "amg1608", "pmemo"]
+STAGE_NAME = ["DEAM", "AMG1608", "PMEmo"]
 
 
 def get_n_words(df: pd.DataFrame) -> pd.Series:
@@ -27,7 +27,7 @@ def get_n_comments(df: pd.DataFrame) -> pd.Series:
 
 def make_hist(df: pd.DataFrame) -> None:
     sns.set(font_scale=1.25)
-    return sns.histplot(data=df, x="value", hue="name", kde=True, bins=24, log_scale=True, binrange=(0, 500))
+    return sns.histplot(data=df, x="value", hue="name", kde=True, bins=24, binrange=(0, 500))
 
 
 def get_song_word_ratio(df: pd.DataFrame) -> pd.Series:
