@@ -12,8 +12,8 @@ SOURCES = ["Reddit", "Youtube", "Twitter"]
 DATASET = ["deezer", "deam_new", "amg1608", "pmemo"]
 STAGE_NAME = ["Deezer", "DEAM", "AMG1608", "PMEmo"]
 # Averages for all individual sources and datasets
-DATASET = ["deam_new", "amg1608", "pmemo"]
-STAGE_NAME = ["DEAM", "AMG1608", "PMEmo"]
+# DATASET = ["deam_new", "amg1608", "pmemo"]
+# STAGE_NAME = ["DEAM", "AMG1608", "PMEmo"]
 
 
 def get_n_words(df: pd.DataFrame) -> pd.Series:
