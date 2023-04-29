@@ -27,7 +27,7 @@ def get_n_comments(df: pd.DataFrame) -> pd.Series:
 
 def make_hist(df: pd.DataFrame) -> None:
     sns.set(font_scale=1.25)
-    df["body"] = df["body"].clip(0, 300)
+    df = df.clip(0, 300)
     ax = sns.histplot(data=df, x="value", hue="name", kde=True, bins=32)
     # ax.set_xlim(0, 500)
     return ax
