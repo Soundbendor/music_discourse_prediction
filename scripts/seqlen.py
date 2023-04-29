@@ -31,7 +31,7 @@ def make_hist(df: pd.DataFrame) -> None:
     plt_size = 10
     _, ax = plt.subplots(figsize=(plt_size, plt_size))
     df["value"] = df["value"].clip(0, 500)
-    ax = sns.histplot(data=df, x="value", hue="name", kde=True, bins=32, log_scale=(False, True))
+    ax = sns.histplot(data=df, x="value", hue="name", kde=True, bins=32, log_scale=(True, False))
     # ax.set_xlim(0, 500)
     return ax
 
@@ -60,7 +60,7 @@ df = pd.concat(
             lambda x: pd.DataFrame.from_dict({"value": x[0], "name": x[1]}),
             zip(
                 map(
-                    get_song_word_ratio,
+                    get_n_comments,
                     [db_con.get_discourse(ds_name=ds, source_type=["Reddit", "Youtube"]) for ds in DATASET],
                 ),
                 STAGE_NAME,
@@ -75,7 +75,7 @@ df = df[np.isfinite(df["value"])]
 hist = make_hist(df)
 
 # hist.set(xlabel="# Words", ylabel="Comments")
-hist.set_xlabel("# Words", fontsize=18)
-hist.set_ylabel("Comments", fontsize=18)
+hist.set_xlabel("# Comments", fontsize=18)
+hist.set_ylabel("Songs", fontsize=18)
 fig = hist.get_figure()
-fig.savefig(f"word_comment_ratio.png")
+fig.savefig(f"all_dist_word.png")
