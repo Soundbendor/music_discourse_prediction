@@ -1,4 +1,5 @@
 import argparse
+import csv
 import os
 from datetime import datetime
 from typing import List, Tuple
@@ -62,7 +63,7 @@ def get_num_gpus() -> int:
 def get_songs(args: argparse.Namespace):
     # If input csv is provided, load it and return it.
     if args.input:
-        df = pd.read_csv(args.input)
+        df = pd.read_csv(args.input, sep="\t", quoting=csv.QUOTE_NONNUMERIC)
         # df["body"] = df["body"].astype(str)
         # df = df.replace("", np.nan).dropna()
         print(len(df))
@@ -70,7 +71,7 @@ def get_songs(args: argparse.Namespace):
     db_con = Driver("mdp")
     df = pd.concat([db_con.get_discourse(ds_name=args.dataset, source_type=x) for x in args.sources], axis=0)
     print("Caching new dataframe...")
-    df.to_csv(f"cache_{args.dataset}_{' '.join(args.sources)}.csv")
+    df.to_csv(f"cache_{args.dataset}_{' '.join(args.sources)}.csv", sep="\t", quoting=csv.QUOTE_NONNUMERIC)
     if args.make_csv:
         print("Rendered CSV! Exiting...")
         exit()
