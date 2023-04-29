@@ -28,8 +28,10 @@ def get_n_comments(df: pd.DataFrame) -> pd.Series:
 def make_hist(df: pd.DataFrame) -> None:
     sns.set(font_scale=1.25)
     print(df)
-    df["value"] = df["value"].clip(0, 300)
-    ax = sns.histplot(data=df, x="value", hue="name", kde=True, bins=32)
+    plt_size = 10
+    _, ax = plt.subplots(figsize=(plt_size, plt_size))
+    df["value"] = df["value"].clip(0, 128)
+    ax = sns.histplot(data=df, x="value", hue="name", kde=True, bins=32, log_scale=(False, True))
     # ax.set_xlim(0, 500)
     return ax
 
