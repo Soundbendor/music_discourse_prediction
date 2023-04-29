@@ -64,8 +64,8 @@ def get_songs(args: argparse.Namespace):
     # If input csv is provided, load it and return it.
     if args.input:
         df = pd.read_csv(args.input, sep="\t", quoting=csv.QUOTE_NONNUMERIC)
-        # df["body"] = df["body"].astype(str)
-        # df = df.replace("", np.nan).dropna()
+        df["body"] = df["body"].astype(str)
+        df = df.replace("", np.nan).dropna()
         print(len(df))
         return df
     db_con = Driver("mdp")
