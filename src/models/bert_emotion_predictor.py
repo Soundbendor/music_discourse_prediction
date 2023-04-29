@@ -69,10 +69,6 @@ def get_songs(args: argparse.Namespace):
         return df
     db_con = Driver("mdp")
     df = pd.concat([db_con.get_discourse(ds_name=args.dataset, source_type=x) for x in args.sources], axis=0)
-
-    if args.intersection:
-        print(df["source"])
-        df = df.groupby("_id").filter(lambda group: all([group["source"].eq(x).any() for x in args.sources]))
     print("Caching new dataframe...")
     df.to_csv(f"cache_{args.dataset}_{' '.join(args.sources)}.csv")
     if args.make_csv:
