@@ -30,7 +30,7 @@ def make_hist(df: pd.DataFrame) -> None:
     print(df)
     plt_size = 10
     _, ax = plt.subplots(figsize=(plt_size, plt_size))
-    df["value"] = df["value"].clip(0, 128)
+    df["value"] = df["value"].clip(0, 200)
     ax = sns.histplot(data=df, x="value", hue="name", kde=True, bins=32, log_scale=(False, True))
     # ax.set_xlim(0, 500)
     return ax
