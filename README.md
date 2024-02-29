@@ -28,9 +28,27 @@ Categorization labeling will be performed based on the following:
 
 The BERT module includes a direct-learning pipeline, accepting a JSON-formatted set of song comments as an input and directly predicting valence and arousal targets using [distilBERT](https://paperswithcode.com/method/distillbert).
 
+# Installation
 
-## Notes for Capstone Maintainers
-This release is packaged for the purposes of CS-463 Capstone archival and final completion. Please note that this code is not for distribution to any parties besides the current instructors for CS-463 Capstone, as it includes ongoing, unpublished research work. 
+To install this package
+1. Use a Python package management solution (e.g. [mamba](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html), [conda](https://docs.conda.io/en/latest/) to create an environment from the `environment.yml` file.
+   `conda env create --name mdp --file environment.yml`
+2. Activate your new environment.
+   `conda activate mdp`
+3. Install the `music_discourse_prediction` package to your local environment
+   `pip install .`
+
+# Usage
+
+## Data Mining
+
+## Model Training
+
+To train a new model, use the `bert_features` command. 
+
+To train a model, a few things are required:
+
+1) A dataset, either in the form of a `.csv` file, or a connection to a MonogDB instance with 
 
 
 ## Acknowledgements and Contact
