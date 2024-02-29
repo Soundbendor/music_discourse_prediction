@@ -47,14 +47,22 @@ To install this package
 To train a new model, use the `bert_features` command. 
 
 Commands:
-[--dataset]: The name of the dataset which the songs come from. Required. Options are AMG1608, DEAM, PmEmo, or Deezer.
-[--source]: List of social media sources from which to use comments from. Required. Options are [Youtube, Reddit, Twitter]. 
-[--epochs]: Number of epochs to fine-tune for. Optional. Default is 2.
-[--batch_size]: Batch size per GPU. Required. Default is 16.
-[--length]: Filter command. Drop all comments below a certain number of characters. Optional. Default is 32.
-[--score]: Filter command. Drop all comments below a certain number of likes. Optional. Default is 3.
-[--model_name]: HuggingFace model name of a BERT-like model. Default: `distilbert-base-cased`.
-[--input_dir]: Path to a valid `.csv` which contains a dataset of music discourse comments. Optional. Used in place of a MongoDB instance running on `localhost`.
+
+`[--dataset]`: The name of the dataset which the songs come from. Required. Options are AMG1608, DEAM, PmEmo, or Deezer.
+
+`[--source]`: List of social media sources from which to use comments from. Required. Options are [Youtube, Reddit, Twitter]. 
+
+`[--epochs]`: Number of epochs to fine-tune for. Optional. Default is 2.
+
+`[--batch_size]`: Batch size per GPU. Required. Default is 16.
+
+`[--length]`: Filter command. Drop all comments below a certain number of characters. Optional. Default is 32.
+
+`[--score]`: Filter command. Drop all comments below a certain number of likes. Optional. Default is 3.
+
+`[--model_name]`: HuggingFace model name of a BERT-like model. Default: `distilbert-base-cased`.
+
+`[--input_dir]`: Path to a valid `.csv` which contains a dataset of music discourse comments. Optional. Used in place of a MongoDB instance running on `localhost`.
 
 ### Setting Up A Dataset
 We provide two options for attaching a dataset to our model training API. The model API will, by default, search for MongoDB instance running on `localhost`. If an input CSV is provided, the model will use that training dataset instead, and an active MongoDB server will not be required to run the model.
@@ -89,14 +97,8 @@ If you would like to use our code or dataset, please cite our publication here:
 }
 ```
 
-Developed by: Aidan Beery
+Developed by: Aidan Beery - mail: beerya@oregonstate.edu
 
-Contact: beerya@oregonstate.edu
-
-Advised by: Dr. Patrick Donnelly
-
-Contact: donnellp@oregonstate.edu
+Advised by: Dr. Patrick J. Donnelly - mail: donnellp@oregonstate.edu
 
 Website: http://www.soundbendor.org/
-
-OSU-Cascades 2019-2022
