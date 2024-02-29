@@ -74,30 +74,20 @@ You can select subsets of our dataset, slicing by MER dataset using the `--datas
 ## Acknowledgements and Contact
 If you would like to use our code or dataset, please cite our publication here:
 
+```
 @inbook{
-   
    Beery_Donnelly_2024,
-   
    title={Learning Affective Responses to Music from Social Media Discourse}, 
-   
    ISBN={978-3-031-44260-5},
-   
    url={https://doi.org/10.1007/978-3-031-44260-5_6},
-   
    DOI={10.1007/978-3-031-44260-5_6},
-   
    booktitle={Practical Solutions for Diverse Real-World NLP Applications},
-   
    publisher={Springer International Publishing}, 
-   
    author={Beery, Aidan and Donnelly, Patrick J.}, 
-   
    year={2024}, 
-   
    pages={93–119}
-
 }
-
+```
 
 Developed by: Aidan Beery
 
