@@ -15,16 +15,32 @@ To install this package
    `conda activate mdp`
 3. Install the `music_discourse_prediction` package to your local environment
    `pip install .`
+[Opt]. Install the MongoDB server from [here](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/) in order to use our data collection pipeline. 
 
 # Usage
 
 ## Data Mining
 
+Our data collection approach depends on a MongoDB instance running on `localhost`, on the default port 27017. Our 
+
+### Initializing the Database
+
+In the `datasets` folder, we provide four datasets of musical samples annotated for valence and arousal: [AMG1608](https://ieeexplore.ieee.org/document/7178058), [PmEmo](https://github.com/HuiZhangDB/PMEmo), [DEAM](https://cvml.unige.ch/databases/DEAM/) and [Deezer2018](https://research.deezer.com/publication/2018/09/26/ismir-delbouys.html). Our data scraping workflow depends on these datasets being loaded into your MongoDB instance. The `mongo_songs` command will allow you to quickly load and insert these datasets into your database instance. 
+
+### Known Issues
+
+If there is a crash or bug, the bot, when restarted, will try to resume the data collection pull from the least recently updated song. 
+
+Arguments:
+`[--input]` The path of the 
+
+Note: For the Deezer2018 dataset, the authors define explicit train, test, and validation splits. We retain these splits in separate csv files. However, our data loading script looks for all three files: `deezer_train.csv`, `deezer_test.csv`, and `deezer_validation.csv` if any one of them is supplied from `--input`
+
 ## Model Training
 
 To train a new model, use the `bert_features` command. 
 
-Commands:
+Arguments:
 
 `[--dataset]`: The name of the dataset which the songs come from. Required. Options are AMG1608, DEAM, PmEmo, or Deezer.
 
