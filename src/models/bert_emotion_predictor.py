@@ -40,12 +40,13 @@ def parseargs() -> argparse.Namespace:
         help="Which type of social media input is being delivered.\n\
             Valid options are [Twitter, Youtube, Reddit, Lyrics].",
     )
+    # TODO - support intermixing multiple datasets
     parser.add_argument(
         "--dataset", type=str, dest="dataset", required=True, help="Name of the dataset which the comments represent"
     )
 
     parser.add_argument(
-        "--epochs", type=int, default=5, dest="num_epoch", help="Number of epochs to train the model with"
+        "--epochs", type=int, default=2, dest="num_epoch", help="Number of epochs to train the model with"
     )
     parser.add_argument("--model_name", type=str, default="distilbert-base-cased", dest="model_name")
     parser.add_argument("--intersection", type=bool, default=False, dest="intersection")

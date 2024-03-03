@@ -1,7 +1,7 @@
 # Never, EVER let me be committed to a git repo.
-# If this token leaks into your repo history, call Aidan.
-# ~Aidan
 yt_token.json
+
+logs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
