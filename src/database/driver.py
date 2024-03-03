@@ -15,22 +15,6 @@ class Driver:
     def __init__(self, db_name: str) -> None:
         self.client = pymongo.MongoClient()[db_name]
 
-    # Returns a list of songs for a given dataset.
-    # TODO - Support arbitrary queries (limits, randomized subsets, manual holdout sets)
-    # TODO - Change gt to lt after initial load (?)
-    def get_dataset(self, ds_name: str, timestamp: datetime) -> List[dict]:
-        songs = self.client["songs"].find(
-            {
-                "Dataset": ds_name,
-                "$or": [
-                    {"last_modified": {"$lt": timestamp}},
-                    {"last_modified": {"$exists": False}},
-                ],
-            },
-            no_cursor_timeout=True,
-        )
-        return [document for document in songs]
-
     def _update_reply(self, reply: dict, doc: dict) -> dict:
         # print(doc)
         doc.update(reply)
@@ -74,7 +58,6 @@ class Driver:
         df = pd.concat(dfs, axis=0)
         df = df[["_id", "song_name", "artist_name", "body", "score", "valence", "arousal"]]
         print(df)
-        # df.to_csv("nathan_deezer.csv")
         df["source"] = source_type
         return df  # type: ignore
 
