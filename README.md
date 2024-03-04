@@ -45,6 +45,11 @@ Arguments:
 
 Note: For the Deezer2018 dataset, the authors define explicit train, test, and validation splits. We retain these splits in separate csv files. However, our data loading script looks for all three files: `deezer_train.csv`, `deezer_test.csv`, and `deezer_validation.csv` if any one of them is supplied from `--input` So, if you run `mongo_songs --input datasets/DEEZER_test.csv`, it will load all of the songs from all three Deezer dataset files. So, running the load command for all three files is unnecesscary. 
 
+### Authentication 
+
+Each social media service requires an API key in order to request data. You can request API keys here for [Reddit](https://www.reddit.com/prefs/apps), [YouTube](https://developers.google.com/youtube/v3), and [Twitter](https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api). Our data pipeline expects Twitter credentials to be provided in a `.env` file, with the fields `TWITTER_BEARER_TOKEN`, `TWITTER_ACCESS_TOKEN`, `TWITTER_ACCESS_TOKEN_SECRET`, `TWITTER_API_KEY`, and `TWITTER_API_KEY_SECRET`. Reddit configuration is provided by the keys `REDDIT_CLIENT_ID` and `REDDIT_CLIENT_SECRET`. YouTube authentication must be provided by a separate `.json` file, which you can generate in the Google Cloud web console (helpful instructions here: https://stackoverflow.com/questions/43367664/get-client-id-and-client-secret-of-the-file-client-secrets-json-of-youtube-api) First run will trigger an oauth workflow, which will pair your app with the YouTube data API and save your session token in a new file titled `yt_token.json` in the root directory. 
+
+
 ## Model Training
 
 To train a new model, use the `bert_features` command. 
