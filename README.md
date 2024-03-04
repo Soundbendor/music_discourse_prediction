@@ -19,22 +19,29 @@ To install this package
 
 # Usage
 
+Our work consists of two main contributions, represented by the `data_mining` module used for social media musical discourse data collection, and the `bert_features` module, which is used for training and evaluating BERT-like pretrained large language models for the task of predicting music valence and arousal targets from only social media comments.
+
 ## Data Mining
 
-Our data collection approach depends on a MongoDB instance running on `localhost`, on the default port 27017. Our 
+Our data collection approach depends on a MongoDB instance running on `localhost`, on the default port 27017. The `data_mining` module connects to this local database, and initializes an API connection to the specified social media service. From this, we form a search query to the social media API strictly including the song title and artist name, and return some subset of the top submissions. For Reddit this is all submissions returned by the search API, for Twitter it is the top 100 tweets, and for YouTube it is the top 50 videos. For each of these top-level submissions, we then pull all reply comments or tweets in response to that original post which explicitly mentions the song title and artist name. Each top-level contribution and reply is stored as a separate record in the `posts` collection
+
+Arguments:
+
+`[--dataset]`: The dataset from which to pull query songs. Options are deam, amg1608, deezer, or pmemo
+
+`[--type]`: Which social media source to query from. Options are youtube, reddit, twitter
+
+`[--
+
 
 ### Initializing the Database
 
-In the `datasets` folder, we provide four datasets of musical samples annotated for valence and arousal: [AMG1608](https://ieeexplore.ieee.org/document/7178058), [PmEmo](https://github.com/HuiZhangDB/PMEmo), [DEAM](https://cvml.unige.ch/databases/DEAM/) and [Deezer2018](https://research.deezer.com/publication/2018/09/26/ismir-delbouys.html). Our data scraping workflow depends on these datasets being loaded into your MongoDB instance. The `mongo_songs` command will allow you to quickly load and insert these datasets into your database instance. 
-
-### Known Issues
-
-If there is a crash or bug, the bot, when restarted, will try to resume the data collection pull from the least recently updated song. 
+In the `datasets` folder, we provide four datasets of musical samples annotated for valence and arousal: [AMG1608](https://ieeexplore.ieee.org/document/7178058), [PmEmo](https://github.com/HuiZhangDB/PMEmo), [DEAM](https://cvml.unige.ch/databases/DEAM/) and [Deezer2018](https://research.deezer.com/publication/2018/09/26/ismir-delbouys.html). Our data scraping workflow depends on these datasets being loaded into your MongoDB instance. The `mongo_songs` command will allow you to quickly load and insert these datasets into your database instance. This script will read the CSV and insert each song, with it's assosciated valence and arousal label, into the `songs` collection. 
 
 Arguments:
-`[--input]` The path of the 
+`[--input]`: The path of the csv containing the annotated samples. 
 
-Note: For the Deezer2018 dataset, the authors define explicit train, test, and validation splits. We retain these splits in separate csv files. However, our data loading script looks for all three files: `deezer_train.csv`, `deezer_test.csv`, and `deezer_validation.csv` if any one of them is supplied from `--input`
+Note: For the Deezer2018 dataset, the authors define explicit train, test, and validation splits. We retain these splits in separate csv files. However, our data loading script looks for all three files: `deezer_train.csv`, `deezer_test.csv`, and `deezer_validation.csv` if any one of them is supplied from `--input` So, if you run `mongo_songs --input datasets/DEEZER_test.csv`, it will load all of the songs from all three Deezer dataset files. So, running the load command for all three files is unnecesscary. 
 
 ## Model Training
 
