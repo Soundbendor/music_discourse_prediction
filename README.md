@@ -1,6 +1,6 @@
 # Music Discourse Prediction - soundbendor lab
 
-A package for training music emotion recognition models using social media comments. Predicting continous music emotion labels (e.g. valence, arousal) is limited by 
+A package for training music emotion recognition models using social media comments. Measuring continous emotion labels (e.g. valence, arousal) for music is challenging, typically relying on human annotators to listen to musical samples and rate their percieved emotion. As emotion is a subjective quantity, a large set of annotations are needed per sample in order to make a statistically significant inference about the emotional qualities of a song. This makes music emotion annotation expensive and time-consuming. Our study seeks to explore a system for automatically estimating the average emotional response of a listener to a piece of music by using social media comments related to that piece of music. We provide a system for collecting social media datasets related to musical discourse and for training BERT-like models on this data.  
 
 You can find our paper here: https://link.springer.com/chapter/10.1007/978-3-031-44260-5_6 
 
