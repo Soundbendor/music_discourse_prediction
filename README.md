@@ -27,11 +27,13 @@ Our data collection approach depends on a MongoDB instance running on `localhost
 
 Arguments:
 
-`[--dataset]`: The dataset from which to pull query songs. Options are deam, amg1608, deezer, or pmemo
+`[--dataset]`: The dataset from which to pull query songs. Options: deam, amg1608, deezer, pmemo
 
-`[--type]`: Which social media source to query from. Options are youtube, reddit, twitter
+`[--type]`: Which social media source to query from. Options: youtube, reddit, twitter
 
-`[--
+`[--timestamp]`: The last known 'good' timestamp. If there was an error that resulted in a crash during your data pull, you can query the database instance and find the timestamp of the last successful pull. The bot will resume at the song it left off at. 
+
+`[--config]` The config file for the scraping bot. For the Reddit bot, this is in the form of a `praw.ini` fle. 
 
 
 ### Initializing the Database
